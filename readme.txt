@@ -10,7 +10,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
 
-Launch a blazing-fast, pixel-perfect website with the Jove WordPress block theme! Jove features over 50 beautiful pattern designs, 7 full-page pattern layouts, and a fully-customizable design system with global styles. Jove integrates seamlessly with all of the powerful new WordPress editor features, giving you the most lightweight and powerful website builder on the planet — no expensive page builder plugin required! ✶ Full demo: https://demo.olliewp.com ✶
+Launch a blazing-fast, pixel-perfect website with the Jove WordPress block theme! Jove features over 50 beautiful pattern designs, 7 full-page pattern layouts, and a fully-customizable design system with global styles. Jove integrates seamlessly with all of the powerful new WordPress editor features, giving you the most lightweight and powerful website builder on the planet — no expensive page builder plugin required! ✶ Full demo: https://www.jove.com ✶
 
 == Changelog ==
 
