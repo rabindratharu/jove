@@ -17,7 +17,7 @@ module.exports = [
     ...scriptConfig,
     entry: {
       ...scriptConfig.entry(),
-      "public/index": "./src/public/index.js",
+      "public/index": "./src/public/index.js", // Custom entry point
     },
     optimization: {
       ...scriptConfig.optimization,
@@ -28,5 +28,7 @@ module.exports = [
     },
     plugins: [...scriptConfig.plugins, new RemoveEmptyScriptsPlugin()],
   },
-  moduleConfig,
+  {
+    ...moduleConfig,
+  },
 ];
