@@ -11,126 +11,145 @@
  * Inserter: true
  */
 ?>
-<!-- wp:group {"tagName":"footer","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|xx-large","bottom":"var:preset|spacing|xx-large","right":"var:preset|spacing|medium","left":"var:preset|spacing|medium"},"margin":{"top":"0px"},"blockGap":"var:preset|spacing|x-large"},"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"main","textColor":"base","layout":{"inherit":true,"type":"constrained"}} -->
-<footer class="wp-block-group alignfull has-base-color has-main-background-color has-text-color has-background has-link-color" style="margin-top:0px;padding-top:var(--wp--preset--spacing--xx-large);padding-right:var(--wp--preset--spacing--medium);padding-bottom:var(--wp--preset--spacing--xx-large);padding-left:var(--wp--preset--spacing--medium)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|x-large","left":"var:preset|spacing|x-large"}}}} -->
-<div class="wp-block-columns alignwide"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:site-title {"level":0,"isLink":false,"style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"textColor":"base"} /-->
+<!-- wp:group {"tagName":"footer","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|xx-large","bottom":"var:preset|spacing|xx-large","right":"var:preset|spacing|medium","left":"var:preset|spacing|medium"},"margin":{"top":"0px"},"blockGap":"var:preset|spacing|x-large"},"elements":{"link":{"color":{"text":"var:preset|color|base"}}},"color":{"background":"#4193f4"}},"textColor":"base","layout":{"inherit":true,"type":"constrained"}} -->
+<footer class="wp-block-group alignfull has-base-color has-text-color has-background has-link-color"
+    style="background-color:#4193f4;margin-top:0px;padding-top:var(--wp--preset--spacing--xx-large);padding-right:var(--wp--preset--spacing--medium);padding-bottom:var(--wp--preset--spacing--xx-large);padding-left:var(--wp--preset--spacing--medium)">
+    <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|x-large","left":"var:preset|spacing|x-large"}}}} -->
+    <div class="wp-block-columns alignwide">
+        <!-- wp:column -->
+        <div class="wp-block-column">
+            <!-- wp:site-title {"level":0,"isLink":false,"style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"textColor":"base"} /-->
 
-<!-- wp:paragraph {"textColor":"main-accent","fontSize":"small"} -->
-<p class="has-main-accent-color has-text-color has-small-font-size">Easily create beautiful, fully-customizable websites with the new WordPress Site Editor and the Jove block theme. No coding skills required. Download for free today!</p>
-<!-- /wp:paragraph -->
+            <!-- wp:paragraph {"textColor":"main-accent","fontSize":"small"} -->
+            <p class="has-main-accent-color has-text-color has-small-font-size">Easily create beautiful,
+                fully-customizable websites with the new WordPress Site Editor and the Jove block theme. No coding
+                skills required. Download for free today!</p>
+            <!-- /wp:paragraph -->
 
-<!-- wp:social-links {"iconColor":"main","iconColorValue":"#150E29","iconBackgroundColor":"base","iconBackgroundColorValue":"#fff","className":"is-style-default","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|small","left":"var:preset|spacing|small"}}},"layout":{"type":"flex","justifyContent":"left"}} -->
-<ul class="wp-block-social-links has-icon-color has-icon-background-color is-style-default"><!-- wp:social-link {"url":"#","service":"twitter"} /-->
+            <!-- wp:social-links {"iconColor":"main","iconColorValue":"#150E29","iconBackgroundColor":"base","iconBackgroundColorValue":"#fff","className":"is-style-default","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|small","left":"var:preset|spacing|small"}}},"layout":{"type":"flex","justifyContent":"left"}} -->
+            <ul class="wp-block-social-links has-icon-color has-icon-background-color is-style-default">
+                <!-- wp:social-link {"url":"#","service":"twitter"} /-->
 
-<!-- wp:social-link {"url":"#","service":"instagram"} /-->
+                <!-- wp:social-link {"url":"#","service":"instagram"} /-->
 
-<!-- wp:social-link {"url":"#","service":"linkedin"} /-->
+                <!-- wp:social-link {"url":"#","service":"linkedin"} /-->
 
-<!-- wp:social-link {"url":"#","service":"facebook"} /--></ul>
-<!-- /wp:social-links --></div>
-<!-- /wp:column -->
+                <!-- wp:social-link {"url":"#","service":"facebook"} /-->
+            </ul>
+            <!-- /wp:social-links -->
+        </div>
+        <!-- /wp:column -->
 
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}}} -->
-<p style="font-style:normal;font-weight:600">Company</p>
-<!-- /wp:paragraph -->
+        <!-- wp:column {"layout":{"type":"default"}} -->
+        <div class="wp-block-column">
+            <!-- wp:columns {"isStackedOnMobile":false} -->
+            <div class="wp-block-columns is-not-stacked-on-mobile">
+                <!-- wp:column {"className":"border-r"} -->
+                <div class="wp-block-column border-r">
+                    <!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}}} -->
+                    <p style="font-style:normal;font-weight:600">Company</p>
+                    <!-- /wp:paragraph -->
 
-<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"textColor":"main-accent","fontSize":"small","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-main-accent-color has-text-color has-small-font-size"><!-- wp:paragraph -->
-<p>About</p>
-<!-- /wp:paragraph -->
+                    <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"textColor":"main-accent","fontSize":"small","layout":{"type":"constrained"}} -->
+                    <div class="wp-block-group has-main-accent-color has-text-color has-small-font-size">
+                        <!-- wp:paragraph -->
+                        <p>About</p>
+                        <!-- /wp:paragraph -->
 
-<!-- wp:paragraph -->
-<p>Careers</p>
-<!-- /wp:paragraph -->
+                        <!-- wp:paragraph -->
+                        <p>Careers</p>
+                        <!-- /wp:paragraph -->
 
-<!-- wp:paragraph -->
-<p>Brand Assets</p>
-<!-- /wp:paragraph -->
+                        <!-- wp:paragraph -->
+                        <p>Brand Assets</p>
+                        <!-- /wp:paragraph -->
 
-<!-- wp:paragraph -->
-<p>Contact</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group --></div>
-<!-- /wp:column -->
+                        <!-- wp:paragraph -->
+                        <p>Contact</p>
+                        <!-- /wp:paragraph -->
+                    </div>
+                    <!-- /wp:group -->
+                </div>
+                <!-- /wp:column -->
 
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}}} -->
-<p style="font-style:normal;font-weight:600">Resources</p>
-<!-- /wp:paragraph -->
+                <!-- wp:column {"className":"border-r"} -->
+                <div class="wp-block-column border-r">
+                    <!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}}} -->
+                    <p style="font-style:normal;font-weight:600">Resources</p>
+                    <!-- /wp:paragraph -->
 
-<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"textColor":"main-accent","fontSize":"small","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-main-accent-color has-text-color has-small-font-size"><!-- wp:paragraph -->
-<p>Blog</p>
-<!-- /wp:paragraph -->
+                    <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"textColor":"main-accent","fontSize":"small","layout":{"type":"constrained"}} -->
+                    <div class="wp-block-group has-main-accent-color has-text-color has-small-font-size">
+                        <!-- wp:paragraph -->
+                        <p>Blog</p>
+                        <!-- /wp:paragraph -->
 
-<!-- wp:paragraph -->
-<p>Contact</p>
-<!-- /wp:paragraph -->
+                        <!-- wp:paragraph -->
+                        <p>Contact</p>
+                        <!-- /wp:paragraph -->
 
-<!-- wp:paragraph -->
-<p>Support Docs</p>
-<!-- /wp:paragraph -->
+                        <!-- wp:paragraph -->
+                        <p>Support Docs</p>
+                        <!-- /wp:paragraph -->
 
-<!-- wp:paragraph -->
-<p>Get Help</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group --></div>
-<!-- /wp:column -->
+                        <!-- wp:paragraph -->
+                        <p>Get Help</p>
+                        <!-- /wp:paragraph -->
+                    </div>
+                    <!-- /wp:group -->
+                </div>
+                <!-- /wp:column -->
 
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}}} -->
-<p style="font-style:normal;font-weight:600">Product</p>
-<!-- /wp:paragraph -->
+                <!-- wp:column -->
+                <div class="wp-block-column">
+                    <!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600"}}} -->
+                    <p style="font-style:normal;font-weight:600">ABOUT JoVE</p>
+                    <!-- /wp:paragraph -->
 
-<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"textColor":"main-accent","fontSize":"small","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-main-accent-color has-text-color has-small-font-size"><!-- wp:paragraph -->
-<p>Features</p>
-<!-- /wp:paragraph -->
+                    <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"textColor":"main-accent","fontSize":"small","layout":{"type":"constrained"}} -->
+                    <div class="wp-block-group has-main-accent-color has-text-color has-small-font-size">
+                        <!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"textColor":"base"} -->
+                        <p class="has-base-color has-text-color has-link-color">Overview</p>
+                        <!-- /wp:paragraph -->
 
-<!-- wp:paragraph -->
-<p>Pricing</p>
-<!-- /wp:paragraph -->
+                        <!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"textColor":"base"} -->
+                        <p class="has-base-color has-text-color has-link-color">Leadership</p>
+                        <!-- /wp:paragraph -->
 
-<!-- wp:paragraph -->
-<p>Use Cases</p>
-<!-- /wp:paragraph -->
+                        <!-- wp:paragraph -->
+                        <p>Pricing</p>
+                        <!-- /wp:paragraph -->
 
-<!-- wp:paragraph -->
-<p>Demo</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
+                        <!-- wp:paragraph -->
+                        <p>Use Cases</p>
+                        <!-- /wp:paragraph -->
 
-<!-- wp:separator {"align":"wide","className":"is-style-separator-dotted","backgroundColor":"secondary"} -->
-<hr class="wp-block-separator alignwide has-text-color has-secondary-color has-alpha-channel-opacity has-secondary-background-color has-background is-style-separator-dotted"/>
-<!-- /wp:separator -->
+                        <!-- wp:paragraph -->
+                        <p>Demo</p>
+                        <!-- /wp:paragraph -->
+                    </div>
+                    <!-- /wp:group -->
+                </div>
+                <!-- /wp:column -->
+            </div>
+            <!-- /wp:columns -->
+        </div>
+        <!-- /wp:column -->
+    </div>
+    <!-- /wp:columns -->
+</footer>
+<!-- /wp:group -->
 
-<!-- wp:group {"align":"wide"} -->
-<div class="wp-block-group alignwide"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"},"elements":{"link":{"color":{"text":"var:preset|color|main-accent"}}}},"textColor":"main-accent","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
-<div class="wp-block-group has-main-accent-color has-text-color has-link-color"><!-- wp:paragraph {"fontSize":"small"} -->
-<p class="has-small-font-size">© 2024 <strong>·</strong> Powered by WordPress and <a href="https://www.jove.com">Jove</a></p>
-<!-- /wp:paragraph -->
-
-<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"fontSize":"small","layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group has-small-font-size"><!-- wp:paragraph -->
-<p>Download</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>Visit Jove</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>Visit Mike</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group --></footer>
+<!-- wp:group {"align":"wide","style":{"color":{"background":"#3886e9"},"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"textColor":"base"} -->
+<div class="wp-block-group alignwide has-base-color has-text-color has-background has-link-color"
+    style="background-color:#3886e9">
+    <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"},"elements":{"link":{"color":{"text":"var:preset|color|main-accent"}}}},"textColor":"main-accent","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"center"}} -->
+    <div class="wp-block-group has-main-accent-color has-text-color has-link-color">
+        <!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"textColor":"base","fontSize":"small"} -->
+        <p class="has-base-color has-text-color has-link-color has-small-font-size">© 2024 <strong>·</strong> Powered by
+            WordPress and <a href="https://www.jove.com">Jove</a></p>
+        <!-- /wp:paragraph -->
+    </div>
+    <!-- /wp:group -->
+</div>
 <!-- /wp:group -->
