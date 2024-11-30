@@ -4,14 +4,15 @@
   "description": "",
   "main": "Gruntfile.js",
   "scripts": {
-    "build": "wp-scripts build --experimental-modules",
+    "start:public": "wp-scripts start --experimental-modules",
+    "build:public": "wp-scripts build --experimental-modules",
     "format": "wp-scripts format",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
     "packages-update": "wp-scripts packages-update",
     "plugin-zip": "wp-scripts plugin-zip",
-    "start": "wp-scripts start --experimental-modules",
-    "dev": "npm-run-all --parallel clean-build start",
+    "start": "npm-run-all --parallel clean-build start:public",
+    "build": "npm-run-all --parallel clean-build build:public",
     "clean-build": "rm -rf build/*",
     "clean-modules": "rm -rf node_modules/*"
   },
