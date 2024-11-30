@@ -1,0 +1,46 @@
+{
+  "name": "jove",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "build": "wp-scripts build --experimental-modules",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip": "wp-scripts plugin-zip",
+    "start": "wp-scripts start --experimental-modules",
+    "dev": "npm-run-all --parallel clean-build start",
+    "clean-build": "rm -rf build/*",
+    "clean-modules": "rm -rf node_modules/*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^30.6.0",
+    "css-minimizer-webpack-plugin": "^7.0.0",
+    "grunt-checktextdomain": "^1.0.1",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-compress": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-wp-i18n": "^1.0.3",
+    "grunt-wp-readme-to-markdown": "^2.1.0",
+    "mini-css-extract-plugin": "^2.9.2",
+    "postcss": "^8.4.49",
+    "postcss-loader": "^8.1.1",
+    "tailwindcss": "^3.4.15",
+    "webpack-remove-empty-scripts": "^1.0.4"
+  },
+  "dependencies": {
+    "@wordpress/icons": "^10.13.0",
+    "@wordpress/interactivity": "^6.13.0",
+    "autoprefixer": "^10.4.20",
+    "npm-run-all": "^4.1.5"
+  },
+  "browserslist": [
+    "last 3 versions",
+    "> 1%"
+  ]
+}
