@@ -17,19 +17,13 @@ class Jove {
 	 * Constructor.
 	 *
 	 * @since 1.0.0
-	 * @access protected
 	 */
 	protected function __construct() {
-
-		/**
-		 * Instantiate classes.
-		 */
+		// Instantiate necessary classes.
 		Assets::get_instance();
 		Blocks::get_instance();
 
-		/**
-		 * Setup hooks.
-		 */
+		// Setup WordPress hooks.
 		$this->setup_hooks();
 	}
 
@@ -37,75 +31,50 @@ class Jove {
 	 * Set up hooks.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @return void
 	 */
 	protected function setup_hooks() {
-
-		/**
-		 * Actions.
-		 */
+		// Theme setup.
 		add_action( 'after_setup_theme', [ $this, 'setup_theme' ] );
-		// Add content to the page head.
-		add_action( 'wp_head', [ $this, 'is_paginated' ] );
-		// Add our custom template part areas.
+
+		// Add custom styles for paginated pages.
+		add_action( 'wp_head', [ $this, 'add_paginated_styles' ] );
+
+		// Filter for template part areas.
 		add_filter( 'default_wp_template_part_areas', [ $this, 'template_part_areas' ] );
 
+		// Enable SVG uploads.
+		add_filter( 'upload_mimes', [ $this, 'allow_svg_uploads' ] );
+		add_filter( 'wp_check_filetype_and_ext', [ $this, 'sanitize_svg' ], 10, 4 );
+
+		// Adjust SVG display in media library.
+		add_filter( 'wp_prepare_attachment_for_js', [ $this, 'add_svg_to_media_library' ], 10, 3 );
 	}
 
 	/**
-	 * Set up theme.
-	 *
-	 * This function is hooked into the "after_setup_theme" action hook.
+	 * Theme setup.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @return void
 	 */
 	public function setup_theme() {
-
 		// Add support for core block styles.
-		// https://developer.wordpress.org/block-editor/developers/themes/theme-support/#supporting-block-styles
 		add_theme_support( 'wp-block-styles' );
 
-		// Enqueue editor styles and fonts.
-		//add_editor_style( 'style.css' );
-
 		// Remove core block patterns.
-		// https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-core-block-patterns
 		remove_theme_support( 'core-block-patterns' );
 	}
 
 	/**
-	 * Conditionally hide the last separator on the blog, archive, and search pages
-	 * when pagination is not needed.
-	 *
-	 * This function is hooked into the "wp_head" action hook.
+	 * Add custom styles to the head for paginated pages.
 	 *
 	 * @since 1.0.0
 	 */
-	public function is_paginated() {
+	public function add_paginated_styles() {
 		global $wp_query;
 
-		// When there is only one page, hide the last separator.
 		if ( $wp_query->max_num_pages < 2 ) {
 			echo '<style>
-				/*
-				 * Hide the last separator on the blog page.
-				 * This is a page containing a list of posts.
-				 */
 				.blog .wp-block-post-template .wp-block-post:last-child .entry-content + .wp-block-separator,
-
-				/*
-				 * Hide the last separator on the archive page.
-				 * This is a page containing a list of posts from a specific category, tag, author, etc.
-				 */
 				.archive .wp-block-post-template .wp-block-post:last-child .entry-content + .wp-block-separator,
-
-				/*
-				 * Hide the last separator on the search page.
-				 * This is a page containing the search results.
-				 */
 				.search .wp-block-post-template .wp-block-post:last-child .entry-content + .wp-block-separator {
 					display: none;
 				}
@@ -114,31 +83,80 @@ class Jove {
 	}
 
 	/**
-	 * Adds a Sidebar template part area to the given areas array.
+	 * Add a sidebar template part area.
 	 *
-	 * This function modifies the provided array of template part areas by
-	 * adding a new configuration for a sidebar template part, which can be used
-	 * in the "Page (With Sidebar)" template.
+	 * @since 1.0.0
 	 *
-	 * @param array $areas The array of template part areas.
-	 * 
-	 * @return array The modified array of template part areas with the sidebar added.
+	 * @param array $areas Default template part areas.
+	 * @return array Modified areas with sidebar added.
 	 */
-	public function template_part_areas(array $areas) {
-		// Define the sidebar template part area configuration.
-		$sidebar_area = array(
+	public function template_part_areas( array $areas ) {
+		$areas[] = [
 			'area'        => 'sidebar',
 			'area_tag'    => 'section',
 			'label'       => __( 'Sidebar', 'jove' ),
-			'description' => __( 'The Sidebar template defines a page area that can be found on the Page (With Sidebar) template.', 'jove' ),
+			'description' => __( 'Sidebar for the Page (With Sidebar) template.', 'jove' ),
 			'icon'        => 'sidebar',
-		);
+		];
 
-		// Add the sidebar configuration to the areas array.
-		$areas[] = $sidebar_area;
-
-		// Return the modified areas array.
 		return $areas;
 	}
 
+	/**
+	 * Allow SVG uploads.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $mimes Allowed mime types.
+	 * @return array Modified mime types with SVG support.
+	 */
+	public function allow_svg_uploads( $mimes ) {
+		$mimes['svg'] = 'image/svg+xml';
+		return $mimes;
+	}
+
+	/**
+	 * Sanitize SVG uploads.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array  $data File type data.
+	 * @param string $file Full path to the file.
+	 * @param string $filename Name of the file.
+	 * @param array  $mimes Allowed mime types.
+	 * @return array Sanitized file data.
+	 */
+	public function sanitize_svg( $data, $file, $filename, $mimes ) {
+		if ( 'svg' === strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) ) ) {
+			$data['type'] = 'image/svg+xml';
+		}
+
+		return $data;
+	}
+
+	/**
+	 * Add SVG support to the media library.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array  $response Attachment response data.
+	 * @param object $attachment Attachment object.
+	 * @param array  $meta Attachment metadata.
+	 * @return array Modified response data.
+	 */
+	public function add_svg_to_media_library( $response, $attachment, $meta ) {
+		if ( $response['type'] === 'image' && $response['subtype'] === 'svg+xml' && class_exists( 'SimpleXMLElement' ) ) {
+			$svg_path = get_attached_file( $attachment->ID );
+
+			if ( file_exists( $svg_path ) ) {
+				$svg = simplexml_load_file( $svg_path );
+
+				if ( $svg ) {
+					$response['image']['src'] = wp_get_attachment_url( $attachment->ID );
+				}
+			}
+		}
+
+		return $response;
+	}
 }
