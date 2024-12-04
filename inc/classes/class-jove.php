@@ -29,6 +29,10 @@ class Jove {
 		$blocks = Blocks::get_instance();
 		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$post_types = Register_Post_Types::get_instance();
+		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+		$post_types = Register_Taxonomies::get_instance();
+		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+		$seach_api = Search_Api::get_instance();
 
 		// Set up WordPress hooks.
 		$this->setup_hooks();

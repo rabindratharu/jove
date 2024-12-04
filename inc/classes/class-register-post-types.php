@@ -117,7 +117,7 @@ class Register_Post_Types {
 		 *
 		 * @since 1.0.0
 		 */
-		register_post_type( 'videos', $args );
+		register_post_type( 'jove_videos', $args );
 
 	}
 }

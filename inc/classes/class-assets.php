@@ -93,7 +93,33 @@ class Assets {
 			true
 		);
 
+		wp_register_script(
+			// Handle.
+			'search-js',
+			// Source.
+			JOVE_BUILD_URI . '/search/index.js',
+			// Dependencies.
+			['public-js'],
+			// Version.
+			filemtime( JOVE_BUILD_PATH . '/search/index.js' ),
+			// Enqueue in footer.
+			true
+		);
+
 		// Enqueue the script.
 		wp_enqueue_script( 'public-js' );
+
+		// If search page.
+		if( is_page('search') ) {
+			$filters_data = get_filters_data();
+			wp_enqueue_script( 'search-js' );
+			wp_localize_script( 'search-js', 'search_settings',
+				[
+					'rest_api_url' => home_url( '/wp-json/af/v1/search' ),
+					'root_url'     => home_url('search'),
+					'filter_ids'   => get_filter_ids( $filters_data ),
+				]
+			);
+		}
 	}
 }
