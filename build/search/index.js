@@ -93,9 +93,104 @@ var AquilaCheckboxAccordion = /*#__PURE__*/function (_HTMLElement) {
   }]);
 }(HTMLElement);
 /**
+ * AquilaCheckboxAccordionChild Class.
+ */
+var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement2) {
+  /**
+   * Constructor.
+   */
+  function AquilaCheckboxAccordionChild() {
+    var _this2;
+    _classCallCheck(this, AquilaCheckboxAccordionChild);
+    _this2 = _callSuper(this, AquilaCheckboxAccordionChild);
+    _this2.content = _this2.querySelector(".checkbox-accordion__child-content");
+    _this2.accordionHandle = _this2.querySelector(".checkbox-accordion__child-handle-icon");
+    _this2.inputEl = _this2.querySelector("input");
+
+    // Subscribe to updates.
+    //subscribe(this.update.bind(this));
+
+    if (_this2.accordionHandle && _this2.content) {
+      _this2.accordionHandle.addEventListener("click", function (event) {
+        return (0,_utils__WEBPACK_IMPORTED_MODULE_0__.toggleAccordionContent)(event, _this2, _this2.content);
+      });
+    }
+    if (_this2.inputEl) {
+      _this2.inputEl.addEventListener("click", function (event) {
+        return _this2.handleCheckboxInputClick(event);
+      });
+    }
+    return _this2;
+  }
+
+  /**
+   * Update the component.
+   *
+   * @param {Object} currentState Current state.
+   */
+  _inherits(AquilaCheckboxAccordionChild, _HTMLElement2);
+  return _createClass(AquilaCheckboxAccordionChild, [{
+    key: "update",
+    value: function update() {
+      var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      if (!this.inputEl) {
+        return;
+      }
+      var filters = currentState.filters;
+      this.inputKey = this.inputEl.getAttribute("data-key");
+      this.inputValue = this.inputEl.getAttribute("value");
+      this.selectedFiltersForCurrentkey = filters[this.inputKey] || [];
+      this.parentEl = this.inputEl.closest(".checkbox-accordion") || {};
+      this.parentContentEl = this.inputEl.closest(".checkbox-accordion__child-content") || {};
+
+      /**
+       * If the current input value is amongst the selected filters, the check it.
+       * and set the attributes and styles to open the accordion.
+       */
+      if (this.selectedFiltersForCurrentkey.includes(parseInt(this.inputValue))) {
+        this.inputEl.checked = true;
+        this.parentEl.setAttribute("active", true);
+        if (this.parentContentEl.style) {
+          this.parentContentEl.style.height = "auto";
+        }
+      } else {
+        this.inputEl.checked = false;
+        this.parentEl.removeAttribute("active");
+      }
+    }
+
+    /**
+     * Handle Checkbox input click.
+     *
+     * @param event
+     */
+  }, {
+    key: "handleCheckboxInputClick",
+    value: function handleCheckboxInputClick(event) {
+      var _getState = getState(),
+        addFilter = _getState.addFilter,
+        deleteFilter = _getState.deleteFilter;
+      var targetEl = event.target;
+      this.filterKey = targetEl.getAttribute("data-key");
+      if (targetEl.checked) {
+        addFilter({
+          key: this.filterKey,
+          value: parseInt(targetEl.value)
+        });
+      } else {
+        deleteFilter({
+          key: this.filterKey,
+          value: parseInt(targetEl.value)
+        });
+      }
+    }
+  }]);
+}(HTMLElement);
+/**
  * Initialize.
  */
 customElements.define("aquila-checkbox-accordion", AquilaCheckboxAccordion);
+customElements.define("aquila-checkbox-accordion-child", AquilaCheckboxAccordionChild);
 
 /***/ }),
 
