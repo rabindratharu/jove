@@ -66,8 +66,25 @@ class Assets {
 			'all'
 		);
 
+		// Register the theme's search stylesheet.
+		wp_register_style(
+			'search-css',
+			JOVE_BUILD_URI . '/search/index.css',
+			// Dependencies.
+			[],
+			// Version.
+			filemtime( JOVE_BUILD_PATH . '/search/index.css' ),
+			// Media.
+			'all'
+		);
+
 		// Enqueue the stylesheet.
 		wp_enqueue_style( 'public-css' );
+
+		// If search page.
+		if ( is_search() ) {
+			wp_enqueue_style( 'search-css' );
+		}
 	}
 
 	/**
@@ -110,7 +127,7 @@ class Assets {
 		wp_enqueue_script( 'public-js' );
 
 		// If search page.
-		if( is_page('search') ) {
+		if ( is_search() ) {
 			// $filters_data = get_filters_data();
 			wp_enqueue_script( 'search-js' );
 			wp_localize_script( 'search-js', 'search_settings',
