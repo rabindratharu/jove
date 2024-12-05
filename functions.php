@@ -22,6 +22,7 @@ if ( ! defined( 'JOVE_BUILD_PATH' ) ) {
 	define( 'JOVE_BUILD_PATH', untrailingslashit( get_template_directory() ) . '/build' );
 }
 
+require_once JOVE_DIR_PATH . '/inc/helpers/custom-functions.php';
 require_once JOVE_DIR_PATH . '/inc/helpers/autoloader.php';
 
 function jove_get_instance() {

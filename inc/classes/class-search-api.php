@@ -45,6 +45,10 @@ class Search_Api {
 	 * Register the routes for the REST API controller.
 	 */
 	public function register_routes(): void {
+		/**
+		 * Register search api.
+		 * e.g. https://example.com/wp-json/jove/v1/search?q='Hello'&category=23,43&post_tag=23,32&page_no=1&posts_per_page=9
+		 */
 		register_rest_route(
 			'jove/v1',
 			'/search',
