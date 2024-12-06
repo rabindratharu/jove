@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
 /**
- * Get Filters From URL.
+ * Get Filters From Url.
  *
- * @param {Object} url URL object.
- * @param {Array} filterKeys Filter keys to extract.
- * @return {Object} Data containing filters and page number.
+ * @param {Object} url URl.
+ * @param {Array} filterKeys Filter keys.
+ *
+ * @return {Object} data Data containing filters and pageNo.
  */
 export const getFiltersFromUrl = (url = {}, filterKeys = []) => {
   const data = {};
@@ -16,30 +17,29 @@ export const getFiltersFromUrl = (url = {}, filterKeys = []) => {
   /**
    * Build filter's data.
    *
-   * Loop through each filter key and if it exists in the URL,
-   * add it to the filters data.
+   * Loop through each filter keys( constant ) and if
+   * they exist in the url, push them to the filters data.
    */
   filterKeys.forEach((filterKey) => {
     const paramValue = url.searchParams.get(filterKey);
 
-    // If the value does not exist, skip.
+    // If the value does not exits, return.
     if (!paramValue) {
       return;
     }
 
-    // Handle page number.
-    if (filterKey === "pageNo") {
-      data.pageNo = parseInt(paramValue, 10) || 1; // Default to 1 if parsing fails.
+    // Set page no.
+    if ("pageNo" === filterKey) {
+      data.pageNo = parseInt(paramValue);
       return;
     }
 
-    // Parse filter values as integers.
+    // Get filter values.
     const filterValues = paramValue
       .split(",")
-      .map((itemValue) => parseInt(itemValue, 10))
-      .filter((value) => !isNaN(value)); // Remove invalid numbers.
+      .map((itemValue) => parseInt(itemValue));
 
-    // Add filter key and values to filters object.
+    // Add paramValue to filters.
     data.filters = {
       ...data.filters,
       [filterKey]: filterValues,
@@ -50,92 +50,81 @@ export const getFiltersFromUrl = (url = {}, filterKeys = []) => {
 };
 
 /**
- * Get URL by Adding Filters.
+ * Get Url by Adding Filters.
  *
- * @param {Object} filters Filters object.
- * @param {String} rootUrl Root URL.
- * @return {String} URL with added filters.
+ * @param {Object} filters Filters.
+ * @param {String} rootUrl Root url.
  */
-export const getUrlWithFilters = (filters = {}, rootUrl = "") => {
-  const url = new URL(rootUrl);
+export const getUrlWithFilters = (filters = ({} = {}), rootUrl = "") => {
+  // Build URL.
+  let url = new URL(rootUrl);
 
-  // Add filter key-value pairs to search parameters.
-  Object.entries(filters).forEach(([key, value]) => {
-    if (Array.isArray(value)) {
-      url.searchParams.set(key, value.join(",")); // Join array values with commas.
-    } else {
-      url.searchParams.set(key, value);
-    }
+  // 2.Add the given keys value pairs in search params.
+  Object.keys(filters).forEach((key) => {
+    url.searchParams.set(key, filters[key]);
   });
 
-  return url.toString();
+  // Covert url to string.
+  url = url.toString();
+
+  return url;
 };
 
 /**
- * Get Results Markup.
+ * Get Results markup.
  *
- * @param {Array} posts List of posts.
- * @return {String} HTML markup for the posts.
+ * @param posts
+ * @return {string}
  */
 export const getResultMarkup = (posts = []) => {
   if (!Array.isArray(posts) || !posts.length) {
     return "";
   }
 
-  return posts
-    .map((post) => {
-      const img = post.thumbnail
-        ? `<img src="${post.thumbnail}" alt="${post.title}" />`
-        : '<img src="https://via.placeholder.com/526x300" width="526" height="300" alt="Placeholder"/>';
+  let img = "";
+  let markup = ``;
 
-      return `
-      <section id="post-${
-        post.id ?? 0
-      }" class="col-lg-4 col-md-6 col-sm-12 pb-4">
-        <header>
-          <a href="${post.permalink ?? "#"}" class="block">
-            <figure class="img-container">
-              ${img}
-            </figure>
-          </a>
-        </header>
-        <div class="post-excerpt my-4">
-          <a href="${post.permalink ?? "#"}" title="${post.title ?? ""}">
-            <h3 class="post-card-title">${post.title ?? "Untitled"}</h3>
-          </a>
-          <div class="mb-4 truncate-4">
-            ${post.content ?? ""}
-          </div>
-          <a href="${post.permalink ?? "#"}" class="btn btn-primary" title="${
-            post.title ?? ""
-          }">
-            View More
-          </a>
-        </div>
-      </section>
-      `;
-    })
-    .join(""); // Join all the markup strings into a single string.
+  posts.forEach((post) => {
+    img = post.thumbnail
+      ? post.thumbnail
+      : '<img src="https://via.placeholder.com/526x300" width="526" height="300"/>';
+    markup += `
+		<section id="post-${post?.id ?? 0}" class="col-lg-4 col-md-6 col-sm-12 pb-4">
+			<header>
+				<a href="${post?.permalink ?? ""}" class="block">
+				<figure class="img-container">
+					${img}
+				</figure>
+			</header>
+			<div class="post-excerpt my-4">
+				<a href="${post?.permalink ?? ""}" title="${post?.title ?? ""}">
+					<h3 class="post-card-title">${post?.title ?? ""}</h3>
+				</a>
+				<div class="mb-4 truncate-4">
+					${post?.content ?? ""}
+				</div>
+				<a href="${post?.permalink ?? ""}"  class="btn btn-primary"  title="${
+          post?.title ?? ""
+        }">
+					View More
+				</a>
+			</div>
+		</section>
+		`;
+  });
+
+  return markup;
 };
 
-/**
- * Get Load More Markup.
- *
- * @param {Number} noOfPages Total number of pages.
- * @param {Number} currentPageNo Current page number.
- * @return {String} HTML markup for the "Load More" button.
- */
 export const getLoadMoreMarkup = (noOfPages = 0, currentPageNo = 1) => {
-  if (currentPageNo >= noOfPages) {
+  if (parseInt(currentPageNo) >= parseInt(noOfPages)) {
     return "";
   }
 
-  return `
-    <jove-load-more
-      class="load-more-wrap"
-      next-page-no="${currentPageNo + 1}"
-    >
-      <button class="btn btn-primary">Load More</button>
-    </jove-load-more>
-  `;
+  return `<aquila-load-more
+				class="load-more-wrap"
+				next-page-no="${parseInt(currentPageNo) + 1}"
+			>
+				<button class="btn btn-primary">Load More</button>
+			</aquila-load-more>`;
 };

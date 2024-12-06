@@ -2,6 +2,281 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/search/constants.js":
+/*!*********************************!*\
+  !*** ./src/search/constants.js ***!
+  \*********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   STORE_NAME: function() { return /* binding */ STORE_NAME; }
+/* harmony export */ });
+/**
+ * Constants.
+ */
+
+var STORE_NAME = "aquila_search";
+
+/***/ }),
+
+/***/ "./src/search/data.js":
+/*!****************************!*\
+  !*** ./src/search/data.js ***!
+  \****************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DEFAULT_STATE: function() { return /* binding */ DEFAULT_STATE; },
+/* harmony export */   store: function() { return /* binding */ store; }
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./src/search/constants.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers */ "./src/search/helpers.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+/**
+ * External dependencies.
+ */
+var _window$zustand = window.zustand,
+  persist = _window$zustand.persist,
+  createStore = _window$zustand.createStore,
+  stores = _window$zustand.stores;
+
+/**
+ * Internal dependencies.
+ */
+
+
+
+/**
+ * Constants.
+ */
+var DEFAULT_STATE = {
+  restApiUrl: "",
+  rootUrl: "",
+  url: "",
+  filterKeys: ["category", "post_tag"],
+  filters: {},
+  filterIds: [],
+  pageNo: 1,
+  resultCount: null,
+  noOfPages: 0,
+  resultMarkup: "",
+  loading: false
+};
+var PERSISTENT_STATE_KEYS = [];
+
+/**
+ * Initialize.
+ *
+ * @param {Object} settings settings.
+ */
+var initialize = function initialize() {
+  var _settings$root_url;
+  var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var stateFromUrl = getStateFromUrl((_settings$root_url = settings === null || settings === void 0 ? void 0 : settings.root_url) !== null && _settings$root_url !== void 0 ? _settings$root_url : {});
+  setStateFromUrl(settings || {}, stateFromUrl || {});
+  //getResult();
+};
+
+/**
+ * Set State From Url.
+ *
+ * @param {Object} settings Initial Settings.
+ * @param {Object} stateFromUrl State From Url.
+ */
+var setStateFromUrl = function setStateFromUrl() {
+  var _settings$root_url2, _settings$rest_api_ur, _settings$filter_ids;
+  var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var stateFromUrl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  // Set data to state.
+  setState(_objectSpread({
+    rootUrl: (_settings$root_url2 = settings === null || settings === void 0 ? void 0 : settings.root_url) !== null && _settings$root_url2 !== void 0 ? _settings$root_url2 : "",
+    restApiUrl: (_settings$rest_api_ur = settings === null || settings === void 0 ? void 0 : settings.rest_api_url) !== null && _settings$rest_api_ur !== void 0 ? _settings$rest_api_ur : "",
+    filterIds: (_settings$filter_ids = settings === null || settings === void 0 ? void 0 : settings.filter_ids) !== null && _settings$filter_ids !== void 0 ? _settings$filter_ids : {},
+    loading: true
+  }, stateFromUrl));
+
+  // Action: Get result with data from state.
+  //getResult();
+};
+
+/**
+ * Get State From Url.
+ *
+ * @param {String} rootUrl Root Url.
+ *
+ * @return {Object} data Data containing filters, page no, and url.
+ */
+var getStateFromUrl = function getStateFromUrl() {
+  var _data$filters, _data;
+  var rootUrl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  var _getState = getState(),
+    filterKeys = _getState.filterKeys;
+  var url = new URL(window.location.href);
+  var data = {};
+
+  // Build data from URL.
+  // Add filters and page no to data.
+  data = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getFiltersFromUrl)(url, filterKeys);
+
+  // Get url with filter selection.
+  data.url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)((_data$filters = (_data = data) === null || _data === void 0 ? void 0 : _data.filters) !== null && _data$filters !== void 0 ? _data$filters : {}, rootUrl);
+  return data;
+};
+
+/**
+ * Create store.
+ */
+var store = createStore(persist(function () {
+  return _objectSpread(_objectSpread({}, DEFAULT_STATE), {}, {
+    initialize: initialize
+  });
+}, {
+  name: _constants__WEBPACK_IMPORTED_MODULE_0__.STORE_NAME,
+  partialize: function partialize(state) {
+    var persistentState = {};
+    PERSISTENT_STATE_KEYS.forEach(function (key) {
+      persistentState[key] = state[key];
+    });
+    return persistentState;
+  }
+}));
+var getState = store.getState,
+  setState = store.setState;
+
+// Add store to window.
+stores[_constants__WEBPACK_IMPORTED_MODULE_0__.STORE_NAME] = store;
+
+/***/ }),
+
+/***/ "./src/search/helpers.js":
+/*!*******************************!*\
+  !*** ./src/search/helpers.js ***!
+  \*******************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getFiltersFromUrl: function() { return /* binding */ getFiltersFromUrl; },
+/* harmony export */   getLoadMoreMarkup: function() { return /* binding */ getLoadMoreMarkup; },
+/* harmony export */   getResultMarkup: function() { return /* binding */ getResultMarkup; },
+/* harmony export */   getUrlWithFilters: function() { return /* binding */ getUrlWithFilters; }
+/* harmony export */ });
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _objectDestructuringEmpty(t) { if (null == t) throw new TypeError("Cannot destructure " + t); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+/* eslint-disable prettier/prettier */
+/**
+ * Get Filters From Url.
+ *
+ * @param {Object} url URl.
+ * @param {Array} filterKeys Filter keys.
+ *
+ * @return {Object} data Data containing filters and pageNo.
+ */
+var getFiltersFromUrl = function getFiltersFromUrl() {
+  var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var filterKeys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  var data = {};
+  if (!url || !filterKeys.length) {
+    return data;
+  }
+
+  /**
+   * Build filter's data.
+   *
+   * Loop through each filter keys( constant ) and if
+   * they exist in the url, push them to the filters data.
+   */
+  filterKeys.forEach(function (filterKey) {
+    var paramValue = url.searchParams.get(filterKey);
+
+    // If the value does not exits, return.
+    if (!paramValue) {
+      return;
+    }
+
+    // Set page no.
+    if ("pageNo" === filterKey) {
+      data.pageNo = parseInt(paramValue);
+      return;
+    }
+
+    // Get filter values.
+    var filterValues = paramValue.split(",").map(function (itemValue) {
+      return parseInt(itemValue);
+    });
+
+    // Add paramValue to filters.
+    data.filters = _objectSpread(_objectSpread({}, data.filters), {}, _defineProperty({}, filterKey, filterValues));
+  });
+  return data;
+};
+
+/**
+ * Get Url by Adding Filters.
+ *
+ * @param {Object} filters Filters.
+ * @param {String} rootUrl Root url.
+ */
+var getUrlWithFilters = function getUrlWithFilters() {
+  var _ref;
+  var filters = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (_ref = {}, _objectDestructuringEmpty(_ref), _ref);
+  var rootUrl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+  // Build URL.
+  var url = new URL(rootUrl);
+
+  // 2.Add the given keys value pairs in search params.
+  Object.keys(filters).forEach(function (key) {
+    url.searchParams.set(key, filters[key]);
+  });
+
+  // Covert url to string.
+  url = url.toString();
+  return url;
+};
+
+/**
+ * Get Results markup.
+ *
+ * @param posts
+ * @return {string}
+ */
+var getResultMarkup = function getResultMarkup() {
+  var posts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  if (!Array.isArray(posts) || !posts.length) {
+    return "";
+  }
+  var img = "";
+  var markup = "";
+  posts.forEach(function (post) {
+    var _post$id, _post$permalink, _post$permalink2, _post$title, _post$title2, _post$content, _post$permalink3, _post$title3;
+    img = post.thumbnail ? post.thumbnail : '<img src="https://via.placeholder.com/526x300" width="526" height="300"/>';
+    markup += "\n\t\t<section id=\"post-".concat((_post$id = post === null || post === void 0 ? void 0 : post.id) !== null && _post$id !== void 0 ? _post$id : 0, "\" class=\"col-lg-4 col-md-6 col-sm-12 pb-4\">\n\t\t\t<header>\n\t\t\t\t<a href=\"").concat((_post$permalink = post === null || post === void 0 ? void 0 : post.permalink) !== null && _post$permalink !== void 0 ? _post$permalink : "", "\" class=\"block\">\n\t\t\t\t<figure class=\"img-container\">\n\t\t\t\t\t").concat(img, "\n\t\t\t\t</figure>\n\t\t\t</header>\n\t\t\t<div class=\"post-excerpt my-4\">\n\t\t\t\t<a href=\"").concat((_post$permalink2 = post === null || post === void 0 ? void 0 : post.permalink) !== null && _post$permalink2 !== void 0 ? _post$permalink2 : "", "\" title=\"").concat((_post$title = post === null || post === void 0 ? void 0 : post.title) !== null && _post$title !== void 0 ? _post$title : "", "\">\n\t\t\t\t\t<h3 class=\"post-card-title\">").concat((_post$title2 = post === null || post === void 0 ? void 0 : post.title) !== null && _post$title2 !== void 0 ? _post$title2 : "", "</h3>\n\t\t\t\t</a>\n\t\t\t\t<div class=\"mb-4 truncate-4\">\n\t\t\t\t\t").concat((_post$content = post === null || post === void 0 ? void 0 : post.content) !== null && _post$content !== void 0 ? _post$content : "", "\n\t\t\t\t</div>\n\t\t\t\t<a href=\"").concat((_post$permalink3 = post === null || post === void 0 ? void 0 : post.permalink) !== null && _post$permalink3 !== void 0 ? _post$permalink3 : "", "\"  class=\"btn btn-primary\"  title=\"").concat((_post$title3 = post === null || post === void 0 ? void 0 : post.title) !== null && _post$title3 !== void 0 ? _post$title3 : "", "\">\n\t\t\t\t\tView More\n\t\t\t\t</a>\n\t\t\t</div>\n\t\t</section>\n\t\t");
+  });
+  return markup;
+};
+var getLoadMoreMarkup = function getLoadMoreMarkup() {
+  var noOfPages = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var currentPageNo = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  if (parseInt(currentPageNo) >= parseInt(noOfPages)) {
+    return "";
+  }
+  return "<aquila-load-more\n\t\t\t\tclass=\"load-more-wrap\"\n\t\t\t\tnext-page-no=\"".concat(parseInt(currentPageNo) + 1, "\"\n\t\t\t>\n\t\t\t\t<button class=\"btn btn-primary\">Load More</button>\n\t\t\t</aquila-load-more>");
+};
+
+/***/ }),
+
 /***/ "./src/search/search.js":
 /*!******************************!*\
   !*** ./src/search/search.js ***!
@@ -10,12 +285,13 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./src/utils/index.js");
+/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data */ "./src/search/data.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
 function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
 function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
@@ -32,28 +308,57 @@ var _window = window,
   HTMLElement = _window.HTMLElement;
 
 /**
+ * Initialize data store.
+ */
+
+var getState = _data__WEBPACK_IMPORTED_MODULE_1__.store.getState,
+  subscribe = _data__WEBPACK_IMPORTED_MODULE_1__.store.subscribe;
+
+/**
+ * AquilaSearch Class.
+ */
+var AquilaSearch = /*#__PURE__*/function (_HTMLElement) {
+  /**
+   * Constructor.
+   */
+  function AquilaSearch() {
+    var _this;
+    _classCallCheck(this, AquilaSearch);
+    _this = _callSuper(this, AquilaSearch);
+
+    // Initialize State.
+    var state = getState();
+    state.initialize(search_settings);
+    console.log("🚀 ~ file: search.js:28 ~ AquilaSearch ~ constructor ~ state:", state);
+    console.log("🚀 ~ file: search.js:32 ~ AquilaSearch ~ constructor ~ state:", search_settings);
+    return _this;
+  }
+  _inherits(AquilaSearch, _HTMLElement);
+  return _createClass(AquilaSearch);
+}(HTMLElement);
+/**
  * AquilaCheckboxAccordion Class.
  */
-var AquilaCheckboxAccordion = /*#__PURE__*/function (_HTMLElement) {
+var AquilaCheckboxAccordion = /*#__PURE__*/function (_HTMLElement2) {
   /**
    * Constructor.
    */
   function AquilaCheckboxAccordion() {
-    var _this;
+    var _this2;
     _classCallCheck(this, AquilaCheckboxAccordion);
-    _this = _callSuper(this, AquilaCheckboxAccordion);
+    _this2 = _callSuper(this, AquilaCheckboxAccordion);
 
     // Elements.
-    _this.filterKey = _this.getAttribute("key");
-    _this.content = _this.querySelector(".checkbox-accordion__content");
-    _this.accordionHandle = _this.querySelector(".checkbox-accordion__handle");
-    if (!_this.accordionHandle || !_this.content || !_this.filterKey) {
-      return _possibleConstructorReturn(_this);
+    _this2.filterKey = _this2.getAttribute("key");
+    _this2.content = _this2.querySelector(".checkbox-accordion__content");
+    _this2.accordionHandle = _this2.querySelector(".checkbox-accordion__handle");
+    if (!_this2.accordionHandle || !_this2.content || !_this2.filterKey) {
+      return _possibleConstructorReturn(_this2);
     }
-    _this.accordionHandle.addEventListener("click", function (event) {
-      return (0,_utils__WEBPACK_IMPORTED_MODULE_0__.toggleAccordionContent)(event, _this, _this.content);
+    _this2.accordionHandle.addEventListener("click", function (event) {
+      return (0,_utils__WEBPACK_IMPORTED_MODULE_0__.toggleAccordionContent)(event, _this2, _this2.content);
     });
-    return _this;
+    return _this2;
   }
 
   /**
@@ -61,7 +366,7 @@ var AquilaCheckboxAccordion = /*#__PURE__*/function (_HTMLElement) {
    *
    * @return {string[]} Attributes to be observed.
    */
-  _inherits(AquilaCheckboxAccordion, _HTMLElement);
+  _inherits(AquilaCheckboxAccordion, _HTMLElement2);
   return _createClass(AquilaCheckboxAccordion, [{
     key: "attributeChangedCallback",
     value:
@@ -95,32 +400,32 @@ var AquilaCheckboxAccordion = /*#__PURE__*/function (_HTMLElement) {
 /**
  * AquilaCheckboxAccordionChild Class.
  */
-var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement2) {
+var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
   /**
    * Constructor.
    */
   function AquilaCheckboxAccordionChild() {
-    var _this2;
+    var _this3;
     _classCallCheck(this, AquilaCheckboxAccordionChild);
-    _this2 = _callSuper(this, AquilaCheckboxAccordionChild);
-    _this2.content = _this2.querySelector(".checkbox-accordion__child-content");
-    _this2.accordionHandle = _this2.querySelector(".checkbox-accordion__child-handle-icon");
-    _this2.inputEl = _this2.querySelector("input");
+    _this3 = _callSuper(this, AquilaCheckboxAccordionChild);
+    _this3.content = _this3.querySelector(".checkbox-accordion__child-content");
+    _this3.accordionHandle = _this3.querySelector(".checkbox-accordion__child-handle-icon");
+    _this3.inputEl = _this3.querySelector("input");
 
     // Subscribe to updates.
     //subscribe(this.update.bind(this));
 
-    if (_this2.accordionHandle && _this2.content) {
-      _this2.accordionHandle.addEventListener("click", function (event) {
-        return (0,_utils__WEBPACK_IMPORTED_MODULE_0__.toggleAccordionContent)(event, _this2, _this2.content);
+    if (_this3.accordionHandle && _this3.content) {
+      _this3.accordionHandle.addEventListener("click", function (event) {
+        return (0,_utils__WEBPACK_IMPORTED_MODULE_0__.toggleAccordionContent)(event, _this3, _this3.content);
       });
     }
-    if (_this2.inputEl) {
-      _this2.inputEl.addEventListener("click", function (event) {
-        return _this2.handleCheckboxInputClick(event);
+    if (_this3.inputEl) {
+      _this3.inputEl.addEventListener("click", function (event) {
+        return _this3.handleCheckboxInputClick(event);
       });
     }
-    return _this2;
+    return _this3;
   }
 
   /**
@@ -128,7 +433,7 @@ var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement2) {
    *
    * @param {Object} currentState Current state.
    */
-  _inherits(AquilaCheckboxAccordionChild, _HTMLElement2);
+  _inherits(AquilaCheckboxAccordionChild, _HTMLElement3);
   return _createClass(AquilaCheckboxAccordionChild, [{
     key: "update",
     value: function update() {
@@ -191,6 +496,7 @@ var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement2) {
  */
 customElements.define("aquila-checkbox-accordion", AquilaCheckboxAccordion);
 customElements.define("aquila-checkbox-accordion-child", AquilaCheckboxAccordionChild);
+customElements.define("aquila-search", AquilaSearch);
 
 /***/ }),
 

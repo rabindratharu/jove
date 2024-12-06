@@ -6,6 +6,36 @@ import { toggleAccordionContent } from "../utils";
 const { customElements, HTMLElement } = window;
 
 /**
+ * Initialize data store.
+ */
+import { store } from "./data";
+const { getState, subscribe } = store;
+
+/**
+ * AquilaSearch Class.
+ */
+class AquilaSearch extends HTMLElement {
+  /**
+   * Constructor.
+   */
+  constructor() {
+    super();
+
+    // Initialize State.
+    const state = getState();
+    state.initialize(search_settings);
+    console.log(
+      "🚀 ~ file: search.js:28 ~ AquilaSearch ~ constructor ~ state:",
+      state
+    );
+    console.log(
+      "🚀 ~ file: search.js:32 ~ AquilaSearch ~ constructor ~ state:",
+      search_settings
+    );
+  }
+}
+
+/**
  * AquilaCheckboxAccordion Class.
  */
 class AquilaCheckboxAccordion extends HTMLElement {
@@ -156,3 +186,4 @@ customElements.define(
   "aquila-checkbox-accordion-child",
   AquilaCheckboxAccordionChild
 );
+customElements.define("aquila-search", AquilaSearch);
