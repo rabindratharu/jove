@@ -204,6 +204,97 @@ class AquilaResults extends HTMLElement {
 }
 
 /**
+ * AquilaLoadMore Class.
+ */
+class AquilaLoadMore extends HTMLElement {
+  /**
+   * Constructor.
+   */
+  constructor() {
+    super();
+
+    // Subscribe to updates.
+    subscribe(this.update.bind(this));
+
+    this.querySelector("button").addEventListener("click", () =>
+      this.handleLoadMoreButtonClick()
+    );
+    this.nextPageNo = this.getAttribute("next-page-no");
+  }
+
+  update(currentState = {}) {
+    const { pageNo } = currentState;
+    if (parseInt(this.nextPageNo) <= parseInt(pageNo)) {
+      this.remove();
+      return null;
+    }
+  }
+
+  handleLoadMoreButtonClick() {
+    const { loadMorePosts } = getState();
+    loadMorePosts(this.nextPageNo);
+  }
+}
+
+class AquilaLoadingMore extends HTMLElement {
+  constructor() {
+    super();
+    // Subscribe to updates.
+    subscribe(this.update.bind(this));
+  }
+
+  update(currentState = {}) {
+    const { loadingMorePosts } = currentState;
+    if (loadingMorePosts) {
+      this.innerHTML = "Loading more posts...";
+    } else {
+      this.innerHTML = "";
+    }
+  }
+}
+
+/**
+ * AquilaResults Class.
+ */
+class AquilaResultsCount extends HTMLElement {
+  /**
+   * Constructor.
+   */
+  constructor() {
+    super();
+
+    // Subscribe to updates.
+    subscribe(this.update.bind(this));
+  }
+
+  update(currentState = {}) {
+    const { resultCount } = currentState;
+    if (null !== resultCount) {
+      this.innerHTML = `Results: ${resultCount} Posts`;
+    }
+  }
+}
+
+/**
+ * Clear All Filters.
+ */
+class AquilaClearAllFilters extends HTMLElement {
+  /**
+   * Constructor.
+   */
+  constructor() {
+    super();
+
+    const { clearAllFilters } = getState();
+    this.clearAllFiltersButton = this.querySelector("button");
+
+    this.clearAllFiltersButton.addEventListener("click", () => {
+      clearAllFilters();
+    });
+  }
+}
+
+/**
  * Initialize.
  */
 customElements.define("aquila-checkbox-accordion", AquilaCheckboxAccordion);
@@ -213,3 +304,7 @@ customElements.define(
 );
 customElements.define("aquila-search", AquilaSearch);
 customElements.define("aquila-results", AquilaResults);
+customElements.define("aquila-load-more", AquilaLoadMore);
+customElements.define("aquila-loading-more", AquilaLoadingMore);
+customElements.define("aquila-results-count", AquilaResultsCount);
+customElements.define("aquila-clear-all-filters", AquilaClearAllFilters);

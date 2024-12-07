@@ -282,6 +282,50 @@ var updateUrl = function updateUrl(url) {
     window.location.href = url;
   }
 };
+var loadMorePosts = function loadMorePosts() {
+  var nextPageNo = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  var _getState5 = getState(),
+    restApiUrl = _getState5.restApiUrl,
+    resultMarkup = _getState5.resultMarkup,
+    filters = _getState5.filters;
+  // Update page no in the fetch url.
+  var fetchUrl = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)(_objectSpread(_objectSpread({}, filters), {}, {
+    page_no: nextPageNo
+  }), restApiUrl);
+
+  // Set State.
+  setState({
+    loadingMorePosts: true,
+    pageNo: nextPageNo
+  });
+
+  // Fetch load more results.
+  fetch(fetchUrl).then(function (response) {
+    return response.json();
+  }).then(function (responseData) {
+    var _responseData$posts3, _responseData$no_of_p3, _responseData$posts4;
+    var moreResultMarkup = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getResultMarkup)((_responseData$posts3 = responseData === null || responseData === void 0 ? void 0 : responseData.posts) !== null && _responseData$posts3 !== void 0 ? _responseData$posts3 : []);
+    var loadMoreMarkup = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getLoadMoreMarkup)((_responseData$no_of_p3 = responseData === null || responseData === void 0 ? void 0 : responseData.no_of_pages) !== null && _responseData$no_of_p3 !== void 0 ? _responseData$no_of_p3 : 0, nextPageNo);
+    setState({
+      loadingMorePosts: false,
+      resultPosts: (_responseData$posts4 = responseData === null || responseData === void 0 ? void 0 : responseData.posts) !== null && _responseData$posts4 !== void 0 ? _responseData$posts4 : [],
+      resultMarkup: resultMarkup + moreResultMarkup + loadMoreMarkup
+    });
+  });
+};
+var clearAllFilters = function clearAllFilters() {
+  var _getState6 = getState(),
+    rootUrl = _getState6.rootUrl;
+  setState({
+    loading: true,
+    filters: {},
+    filterIds: [],
+    currentSelection: {},
+    pageNo: 1
+  });
+  updateUrl(rootUrl);
+  getResult();
+};
 
 /**
  * Create store.
@@ -290,7 +334,9 @@ var store = createStore(persist(function () {
   return _objectSpread(_objectSpread({}, DEFAULT_STATE), {}, {
     initialize: initialize,
     addFilter: addFilter,
-    deleteFilter: deleteFilter
+    deleteFilter: deleteFilter,
+    loadMorePosts: loadMorePosts,
+    clearAllFilters: clearAllFilters
   });
 }, {
   name: _constants__WEBPACK_IMPORTED_MODULE_0__.STORE_NAME,
@@ -683,12 +729,129 @@ var AquilaResults = /*#__PURE__*/function (_HTMLElement4) {
   }]);
 }(HTMLElement);
 /**
+ * AquilaLoadMore Class.
+ */
+var AquilaLoadMore = /*#__PURE__*/function (_HTMLElement5) {
+  /**
+   * Constructor.
+   */
+  function AquilaLoadMore() {
+    var _this5;
+    _classCallCheck(this, AquilaLoadMore);
+    _this5 = _callSuper(this, AquilaLoadMore);
+
+    // Subscribe to updates.
+    subscribe(_this5.update.bind(_this5));
+    _this5.querySelector("button").addEventListener("click", function () {
+      return _this5.handleLoadMoreButtonClick();
+    });
+    _this5.nextPageNo = _this5.getAttribute("next-page-no");
+    return _this5;
+  }
+  _inherits(AquilaLoadMore, _HTMLElement5);
+  return _createClass(AquilaLoadMore, [{
+    key: "update",
+    value: function update() {
+      var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var pageNo = currentState.pageNo;
+      if (parseInt(this.nextPageNo) <= parseInt(pageNo)) {
+        this.remove();
+        return null;
+      }
+    }
+  }, {
+    key: "handleLoadMoreButtonClick",
+    value: function handleLoadMoreButtonClick() {
+      var _getState2 = getState(),
+        loadMorePosts = _getState2.loadMorePosts;
+      loadMorePosts(this.nextPageNo);
+    }
+  }]);
+}(HTMLElement);
+var AquilaLoadingMore = /*#__PURE__*/function (_HTMLElement6) {
+  function AquilaLoadingMore() {
+    var _this6;
+    _classCallCheck(this, AquilaLoadingMore);
+    _this6 = _callSuper(this, AquilaLoadingMore);
+    // Subscribe to updates.
+    subscribe(_this6.update.bind(_this6));
+    return _this6;
+  }
+  _inherits(AquilaLoadingMore, _HTMLElement6);
+  return _createClass(AquilaLoadingMore, [{
+    key: "update",
+    value: function update() {
+      var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var loadingMorePosts = currentState.loadingMorePosts;
+      if (loadingMorePosts) {
+        this.innerHTML = "Loading more posts...";
+      } else {
+        this.innerHTML = "";
+      }
+    }
+  }]);
+}(HTMLElement);
+/**
+ * AquilaResults Class.
+ */
+var AquilaResultsCount = /*#__PURE__*/function (_HTMLElement7) {
+  /**
+   * Constructor.
+   */
+  function AquilaResultsCount() {
+    var _this7;
+    _classCallCheck(this, AquilaResultsCount);
+    _this7 = _callSuper(this, AquilaResultsCount);
+
+    // Subscribe to updates.
+    subscribe(_this7.update.bind(_this7));
+    return _this7;
+  }
+  _inherits(AquilaResultsCount, _HTMLElement7);
+  return _createClass(AquilaResultsCount, [{
+    key: "update",
+    value: function update() {
+      var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var resultCount = currentState.resultCount;
+      if (null !== resultCount) {
+        this.innerHTML = "Results: ".concat(resultCount, " Posts");
+      }
+    }
+  }]);
+}(HTMLElement);
+/**
+ * Clear All Filters.
+ */
+var AquilaClearAllFilters = /*#__PURE__*/function (_HTMLElement8) {
+  /**
+   * Constructor.
+   */
+  function AquilaClearAllFilters() {
+    var _this8;
+    _classCallCheck(this, AquilaClearAllFilters);
+    _this8 = _callSuper(this, AquilaClearAllFilters);
+    var _getState3 = getState(),
+      clearAllFilters = _getState3.clearAllFilters;
+    _this8.clearAllFiltersButton = _this8.querySelector("button");
+    _this8.clearAllFiltersButton.addEventListener("click", function () {
+      clearAllFilters();
+    });
+    return _this8;
+  }
+  _inherits(AquilaClearAllFilters, _HTMLElement8);
+  return _createClass(AquilaClearAllFilters);
+}(HTMLElement);
+/**
  * Initialize.
  */
 customElements.define("aquila-checkbox-accordion", AquilaCheckboxAccordion);
 customElements.define("aquila-checkbox-accordion-child", AquilaCheckboxAccordionChild);
 customElements.define("aquila-search", AquilaSearch);
 customElements.define("aquila-results", AquilaResults);
+customElements.define("aquila-load-more", AquilaLoadMore);
+customElements.define("aquila-loading-more", AquilaLoadingMore);
+customElements.define("aquila-results-count", AquilaResultsCount);
+customElements.define("aquila-clear-all-filters", AquilaClearAllFilters);
 
 /***/ }),
 

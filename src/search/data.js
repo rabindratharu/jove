@@ -237,6 +237,52 @@ const updateUrl = (url) => {
   }
 };
 
+const loadMorePosts = (nextPageNo = 1) => {
+  const { restApiUrl, resultMarkup, filters } = getState();
+  // Update page no in the fetch url.
+  const fetchUrl = getUrlWithFilters(
+    { ...filters, page_no: nextPageNo },
+    restApiUrl
+  );
+
+  // Set State.
+  setState({
+    loadingMorePosts: true,
+    pageNo: nextPageNo,
+  });
+
+  // Fetch load more results.
+  fetch(fetchUrl)
+    .then((response) => response.json())
+    .then((responseData) => {
+      const moreResultMarkup = getResultMarkup(responseData?.posts ?? []);
+      const loadMoreMarkup = getLoadMoreMarkup(
+        responseData?.no_of_pages ?? 0,
+        nextPageNo
+      );
+      setState({
+        loadingMorePosts: false,
+        resultPosts: responseData?.posts ?? [],
+        resultMarkup: resultMarkup + moreResultMarkup + loadMoreMarkup,
+      });
+    });
+};
+
+const clearAllFilters = () => {
+  const { rootUrl } = getState();
+  setState({
+    loading: true,
+    filters: {},
+    filterIds: [],
+    currentSelection: {},
+    pageNo: 1,
+  });
+
+  updateUrl(rootUrl);
+
+  getResult();
+};
+
 /**
  * Create store.
  */
@@ -247,6 +293,8 @@ export const store = createStore(
       initialize,
       addFilter,
       deleteFilter,
+      loadMorePosts,
+      clearAllFilters,
     }),
     {
       name: STORE_NAME,
