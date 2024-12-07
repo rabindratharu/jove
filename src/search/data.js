@@ -7,7 +7,12 @@ const { persist, createStore, stores } = window.zustand;
  * Internal dependencies.
  */
 import { STORE_NAME } from "./constants";
-import { getFiltersFromUrl, getUrlWithFilters } from "./helpers";
+import {
+  getFiltersFromUrl,
+  getLoadMoreMarkup,
+  getResultMarkup,
+  getUrlWithFilters,
+} from "./helpers";
 
 /**
  * Constants.
@@ -47,10 +52,6 @@ const initialize = (settings = {}) => {
  * @param {Object} stateFromUrl State From Url.
  */
 const setStateFromUrl = (settings = {}, stateFromUrl = {}) => {
-  console.log(
-    "🚀 ~ file: data.js:63 ~ setStateFromUrl ~ stateFromUrl:",
-    stateFromUrl
-  );
   // Set data to state.
   setState({
     rootUrl: settings?.root_url ?? "",
@@ -105,22 +106,27 @@ const getResult = () => {
     ...filters,
     page_no: pageNo,
   };
-  console.log("🚀 ~ file: data.js:104 ~ params ~ params:", params);
 
   const fetchUrl = restApiUrl + "?" + new URLSearchParams(params).toString();
 
   fetch(fetchUrl)
     .then((response) => response.json())
     .then((responseData) => {
-      // const resultMarkup = getResultMarkup( responseData?.posts ?? [], responseData?.total_posts ?? 0 );
-      // const loadMoreMarkup = getLoadMoreMarkup( responseData?.no_of_pages ?? 0, pageNo );
-      // setState( {
-      // 	loading: false,
-      // 	resultCount: responseData?.total_posts ?? 0,
-      // 	resultPosts: responseData?.posts ?? [],
-      // 	resultMarkup: resultMarkup + loadMoreMarkup || '',
-      // 	noOfPages: responseData?.no_of_pages ?? 0,
-      // } );
+      const resultMarkup = getResultMarkup(
+        responseData?.posts ?? [],
+        responseData?.total_posts ?? 0
+      );
+      const loadMoreMarkup = getLoadMoreMarkup(
+        responseData?.no_of_pages ?? 0,
+        pageNo
+      );
+      setState({
+        loading: false,
+        resultCount: responseData?.total_posts ?? 0,
+        resultPosts: responseData?.posts ?? [],
+        resultMarkup: resultMarkup + loadMoreMarkup || "",
+        noOfPages: responseData?.no_of_pages ?? 0,
+      });
     });
 };
 

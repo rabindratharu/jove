@@ -87,13 +87,13 @@ export const getResultMarkup = (posts = []) => {
   posts.forEach((post) => {
     img = post.thumbnail
       ? post.thumbnail
-      : '<img src="https://via.placeholder.com/526x300" width="526" height="300"/>';
+      : "https://via.placeholder.com/526x300";
     markup += `
 		<section id="post-${post?.id ?? 0}" class="col-lg-4 col-md-6 col-sm-12 pb-4">
 			<header>
 				<a href="${post?.permalink ?? ""}" class="block">
 				<figure class="img-container">
-					${img}
+        <img src="${img}" width="526" height="300"/>
 				</figure>
 			</header>
 			<div class="post-excerpt my-4">

@@ -101,7 +101,6 @@ var setStateFromUrl = function setStateFromUrl() {
   var _settings$root_url2, _settings$rest_api_ur, _settings$filter_ids;
   var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var stateFromUrl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  console.log("🚀 ~ file: data.js:63 ~ setStateFromUrl ~ stateFromUrl:", stateFromUrl);
   // Set data to state.
   setState(_objectSpread({
     rootUrl: (_settings$root_url2 = settings === null || settings === void 0 ? void 0 : settings.root_url) !== null && _settings$root_url2 !== void 0 ? _settings$root_url2 : "",
@@ -159,20 +158,20 @@ var getResult = function getResult() {
   var params = _objectSpread(_objectSpread({}, filters), {}, {
     page_no: pageNo
   });
-  console.log("🚀 ~ file: data.js:104 ~ params ~ params:", params);
   var fetchUrl = restApiUrl + "?" + new URLSearchParams(params).toString();
   fetch(fetchUrl).then(function (response) {
     return response.json();
   }).then(function (responseData) {
-    // const resultMarkup = getResultMarkup( responseData?.posts ?? [], responseData?.total_posts ?? 0 );
-    // const loadMoreMarkup = getLoadMoreMarkup( responseData?.no_of_pages ?? 0, pageNo );
-    // setState( {
-    // 	loading: false,
-    // 	resultCount: responseData?.total_posts ?? 0,
-    // 	resultPosts: responseData?.posts ?? [],
-    // 	resultMarkup: resultMarkup + loadMoreMarkup || '',
-    // 	noOfPages: responseData?.no_of_pages ?? 0,
-    // } );
+    var _responseData$posts, _responseData$total_p, _responseData$no_of_p, _responseData$total_p2, _responseData$posts2, _responseData$no_of_p2;
+    var resultMarkup = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getResultMarkup)((_responseData$posts = responseData === null || responseData === void 0 ? void 0 : responseData.posts) !== null && _responseData$posts !== void 0 ? _responseData$posts : [], (_responseData$total_p = responseData === null || responseData === void 0 ? void 0 : responseData.total_posts) !== null && _responseData$total_p !== void 0 ? _responseData$total_p : 0);
+    var loadMoreMarkup = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getLoadMoreMarkup)((_responseData$no_of_p = responseData === null || responseData === void 0 ? void 0 : responseData.no_of_pages) !== null && _responseData$no_of_p !== void 0 ? _responseData$no_of_p : 0, pageNo);
+    setState({
+      loading: false,
+      resultCount: (_responseData$total_p2 = responseData === null || responseData === void 0 ? void 0 : responseData.total_posts) !== null && _responseData$total_p2 !== void 0 ? _responseData$total_p2 : 0,
+      resultPosts: (_responseData$posts2 = responseData === null || responseData === void 0 ? void 0 : responseData.posts) !== null && _responseData$posts2 !== void 0 ? _responseData$posts2 : [],
+      resultMarkup: resultMarkup + loadMoreMarkup || "",
+      noOfPages: (_responseData$no_of_p2 = responseData === null || responseData === void 0 ? void 0 : responseData.no_of_pages) !== null && _responseData$no_of_p2 !== void 0 ? _responseData$no_of_p2 : 0
+    });
   });
 };
 
@@ -417,8 +416,8 @@ var getResultMarkup = function getResultMarkup() {
   var markup = "";
   posts.forEach(function (post) {
     var _post$id, _post$permalink, _post$permalink2, _post$title, _post$title2, _post$content, _post$permalink3, _post$title3;
-    img = post.thumbnail ? post.thumbnail : '<img src="https://via.placeholder.com/526x300" width="526" height="300"/>';
-    markup += "\n\t\t<section id=\"post-".concat((_post$id = post === null || post === void 0 ? void 0 : post.id) !== null && _post$id !== void 0 ? _post$id : 0, "\" class=\"col-lg-4 col-md-6 col-sm-12 pb-4\">\n\t\t\t<header>\n\t\t\t\t<a href=\"").concat((_post$permalink = post === null || post === void 0 ? void 0 : post.permalink) !== null && _post$permalink !== void 0 ? _post$permalink : "", "\" class=\"block\">\n\t\t\t\t<figure class=\"img-container\">\n\t\t\t\t\t").concat(img, "\n\t\t\t\t</figure>\n\t\t\t</header>\n\t\t\t<div class=\"post-excerpt my-4\">\n\t\t\t\t<a href=\"").concat((_post$permalink2 = post === null || post === void 0 ? void 0 : post.permalink) !== null && _post$permalink2 !== void 0 ? _post$permalink2 : "", "\" title=\"").concat((_post$title = post === null || post === void 0 ? void 0 : post.title) !== null && _post$title !== void 0 ? _post$title : "", "\">\n\t\t\t\t\t<h3 class=\"post-card-title\">").concat((_post$title2 = post === null || post === void 0 ? void 0 : post.title) !== null && _post$title2 !== void 0 ? _post$title2 : "", "</h3>\n\t\t\t\t</a>\n\t\t\t\t<div class=\"mb-4 truncate-4\">\n\t\t\t\t\t").concat((_post$content = post === null || post === void 0 ? void 0 : post.content) !== null && _post$content !== void 0 ? _post$content : "", "\n\t\t\t\t</div>\n\t\t\t\t<a href=\"").concat((_post$permalink3 = post === null || post === void 0 ? void 0 : post.permalink) !== null && _post$permalink3 !== void 0 ? _post$permalink3 : "", "\"  class=\"btn btn-primary\"  title=\"").concat((_post$title3 = post === null || post === void 0 ? void 0 : post.title) !== null && _post$title3 !== void 0 ? _post$title3 : "", "\">\n\t\t\t\t\tView More\n\t\t\t\t</a>\n\t\t\t</div>\n\t\t</section>\n\t\t");
+    img = post.thumbnail ? post.thumbnail : "https://via.placeholder.com/526x300";
+    markup += "\n\t\t<section id=\"post-".concat((_post$id = post === null || post === void 0 ? void 0 : post.id) !== null && _post$id !== void 0 ? _post$id : 0, "\" class=\"col-lg-4 col-md-6 col-sm-12 pb-4\">\n\t\t\t<header>\n\t\t\t\t<a href=\"").concat((_post$permalink = post === null || post === void 0 ? void 0 : post.permalink) !== null && _post$permalink !== void 0 ? _post$permalink : "", "\" class=\"block\">\n\t\t\t\t<figure class=\"img-container\">\n        <img src=\"").concat(img, "\" width=\"526\" height=\"300\"/>\n\t\t\t\t</figure>\n\t\t\t</header>\n\t\t\t<div class=\"post-excerpt my-4\">\n\t\t\t\t<a href=\"").concat((_post$permalink2 = post === null || post === void 0 ? void 0 : post.permalink) !== null && _post$permalink2 !== void 0 ? _post$permalink2 : "", "\" title=\"").concat((_post$title = post === null || post === void 0 ? void 0 : post.title) !== null && _post$title !== void 0 ? _post$title : "", "\">\n\t\t\t\t\t<h3 class=\"post-card-title\">").concat((_post$title2 = post === null || post === void 0 ? void 0 : post.title) !== null && _post$title2 !== void 0 ? _post$title2 : "", "</h3>\n\t\t\t\t</a>\n\t\t\t\t<div class=\"mb-4 truncate-4\">\n\t\t\t\t\t").concat((_post$content = post === null || post === void 0 ? void 0 : post.content) !== null && _post$content !== void 0 ? _post$content : "", "\n\t\t\t\t</div>\n\t\t\t\t<a href=\"").concat((_post$permalink3 = post === null || post === void 0 ? void 0 : post.permalink) !== null && _post$permalink3 !== void 0 ? _post$permalink3 : "", "\"  class=\"btn btn-primary\"  title=\"").concat((_post$title3 = post === null || post === void 0 ? void 0 : post.title) !== null && _post$title3 !== void 0 ? _post$title3 : "", "\">\n\t\t\t\t\tView More\n\t\t\t\t</a>\n\t\t\t</div>\n\t\t</section>\n\t\t");
   });
   return markup;
 };
@@ -646,11 +645,50 @@ var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
   }]);
 }(HTMLElement);
 /**
+ * AquilaResults Class.
+ */
+var AquilaResults = /*#__PURE__*/function (_HTMLElement4) {
+  /**
+   * Constructor.
+   */
+  function AquilaResults() {
+    var _this4;
+    _classCallCheck(this, AquilaResults);
+    _this4 = _callSuper(this, AquilaResults);
+
+    // Subscribe to updates.
+    subscribe(_this4.update.bind(_this4));
+    return _this4;
+  }
+
+  /**
+   * Update the component.
+   *
+   * @param {Object} currentState Current state.
+   */
+  _inherits(AquilaResults, _HTMLElement4);
+  return _createClass(AquilaResults, [{
+    key: "update",
+    value: function update() {
+      var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var resultMarkup = currentState.resultMarkup,
+        loading = currentState.loading;
+      if (loading) {
+        this.innerHTML = "<p>Loading...</p>";
+      }
+      if (resultMarkup && !loading) {
+        this.innerHTML = resultMarkup;
+      }
+    }
+  }]);
+}(HTMLElement);
+/**
  * Initialize.
  */
 customElements.define("aquila-checkbox-accordion", AquilaCheckboxAccordion);
 customElements.define("aquila-checkbox-accordion-child", AquilaCheckboxAccordionChild);
 customElements.define("aquila-search", AquilaSearch);
+customElements.define("aquila-results", AquilaResults);
 
 /***/ }),
 

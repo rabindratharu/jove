@@ -173,6 +173,35 @@ class AquilaCheckboxAccordionChild extends HTMLElement {
     }
   }
 }
+/**
+ * AquilaResults Class.
+ */
+class AquilaResults extends HTMLElement {
+  /**
+   * Constructor.
+   */
+  constructor() {
+    super();
+
+    // Subscribe to updates.
+    subscribe(this.update.bind(this));
+  }
+
+  /**
+   * Update the component.
+   *
+   * @param {Object} currentState Current state.
+   */
+  update(currentState = {}) {
+    const { resultMarkup, loading } = currentState;
+    if (loading) {
+      this.innerHTML = "<p>Loading...</p>";
+    }
+    if (resultMarkup && !loading) {
+      this.innerHTML = resultMarkup;
+    }
+  }
+}
 
 /**
  * Initialize.
@@ -183,3 +212,4 @@ customElements.define(
   AquilaCheckboxAccordionChild
 );
 customElements.define("aquila-search", AquilaSearch);
+customElements.define("aquila-results", AquilaResults);
