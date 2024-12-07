@@ -34,6 +34,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./src/search/constants.js");
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers */ "./src/search/helpers.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
@@ -67,7 +73,8 @@ var DEFAULT_STATE = {
   resultCount: null,
   noOfPages: 0,
   resultMarkup: "",
-  loading: false
+  loading: false,
+  searchQuery: "" // New property for search query
 };
 var PERSISTENT_STATE_KEYS = [];
 
@@ -81,7 +88,7 @@ var initialize = function initialize() {
   var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var stateFromUrl = getStateFromUrl((_settings$root_url = settings === null || settings === void 0 ? void 0 : settings.root_url) !== null && _settings$root_url !== void 0 ? _settings$root_url : {});
   setStateFromUrl(settings || {}, stateFromUrl || {});
-  //getResult();
+  getResult();
 };
 
 /**
@@ -103,7 +110,7 @@ var setStateFromUrl = function setStateFromUrl() {
   }, stateFromUrl));
 
   // Action: Get result with data from state.
-  //getResult();
+  getResult();
 };
 
 /**
@@ -125,9 +132,151 @@ var getStateFromUrl = function getStateFromUrl() {
   // Add filters and page no to data.
   data = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getFiltersFromUrl)(url, filterKeys);
 
+  // Add search query from the URL
+  if (url.searchParams.has("s")) {
+    data.searchQuery = url.searchParams.get("s");
+  }
+
   // Get url with filter selection.
   data.url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)((_data$filters = (_data = data) === null || _data === void 0 ? void 0 : _data.filters) !== null && _data$filters !== void 0 ? _data$filters : {}, rootUrl);
+  console.log("🚀 ~ file: data.js:86 ~ getStateFromUrl ~ data:", data);
   return data;
+};
+
+/**
+ * Get Result.
+ */
+var getResult = function getResult() {
+  var _getState2 = getState(),
+    restApiUrl = _getState2.restApiUrl,
+    filters = _getState2.filters,
+    pageNo = _getState2.pageNo;
+  if (!restApiUrl) {
+    return;
+  }
+
+  // Add query-params to rest api url.
+  var params = _objectSpread(_objectSpread({}, filters), {}, {
+    page_no: pageNo
+  });
+  var fetchUrl = restApiUrl + "?" + new URLSearchParams(params).toString();
+  fetch(fetchUrl).then(function (response) {
+    return response.json();
+  }).then(function (responseData) {
+    // const resultMarkup = getResultMarkup( responseData?.posts ?? [], responseData?.total_posts ?? 0 );
+    // const loadMoreMarkup = getLoadMoreMarkup( responseData?.no_of_pages ?? 0, pageNo );
+    // setState( {
+    // 	loading: false,
+    // 	resultCount: responseData?.total_posts ?? 0,
+    // 	resultPosts: responseData?.posts ?? [],
+    // 	resultMarkup: resultMarkup + loadMoreMarkup || '',
+    // 	noOfPages: responseData?.no_of_pages ?? 0,
+    // } );
+  });
+};
+
+/**
+ * Add Filter.
+ *
+ * @param {Object} currentSelection currentSelection
+ */
+var addFilter = function addFilter() {
+  var currentSelection = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var _getState3 = getState(),
+    filters = _getState3.filters,
+    rootUrl = _getState3.rootUrl;
+  var _ref = currentSelection || {},
+    key = _ref.key,
+    value = _ref.value;
+
+  // Get new filter values.
+  var newFilters = _objectSpread({}, filters);
+  var filterValues = filters[key] ? [].concat(_toConsumableArray(filters[key]), [value]) : [value];
+  newFilters = _objectSpread(_objectSpread({}, newFilters), {}, _defineProperty({}, key, _toConsumableArray(new Set(filterValues))));
+
+  // Add filter selections to URL and update URL.
+  var url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)(newFilters, rootUrl);
+  updateUrl(url);
+
+  /**
+   * Update state with the new data.
+   * We set loading to true, before getting results.
+   */
+  setState({
+    url: url,
+    currentSelection: currentSelection,
+    filters: newFilters,
+    pageNo: 1,
+    loading: true
+  });
+
+  // Get Result.
+  getResult();
+};
+
+/**
+ * Delete Filter.
+ *
+ * @param currentSelection
+ */
+var deleteFilter = function deleteFilter() {
+  var currentSelection = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var _getState4 = getState(),
+    filters = _getState4.filters,
+    rootUrl = _getState4.rootUrl;
+  var _ref2 = currentSelection || {},
+    key = _ref2.key,
+    value = _ref2.value;
+  var newFilters = _objectSpread({}, filters);
+  var filterValues = filters[key] || [];
+
+  // Loop through previous filter values and delete the value in question.
+  filterValues.forEach(function (prevFilterValue, index) {
+    // If a match is found delete it from the array.
+    if (prevFilterValue === value) {
+      filterValues.splice(index, 1);
+    }
+  });
+  newFilters = _objectSpread(_objectSpread({}, newFilters), {}, _defineProperty({}, key, filterValues));
+
+  // Delete empty keys.
+  Object.keys(newFilters).forEach(function (key) {
+    if (!newFilters[key] || !newFilters[key].length) {
+      delete newFilters[key];
+    }
+  });
+
+  // Add filter selections to URL and update URL.
+  var url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)(newFilters, rootUrl);
+  updateUrl(url);
+  setState({
+    url: url,
+    currentSelection: currentSelection,
+    filters: newFilters,
+    pageNo: 1,
+    loading: true
+  });
+  getResult();
+};
+
+/**
+ * Update Url.
+ *
+ * @param {string} url Url.
+ *
+ * @return {null} Null.
+ */
+var updateUrl = function updateUrl(url) {
+  if (!url) {
+    return null;
+  }
+  if (window.history.pushState) {
+    window.history.pushState({
+      path: url
+    }, "", url);
+  } else {
+    window.location.href = url;
+  }
 };
 
 /**
@@ -135,7 +284,9 @@ var getStateFromUrl = function getStateFromUrl() {
  */
 var store = createStore(persist(function () {
   return _objectSpread(_objectSpread({}, DEFAULT_STATE), {}, {
-    initialize: initialize
+    initialize: initialize,
+    addFilter: addFilter,
+    deleteFilter: deleteFilter
   });
 }, {
   name: _constants__WEBPACK_IMPORTED_MODULE_0__.STORE_NAME,
@@ -330,7 +481,7 @@ var AquilaSearch = /*#__PURE__*/function (_HTMLElement) {
     var state = getState();
     state.initialize(search_settings);
     console.log("🚀 ~ file: search.js:28 ~ AquilaSearch ~ constructor ~ state:", state);
-    console.log("🚀 ~ file: search.js:32 ~ AquilaSearch ~ constructor ~ state:", search_settings);
+    console.log("🚀 ~ file: search.js:32 ~ AquilaSearch ~ constructor ~ search_settings:", search_settings);
     return _this;
   }
   _inherits(AquilaSearch, _HTMLElement);
@@ -413,8 +564,7 @@ var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
     _this3.inputEl = _this3.querySelector("input");
 
     // Subscribe to updates.
-    //subscribe(this.update.bind(this));
-
+    subscribe(_this3.update.bind(_this3));
     if (_this3.accordionHandle && _this3.content) {
       _this3.accordionHandle.addEventListener("click", function (event) {
         return (0,_utils__WEBPACK_IMPORTED_MODULE_0__.toggleAccordionContent)(event, _this3, _this3.content);

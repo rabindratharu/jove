@@ -29,7 +29,7 @@ class AquilaSearch extends HTMLElement {
       state
     );
     console.log(
-      "🚀 ~ file: search.js:32 ~ AquilaSearch ~ constructor ~ state:",
+      "🚀 ~ file: search.js:32 ~ AquilaSearch ~ constructor ~ search_settings:",
       search_settings
     );
   }
@@ -106,7 +106,7 @@ class AquilaCheckboxAccordionChild extends HTMLElement {
     this.inputEl = this.querySelector("input");
 
     // Subscribe to updates.
-    //subscribe(this.update.bind(this));
+    subscribe(this.update.bind(this));
 
     if (this.accordionHandle && this.content) {
       this.accordionHandle.addEventListener("click", (event) =>

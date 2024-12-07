@@ -57,7 +57,7 @@ class Search_Api {
 				'callback'            => [ $this, 'get_items' ],
 				'permission_callback' => '__return_true',
 				'args'                => [
-					'q' => [
+					's' => [
 						'required'          => false,
 						'type'              => 'string',
 						'description'       => esc_html__( 'Search query', 'jove' ),
@@ -99,7 +99,7 @@ class Search_Api {
 	 * @return WP_REST_Response The response object.
 	 */
 	public function get_items( WP_REST_Request $request ): WP_REST_Response {
-		$search_term    = $request->get_param( 'q' );
+		$search_term    = $request->get_param( 's' );
 		$category_ids   = $request->get_param( 'categories' );
 		$tag_ids        = $request->get_param( 'tags' );
 		$page_no        = (int) $request->get_param( 'page_no' );

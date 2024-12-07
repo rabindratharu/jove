@@ -12,8 +12,10 @@
  */
 
 $filters_data = get_filters_data();
+
+$query = apply_filters( 'get_search_query', get_query_var( 's' ) );
 echo '<pre>';
-print_r($filters_data);
+print_r($query);
 echo '</pre>';
 ?>
 <aquila-search class="aquila-search row px-4">
@@ -156,4 +158,3 @@ echo '</pre>';
         <aquila-loading-more class="aquila-loading-more"></aquila-loading-more>
     </div>
 </aquila-search>
-<!-- wp:pattern {"slug":"jove/hero-text-image-and-logos"} /-->
