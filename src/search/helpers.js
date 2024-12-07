@@ -50,24 +50,24 @@ export const getFiltersFromUrl = (url = {}, filterKeys = []) => {
 };
 
 /**
- * Get URL with filters.
+ * Get Url by Adding Filters.
  *
- * @param {Object} filters Filters object.
- * @param {String} rootUrl Root URL (with optional search query).
- * @return {String} URL with appended filters and search query.
+ * @param {Object} filters Filters.
+ * @param {String} rootUrl Root url.
  */
-export const getUrlWithFilters = (filters = {}, rootUrl = "") => {
-  const url = new URL(rootUrl, window.location.origin);
+export const getUrlWithFilters = (filters = ({} = {}), rootUrl = "") => {
+  // Build URL.
+  let url = new URL(rootUrl);
 
-  // Append filters as query parameters
+  // 2.Add the given keys value pairs in search params.
   Object.keys(filters).forEach((key) => {
-    const values = filters[key];
-    if (values && values.length) {
-      values.forEach((value) => url.searchParams.append(key, value));
-    }
+    url.searchParams.set(key, filters[key]);
   });
 
-  return url.toString();
+  // Covert url to string.
+  url = url.toString();
+
+  return url;
 };
 
 /**

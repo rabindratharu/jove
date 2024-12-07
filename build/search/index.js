@@ -159,6 +159,7 @@ var getResult = function getResult() {
   var params = _objectSpread(_objectSpread({}, filters), {}, {
     page_no: pageNo
   });
+  console.log("🚀 ~ file: data.js:104 ~ params ~ params:", params);
   var fetchUrl = restApiUrl + "?" + new URLSearchParams(params).toString();
   fetch(fetchUrl).then(function (response) {
     return response.json();
@@ -191,13 +192,15 @@ var addFilter = function addFilter() {
     value = _ref.value;
 
   // Get new filter values.
-  var newFilters = _objectSpread({}, filters);
+  // Initialize newFilters with the default key-value pair
+  var newFilters = _objectSpread({
+    s: [searchQuery]
+  }, filters);
   var filterValues = filters[key] ? [].concat(_toConsumableArray(filters[key]), [value]) : [value];
   newFilters = _objectSpread(_objectSpread({}, newFilters), {}, _defineProperty({}, key, _toConsumableArray(new Set(filterValues))));
 
-  // Add `searchQuery` to the rootUrl and generate the new URL.
-  var url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)(newFilters, "".concat(rootUrl, "?s=").concat(searchQuery));
-  console.log("🚀 ~ file: data.js:143 ~ addFilter ~ url:", url);
+  // Add filter selections to URL and update URL.
+  var url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)(newFilters, rootUrl);
   updateUrl(url);
 
   /**
@@ -225,8 +228,7 @@ var deleteFilter = function deleteFilter() {
   var currentSelection = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var _getState4 = getState(),
     filters = _getState4.filters,
-    rootUrl = _getState4.rootUrl,
-    searchQuery = _getState4.searchQuery;
+    rootUrl = _getState4.rootUrl;
   var _ref2 = currentSelection || {},
     key = _ref2.key,
     value = _ref2.value;
@@ -250,8 +252,7 @@ var deleteFilter = function deleteFilter() {
   });
 
   // Add filter selections to URL and update URL.
-  var url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)(newFilters, "".concat(rootUrl, "?s=").concat(searchQuery));
-  console.log("🚀 ~ file: data.js:143 ~ deleteFilter ~ url:", url);
+  var url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)(newFilters, rootUrl);
   updateUrl(url);
   setState({
     url: url,
@@ -324,6 +325,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getUrlWithFilters: function() { return /* binding */ getUrlWithFilters; }
 /* harmony export */ });
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _objectDestructuringEmpty(t) { if (null == t) throw new TypeError("Cannot destructure " + t); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
@@ -378,27 +380,26 @@ var getFiltersFromUrl = function getFiltersFromUrl() {
 };
 
 /**
- * Get URL with filters.
+ * Get Url by Adding Filters.
  *
- * @param {Object} filters Filters object.
- * @param {String} rootUrl Root URL (with optional search query).
- * @return {String} URL with appended filters and search query.
+ * @param {Object} filters Filters.
+ * @param {String} rootUrl Root url.
  */
 var getUrlWithFilters = function getUrlWithFilters() {
-  var filters = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var _ref;
+  var filters = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (_ref = {}, _objectDestructuringEmpty(_ref), _ref);
   var rootUrl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-  var url = new URL(rootUrl, window.location.origin);
+  // Build URL.
+  var url = new URL(rootUrl);
 
-  // Append filters as query parameters
+  // 2.Add the given keys value pairs in search params.
   Object.keys(filters).forEach(function (key) {
-    var values = filters[key];
-    if (values && values.length) {
-      values.forEach(function (value) {
-        return url.searchParams.append(key, value);
-      });
-    }
+    url.searchParams.set(key, filters[key]);
   });
-  return url.toString();
+
+  // Covert url to string.
+  url = url.toString();
+  return url;
 };
 
 /**

@@ -105,6 +105,8 @@ const getResult = () => {
     ...filters,
     page_no: pageNo,
   };
+  console.log("🚀 ~ file: data.js:104 ~ params ~ params:", params);
+
   const fetchUrl = restApiUrl + "?" + new URLSearchParams(params).toString();
 
   fetch(fetchUrl)
@@ -129,23 +131,22 @@ const getResult = () => {
  */
 const addFilter = (currentSelection = {}) => {
   const { filters, rootUrl, searchQuery } = getState();
-
   const { key, value } = currentSelection || {};
 
   // Get new filter values.
-  let newFilters = { ...filters };
-
+  // Initialize newFilters with the default key-value pair
+  let newFilters = {
+    s: [searchQuery], // Default filter key-value pair
+    ...filters, // Existing filters from the state
+  };
   const filterValues = filters[key] ? [...filters[key], value] : [value];
-
   newFilters = {
     ...newFilters,
     [key]: [...new Set(filterValues)],
   };
 
-  // Add `searchQuery` to the rootUrl and generate the new URL.
-  const url = getUrlWithFilters(newFilters, `${rootUrl}?s=${searchQuery}`);
-  console.log("🚀 ~ file: data.js:143 ~ addFilter ~ url:", url);
-
+  // Add filter selections to URL and update URL.
+  const url = getUrlWithFilters(newFilters, rootUrl);
   updateUrl(url);
 
   /**
@@ -170,7 +171,7 @@ const addFilter = (currentSelection = {}) => {
  * @param currentSelection
  */
 const deleteFilter = (currentSelection = {}) => {
-  const { filters, rootUrl, searchQuery } = getState();
+  const { filters, rootUrl } = getState();
   const { key, value } = currentSelection || {};
 
   let newFilters = { ...filters };
@@ -197,9 +198,7 @@ const deleteFilter = (currentSelection = {}) => {
   });
 
   // Add filter selections to URL and update URL.
-  const url = getUrlWithFilters(newFilters, `${rootUrl}?s=${searchQuery}`);
-  console.log("🚀 ~ file: data.js:143 ~ deleteFilter ~ url:", url);
-
+  const url = getUrlWithFilters(newFilters, rootUrl);
   updateUrl(url);
 
   setState({
