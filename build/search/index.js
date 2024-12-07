@@ -66,7 +66,7 @@ var DEFAULT_STATE = {
   restApiUrl: "",
   rootUrl: "",
   url: "",
-  filterKeys: ["category", "post_tag"],
+  filterKeys: ["categories", "tags"],
   filters: {},
   filterIds: [],
   pageNo: 1,
@@ -480,8 +480,6 @@ var AquilaSearch = /*#__PURE__*/function (_HTMLElement) {
     // Initialize State.
     var state = getState();
     state.initialize(search_settings);
-    console.log("🚀 ~ file: search.js:28 ~ AquilaSearch ~ constructor ~ state:", state);
-    console.log("🚀 ~ file: search.js:32 ~ AquilaSearch ~ constructor ~ search_settings:", search_settings);
     return _this;
   }
   _inherits(AquilaSearch, _HTMLElement);
@@ -588,6 +586,7 @@ var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
     key: "update",
     value: function update() {
       var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      console.log("🚀 ~ file: search.js:121 ~ AquilaCheckboxAccordionChild ~ update ~ currentState:", currentState);
       if (!this.inputEl) {
         return;
       }

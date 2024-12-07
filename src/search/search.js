@@ -24,14 +24,6 @@ class AquilaSearch extends HTMLElement {
     // Initialize State.
     const state = getState();
     state.initialize(search_settings);
-    console.log(
-      "🚀 ~ file: search.js:28 ~ AquilaSearch ~ constructor ~ state:",
-      state
-    );
-    console.log(
-      "🚀 ~ file: search.js:32 ~ AquilaSearch ~ constructor ~ search_settings:",
-      search_settings
-    );
   }
 }
 
@@ -126,6 +118,10 @@ class AquilaCheckboxAccordionChild extends HTMLElement {
    * @param {Object} currentState Current state.
    */
   update(currentState = {}) {
+    console.log(
+      "🚀 ~ file: search.js:121 ~ AquilaCheckboxAccordionChild ~ update ~ currentState:",
+      currentState
+    );
     if (!this.inputEl) {
       return;
     }

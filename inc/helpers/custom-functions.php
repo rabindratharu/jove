@@ -281,12 +281,12 @@ function get_filters_data(): array {
 	return [
 		[
 			'label'    => 'Categories',
-			'slug'     => 'category',
+			'slug'     => 'categories',
 			'children' => $category_terms,
 		],
 		[
 			'label'    => 'Tags',
-			'slug'     => 'post_tag',
+			'slug'     => 'tags',
 			'children' => $tag_terms,
 		],
 	];

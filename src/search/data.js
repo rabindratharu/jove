@@ -16,7 +16,7 @@ export const DEFAULT_STATE = {
   restApiUrl: "",
   rootUrl: "",
   url: "",
-  filterKeys: ["category", "post_tag"],
+  filterKeys: ["categories", "tags"],
   filters: {},
   filterIds: [],
   pageNo: 1,
