@@ -101,6 +101,7 @@ var setStateFromUrl = function setStateFromUrl() {
   var _settings$root_url2, _settings$rest_api_ur, _settings$filter_ids;
   var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var stateFromUrl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  console.log("🚀 ~ file: data.js:63 ~ setStateFromUrl ~ stateFromUrl:", stateFromUrl);
   // Set data to state.
   setState(_objectSpread({
     rootUrl: (_settings$root_url2 = settings === null || settings === void 0 ? void 0 : settings.root_url) !== null && _settings$root_url2 !== void 0 ? _settings$root_url2 : "",
@@ -139,7 +140,6 @@ var getStateFromUrl = function getStateFromUrl() {
 
   // Get url with filter selection.
   data.url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)((_data$filters = (_data = data) === null || _data === void 0 ? void 0 : _data.filters) !== null && _data$filters !== void 0 ? _data$filters : {}, rootUrl);
-  console.log("🚀 ~ file: data.js:86 ~ getStateFromUrl ~ data:", data);
   return data;
 };
 
@@ -184,7 +184,8 @@ var addFilter = function addFilter() {
   var currentSelection = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var _getState3 = getState(),
     filters = _getState3.filters,
-    rootUrl = _getState3.rootUrl;
+    rootUrl = _getState3.rootUrl,
+    searchQuery = _getState3.searchQuery;
   var _ref = currentSelection || {},
     key = _ref.key,
     value = _ref.value;
@@ -194,8 +195,9 @@ var addFilter = function addFilter() {
   var filterValues = filters[key] ? [].concat(_toConsumableArray(filters[key]), [value]) : [value];
   newFilters = _objectSpread(_objectSpread({}, newFilters), {}, _defineProperty({}, key, _toConsumableArray(new Set(filterValues))));
 
-  // Add filter selections to URL and update URL.
-  var url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)(newFilters, rootUrl);
+  // Add `searchQuery` to the rootUrl and generate the new URL.
+  var url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)(newFilters, "".concat(rootUrl, "?s=").concat(searchQuery));
+  console.log("🚀 ~ file: data.js:143 ~ addFilter ~ url:", url);
   updateUrl(url);
 
   /**
@@ -223,7 +225,8 @@ var deleteFilter = function deleteFilter() {
   var currentSelection = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var _getState4 = getState(),
     filters = _getState4.filters,
-    rootUrl = _getState4.rootUrl;
+    rootUrl = _getState4.rootUrl,
+    searchQuery = _getState4.searchQuery;
   var _ref2 = currentSelection || {},
     key = _ref2.key,
     value = _ref2.value;
@@ -247,7 +250,8 @@ var deleteFilter = function deleteFilter() {
   });
 
   // Add filter selections to URL and update URL.
-  var url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)(newFilters, rootUrl);
+  var url = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getUrlWithFilters)(newFilters, "".concat(rootUrl, "?s=").concat(searchQuery));
+  console.log("🚀 ~ file: data.js:143 ~ deleteFilter ~ url:", url);
   updateUrl(url);
   setState({
     url: url,
@@ -320,7 +324,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getUrlWithFilters: function() { return /* binding */ getUrlWithFilters; }
 /* harmony export */ });
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _objectDestructuringEmpty(t) { if (null == t) throw new TypeError("Cannot destructure " + t); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
@@ -375,26 +378,27 @@ var getFiltersFromUrl = function getFiltersFromUrl() {
 };
 
 /**
- * Get Url by Adding Filters.
+ * Get URL with filters.
  *
- * @param {Object} filters Filters.
- * @param {String} rootUrl Root url.
+ * @param {Object} filters Filters object.
+ * @param {String} rootUrl Root URL (with optional search query).
+ * @return {String} URL with appended filters and search query.
  */
 var getUrlWithFilters = function getUrlWithFilters() {
-  var _ref;
-  var filters = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (_ref = {}, _objectDestructuringEmpty(_ref), _ref);
+  var filters = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var rootUrl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-  // Build URL.
-  var url = new URL(rootUrl);
+  var url = new URL(rootUrl, window.location.origin);
 
-  // 2.Add the given keys value pairs in search params.
+  // Append filters as query parameters
   Object.keys(filters).forEach(function (key) {
-    url.searchParams.set(key, filters[key]);
+    var values = filters[key];
+    if (values && values.length) {
+      values.forEach(function (value) {
+        return url.searchParams.append(key, value);
+      });
+    }
   });
-
-  // Covert url to string.
-  url = url.toString();
-  return url;
+  return url.toString();
 };
 
 /**

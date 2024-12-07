@@ -47,6 +47,10 @@ const initialize = (settings = {}) => {
  * @param {Object} stateFromUrl State From Url.
  */
 const setStateFromUrl = (settings = {}, stateFromUrl = {}) => {
+  console.log(
+    "🚀 ~ file: data.js:63 ~ setStateFromUrl ~ stateFromUrl:",
+    stateFromUrl
+  );
   // Set data to state.
   setState({
     rootUrl: settings?.root_url ?? "",
@@ -83,7 +87,6 @@ const getStateFromUrl = (rootUrl = "") => {
 
   // Get url with filter selection.
   data.url = getUrlWithFilters(data?.filters ?? {}, rootUrl);
-  console.log("🚀 ~ file: data.js:86 ~ getStateFromUrl ~ data:", data);
 
   return data;
 };
@@ -125,19 +128,24 @@ const getResult = () => {
  * @param {Object} currentSelection currentSelection
  */
 const addFilter = (currentSelection = {}) => {
-  const { filters, rootUrl } = getState();
+  const { filters, rootUrl, searchQuery } = getState();
+
   const { key, value } = currentSelection || {};
 
   // Get new filter values.
   let newFilters = { ...filters };
+
   const filterValues = filters[key] ? [...filters[key], value] : [value];
+
   newFilters = {
     ...newFilters,
     [key]: [...new Set(filterValues)],
   };
 
-  // Add filter selections to URL and update URL.
-  const url = getUrlWithFilters(newFilters, rootUrl);
+  // Add `searchQuery` to the rootUrl and generate the new URL.
+  const url = getUrlWithFilters(newFilters, `${rootUrl}?s=${searchQuery}`);
+  console.log("🚀 ~ file: data.js:143 ~ addFilter ~ url:", url);
+
   updateUrl(url);
 
   /**
@@ -162,7 +170,7 @@ const addFilter = (currentSelection = {}) => {
  * @param currentSelection
  */
 const deleteFilter = (currentSelection = {}) => {
-  const { filters, rootUrl } = getState();
+  const { filters, rootUrl, searchQuery } = getState();
   const { key, value } = currentSelection || {};
 
   let newFilters = { ...filters };
@@ -189,7 +197,9 @@ const deleteFilter = (currentSelection = {}) => {
   });
 
   // Add filter selections to URL and update URL.
-  const url = getUrlWithFilters(newFilters, rootUrl);
+  const url = getUrlWithFilters(newFilters, `${rootUrl}?s=${searchQuery}`);
+  console.log("🚀 ~ file: data.js:143 ~ deleteFilter ~ url:", url);
+
   updateUrl(url);
 
   setState({
