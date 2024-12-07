@@ -93,7 +93,7 @@ export const getResultMarkup = (posts = []) => {
 			<header>
 				<a href="${post?.permalink ?? ""}" class="block">
 				<figure class="img-container">
-        <img src="${img}" width="526" height="300"/>
+        <img src="${img}"/>
 				</figure>
 			</header>
 			<div class="post-excerpt my-4">

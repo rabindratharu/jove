@@ -171,7 +171,7 @@ class Search_Api {
 					'content'   => wp_trim_words( wp_strip_all_tags( get_the_content( null, false, $post ) ), 40 ),
 					'date'      => get_the_date( get_option( 'date_format' ), $post ),
 					'permalink' => get_permalink( $post ),
-					'thumbnail' => get_the_post_thumbnail_url( $post, 'thumbnail' ) ?: '',
+					'thumbnail' => get_the_post_thumbnail_url( $post, 'full' ) ?: '',
 				];
 			}
 		}
