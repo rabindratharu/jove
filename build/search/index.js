@@ -149,13 +149,16 @@ var getResult = function getResult() {
   var _getState2 = getState(),
     restApiUrl = _getState2.restApiUrl,
     filters = _getState2.filters,
-    pageNo = _getState2.pageNo;
+    pageNo = _getState2.pageNo,
+    searchQuery = _getState2.searchQuery;
   if (!restApiUrl) {
     return;
   }
 
   // Add query-params to rest api url.
-  var params = _objectSpread(_objectSpread({}, filters), {}, {
+  var params = _objectSpread(_objectSpread({
+    s: [searchQuery]
+  }, filters), {}, {
     page_no: pageNo
   });
   var fetchUrl = restApiUrl + "?" + new URLSearchParams(params).toString();
@@ -191,10 +194,7 @@ var addFilter = function addFilter() {
     value = _ref.value;
 
   // Get new filter values.
-  // Initialize newFilters with the default key-value pair
-  var newFilters = _objectSpread({
-    s: [searchQuery]
-  }, filters);
+  var newFilters = _objectSpread({}, filters);
   var filterValues = filters[key] ? [].concat(_toConsumableArray(filters[key]), [value]) : [value];
   newFilters = _objectSpread(_objectSpread({}, newFilters), {}, _defineProperty({}, key, _toConsumableArray(new Set(filterValues))));
 
@@ -636,7 +636,6 @@ var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
     key: "update",
     value: function update() {
       var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      console.log("🚀 ~ file: search.js:121 ~ AquilaCheckboxAccordionChild ~ update ~ currentState:", currentState);
       if (!this.inputEl) {
         return;
       }

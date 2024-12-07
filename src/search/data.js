@@ -96,13 +96,15 @@ const getStateFromUrl = (rootUrl = "") => {
  * Get Result.
  */
 const getResult = () => {
-  const { restApiUrl, filters, pageNo } = getState();
+  const { restApiUrl, filters, pageNo, searchQuery } = getState();
+
   if (!restApiUrl) {
     return;
   }
 
   // Add query-params to rest api url.
   const params = {
+    s: [searchQuery],
     ...filters,
     page_no: pageNo,
   };
@@ -140,11 +142,7 @@ const addFilter = (currentSelection = {}) => {
   const { key, value } = currentSelection || {};
 
   // Get new filter values.
-  // Initialize newFilters with the default key-value pair
-  let newFilters = {
-    s: [searchQuery], // Default filter key-value pair
-    ...filters, // Existing filters from the state
-  };
+  let newFilters = { ...filters };
   const filterValues = filters[key] ? [...filters[key], value] : [value];
   newFilters = {
     ...newFilters,

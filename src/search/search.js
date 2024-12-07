@@ -118,10 +118,6 @@ class AquilaCheckboxAccordionChild extends HTMLElement {
    * @param {Object} currentState Current state.
    */
   update(currentState = {}) {
-    console.log(
-      "🚀 ~ file: search.js:121 ~ AquilaCheckboxAccordionChild ~ update ~ currentState:",
-      currentState
-    );
     if (!this.inputEl) {
       return;
     }
