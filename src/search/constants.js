@@ -2,4 +2,4 @@
  * Constants.
  */
 
-export const STORE_NAME = "aquila_search";
+export const STORE_NAME = "jove_search";

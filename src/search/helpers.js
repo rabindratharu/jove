@@ -121,10 +121,10 @@ export const getLoadMoreMarkup = (noOfPages = 0, currentPageNo = 1) => {
     return "";
   }
 
-  return `<aquila-load-more
+  return `<jove-load-more
 				class="load-more-wrap"
 				next-page-no="${parseInt(currentPageNo) + 1}"
 			>
 				<button class="btn btn-primary">Load More</button>
-			</aquila-load-more>`;
+			</jove-load-more>`;
 };

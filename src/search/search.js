@@ -12,9 +12,9 @@ import { store } from "./data";
 const { getState, subscribe } = store;
 
 /**
- * AquilaSearch Class.
+ * JoveSearch Class.
  */
-class AquilaSearch extends HTMLElement {
+class JoveSearch extends HTMLElement {
   /**
    * Constructor.
    */
@@ -28,9 +28,9 @@ class AquilaSearch extends HTMLElement {
 }
 
 /**
- * AquilaCheckboxAccordion Class.
+ * JoveCheckboxAccordion Class.
  */
-class AquilaCheckboxAccordion extends HTMLElement {
+class JoveCheckboxAccordion extends HTMLElement {
   /**
    * Constructor.
    */
@@ -82,9 +82,9 @@ class AquilaCheckboxAccordion extends HTMLElement {
   }
 }
 /**
- * AquilaCheckboxAccordionChild Class.
+ * JoveCheckboxAccordionChild Class.
  */
-class AquilaCheckboxAccordionChild extends HTMLElement {
+class JoveCheckboxAccordionChild extends HTMLElement {
   /**
    * Constructor.
    */
@@ -170,9 +170,9 @@ class AquilaCheckboxAccordionChild extends HTMLElement {
   }
 }
 /**
- * AquilaResults Class.
+ * JoveResults Class.
  */
-class AquilaResults extends HTMLElement {
+class JoveResults extends HTMLElement {
   /**
    * Constructor.
    */
@@ -200,9 +200,9 @@ class AquilaResults extends HTMLElement {
 }
 
 /**
- * AquilaLoadMore Class.
+ * JoveLoadMore Class.
  */
-class AquilaLoadMore extends HTMLElement {
+class JoveLoadMore extends HTMLElement {
   /**
    * Constructor.
    */
@@ -232,7 +232,7 @@ class AquilaLoadMore extends HTMLElement {
   }
 }
 
-class AquilaLoadingMore extends HTMLElement {
+class JoveLoadingMore extends HTMLElement {
   constructor() {
     super();
     // Subscribe to updates.
@@ -250,9 +250,9 @@ class AquilaLoadingMore extends HTMLElement {
 }
 
 /**
- * AquilaResults Class.
+ * JoveResults Class.
  */
-class AquilaResultsCount extends HTMLElement {
+class JoveResultsCount extends HTMLElement {
   /**
    * Constructor.
    */
@@ -274,7 +274,7 @@ class AquilaResultsCount extends HTMLElement {
 /**
  * Clear All Filters.
  */
-class AquilaClearAllFilters extends HTMLElement {
+class JoveClearAllFilters extends HTMLElement {
   /**
    * Constructor.
    */
@@ -293,14 +293,14 @@ class AquilaClearAllFilters extends HTMLElement {
 /**
  * Initialize.
  */
-customElements.define("aquila-checkbox-accordion", AquilaCheckboxAccordion);
+customElements.define("jove-checkbox-accordion", JoveCheckboxAccordion);
 customElements.define(
-  "aquila-checkbox-accordion-child",
-  AquilaCheckboxAccordionChild
+  "jove-checkbox-accordion-child",
+  JoveCheckboxAccordionChild
 );
-customElements.define("aquila-search", AquilaSearch);
-customElements.define("aquila-results", AquilaResults);
-customElements.define("aquila-load-more", AquilaLoadMore);
-customElements.define("aquila-loading-more", AquilaLoadingMore);
-customElements.define("aquila-results-count", AquilaResultsCount);
-customElements.define("aquila-clear-all-filters", AquilaClearAllFilters);
+customElements.define("jove-search", JoveSearch);
+customElements.define("jove-results", JoveResults);
+customElements.define("jove-load-more", JoveLoadMore);
+customElements.define("jove-loading-more", JoveLoadingMore);
+customElements.define("jove-results-count", JoveResultsCount);
+customElements.define("jove-clear-all-filters", JoveClearAllFilters);

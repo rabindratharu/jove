@@ -126,16 +126,16 @@
   margin-left: 6px;
 }
 
-.aquila-search {
+.jove-search {
   justify-content: center;
 }
 
-.aquila-results-count {
+.jove-results-count {
   display: block;
   padding-bottom: 20px;
 }
 
-.aquila-loading-more {
+.jove-loading-more {
   display: flex;
   justify-content: center;
   padding: 20px 0;

@@ -16,7 +16,7 @@ __webpack_require__.r(__webpack_exports__);
  * Constants.
  */
 
-var STORE_NAME = "aquila_search";
+var STORE_NAME = "jove_search";
 
 /***/ }),
 
@@ -473,7 +473,7 @@ var getLoadMoreMarkup = function getLoadMoreMarkup() {
   if (parseInt(currentPageNo) >= parseInt(noOfPages)) {
     return "";
   }
-  return "<aquila-load-more\n\t\t\t\tclass=\"load-more-wrap\"\n\t\t\t\tnext-page-no=\"".concat(parseInt(currentPageNo) + 1, "\"\n\t\t\t>\n\t\t\t\t<button class=\"btn btn-primary\">Load More</button>\n\t\t\t</aquila-load-more>");
+  return "<jove-load-more\n\t\t\t\tclass=\"load-more-wrap\"\n\t\t\t\tnext-page-no=\"".concat(parseInt(currentPageNo) + 1, "\"\n\t\t\t>\n\t\t\t\t<button class=\"btn btn-primary\">Load More</button>\n\t\t\t</jove-load-more>");
 };
 
 /***/ }),
@@ -516,36 +516,36 @@ var getState = _data__WEBPACK_IMPORTED_MODULE_1__.store.getState,
   subscribe = _data__WEBPACK_IMPORTED_MODULE_1__.store.subscribe;
 
 /**
- * AquilaSearch Class.
+ * JoveSearch Class.
  */
-var AquilaSearch = /*#__PURE__*/function (_HTMLElement) {
+var JoveSearch = /*#__PURE__*/function (_HTMLElement) {
   /**
    * Constructor.
    */
-  function AquilaSearch() {
+  function JoveSearch() {
     var _this;
-    _classCallCheck(this, AquilaSearch);
-    _this = _callSuper(this, AquilaSearch);
+    _classCallCheck(this, JoveSearch);
+    _this = _callSuper(this, JoveSearch);
 
     // Initialize State.
     var state = getState();
     state.initialize(search_settings);
     return _this;
   }
-  _inherits(AquilaSearch, _HTMLElement);
-  return _createClass(AquilaSearch);
+  _inherits(JoveSearch, _HTMLElement);
+  return _createClass(JoveSearch);
 }(HTMLElement);
 /**
- * AquilaCheckboxAccordion Class.
+ * JoveCheckboxAccordion Class.
  */
-var AquilaCheckboxAccordion = /*#__PURE__*/function (_HTMLElement2) {
+var JoveCheckboxAccordion = /*#__PURE__*/function (_HTMLElement2) {
   /**
    * Constructor.
    */
-  function AquilaCheckboxAccordion() {
+  function JoveCheckboxAccordion() {
     var _this2;
-    _classCallCheck(this, AquilaCheckboxAccordion);
-    _this2 = _callSuper(this, AquilaCheckboxAccordion);
+    _classCallCheck(this, JoveCheckboxAccordion);
+    _this2 = _callSuper(this, JoveCheckboxAccordion);
 
     // Elements.
     _this2.filterKey = _this2.getAttribute("key");
@@ -565,8 +565,8 @@ var AquilaCheckboxAccordion = /*#__PURE__*/function (_HTMLElement2) {
    *
    * @return {string[]} Attributes to be observed.
    */
-  _inherits(AquilaCheckboxAccordion, _HTMLElement2);
-  return _createClass(AquilaCheckboxAccordion, [{
+  _inherits(JoveCheckboxAccordion, _HTMLElement2);
+  return _createClass(JoveCheckboxAccordion, [{
     key: "attributeChangedCallback",
     value:
     /**
@@ -597,16 +597,16 @@ var AquilaCheckboxAccordion = /*#__PURE__*/function (_HTMLElement2) {
   }]);
 }(HTMLElement);
 /**
- * AquilaCheckboxAccordionChild Class.
+ * JoveCheckboxAccordionChild Class.
  */
-var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
+var JoveCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
   /**
    * Constructor.
    */
-  function AquilaCheckboxAccordionChild() {
+  function JoveCheckboxAccordionChild() {
     var _this3;
-    _classCallCheck(this, AquilaCheckboxAccordionChild);
-    _this3 = _callSuper(this, AquilaCheckboxAccordionChild);
+    _classCallCheck(this, JoveCheckboxAccordionChild);
+    _this3 = _callSuper(this, JoveCheckboxAccordionChild);
     _this3.content = _this3.querySelector(".checkbox-accordion__child-content");
     _this3.accordionHandle = _this3.querySelector(".checkbox-accordion__child-handle-icon");
     _this3.inputEl = _this3.querySelector("input");
@@ -631,8 +631,8 @@ var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
    *
    * @param {Object} currentState Current state.
    */
-  _inherits(AquilaCheckboxAccordionChild, _HTMLElement3);
-  return _createClass(AquilaCheckboxAccordionChild, [{
+  _inherits(JoveCheckboxAccordionChild, _HTMLElement3);
+  return _createClass(JoveCheckboxAccordionChild, [{
     key: "update",
     value: function update() {
       var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -690,16 +690,16 @@ var AquilaCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
   }]);
 }(HTMLElement);
 /**
- * AquilaResults Class.
+ * JoveResults Class.
  */
-var AquilaResults = /*#__PURE__*/function (_HTMLElement4) {
+var JoveResults = /*#__PURE__*/function (_HTMLElement4) {
   /**
    * Constructor.
    */
-  function AquilaResults() {
+  function JoveResults() {
     var _this4;
-    _classCallCheck(this, AquilaResults);
-    _this4 = _callSuper(this, AquilaResults);
+    _classCallCheck(this, JoveResults);
+    _this4 = _callSuper(this, JoveResults);
 
     // Subscribe to updates.
     subscribe(_this4.update.bind(_this4));
@@ -711,8 +711,8 @@ var AquilaResults = /*#__PURE__*/function (_HTMLElement4) {
    *
    * @param {Object} currentState Current state.
    */
-  _inherits(AquilaResults, _HTMLElement4);
-  return _createClass(AquilaResults, [{
+  _inherits(JoveResults, _HTMLElement4);
+  return _createClass(JoveResults, [{
     key: "update",
     value: function update() {
       var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -728,16 +728,16 @@ var AquilaResults = /*#__PURE__*/function (_HTMLElement4) {
   }]);
 }(HTMLElement);
 /**
- * AquilaLoadMore Class.
+ * JoveLoadMore Class.
  */
-var AquilaLoadMore = /*#__PURE__*/function (_HTMLElement5) {
+var JoveLoadMore = /*#__PURE__*/function (_HTMLElement5) {
   /**
    * Constructor.
    */
-  function AquilaLoadMore() {
+  function JoveLoadMore() {
     var _this5;
-    _classCallCheck(this, AquilaLoadMore);
-    _this5 = _callSuper(this, AquilaLoadMore);
+    _classCallCheck(this, JoveLoadMore);
+    _this5 = _callSuper(this, JoveLoadMore);
 
     // Subscribe to updates.
     subscribe(_this5.update.bind(_this5));
@@ -747,8 +747,8 @@ var AquilaLoadMore = /*#__PURE__*/function (_HTMLElement5) {
     _this5.nextPageNo = _this5.getAttribute("next-page-no");
     return _this5;
   }
-  _inherits(AquilaLoadMore, _HTMLElement5);
-  return _createClass(AquilaLoadMore, [{
+  _inherits(JoveLoadMore, _HTMLElement5);
+  return _createClass(JoveLoadMore, [{
     key: "update",
     value: function update() {
       var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -767,17 +767,17 @@ var AquilaLoadMore = /*#__PURE__*/function (_HTMLElement5) {
     }
   }]);
 }(HTMLElement);
-var AquilaLoadingMore = /*#__PURE__*/function (_HTMLElement6) {
-  function AquilaLoadingMore() {
+var JoveLoadingMore = /*#__PURE__*/function (_HTMLElement6) {
+  function JoveLoadingMore() {
     var _this6;
-    _classCallCheck(this, AquilaLoadingMore);
-    _this6 = _callSuper(this, AquilaLoadingMore);
+    _classCallCheck(this, JoveLoadingMore);
+    _this6 = _callSuper(this, JoveLoadingMore);
     // Subscribe to updates.
     subscribe(_this6.update.bind(_this6));
     return _this6;
   }
-  _inherits(AquilaLoadingMore, _HTMLElement6);
-  return _createClass(AquilaLoadingMore, [{
+  _inherits(JoveLoadingMore, _HTMLElement6);
+  return _createClass(JoveLoadingMore, [{
     key: "update",
     value: function update() {
       var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -791,23 +791,23 @@ var AquilaLoadingMore = /*#__PURE__*/function (_HTMLElement6) {
   }]);
 }(HTMLElement);
 /**
- * AquilaResults Class.
+ * JoveResults Class.
  */
-var AquilaResultsCount = /*#__PURE__*/function (_HTMLElement7) {
+var JoveResultsCount = /*#__PURE__*/function (_HTMLElement7) {
   /**
    * Constructor.
    */
-  function AquilaResultsCount() {
+  function JoveResultsCount() {
     var _this7;
-    _classCallCheck(this, AquilaResultsCount);
-    _this7 = _callSuper(this, AquilaResultsCount);
+    _classCallCheck(this, JoveResultsCount);
+    _this7 = _callSuper(this, JoveResultsCount);
 
     // Subscribe to updates.
     subscribe(_this7.update.bind(_this7));
     return _this7;
   }
-  _inherits(AquilaResultsCount, _HTMLElement7);
-  return _createClass(AquilaResultsCount, [{
+  _inherits(JoveResultsCount, _HTMLElement7);
+  return _createClass(JoveResultsCount, [{
     key: "update",
     value: function update() {
       var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -821,14 +821,14 @@ var AquilaResultsCount = /*#__PURE__*/function (_HTMLElement7) {
 /**
  * Clear All Filters.
  */
-var AquilaClearAllFilters = /*#__PURE__*/function (_HTMLElement8) {
+var JoveClearAllFilters = /*#__PURE__*/function (_HTMLElement8) {
   /**
    * Constructor.
    */
-  function AquilaClearAllFilters() {
+  function JoveClearAllFilters() {
     var _this8;
-    _classCallCheck(this, AquilaClearAllFilters);
-    _this8 = _callSuper(this, AquilaClearAllFilters);
+    _classCallCheck(this, JoveClearAllFilters);
+    _this8 = _callSuper(this, JoveClearAllFilters);
     var _getState3 = getState(),
       clearAllFilters = _getState3.clearAllFilters;
     _this8.clearAllFiltersButton = _this8.querySelector("button");
@@ -837,20 +837,20 @@ var AquilaClearAllFilters = /*#__PURE__*/function (_HTMLElement8) {
     });
     return _this8;
   }
-  _inherits(AquilaClearAllFilters, _HTMLElement8);
-  return _createClass(AquilaClearAllFilters);
+  _inherits(JoveClearAllFilters, _HTMLElement8);
+  return _createClass(JoveClearAllFilters);
 }(HTMLElement);
 /**
  * Initialize.
  */
-customElements.define("aquila-checkbox-accordion", AquilaCheckboxAccordion);
-customElements.define("aquila-checkbox-accordion-child", AquilaCheckboxAccordionChild);
-customElements.define("aquila-search", AquilaSearch);
-customElements.define("aquila-results", AquilaResults);
-customElements.define("aquila-load-more", AquilaLoadMore);
-customElements.define("aquila-loading-more", AquilaLoadingMore);
-customElements.define("aquila-results-count", AquilaResultsCount);
-customElements.define("aquila-clear-all-filters", AquilaClearAllFilters);
+customElements.define("jove-checkbox-accordion", JoveCheckboxAccordion);
+customElements.define("jove-checkbox-accordion-child", JoveCheckboxAccordionChild);
+customElements.define("jove-search", JoveSearch);
+customElements.define("jove-results", JoveResults);
+customElements.define("jove-load-more", JoveLoadMore);
+customElements.define("jove-loading-more", JoveLoadingMore);
+customElements.define("jove-results-count", JoveResultsCount);
+customElements.define("jove-clear-all-filters", JoveClearAllFilters);
 
 /***/ }),
 
