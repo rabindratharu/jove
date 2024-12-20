@@ -291,3 +291,37 @@ function get_filters_data(): array {
 		],
 	];
 }
+
+
+function jove_set_default_site_logo( $block_content, $block ) {
+    if ( $block['blockName'] === 'core/site-logo' && empty( $block['attrs']['url'] ) ) {
+        $default_logo_url = get_template_directory_uri() . '/assets/images/logo.png';
+        $block_content = sprintf(
+            '<div class="wp-block-site-logo"><img src="%s" alt="%s" /></div>',
+            esc_url( $default_logo_url ),
+            esc_attr__( 'Site Logo', 'jove' )
+        );
+    }
+    return $block_content;
+}
+//add_filter( 'render_block', 'jove_set_default_site_logo', 10, 2 );
+
+function register_social_icons_circle_style() {
+    if ( function_exists( 'register_block_style' ) ) {
+        register_block_style(
+            'core/social-icons', // The block to apply the style to.
+            [
+                'name'  => 'circle-border', // A unique identifier for the style.
+                'label' => __( 'Circle with Border', 'textdomain' ), // Display name in the editor.
+                'inline_style' => '
+                    .wp-block-social-icons.is-style-circle-border .wp-block-social-icon {
+                        border-radius: 50%;
+                        border: 1px solid white;
+                        padding: 5px;
+                    }
+                ',
+            ]
+        );
+    }
+}
+add_action( 'init', 'register_social_icons_circle_style' );
