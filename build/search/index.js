@@ -521,6 +521,10 @@ var getState = _data__WEBPACK_IMPORTED_MODULE_1__.store.getState,
 var JoveSearch = /*#__PURE__*/function (_HTMLElement) {
   /**
    * Constructor.
+   *
+   * This method is called when the component is created.
+   * It initializes the component by setting the elements,
+   * adding event listeners and initializing the state.
    */
   function JoveSearch() {
     var _this;
@@ -541,6 +545,10 @@ var JoveSearch = /*#__PURE__*/function (_HTMLElement) {
 var JoveCheckboxAccordion = /*#__PURE__*/function (_HTMLElement2) {
   /**
    * Constructor.
+   *
+   * This method is called when the component is created.
+   * It sets up the component by setting the elements and
+   * adding an event listener to the handle.
    */
   function JoveCheckboxAccordion() {
     var _this2;
@@ -548,20 +556,26 @@ var JoveCheckboxAccordion = /*#__PURE__*/function (_HTMLElement2) {
     _this2 = _callSuper(this, JoveCheckboxAccordion);
 
     // Elements.
-    _this2.filterKey = _this2.getAttribute("key");
-    _this2.content = _this2.querySelector(".checkbox-accordion__content");
-    _this2.accordionHandle = _this2.querySelector(".checkbox-accordion__handle");
-    if (!_this2.accordionHandle || !_this2.content || !_this2.filterKey) {
+    var filterKey = _this2.getAttribute("key");
+    var content = _this2.querySelector(".checkbox-accordion__content");
+    var accordionHandle = _this2.querySelector(".checkbox-accordion__handle");
+    if (!accordionHandle || !content || !filterKey) {
       return _possibleConstructorReturn(_this2);
     }
-    _this2.accordionHandle.addEventListener("click", function (event) {
-      return (0,_utils__WEBPACK_IMPORTED_MODULE_0__.toggleAccordionContent)(event, _this2, _this2.content);
+
+    // Add an event listener to the handle.
+    accordionHandle.addEventListener("click", function (event) {
+      // Toggle the content.
+      (0,_utils__WEBPACK_IMPORTED_MODULE_0__.toggleAccordionContent)(event, _this2, content);
     });
     return _this2;
   }
 
   /**
    * Observe Attributes.
+   *
+   * This property is part of the Web Components API and is
+   * used to observe attributes changes on the component.
    *
    * @return {string[]} Attributes to be observed.
    */
@@ -580,18 +594,25 @@ var JoveCheckboxAccordion = /*#__PURE__*/function (_HTMLElement2) {
      */
     function attributeChangedCallback(name, oldValue, newValue) {
       /**
-       * If the state of this checkbox filter is open, then set then
+       * If the state of this checkbox filter is open, then set the
        * active state of this component to true, so it can be opened.
+       * This is done by setting the height of the content element to
+       * "auto", so it can expand to its natural height.
        */
       if ("active" === name) {
-        this.content.style.height = "auto";
-      } else {
-        this.content.style.height = "0px";
+        this.content.style.height = newValue ? "auto" : "0px";
       }
     }
   }], [{
     key: "observedAttributes",
     get: function get() {
+      /**
+       * The only attribute we care about is the "active" attribute.
+       * This attribute is used to determine the state of the component.
+       * If the attribute is set to "true", then the component is active
+       * and the content is visible. If the attribute is set to "false",
+       * then the component is not active and the content is hidden.
+       */
       return ["active"];
     }
   }]);
@@ -601,23 +622,35 @@ var JoveCheckboxAccordion = /*#__PURE__*/function (_HTMLElement2) {
  */
 var JoveCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
   /**
-   * Constructor.
+   * Constructor for JoveCheckboxAccordionChild.
+   *
+   * Initializes the component, sets up event listeners, and subscribes to state updates.
    */
   function JoveCheckboxAccordionChild() {
     var _this3;
     _classCallCheck(this, JoveCheckboxAccordionChild);
     _this3 = _callSuper(this, JoveCheckboxAccordionChild);
+
+    // Selects the content element within the accordion child.
     _this3.content = _this3.querySelector(".checkbox-accordion__child-content");
+
+    // Selects the accordion handle icon element.
     _this3.accordionHandle = _this3.querySelector(".checkbox-accordion__child-handle-icon");
+
+    // Selects the input element within the accordion child.
     _this3.inputEl = _this3.querySelector("input");
 
-    // Subscribe to updates.
+    // Subscribe to state updates.
     subscribe(_this3.update.bind(_this3));
+
+    // Add click event listener to toggle accordion content if handle and content are present.
     if (_this3.accordionHandle && _this3.content) {
       _this3.accordionHandle.addEventListener("click", function (event) {
         return (0,_utils__WEBPACK_IMPORTED_MODULE_0__.toggleAccordionContent)(event, _this3, _this3.content);
       });
     }
+
+    // Add click event listener to handle checkbox input click if input element is present.
     if (_this3.inputEl) {
       _this3.inputEl.addEventListener("click", function (event) {
         return _this3.handleCheckboxInputClick(event);
@@ -630,6 +663,8 @@ var JoveCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
    * Update the component.
    *
    * @param {Object} currentState Current state.
+   *
+   * @return {void}
    */
   _inherits(JoveCheckboxAccordionChild, _HTMLElement3);
   return _createClass(JoveCheckboxAccordionChild, [{
@@ -640,32 +675,45 @@ var JoveCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
         return;
       }
       var filters = currentState.filters;
-      this.inputKey = this.inputEl.getAttribute("data-key");
-      this.inputValue = this.inputEl.getAttribute("value");
-      this.selectedFiltersForCurrentkey = filters[this.inputKey] || [];
-      this.parentEl = this.inputEl.closest(".checkbox-accordion") || {};
-      this.parentContentEl = this.inputEl.closest(".checkbox-accordion__child-content") || {};
+      var inputKey = this.inputEl.getAttribute("data-key");
+      var inputValue = this.inputEl.getAttribute("value");
+      var selectedFiltersForCurrentkey = filters[inputKey] || [];
+      var parentEl = this.inputEl.closest(".checkbox-accordion") || {};
+      var parentContentEl = this.inputEl.closest(".checkbox-accordion__child-content") || {};
 
       /**
        * If the current input value is amongst the selected filters, the check it.
        * and set the attributes and styles to open the accordion.
+       *
+       * @type {boolean}
        */
-      if (this.selectedFiltersForCurrentkey.includes(parseInt(this.inputValue))) {
-        this.inputEl.checked = true;
-        this.parentEl.setAttribute("active", true);
-        if (this.parentContentEl.style) {
-          this.parentContentEl.style.height = "auto";
+      var isChecked = selectedFiltersForCurrentkey.includes(parseInt(inputValue));
+
+      /**
+       * Update the checkbox element.
+       */
+      this.inputEl.checked = isChecked;
+
+      /**
+       * Update the parent element.
+       */
+      if (isChecked) {
+        parentEl.setAttribute("active", true);
+        /**
+         * Open the accordion.
+         */
+        if (parentContentEl.style) {
+          parentContentEl.style.height = "auto";
         }
       } else {
-        this.inputEl.checked = false;
-        this.parentEl.removeAttribute("active");
+        parentEl.removeAttribute("active");
       }
     }
 
     /**
      * Handle Checkbox input click.
      *
-     * @param event
+     * @param {Event} event Event triggered by the user clicking on the checkbox.
      */
   }, {
     key: "handleCheckboxInputClick",
@@ -674,7 +722,17 @@ var JoveCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
         addFilter = _getState.addFilter,
         deleteFilter = _getState.deleteFilter;
       var targetEl = event.target;
+      /**
+       * Get the key of the filter.
+       * The key is the attribute 'data-key' of the checkbox element.
+       *
+       * @type {string}
+       */
       this.filterKey = targetEl.getAttribute("data-key");
+      /**
+       * If the checkbox is checked, add the filter.
+       * Else, delete the filter.
+       */
       if (targetEl.checked) {
         addFilter({
           key: this.filterKey,
@@ -695,6 +753,9 @@ var JoveCheckboxAccordionChild = /*#__PURE__*/function (_HTMLElement3) {
 var JoveResults = /*#__PURE__*/function (_HTMLElement4) {
   /**
    * Constructor.
+   *
+   * This method is called when an instance of the component is created. It sets up the component by
+   * subscribing to updates.
    */
   function JoveResults() {
     var _this4;
@@ -702,6 +763,7 @@ var JoveResults = /*#__PURE__*/function (_HTMLElement4) {
     _this4 = _callSuper(this, JoveResults);
 
     // Subscribe to updates.
+    // This method listens for changes in the state and calls the `update` method when the state changes.
     subscribe(_this4.update.bind(_this4));
     return _this4;
   }
@@ -718,12 +780,7 @@ var JoveResults = /*#__PURE__*/function (_HTMLElement4) {
       var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var resultMarkup = currentState.resultMarkup,
         loading = currentState.loading;
-      if (loading) {
-        this.innerHTML = "<p>Loading...</p>";
-      }
-      if (resultMarkup && !loading) {
-        this.innerHTML = resultMarkup;
-      }
+      this.innerHTML = resultMarkup || (loading ? "<p>Loading...</p>" : "");
     }
   }]);
 }(HTMLElement);
@@ -733,6 +790,8 @@ var JoveResults = /*#__PURE__*/function (_HTMLElement4) {
 var JoveLoadMore = /*#__PURE__*/function (_HTMLElement5) {
   /**
    * Constructor.
+   *
+   * Initializes the component and subscribes to state updates.
    */
   function JoveLoadMore() {
     var _this5;
@@ -741,12 +800,24 @@ var JoveLoadMore = /*#__PURE__*/function (_HTMLElement5) {
 
     // Subscribe to updates.
     subscribe(_this5.update.bind(_this5));
+
+    // Get the next page number from the attribute.
+    _this5.nextPageNo = _this5.getAttribute("next-page-no");
+
+    // Add event listener to the button.
     _this5.querySelector("button").addEventListener("click", function () {
       return _this5.handleLoadMoreButtonClick();
     });
-    _this5.nextPageNo = _this5.getAttribute("next-page-no");
     return _this5;
   }
+
+  /**
+   * Updates the component.
+   *
+   * Removes the "Load More" button if the next page number is not greater than the current page number.
+   *
+   * @param {Object} currentState Current state.
+   */
   _inherits(JoveLoadMore, _HTMLElement5);
   return _createClass(JoveLoadMore, [{
     key: "update",
@@ -755,9 +826,14 @@ var JoveLoadMore = /*#__PURE__*/function (_HTMLElement5) {
       var pageNo = currentState.pageNo;
       if (parseInt(this.nextPageNo) <= parseInt(pageNo)) {
         this.remove();
-        return null;
       }
     }
+
+    /**
+     * Handles the load more button click.
+     *
+     * Calls the `loadMorePosts` function with the next page number.
+     */
   }, {
     key: "handleLoadMoreButtonClick",
     value: function handleLoadMoreButtonClick() {
@@ -768,23 +844,42 @@ var JoveLoadMore = /*#__PURE__*/function (_HTMLElement5) {
   }]);
 }(HTMLElement);
 var JoveLoadingMore = /*#__PURE__*/function (_HTMLElement6) {
+  /**
+   * Constructor.
+   *
+   * Initializes the component and subscribes to state updates.
+   */
   function JoveLoadingMore() {
     var _this6;
     _classCallCheck(this, JoveLoadingMore);
     _this6 = _callSuper(this, JoveLoadingMore);
+
     // Subscribe to updates.
+    // This method listens for changes in the state and calls the `update` method when the state changes.
     subscribe(_this6.update.bind(_this6));
     return _this6;
   }
+
+  /**
+   * Update the component.
+   *
+   * @param {Object} currentState Current state.
+   *
+   * This method is called when the state changes. It updates the component text depending on whether
+   * the component is loading more posts or not.
+   */
   _inherits(JoveLoadingMore, _HTMLElement6);
   return _createClass(JoveLoadingMore, [{
     key: "update",
     value: function update() {
       var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var loadingMorePosts = currentState.loadingMorePosts;
+
+      // If loading more posts, show a loading message.
       if (loadingMorePosts) {
         this.innerHTML = "Loading more posts...";
       } else {
+        // If not loading more posts, clear the component text.
         this.innerHTML = "";
       }
     }
@@ -796,6 +891,9 @@ var JoveLoadingMore = /*#__PURE__*/function (_HTMLElement6) {
 var JoveResultsCount = /*#__PURE__*/function (_HTMLElement7) {
   /**
    * Constructor.
+   *
+   * This method is called when an instance of the component is created. It sets up the component by
+   * subscribing to updates.
    */
   function JoveResultsCount() {
     var _this7;
@@ -803,15 +901,24 @@ var JoveResultsCount = /*#__PURE__*/function (_HTMLElement7) {
     _this7 = _callSuper(this, JoveResultsCount);
 
     // Subscribe to updates.
+    // This method listens for updates in the state and calls the `update` method when the state changes.
     subscribe(_this7.update.bind(_this7));
     return _this7;
   }
+
+  /**
+   * Update the component.
+   *
+   * @param {Object} currentState Current state.
+   */
   _inherits(JoveResultsCount, _HTMLElement7);
   return _createClass(JoveResultsCount, [{
     key: "update",
     value: function update() {
       var currentState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var resultCount = currentState.resultCount;
+
+      // If the result count is available, update the component text.
       if (null !== resultCount) {
         this.innerHTML = "Results: ".concat(resultCount, " Posts");
       }
@@ -824,6 +931,8 @@ var JoveResultsCount = /*#__PURE__*/function (_HTMLElement7) {
 var JoveClearAllFilters = /*#__PURE__*/function (_HTMLElement8) {
   /**
    * Constructor.
+   *
+   * We subscribe to updates and listen for button clicks.
    */
   function JoveClearAllFilters() {
     var _this8;
@@ -831,8 +940,10 @@ var JoveClearAllFilters = /*#__PURE__*/function (_HTMLElement8) {
     _this8 = _callSuper(this, JoveClearAllFilters);
     var _getState3 = getState(),
       clearAllFilters = _getState3.clearAllFilters;
-    _this8.clearAllFiltersButton = _this8.querySelector("button");
-    _this8.clearAllFiltersButton.addEventListener("click", function () {
+    var clearAllFiltersButton = _this8.querySelector("button");
+
+    // Add event listener to clear all filters button.
+    clearAllFiltersButton.addEventListener("click", function () {
       clearAllFilters();
     });
     return _this8;

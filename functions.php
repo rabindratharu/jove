@@ -6,6 +6,10 @@
  */
 
 
+if ( ! defined( 'JOVE_VERSION' ) ) {
+	define( 'JOVE_VERSION', '1.0.0' );
+}
+
 if ( ! defined( 'JOVE_DIR_PATH' ) ) {
 	define( 'JOVE_DIR_PATH', untrailingslashit( get_template_directory() ) );
 }
