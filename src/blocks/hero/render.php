@@ -11,10 +11,6 @@
  * @param array $context The context provided to the block by the post or it's parent block.
  */
 
-echo '<pre>';
-print_r($block);
-echo '</pre>';
-
 // Support custom id values.
 $block_id = '';
 if ( ! empty( $block['anchor'] ) ) {
@@ -87,6 +83,8 @@ $inner_blocks_template = array(
 	),
 );
 
+// acf data
+$file = get_field('video');
 ?>
 
  <?php if ( ! $is_preview ) { ?>
@@ -101,6 +99,12 @@ $inner_blocks_template = array(
 		);
 		?>>
      <?php } ?>
+
+     <?php if( $file ): ?>
+     <video autoplay muted>
+         <source src="<?php echo $file['url']; ?>" type="video/mp4">
+     </video>
+     <?php endif; ?>
 
      <InnerBlocks class="demo-author-block-acf__innerblocks"
          template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
