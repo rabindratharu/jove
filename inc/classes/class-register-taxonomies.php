@@ -40,70 +40,23 @@ class Register_Taxonomies {
 	 */
 	protected function setup_hooks() {
 		/**
-		 * Register the type taxonomy.
-		 *
-		 * This action registers the type taxonomy using the `create_type_taxonomy`
-		 * method.
-		 *
-		 * @since 1.0.0
-		 */
-		add_action( 'init', [ $this, 'create_type_taxonomy' ] );
-		/**
 		 * Register the institution taxonomy.
 		 *
-		 * This action registers the institution taxonomy using the `create_institution_taxonomy`
+		 * This action registers the institution taxonomy using the `create_author_taxonomy`
 		 * method.
 		 *
 		 * @since 1.0.0
 		 */
-		add_action( 'init', [ $this, 'create_institution_taxonomy' ] );
+		add_action( 'init', [ $this, 'create_author_taxonomy' ] );
 		/**
 		 * Register the year taxonomy.
 		 *
-		 * This action registers the year taxonomy using the `create_year_taxonomy`
+		 * This action registers the year taxonomy using the `create_journal_taxonomy`
 		 * method.
 		 *
 		 * @since 1.0.0
 		 */
-		add_action( 'init', [ $this, 'create_year_taxonomy' ] );
-	}
-
-	/**
-	 * Register the genre taxonomy.
-	 *
-	 * The genre taxonomy is used for organizing videos by genre.
-	 *
-	 * @since 1.0.0
-	 */
-	public function create_type_taxonomy() {
-		$labels = [
-			'name'              => _x( 'Types', 'taxonomy general name', 'jove' ),
-			'singular_name'     => _x( 'Type', 'taxonomy singular name', 'jove' ),
-			'search_items'      => __( 'Search Types', 'jove' ),
-			'all_items'         => __( 'All Types', 'jove' ),
-			'parent_item'       => __( 'Parent Type', 'jove' ),
-			'parent_item_colon' => __( 'Parent Type:', 'jove' ),
-			'edit_item'         => __( 'Edit Type', 'jove' ),
-			'update_item'       => __( 'Update Type', 'jove' ),
-			'add_new_item'      => __( 'Add New Type', 'jove' ),
-			'new_item_name'     => __( 'New Type Name', 'jove' ),
-			'menu_name'         => __( 'Type', 'jove' ),
-		];
-		$args = [
-			'labels'             => $labels,
-			'description'        => __( 'video Type', 'jove' ),
-			'hierarchical'       => true,
-			'public'             => true,
-			'publicly_queryable' => true,
-			'show_ui'            => true,
-			'show_in_menu'       => true,
-			'show_in_nav_menus'  => true,
-			'show_tagcloud'      => true,
-			'show_in_quick_edit' => true,
-			'show_admin_column'  => true,
-			'show_in_rest'       => true,
-		];
-		register_taxonomy( 'jove_type', [ 'jove_videos' ], $args );
+		add_action( 'init', [ $this, 'create_journal_taxonomy' ] );
 	}
 
 	/**
@@ -113,23 +66,23 @@ class Register_Taxonomies {
 	 *
 	 * @since 1.0.0
 	 */
-	public function create_institution_taxonomy() {
+	public function create_author_taxonomy() {
 		$labels = [
-			'name'              => _x( 'Institutions', 'taxonomy general name', 'jove' ),
-			'singular_name'     => _x( 'Institution', 'taxonomy singular name', 'jove' ),
-			'search_items'      => __( 'Search Institutions', 'jove' ),
-			'all_items'         => __( 'All Institutions', 'jove' ),
-			'parent_item'       => __( 'Parent Institution', 'jove' ),
-			'parent_item_colon' => __( 'Parent Institution:', 'jove' ),
-			'edit_item'         => __( 'Edit Institution', 'jove' ),
-			'update_item'       => __( 'Update Institution', 'jove' ),
-			'add_new_item'      => __( 'Add New Institution', 'jove' ),
-			'new_item_name'     => __( 'New Institution Name', 'jove' ),
-			'menu_name'         => __( 'Institution', 'jove' ),
+			'name'              => _x( 'Authors', 'taxonomy general name', 'jove' ),
+			'singular_name'     => _x( 'Author', 'taxonomy singular name', 'jove' ),
+			'search_items'      => __( 'Search Authors', 'jove' ),
+			'all_items'         => __( 'All Authors', 'jove' ),
+			'parent_item'       => __( 'Parent Author', 'jove' ),
+			'parent_item_colon' => __( 'Parent Author:', 'jove' ),
+			'edit_item'         => __( 'Edit Author', 'jove' ),
+			'update_item'       => __( 'Update Author', 'jove' ),
+			'add_new_item'      => __( 'Add New Author', 'jove' ),
+			'new_item_name'     => __( 'New Author Name', 'jove' ),
+			'menu_name'         => __( 'Authors', 'jove' ),
 		];
 		$args = [
 			'labels'             => $labels,
-			'description'        => __( 'Video Institution', 'jove' ),
+			'description'        => __( 'Author', 'jove' ),
 			'hierarchical'       => true,
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -141,7 +94,7 @@ class Register_Taxonomies {
 			'show_admin_column'  => true,
 			'show_in_rest'       => true,
 		];
-		register_taxonomy( 'jove_institution', [ 'jove_videos' ], $args );
+		register_taxonomy( 'authors', [ 'post' ], $args );
 	}
 
 	/**
@@ -151,23 +104,23 @@ class Register_Taxonomies {
 	 *
 	 * @since 1.0.0
 	 */
-	public function create_year_taxonomy() {
+	public function create_journal_taxonomy() {
 		$labels = [
-			'name'              => _x( 'Years', 'taxonomy general name', 'jove' ),
-			'singular_name'     => _x( 'Year', 'taxonomy singular name', 'jove' ),
-			'search_items'      => __( 'Search Years', 'jove' ),
-			'all_items'         => __( 'All Years', 'jove' ),
-			'parent_item'       => __( 'Parent Year', 'jove' ),
-			'parent_item_colon' => __( 'Parent Year:', 'jove' ),
-			'edit_item'         => __( 'Edit Year', 'jove' ),
-			'update_item'       => __( 'Update Year', 'jove' ),
-			'add_new_item'      => __( 'Add New Year', 'jove' ),
-			'new_item_name'     => __( 'New Year Name', 'jove' ),
-			'menu_name'         => __( 'Year', 'jove' ),
+			'name'              => _x( 'Journals', 'taxonomy general name', 'jove' ),
+			'singular_name'     => _x( 'Journal', 'taxonomy singular name', 'jove' ),
+			'search_items'      => __( 'Search Journals', 'jove' ),
+			'all_items'         => __( 'All Journals', 'jove' ),
+			'parent_item'       => __( 'Parent Journal', 'jove' ),
+			'parent_item_colon' => __( 'Parent Journal:', 'jove' ),
+			'edit_item'         => __( 'Edit Journal', 'jove' ),
+			'update_item'       => __( 'Update Journal', 'jove' ),
+			'add_new_item'      => __( 'Add New Journal', 'jove' ),
+			'new_item_name'     => __( 'New Journal Name', 'jove' ),
+			'menu_name'         => __( 'Journals', 'jove' ),
 		];
 		$args = [
 			'labels'             => $labels,
-			'description'        => __( 'video Release Year', 'jove' ),
+			'description'        => __( 'Journal', 'jove' ),
 			'hierarchical'       => false,
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -179,6 +132,6 @@ class Register_Taxonomies {
 			'show_admin_column'  => true,
 			'show_in_rest'       => true,
 		];
-		register_taxonomy( 'jove_year', [ 'jove_videos' ], $args );
+		register_taxonomy( 'journals', [ 'post' ], $args );
 	}
 }

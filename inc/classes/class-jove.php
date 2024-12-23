@@ -28,8 +28,6 @@ class Jove {
 		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$blocks = Blocks::get_instance();
 		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-		$post_types = Register_Post_Types::get_instance();
-		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$post_types = Register_Taxonomies::get_instance();
 		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$seach_api = Search_Api::get_instance();

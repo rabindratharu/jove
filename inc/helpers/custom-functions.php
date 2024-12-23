@@ -312,7 +312,7 @@ function register_social_icons_circle_style() {
             'core/social-icons', // The block to apply the style to.
             [
                 'name'  => 'circle-border', // A unique identifier for the style.
-                'label' => __( 'Circle with Border', 'textdomain' ), // Display name in the editor.
+                'label' => __( 'Circle with Border', 'jove' ), // Display name in the editor.
                 'inline_style' => '
                     .wp-block-social-icons.is-style-circle-border .wp-block-social-icon {
                         border-radius: 50%;
@@ -337,3 +337,52 @@ function add_custom_social_links_styles() {
 	);
 }
 add_action( 'init', 'add_custom_social_links_styles' );
+
+
+
+function modify_existing_custom_post_labels( $labels ) {
+    $labels->name               = __( 'Videos', 'jove' );
+    $labels->singular_name      = __( 'Video', 'jove' );
+    $labels->menu_name          = __( 'Videos', 'jove' );
+    $labels->name_admin_bar     = __( 'Video', 'jove' );
+    $labels->add_new            = __( 'Add New', 'jove' );
+    $labels->add_new_item       = __( 'Add New Video', 'jove' );
+    $labels->edit_item          = __( 'Edit Video', 'jove' );
+    $labels->new_item           = __( 'New Video', 'jove' );
+    $labels->view_item          = __( 'View Video', 'jove' );
+    $labels->search_items       = __( 'Search Videos', 'jove' );
+    $labels->not_found          = __( 'No videos found', 'jove' );
+    $labels->not_found_in_trash = __( 'No videos found in Trash', 'jove' );
+
+    return $labels;
+}
+//add_filter( 'post_type_labels_post', 'modify_existing_custom_post_labels' );
+
+
+function modify_existing_taxonomy_labels( $args, $taxonomy ) {
+    if ( 'post_tag' === $taxonomy ) {
+        $args['labels']['name']              = __( 'Keywords', 'textdomain' );
+        $args['labels']['singular_name']     = __( 'Keyword', 'textdomain' );
+        $args['labels']['search_items']      = __( 'Search Keywords', 'textdomain' );
+        $args['labels']['all_items']         = __( 'All Keywords', 'textdomain' );
+        $args['labels']['edit_item']         = __( 'Edit Keyword', 'textdomain' );
+        $args['labels']['view_item']         = __( 'View Keyword', 'textdomain' );
+        $args['labels']['add_new_item']      = __( 'Add New Keyword', 'textdomain' );
+        $args['labels']['new_item_name']     = __( 'New Keyword Name', 'textdomain' );
+    }
+
+	if ( 'category' === $taxonomy ) {
+        $args['labels']['name']              = __( 'Institutions', 'textdomain' );
+        $args['labels']['singular_name']     = __( 'Institution', 'textdomain' );
+        $args['labels']['search_items']      = __( 'Search Institutions', 'textdomain' );
+        $args['labels']['all_items']         = __( 'All Institutions', 'textdomain' );
+        $args['labels']['edit_item']         = __( 'Edit Institution', 'textdomain' );
+        $args['labels']['view_item']         = __( 'View Institution', 'textdomain' );
+        $args['labels']['add_new_item']      = __( 'Add New Institution', 'textdomain' );
+        $args['labels']['new_item_name']     = __( 'New Institution Name', 'textdomain' );
+        $args['labels']['menu_name']         = __( 'Institutions', 'textdomain' );
+    }
+
+    return $args;
+}
+add_filter( 'register_taxonomy_args', 'modify_existing_taxonomy_labels', 10, 2 );
