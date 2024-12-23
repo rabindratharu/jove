@@ -913,3 +913,13 @@ hr.is-style-separator-dotted,
 .is-style-media-boxed figcaption {
   margin-bottom: calc(var(--wp--preset--spacing--small) * -1) !important;
 }
+
+/* Social Links
+--------------------------------------------- */
+.wp-block-social-links.is-style-outline-border .wp-social-link {
+  border: 1px solid #fff;
+  background-color: transparent;
+}
+.wp-block-social-links.is-style-outline-border .wp-block-social-link:hover {
+  transform: none;
+}

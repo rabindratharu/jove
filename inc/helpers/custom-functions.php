@@ -324,4 +324,16 @@ function register_social_icons_circle_style() {
         );
     }
 }
-add_action( 'init', 'register_social_icons_circle_style' );
+//add_action( 'init', 'register_social_icons_circle_style' );
+
+function add_custom_social_links_styles() {
+
+	register_block_style(
+		'core/social-links', // The block to apply the style to.
+		[
+			'name'  => 'outline-border', // A unique identifier for the style.
+			'label' => esc_html__( 'Outline', 'jove' ), // Display name in the editor.
+		]
+	);
+}
+add_action( 'init', 'add_custom_social_links_styles' );
