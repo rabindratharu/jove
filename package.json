@@ -4,8 +4,8 @@
   "description": "",
   "main": "Gruntfile.js",
   "scripts": {
-    "start:public": "wp-scripts start --experimental-modules",
-    "build:public": "wp-scripts build --experimental-modules",
+    "start:public": "wp-scripts start --experimental-modules --webpack-copy-php",
+    "build:public": "wp-scripts build --experimental-modules --webpack-copy-php",
     "format": "wp-scripts format",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",

@@ -1,0 +1,16 @@
+{
+  "name": "acf/hero",
+  "apiVersion": "2",
+  "title": "Jove: Hero Search",
+  "description": "A custom hero search block.",
+  "category": "formatting",
+  "icon": "format-gallery",
+  "keywords": ["search", "hero"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "supports": {
+    "align": ["wide", "full"]
+  }
+}

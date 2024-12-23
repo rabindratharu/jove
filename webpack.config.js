@@ -19,6 +19,7 @@ module.exports = [
       ...scriptConfig.entry(),
       "public/index": "./src/public/index.js", // Custom entry point
       "search/index": "./src/search/index.js", // Custom entry points
+      "blocks/hero/index": "./src/blocks/hero/index.js", // Custom entry points
     },
     optimization: {
       ...scriptConfig.optimization,

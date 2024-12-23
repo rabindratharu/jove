@@ -51,8 +51,13 @@ class Blocks {
 		 *
 		 * @since 1.0.0
 		 */
+		add_action( 'init', [ $this, 'register_blocks' ] );
 		add_action( 'init', [ $this, 'register_block_styles' ] );
 		add_action( 'init', [ $this, 'register_block_pattern_categories' ], 9 );
+	}
+
+	public function register_blocks() {
+		register_block_type( JOVE_BUILD_PATH . '/blocks/hero/block.json' );
 	}
 
 	/**
