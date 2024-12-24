@@ -13,10 +13,19 @@
     "mode": "preview",
     "renderTemplate": "render.php"
   },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  },
   "supports": {
     "align": [
       "wide",
       "full"
     ]
-  }
+  },
+  "style": [
+    "file:./index.css"
+  ]
 }
