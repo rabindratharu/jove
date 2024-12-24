@@ -57,11 +57,11 @@ class Assets {
 		// Register the theme's public stylesheet.
 		wp_register_style(
 			'public-css',
-			JOVE_BUILD_URI . '/public/index.css',
+			JOVE_BUILD_URI . '/css/public.css',
 			// Dependencies.
 			[],
 			// Version.
-			filemtime( JOVE_BUILD_PATH . '/public/index.css' ),
+			filemtime( JOVE_BUILD_PATH . '/css/public.css' ),
 			// Media.
 			'all'
 		);
@@ -69,11 +69,11 @@ class Assets {
 		// Register the theme's search stylesheet.
 		wp_register_style(
 			'search-css',
-			JOVE_BUILD_URI . '/search/index.css',
+			JOVE_BUILD_URI . '/css/search.css',
 			// Dependencies.
 			[],
 			// Version.
-			filemtime( JOVE_BUILD_PATH . '/search/index.css' ),
+			filemtime( JOVE_BUILD_PATH . '/css/search.css' ),
 			// Media.
 			'all'
 		);
@@ -101,11 +101,11 @@ class Assets {
 			// Handle.
 			'public-js',
 			// Source.
-			JOVE_BUILD_URI . '/public/index.js',
+			JOVE_BUILD_URI . '/js/public.js',
 			// Dependencies.
 			[],
 			// Version.
-			filemtime( JOVE_BUILD_PATH . '/public/index.js' ),
+			filemtime( JOVE_BUILD_PATH . '/js/public.js' ),
 			// Enqueue in footer.
 			true
 		);
@@ -114,11 +114,11 @@ class Assets {
 			// Handle.
 			'search-js',
 			// Source.
-			JOVE_BUILD_URI . '/search/index.js',
+			JOVE_BUILD_URI . '/js/search.js',
 			// Dependencies.
 			['public-js'],
 			// Version.
-			filemtime( JOVE_BUILD_PATH . '/search/index.js' ),
+			filemtime( JOVE_BUILD_PATH . '/js/search.js' ),
 			// Enqueue in footer.
 			true
 		);

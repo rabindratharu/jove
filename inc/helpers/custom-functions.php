@@ -386,3 +386,38 @@ function modify_existing_taxonomy_labels( $args, $taxonomy ) {
     return $args;
 }
 add_filter( 'register_taxonomy_args', 'modify_existing_taxonomy_labels', 10, 2 );
+
+/**
+ * Helper function to import the ACF field group if it doesn't exist.
+ *
+ * @link https://gist.github.com/bacoords/986029d783edf320ce93455e0f6b5dd6
+ * @return void
+ */
+function wpe_register_acf_fields() {
+
+	if ( function_exists( 'acf_import_field_group' ) ) {
+
+		// Get all json files from the /acf-field-groups directory.
+		$files = glob( get_template_directory() . '/inc/acf-field-groups/*.json' );
+
+		// If no files, bail.
+		if ( ! $files ) {
+			return;
+		}
+
+		// Loop through each file.
+		foreach ( $files as $file ) {
+			// Grab the JSON file.
+			$group = file_get_contents( $file );
+
+			// Decode the JSON.
+			$group = json_decode( $group, true );
+
+			// If not empty, import it.
+			if ( is_array( $group ) && ! empty( $group ) && ! acf_get_field_group( $group[0]['key'] ) ) {
+				acf_import_field_group( $group [0] );
+			}
+		}
+	}
+}
+add_action( 'acf/include_fields', 'wpe_register_acf_fields' );
