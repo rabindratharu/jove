@@ -1,1 +1,0 @@
-{"version":3,"file":"blocks/hero/index.css","mappings":";;;AAAA;EACE,WAAW;EACX,YAAY;AACd","sources":["webpack://jove/./src/blocks/hero/index.css"],"sourcesContent":[".jove-hero-search-block .jove-hero-search-block__video video {\n  width: 100%;\n  height: auto;\n}\n"],"names":[],"sourceRoot":""}

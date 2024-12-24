@@ -27,5 +27,6 @@
   },
   "style": [
     "file:./index.css"
-  ]
+  ],
+  "editorStyle": "file:./index.css"
 }

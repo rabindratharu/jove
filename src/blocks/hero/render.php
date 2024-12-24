@@ -23,6 +23,15 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= ' ' . $block['className'];
 }
 
+// Which blocks do we want to allow to be nested in InnerBlocks.
+$allowed_blocks = array(
+	'core/columns',
+	'core/column',
+	'core/heading',
+	'core/paragraph',
+	'core/search',
+);
+
 /**
  * A template string of blocks.
  * Need help converting block HTML markup to an array?
@@ -107,7 +116,8 @@ $file = get_field('video');
          </video>
      </div>
      <?php } ?>
-     <InnerBlocks class="jove-hero-search-block__innerblocks"
+     <InnerBlocks class="jove-hero-search-block__innerblocks" orientation="horizontal"
+         allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>"
          template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
      <?php if ( ! $is_preview ) { ?>
  </div>

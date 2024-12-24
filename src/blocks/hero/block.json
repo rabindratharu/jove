@@ -19,5 +19,6 @@
   "supports": {
     "align": ["wide", "full"]
   },
-  "style": ["file:./index.css"]
+  "style": ["file:./index.css"],
+  "editorStyle": "file:./index.css"
 }
