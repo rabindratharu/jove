@@ -18,14 +18,9 @@ if ( ! empty( $block['anchor'] ) ) {
 }
 
 // Create class attribute allowing for custom "className".
-$block_classes = '';
+$class_name = '';
 if ( ! empty( $block['className'] ) ) {
-	$block_classes .= ' ' . $block['className'];
-}
-// Grab our alignment class.
-$block_classes = '';
-if ( '' !== $block['align'] ) {
-	$block_classes = 'align' . $block['align'];
+	$class_name .= ' ' . $block['className'];
 }
 
 // Which blocks do we want to allow to be nested in InnerBlocks.
@@ -34,7 +29,6 @@ $allowed_blocks = array(
 	'core/column',
 	'core/heading',
 	'core/paragraph',
-	'core/search',
 );
 
 /**
@@ -72,22 +66,38 @@ $inner_blocks_template = array(
 						'core/heading',
 						array(
 							'level' => 2,
-							'content'  => 'Visualize the world of science',
+							'content'  => 'What is JoVE Visualize?',
 						),
 						array(),
 					),
 					array(
 						'core/paragraph',
 						array(
-							'content'  => 'Discover video protocols for 37 million+ research papers',
+							'content'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost.',
 						),
 						array(),
 					),
-                    array(
-						'core/search',
+				),
+			),
+			array(
+				'core/column',
+				array(
+					'verticalAlignment' => 'center',
+					'width'             => '',
+				),
+				array(
+					array(
+						'core/heading',
 						array(
-                            'buttonText' => 'Search',
-                            'placeholder' => '| Search from 37,123,123 articles in science research'
+							'level' => 2,
+							'content'  => 'What is JoVE Visualize?',
+						),
+						array(),
+					),
+					array(
+						'core/paragraph',
+						array(
+							'content'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost.',
 						),
 						array(),
 					),
@@ -98,7 +108,7 @@ $inner_blocks_template = array(
 );
 
 // acf data
-$file = get_field('video');
+// $file = get_field('video');
 ?>
 
  <?php if ( ! $is_preview ) { ?>
@@ -107,24 +117,15 @@ $file = get_field('video');
 			get_block_wrapper_attributes(
 				array(
 					'id'    => $block_id,
-					'class' => esc_attr( $block_classes ),
+					'class' => esc_attr( $class_name ),
 				)
 			)
 		);
 		?>>
      <?php } ?>
 
-     <div class="jove-hero-search-block">
-         <div class="jove-hero-search-block__video">
-             <?php if ( $file ) { ?>
-             <video autoplay muted loop>
-                 <source src="<?php echo $file['url']; ?>" type="video/mp4">
-             </video>
-             <?php } else { ?>
-             <div class="jove-hero-search-block__bg"></div>
-             <?php } ?>
-         </div>
-         <InnerBlocks class="jove-hero-search-block__innerblocks" orientation="horizontal"
+     <div class="jove-cta-block">
+         <InnerBlocks class="jove-cta-block__innerblocks" orientation="horizontal"
              allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>"
              template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
 

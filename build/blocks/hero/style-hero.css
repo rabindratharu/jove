@@ -1,3 +1,6 @@
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./resources/blocks/hero/style.css ***!
+  \*********************************************************************************************************************************************************************************************************************/
 .jove-hero-search-block {
 	position: relative;
 }
@@ -5,7 +8,9 @@
 	position: absolute;
 	top: 49.5%;
 	width: 100%;
-	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	        transform: translateY(-50%);
 	left: 0;
 	padding: 50px 150px;
 }
@@ -37,10 +42,12 @@
 	margin: 0;
 	min-width: 130px;
 	border-radius: 0 4px 4px 0;
+	-webkit-transition: all 0.3s ease 0s;
 	transition: all 0.3s ease 0s;
 }
 .jove-hero-search-block .wp-block-search__button:hover {
 	background: #080b4b;
+	-webkit-transition: all 0.3s ease 0s;
 	transition: all 0.3s ease 0s;
 }
 .jove-hero-search-block .wp-block-search__inside-wrapper input:focus {
@@ -62,10 +69,17 @@
 .jove-hero-search-block .jove-hero-search-block__video {
 	max-height: 496px;
 	overflow: hidden;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	align-items: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 }
 .jove-hero-search-block .jove-hero-search-block__video video {
 	width: 100%;
 	height: auto;
 }
+
+
+/*# sourceMappingURL=style-hero.css.map*/

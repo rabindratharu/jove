@@ -1,0 +1,14 @@
+.jove-cta-block .jove-cta-block__video video {
+	width: 100%;
+	height: auto;
+}
+
+.jove-cta-block .jove-cta-block__video .jove-cta-block__bg {
+	background: linear-gradient(
+		270deg,
+		rgba(20, 52, 159, 0.09) 10%,
+		#00165f 100%
+	);
+	width: 100%;
+	height: auto;
+}

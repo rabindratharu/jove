@@ -58,6 +58,7 @@ class Blocks {
 
 	public function register_blocks() {
 		register_block_type( JOVE_BUILD_PATH . '/blocks/hero/block.json' );
+		register_block_type( JOVE_BUILD_PATH . '/blocks/cta/block.json' );
 	}
 
 	/**
@@ -95,7 +96,7 @@ class Blocks {
 	 * Gets the block styles to register.
 	 *
 	 * This method returns an array of block styles to be registered with the theme.
-	 * Each block type has associated styles that can be applied, enabling 
+	 * Each block type has associated styles that can be applied, enabling
 	 * customization and consistent design throughout the theme.
 	 *
 	 * @since 1.0.0

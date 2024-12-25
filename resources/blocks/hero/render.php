@@ -18,9 +18,14 @@ if ( ! empty( $block['anchor'] ) ) {
 }
 
 // Create class attribute allowing for custom "className".
-$class_name = '';
+$block_classes = '';
 if ( ! empty( $block['className'] ) ) {
-	$class_name .= ' ' . $block['className'];
+	$block_classes .= ' ' . $block['className'];
+}
+// Grab our alignment class.
+$block_classes = '';
+if ( '' !== $block['align'] ) {
+	$block_classes = 'align' . $block['align'];
 }
 
 // Which blocks do we want to allow to be nested in InnerBlocks.
@@ -102,7 +107,7 @@ $file = get_field('video');
 			get_block_wrapper_attributes(
 				array(
 					'id'    => $block_id,
-					'class' => esc_attr( $class_name ),
+					'class' => esc_attr( $block_classes ),
 				)
 			)
 		);

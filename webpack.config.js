@@ -19,31 +19,6 @@ const path = require("path");
 const { globSync } = require("glob");
 
 /**
- * Processes individual block stylesheets for a specific block namespace. These
- * are not imported into the primary stylesheets and are enqueued separately.
- *
- * @since  1.0.0
- * @param  {string} namespace
- * @return {Object.<string, string>}
- */
-const blockStylesheets = (namespace) => {
-	return globSync(`./resources/css/${namespace}/*.css`).reduce(
-		(files, filepath) => {
-			const name = path.parse(filepath).name;
-
-			files[`${namespace}/${name}/style`] = path.resolve(
-				process.cwd(),
-				`resources/css/${namespace}`,
-				`${name}.css`,
-			);
-
-			return files;
-		},
-		{},
-	);
-};
-
-/**
  * Exports the custom webpack config.
  *
  * @since 1.0.0
@@ -53,8 +28,6 @@ module.exports = {
 	...defaultConfig,
 	...{
 		entry: {
-			...blockStylesheets("blocks"),
-
 			"js/public": path.resolve(
 				process.cwd(),
 				"resources/js",
@@ -74,6 +47,16 @@ module.exports = {
 				process.cwd(),
 				"resources/css",
 				"search.css",
+			),
+			"blocks/hero/hero": path.resolve(
+				process.cwd(),
+				"resources/blocks/hero",
+				"style.css",
+			),
+			"blocks/cta/cta": path.resolve(
+				process.cwd(),
+				"resources/blocks/cta",
+				"style.css",
 			),
 		},
 		plugins: [
