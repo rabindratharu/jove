@@ -69,3 +69,14 @@
 	width: 100%;
 	height: auto;
 }
+.jove-hero-search-block
+	.jove-hero-search-block__video
+	.jove-hero-search-block__bg {
+	width: 100%;
+	height: 496px;
+	background: linear-gradient(
+		270deg,
+		rgba(20, 52, 159, 0.09) 10%,
+		#00165f 100%
+	);
+}
