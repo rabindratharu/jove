@@ -29,6 +29,9 @@ $allowed_blocks = array(
 	'core/column',
 	'core/heading',
 	'core/paragraph',
+	'core/cover',
+	'core/image'
+
 );
 
 /**
@@ -38,74 +41,86 @@ $allowed_blocks = array(
  *
  * @link https://developer.wordpress.org/block-editor/reference-guides/block-api/block-templates/
  */
-$inner_blocks_template = array(
-	array(
+$inner_blocks_template = [
+	[
 		'core/columns',
-		array(
-			'verticalAlignment' => 'center',
-			'style'             => array(
-				'spacing' => array(
-					'padding' => array(
-						'top'    => 'var:preset|spacing|0',
-						'right'  => 'var:preset|spacing|0',
-						'bottom' => 'var:preset|spacing|0',
-						'left'   => 'var:preset|spacing|0',
-					),
-				),
-			),
-		),
-		array(
-			array(
+		[
+			"verticalAlignment" => "top",
+			"style" => [
+				"spacing" => [
+					"padding" => [
+					"top" => "var:preset|spacing|0",
+					"right" => "var:preset|spacing|0",
+					"bottom" => "var:preset|spacing|0",
+					"left" => "var:preset|spacing|0"
+					],
+					"blockGap" => [
+						"left" => "var:preset|spacing|large"
+					]
+				]
+			]
+		],
+		[
+			[
 				'core/column',
-				array(
-					'verticalAlignment' => 'center',
+				[
+					'verticalAlignment' => 'top',
 					'width'             => '',
-				),
-				array(
-					array(
+				],
+				[
+					[
 						'core/heading',
-						array(
+						[
 							'level' => 2,
 							'content'  => 'What is JoVE Visualize?',
-						),
-						array(),
-					),
-					array(
+						],
+					],
+					[
 						'core/paragraph',
-						array(
-							'content'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost.',
-						),
-						array(),
-					),
-				),
-			),
-			array(
+						[
+							'content'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.',
+						]
+					]
+				]
+			],
+			[
 				'core/column',
-				array(
-					'verticalAlignment' => 'center',
+				[
+					'verticalAlignment' => 'top',
 					'width'             => '',
-				),
-				array(
-					array(
-						'core/heading',
-						array(
-							'level' => 2,
-							'content'  => 'What is JoVE Visualize?',
-						),
-						array(),
-					),
-					array(
-						'core/paragraph',
-						array(
-							'content'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost. Ut enim ad minim veniam, quis nost.',
-						),
-						array(),
-					),
-				),
-			),
-		),
-	),
-);
+				],
+				[
+					[
+						'core/cover',
+						[
+							'customOverlayColor' => '#b8d9ff',
+							'isUserOverlayColor' => true,
+							'isDark'			 => false,
+							'style' => [
+								"border" => [
+									"radius" => "8px"
+								]
+							],
+							"layout" => [
+								"type" => "constrained"
+							]
+						],
+						[
+							[
+								'core/image',
+								[
+									'align' => 'center',
+									'url' => JOVE_BUILD_URI . '/media/svg/play.svg'
+								]
+							]
+						]
+					],
+				]
+			]
+		]
+	]
+];
+
 
 // acf data
 // $file = get_field('video');

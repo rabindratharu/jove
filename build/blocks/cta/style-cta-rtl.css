@@ -1,24 +1,4 @@
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./resources/blocks/cta/style.css ***!
   \********************************************************************************************************************************************************************************************************************/
-.jove-cta-block .jove-cta-block__video video {
-	width: 100%;
-	height: auto;
-}
-
-.jove-cta-block .jove-cta-block__video .jove-cta-block__bg {
-	background: -webkit-gradient(
-		linear,
-		left top, right top,
-		color-stop(10%, rgba(20, 52, 159, 0.09)),
-		to(#00165f)
-	);
-	background: linear-gradient(
-		-270deg,
-		rgba(20, 52, 159, 0.09) 10%,
-		#00165f 100%
-	);
-	width: 100%;
-	height: auto;
-}
 
