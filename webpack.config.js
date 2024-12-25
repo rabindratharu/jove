@@ -13,6 +13,7 @@ const defaultConfig = require("@wordpress/scripts/config/webpack.config");
 const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
 const CopyPlugin = require("copy-webpack-plugin");
 const RtlCssPlugin = require("rtlcss-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 // Utilities.
 const path = require("path");
@@ -58,6 +59,13 @@ module.exports = {
 				"resources/blocks/cta",
 				"style.css",
 			),
+		},
+		optimization: {
+			...defaultConfig.optimization,
+			minimizer: [
+				...defaultConfig.optimization.minimizer,
+				new CssMinimizerPlugin(),
+			],
 		},
 		plugins: [
 			// Very important! Include WP's plugin config or the

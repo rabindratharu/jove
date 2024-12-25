@@ -64,6 +64,47 @@
 	overflow: hidden;
 	display: flex;
 	align-items: center;
+	position: relative;
+}
+.jove-hero-search-block .jove-hero-search-block__video::before {
+	position: absolute;
+	display: block;
+	content: "";
+	height: 100%;
+	width: 100%;
+	background: rgba(14, 19, 60, 0.29);
+	background: -moz-linear-gradient(
+		top,
+		rgba(14, 19, 60, 0.29) 0%,
+		rgba(14, 19, 60, 0.36) 100%
+	);
+	background: -webkit-gradient(
+		left top,
+		left bottom,
+		color-stop(0%, rgba(14, 19, 60, 0.29)),
+		color-stop(100%, rgba(14, 19, 60, 0.36))
+	);
+	background: -webkit-linear-gradient(
+		top,
+		rgba(14, 19, 60, 0.29) 0%,
+		rgba(14, 19, 60, 0.36) 100%
+	);
+	background: -o-linear-gradient(
+		top,
+		rgba(14, 19, 60, 0.29) 0%,
+		rgba(14, 19, 60, 0.36) 100%
+	);
+	background: -ms-linear-gradient(
+		top,
+		rgba(14, 19, 60, 0.29) 0%,
+		rgba(14, 19, 60, 0.36) 100%
+	);
+	background: linear-gradient(
+		to bottom,
+		rgba(14, 19, 60, 0.29) 0%,
+		rgba(14, 19, 60, 0.36) 100%
+	);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e133c', endColorstr='#0e133c', GradientType=0 );
 }
 .jove-hero-search-block .jove-hero-search-block__video video {
 	width: 100%;

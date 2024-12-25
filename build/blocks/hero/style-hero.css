@@ -75,6 +75,33 @@
 	-webkit-box-align: center;
 	    -ms-flex-align: center;
 	        align-items: center;
+	position: relative;
+}
+.jove-hero-search-block .jove-hero-search-block__video::before {
+	position: absolute;
+	display: block;
+	content: "";
+	height: 100%;
+	width: 100%;
+	background: rgba(14, 19, 60, 0.29);
+	background: -webkit-gradient(
+		left top,
+		left bottom,
+		color-stop(0%, rgba(14, 19, 60, 0.29)),
+		color-stop(100%, rgba(14, 19, 60, 0.36))
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(rgba(14, 19, 60, 0.29)),
+		to(rgba(14, 19, 60, 0.36))
+	);
+	background: linear-gradient(
+		to bottom,
+		rgba(14, 19, 60, 0.29) 0%,
+		rgba(14, 19, 60, 0.36) 100%
+	);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e133c', endColorstr='#0e133c', GradientType=0 );
 }
 .jove-hero-search-block .jove-hero-search-block__video video {
 	width: 100%;
