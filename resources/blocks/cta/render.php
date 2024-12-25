@@ -1,6 +1,6 @@
  <?php
 /**
- * Author Info block (parent).
+ * CTA block (parent).
  *
  * @param array  $block The block settings and attributes.
  * @param string $content The block inner HTML (empty).
@@ -10,6 +10,9 @@
  *                     or the post ID of the post hosting this block.
  * @param array $context The context provided to the block by the post or it's parent block.
  */
+
+// acf data
+$file = get_field('video');
 
 // Support custom id values.
 $block_id = wp_unique_prefixed_id( 'jove-block-id-' );
@@ -31,7 +34,6 @@ $allowed_blocks = array(
 	'core/paragraph',
 	'core/cover',
 	'core/image'
-
 );
 
 /**
@@ -49,9 +51,9 @@ $inner_blocks_template = [
 			"style" => [
 				"spacing" => [
 					"padding" => [
-					"top" => "var:preset|spacing|0",
+					"top" => "var:preset|spacing|large",
 					"right" => "var:preset|spacing|0",
-					"bottom" => "var:preset|spacing|0",
+					"bottom" => "var:preset|spacing|large",
 					"left" => "var:preset|spacing|0"
 					],
 					"blockGap" => [
@@ -110,7 +112,10 @@ $inner_blocks_template = [
 								'core/image',
 								[
 									'align' => 'center',
-									'url' => JOVE_BUILD_URI . '/media/svg/play.svg'
+									'className' => 'jove-cta-video-btn',
+									'url' => JOVE_BUILD_URI . '/media/svg/play.svg',
+									'linkDestination' => 'custom',
+									'href' => esc_url( $file ), // Add your custom link here
 								]
 							]
 						]
@@ -120,10 +125,6 @@ $inner_blocks_template = [
 		]
 	]
 ];
-
-
-// acf data
-// $file = get_field('video');
 ?>
 
  <?php if ( ! $is_preview ) { ?>

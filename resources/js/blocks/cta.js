@@ -42,6 +42,9 @@ import magnificPopup from "magnific-popup";
 								suffix = `?start=${start}&autoplay=1`;
 							}
 
+							console.log(
+								`Generated YouTube URL: https://www.youtube.com/embed/${m[1]}${suffix}`,
+							);
 							return m[1] + suffix;
 						},
 						src: "//www.youtube.com/embed/%id%",

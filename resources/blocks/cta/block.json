@@ -17,7 +17,13 @@
 		}
 	},
 	"supports": {
-		"align": ["wide", "full"]
+		"align": ["full", "wide"],
+		"anchor": true,
+		"className": true,
+		"color": {
+			"background": true
+		},
+		"mode": false
 	},
 	"style": ["file:./../../css/cta.css"],
 	"viewScript": ["file:./../../js/cta.js"]

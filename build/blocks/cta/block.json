@@ -22,9 +22,15 @@
   },
   "supports": {
     "align": [
-      "wide",
-      "full"
-    ]
+      "full",
+      "wide"
+    ],
+    "anchor": true,
+    "className": true,
+    "color": {
+      "background": true
+    },
+    "mode": false
   },
   "style": [
     "file:./../../css/cta.css"

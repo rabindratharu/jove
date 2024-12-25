@@ -42,6 +42,7 @@ __webpack_require__.r(__webpack_exports__);
               if (start > 0) {
                 suffix = "?start=".concat(start, "&autoplay=1");
               }
+              console.log("Generated YouTube URL: https://www.youtube.com/embed/".concat(m[1]).concat(suffix));
               return m[1] + suffix;
             },
             src: "//www.youtube.com/embed/%id%"
