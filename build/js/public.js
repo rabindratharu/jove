@@ -1,4 +1,4 @@
-/******/ (() => { // webpackBootstrap
+/******/ (function() { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
@@ -6,7 +6,7 @@
 /*!***************************************!*\
   !*** ./resources/js/zustand/index.js ***!
   \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var zustand_middleware__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! zustand/middleware */ "./node_modules/zustand/esm/middleware.mjs");
@@ -14,13 +14,13 @@ __webpack_require__.r(__webpack_exports__);
  // Import persist middleware
  // Correctly import createStore
 
-const stores = [];
+var stores = [];
 
 // Add the store and persist function to the window object for access in global scope
 window.zustand = {
   persist: zustand_middleware__WEBPACK_IMPORTED_MODULE_0__.persist,
   createStore: zustand_vanilla__WEBPACK_IMPORTED_MODULE_1__.createStore,
-  stores // stores array will hold your Zustand store
+  stores: stores // stores array will hold your Zustand store
 };
 
 /***/ }),
@@ -29,16 +29,16 @@ window.zustand = {
 /*!*************************************************!*\
   !*** ./node_modules/zustand/esm/middleware.mjs ***!
   \*************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   combine: () => (/* binding */ combine),
-/* harmony export */   createJSONStorage: () => (/* binding */ createJSONStorage),
-/* harmony export */   devtools: () => (/* binding */ devtools),
-/* harmony export */   persist: () => (/* binding */ persist),
-/* harmony export */   redux: () => (/* binding */ redux),
-/* harmony export */   subscribeWithSelector: () => (/* binding */ subscribeWithSelector)
+/* harmony export */   combine: function() { return /* binding */ combine; },
+/* harmony export */   createJSONStorage: function() { return /* binding */ createJSONStorage; },
+/* harmony export */   devtools: function() { return /* binding */ devtools; },
+/* harmony export */   persist: function() { return /* binding */ persist; },
+/* harmony export */   redux: function() { return /* binding */ redux; },
+/* harmony export */   subscribeWithSelector: function() { return /* binding */ subscribeWithSelector; }
 /* harmony export */ });
 const reduxImpl = (reducer, initial) => (set, _get, api) => {
   api.dispatch = (action) => {
@@ -481,11 +481,11 @@ const persist = persistImpl;
 /*!**********************************************!*\
   !*** ./node_modules/zustand/esm/vanilla.mjs ***!
   \**********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   createStore: () => (/* binding */ createStore)
+/* harmony export */   createStore: function() { return /* binding */ createStore; }
 /* harmony export */ });
 const createStoreImpl = (createState) => {
   let state;
@@ -543,37 +543,37 @@ const createStore = (createState) => createState ? createStoreImpl(createState) 
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
+/******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 		__webpack_require__.d = function(exports, definition) {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	})();
+/******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
+/******/ 	!function() {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
+/******/ 		__webpack_require__.r = function(exports) {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	})();
+/******/ 	}();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
-(() => {
+!function() {
 /*!********************************!*\
   !*** ./resources/js/public.js ***!
   \********************************/
@@ -590,8 +590,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // Import all the cool editor features from the theme.
 
-})();
-
+}();
 /******/ })()
 ;
 //# sourceMappingURL=public.js.map

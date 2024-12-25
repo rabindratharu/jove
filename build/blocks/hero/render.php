@@ -111,7 +111,7 @@ $file = get_field('video');
 
      <?php if( $file ) { ?>
      <div class="jove-hero-search-block__video">
-         <video autoplay muted>
+         <video autoplay muted loop>
              <source src="<?php echo $file['url']; ?>" type="video/mp4">
          </video>
      </div>

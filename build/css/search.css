@@ -1,6 +1,6 @@
-/*!******************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./resources/css/search.css ***!
-  \******************************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./resources/css/search.css ***!
+  \**************************************************************************************************************************************************************************************************************/
 /**
  * Checkbox Accordion.
  */
@@ -18,12 +18,21 @@
 	cursor: pointer;
 	font-weight: 500;
 	text-transform: uppercase;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-transition-property: all;
 	transition-property: all;
-	transition-duration: 0.6s;
-	transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+	-webkit-transition-duration: 0.6s;
+	        transition-duration: 0.6s;
+	-webkit-transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+	        transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
 }
 @media (hover: hover) {
 	.checkbox-accordion__handle:hover {
@@ -36,10 +45,15 @@
 	border-bottom: 3px solid cornflowerblue;
 	width: 10px;
 	height: 10px;
-	transform: rotate(-315deg);
+	-webkit-transform: rotate(-315deg);
+	    -ms-transform: rotate(-315deg);
+	        transform: rotate(-315deg);
+	-webkit-transition-property: all;
 	transition-property: all;
-	transition-duration: 0.6s;
-	transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+	-webkit-transition-duration: 0.6s;
+	        transition-duration: 0.6s;
+	-webkit-transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+	        transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
 }
 @media (hover: hover) {
 	.checkbox-accordion__handle:hover .checkbox-accordion__handle-icon {
@@ -47,7 +61,9 @@
 	}
 }
 .checkbox-accordion[active] .checkbox-accordion__handle-icon {
-	transform: rotate(-135deg);
+	-webkit-transform: rotate(-135deg);
+	    -ms-transform: rotate(-135deg);
+	        transform: rotate(-135deg);
 }
 .checkbox-accordion__handle-text {
 	padding-right: 10px;
@@ -58,9 +74,12 @@
 	height: 0;
 	overflow: hidden;
 	display: block;
+	-webkit-transition-property: all;
 	transition-property: all;
-	transition-duration: 0.6s;
-	transition-timing-function: var(--ease-in-out-quart);
+	-webkit-transition-duration: 0.6s;
+	        transition-duration: 0.6s;
+	-webkit-transition-timing-function: var(--ease-in-out-quart);
+	        transition-timing-function: var(--ease-in-out-quart);
 }
 .checkbox-accordion__child {
 	display: block;
@@ -69,9 +88,12 @@
 	padding: 0 0 0 19px;
 	height: 0;
 	overflow: hidden;
+	-webkit-transition-property: all;
 	transition-property: all;
-	transition-duration: 0.6s;
-	transition-timing-function: var(--ease-in-out-quart);
+	-webkit-transition-duration: 0.6s;
+	        transition-duration: 0.6s;
+	-webkit-transition-timing-function: var(--ease-in-out-quart);
+	        transition-timing-function: var(--ease-in-out-quart);
 }
 .checkbox-accordion__child-handle-icon {
 	display: inline-block;
@@ -80,20 +102,33 @@
 	border-bottom: 3px solid cornflowerblue;
 	width: 10px;
 	height: 10px;
-	transform: rotate(-315deg);
+	-webkit-transform: rotate(-315deg);
+	    -ms-transform: rotate(-315deg);
+	        transform: rotate(-315deg);
+	-webkit-transition-property: all;
 	transition-property: all;
-	transition-duration: 0.6s;
-	transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+	-webkit-transition-duration: 0.6s;
+	        transition-duration: 0.6s;
+	-webkit-transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+	        transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
 }
 .checkbox-accordion__child[active]
 	> .checkbox-accordion__child-handle
 	.checkbox-accordion__child-handle-icon {
-	transform: rotate(-135deg);
+	-webkit-transform: rotate(-135deg);
+	    -ms-transform: rotate(-135deg);
+	        transform: rotate(-135deg);
 }
 .checkbox-accordion__child .checkbox-accordion__child-handle {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 }
 .checkbox-accordion__child .checkbox-accordion__child-handle.form-field {
 	margin-top: 16px;
@@ -103,8 +138,6 @@
 	.checkbox-accordion__child .checkbox-accordion__child-handle:hover {
 		color: dodgerblue;
 	}
-}
-@media (hover: hover) {
 	.checkbox-accordion__child
 		.checkbox-accordion__child-handle:hover
 		.checkbox-accordion__child
@@ -115,11 +148,15 @@
 .checkbox-accordion__child.checkbox-accordion__child--has-content[active]
 	> .checkbox-accordion__child-handle-icon
 	svg {
-	transform: rotate(-180deg);
+	-webkit-transform: rotate(-180deg);
+	    -ms-transform: rotate(-180deg);
+	        transform: rotate(-180deg);
 	opacity: 1;
 }
 .checkbox-accordion__child label.checkbox {
-	justify-content: flex-start;
+	-webkit-box-pack: start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
 }
 .checkbox-accordion__child .checkbox-text {
 	font-size: 15px;
@@ -130,7 +167,9 @@
 }
 
 .jove-search {
-	justify-content: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 }
 
 .jove-results-count {
@@ -139,8 +178,12 @@
 }
 
 .jove-loading-more {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 	padding: 20px 0;
 }
 
@@ -150,8 +193,12 @@
 }
 
 .load-more-wrap {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 	margin: 0 auto;
 }
 
