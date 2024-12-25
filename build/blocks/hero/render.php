@@ -110,13 +110,15 @@ $file = get_field('video');
      <?php } ?>
 
      <div class="jove-hero-search-block">
-         <?php if( $file ) { ?>
          <div class="jove-hero-search-block__video">
+             <?php if ( $file ) { ?>
              <video autoplay muted loop>
                  <source src="<?php echo $file['url']; ?>" type="video/mp4">
              </video>
+             <?php } else { ?>
+             <div class="jove-hero-search-block__bg"></div>
+             <?php } ?>
          </div>
-         <?php } ?>
          <InnerBlocks class="jove-hero-search-block__innerblocks" orientation="horizontal"
              allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>"
              template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
