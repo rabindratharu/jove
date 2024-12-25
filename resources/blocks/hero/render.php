@@ -18,7 +18,7 @@ if ( ! empty( $block['anchor'] ) ) {
 }
 
 // Create class attribute allowing for custom "className".
-$class_name = 'jove-hero-search-block';
+$class_name = '';
 if ( ! empty( $block['className'] ) ) {
 	$class_name .= ' ' . $block['className'];
 }
@@ -47,10 +47,10 @@ $inner_blocks_template = array(
 			'style'             => array(
 				'spacing' => array(
 					'padding' => array(
-						'top'    => 'var:preset|spacing|30',
-						'right'  => 'var:preset|spacing|30',
-						'bottom' => 'var:preset|spacing|30',
-						'left'   => 'var:preset|spacing|30',
+						'top'    => 'var:preset|spacing|0',
+						'right'  => 'var:preset|spacing|0',
+						'bottom' => 'var:preset|spacing|0',
+						'left'   => 'var:preset|spacing|0',
 					),
 				),
 			),
@@ -109,16 +109,19 @@ $file = get_field('video');
 		?>>
      <?php } ?>
 
-     <?php if( $file ) { ?>
-     <div class="jove-hero-search-block__video">
-         <video autoplay muted loop>
-             <source src="<?php echo $file['url']; ?>" type="video/mp4">
-         </video>
+     <div class="jove-hero-search-block">
+         <?php if( $file ) { ?>
+         <div class="jove-hero-search-block__video">
+             <video autoplay muted loop>
+                 <source src="<?php echo $file['url']; ?>" type="video/mp4">
+             </video>
+         </div>
+         <?php } ?>
+         <InnerBlocks class="jove-hero-search-block__innerblocks" orientation="horizontal"
+             allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>"
+             template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
+
      </div>
-     <?php } ?>
-     <InnerBlocks class="jove-hero-search-block__innerblocks" orientation="horizontal"
-         allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>"
-         template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
      <?php if ( ! $is_preview ) { ?>
  </div>
  <?php } ?>
