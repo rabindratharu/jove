@@ -19,5 +19,6 @@
 	"supports": {
 		"align": ["wide", "full"]
 	},
-	"style": ["file:./style-cta.css"]
+	"style": ["file:./../../css/cta.css"],
+	"viewScript": ["file:./../../js/cta.js"]
 }

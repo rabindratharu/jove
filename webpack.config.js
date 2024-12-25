@@ -39,6 +39,8 @@ module.exports = {
 				"resources/js",
 				"search.js",
 			),
+			"js/cta": path.resolve(process.cwd(), "resources/js", "cta.js"),
+
 			"css/public": path.resolve(
 				process.cwd(),
 				"resources/css",
@@ -49,15 +51,11 @@ module.exports = {
 				"resources/css",
 				"search.css",
 			),
-			"blocks/hero/hero": path.resolve(
+			"css/cta": path.resolve(process.cwd(), "resources/css", "cta.css"),
+			"css/hero": path.resolve(
 				process.cwd(),
-				"resources/blocks/hero",
-				"style.css",
-			),
-			"blocks/cta/cta": path.resolve(
-				process.cwd(),
-				"resources/blocks/cta",
-				"style.css",
+				"resources/css",
+				"hero.css",
 			),
 		},
 		optimization: {

@@ -25,5 +25,5 @@
 		},
 		"mode": false
 	},
-	"style": ["file:./style-hero.css"]
+	"style": ["file:./../../css/hero.css"]
 }

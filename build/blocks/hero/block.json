@@ -32,6 +32,6 @@
     "mode": false
   },
   "style": [
-    "file:./style-hero.css"
+    "file:./../../css/hero.css"
   ]
 }

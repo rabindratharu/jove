@@ -10,7 +10,6 @@
 		"build": "npm run clean && npm run build:jove"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.7.0",
 		"@wordpress/block-editor": "^14.6.0",
 		"@wordpress/blocks": "^14.0.0",
 		"@wordpress/components": "^28.11.0",
@@ -20,29 +19,31 @@
 		"@wordpress/hooks": "^4.11.0",
 		"@wordpress/i18n": "^5.11.0",
 		"@wordpress/rich-text": "^7.11.0",
+		"@wordpress/scripts": "^30.7.0",
 		"@wordpress/token-list": "^3.11.0",
+		"autoprefixer": "^10.4.20",
+		"classnames": "^2.5.1",
 		"copy-webpack-plugin": "^12.0.2",
+		"css-minimizer-webpack-plugin": "^7.0.0",
 		"glob": "^11.0.0",
-		"npm-check-updates": "^17.1.9",
-		"path": "^0.12.7",
-		"webpack-remove-empty-scripts": "^1.0.4",
 		"grunt-checktextdomain": "^1.0.1",
 		"grunt-contrib-clean": "^2.0.1",
 		"grunt-contrib-compress": "^2.0.0",
 		"grunt-contrib-copy": "^1.0.0",
 		"grunt-wp-i18n": "^1.0.3",
 		"grunt-wp-readme-to-markdown": "^2.1.0",
+		"npm-check-updates": "^17.1.9",
+		"npm-run-all": "^4.1.5",
+		"path": "^0.12.7",
 		"postcss": "^8.4.49",
 		"postcss-loader": "^8.1.1",
 		"tailwindcss": "^3.4.15",
-		"autoprefixer": "^10.4.20",
-		"classnames": "^2.5.1",
-		"npm-run-all": "^4.1.5",
-		"zustand": "^5.0.2",
-		"css-minimizer-webpack-plugin": "^7.0.0"
+		"webpack-remove-empty-scripts": "^1.0.4",
+		"zustand": "^5.0.2"
 	},
 	"dependencies": {
-		"@wordpress/icons": "^10.11.0"
+		"@wordpress/icons": "^10.11.0",
+		"magnific-popup": "^1.2.0"
 	},
 	"browserslist": [
 		"last 3 versions",

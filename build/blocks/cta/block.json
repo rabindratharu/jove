@@ -27,6 +27,9 @@
     ]
   },
   "style": [
-    "file:./style-cta.css"
+    "file:./../../css/cta.css"
+  ],
+  "viewScript": [
+    "file:./../../js/cta.js"
   ]
 }
