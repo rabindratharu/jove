@@ -265,54 +265,35 @@
 			"fluid": true,
 			"fontFamilies": [
 				{
-					"fontFamily": "Mona Sans, sans-serif",
-					"name": "Mona Sans",
+					"fontFamily": "Roboto",
+					"name": "Roboto",
 					"slug": "primary",
 					"fontFace": [
 						{
-							"fontDisplay": "block",
-							"fontFamily": "Mona Sans",
-							"fontStretch": "75% 125%",
+							"fontFamily": "Roboto",
+							"fontWeight": "normal",
 							"fontStyle": "normal",
-							"fontWeight": "300 900",
-							"src": ["file:./assets/fonts/Mona-Sans.woff2"]
-						}
-					]
-				},
-				{
-					"fontFamily": "Mona Sans Expanded, sans-serif",
-					"name": "Mona Sans Expanded",
-					"slug": "expanded",
-					"fontFace": [
+							"src": [
+								"file:./build/fonts/Roboto/Roboto-Regular.woff2"
+							]
+						},
 						{
-							"fontDisplay": "block",
-							"fontFamily": "Mona Sans Expanded",
-							"fontStretch": "125%",
+							"fontFamily": "Roboto",
+							"fontWeight": "500",
 							"fontStyle": "normal",
-							"fontWeight": "300 900",
-							"src": ["file:./assets/fonts/Mona-Sans.woff2"]
-						}
-					]
-				},
-				{
-					"fontFamily": "Mona Sans Condensed, sans-serif",
-					"name": "Mona Sans Condensed",
-					"slug": "condensed",
-					"fontFace": [
+							"src": [
+								"file:./build/fonts/Roboto/Roboto-Medium.woff2"
+							]
+						},
 						{
-							"fontDisplay": "block",
-							"fontFamily": "Mona Sans Condensed",
-							"fontStretch": "94%",
+							"fontFamily": "Roboto",
+							"fontWeight": "bold",
 							"fontStyle": "normal",
-							"fontWeight": "300 900",
-							"src": ["file:./assets/fonts/Mona-Sans.woff2"]
+							"src": [
+								"file:./build/fonts/Roboto/Roboto-Bold.woff2"
+							]
 						}
 					]
-				},
-				{
-					"fontFamily": "monospace",
-					"name": "Monospace",
-					"slug": "monospace"
 				}
 			],
 			"fontSizes": [
@@ -419,7 +400,7 @@
 					}
 				},
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--monospace)",
+					"fontFamily": "var(--wp--preset--font-family--primary)",
 					"fontSize": "var(--wp--preset--font-size--small)"
 				}
 			},
@@ -583,7 +564,7 @@
 					}
 				},
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--monospace)",
+					"fontFamily": "var(--wp--preset--font-family--primary)",
 					"fontSize": "var(--wp--preset--font-size--small)"
 				}
 			},

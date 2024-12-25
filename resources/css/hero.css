@@ -121,3 +121,7 @@
 		#00165f 100%
 	);
 }
+.jove-hero-search-block .wp-block-search__inside-wrapper input::placeholder {
+	color: #323232;
+	opacity: 0.6;
+}

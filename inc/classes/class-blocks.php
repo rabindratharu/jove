@@ -144,6 +144,7 @@ class Blocks {
 			'core/separator' => array(
 				'separator-dotted' => __( 'Dotted', 'jove' ),
 				'separator-thin'   => __( 'Thin', 'jove' ),
+				'separator-vertical' => __( 'Jove: Vertical', 'jove' ),
 			),
 			// Core image block styles
 			'core/image' => array(

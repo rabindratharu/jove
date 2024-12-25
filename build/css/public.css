@@ -961,6 +961,12 @@ hr.is-style-separator-dotted,
 .is-style-separator-thin {
 	border-top: 1px !important;
 }
+.wp-block-separator.is-style-separator-vertical {
+	border: none;
+	background: rgb(0, 0, 0, 20%);
+	width: 1px !important;
+	height: 40px;
+}
 
 /* Table
 --------------------------------------------- */
