@@ -1015,3 +1015,156 @@ hr.is-style-separator-dotted,
 	        transform: none;
 }
 
+/* Jove CTA
+--------------------------------------------- */
+.jove-cta-block .wp-block-heading {
+	font-size: 40px;
+	padding-bottom: 10px;
+}
+.jove-cta-block .wp-block-column p {
+	margin-top: 19px;
+	font-size: 16px;
+}
+.jove-cta-block > .jove-cta-block__innerblocks > .wp-block-columns {
+	gap: 80px;
+}
+
+@media only screen and (max-width: 1199px) {
+	.jove-hero-search-block .jove-hero-search-block__innerblocks {
+		padding: 50px 100px;
+	}
+	.jove-hero-search-block
+		.jove-hero-search-block__innerblocks
+		.wp-block-heading {
+		font-size: 50px;
+	}
+	.jove-cta-block h2 {
+		font-size: 37px;
+	}
+}
+
+@media only screen and (max-width: 1023px) {
+	.jove-hero-search-block .jove-hero-search-block__innerblocks {
+		padding: 40px 70px;
+	}
+	.jove-hero-search-block
+		.jove-hero-search-block__innerblocks
+		.wp-block-heading {
+		font-size: 42px;
+	}
+	.jove-hero-search-block .jove-hero-search-block__innerblocks p {
+		font-size: 20px;
+	}
+	.jove-cta-block h2 {
+		font-size: 34px;
+		padding-bottom: 5px;
+	}
+	.jove-cta-block > .jove-cta-block__innerblocks > .wp-block-columns {
+		gap: 50px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.jove-hero-search-block .jove-hero-search-block__innerblocks {
+		padding: 30px 1.5rem;
+	}
+	.jove-hero-search-block
+		.jove-hero-search-block__innerblocks
+		.wp-block-heading {
+		font-size: 32px;
+	}
+	.jove-hero-search-block .jove-hero-search-block__innerblocks p {
+		font-size: 17px;
+	}
+	.jove-cta-block .wp-block-heading {
+		font-size: 28px;
+		padding-bottom: 0;
+	}
+	.jove-cta-block > .jove-cta-block__innerblocks > .wp-block-columns {
+		gap: 40px;
+		padding-top: 15px !important;
+		padding-bottom: 20px !important;
+	}
+}
+
+@media only screen and (max-width: 567px) {
+	.jove-hero-search-block
+		.jove-hero-search-block__innerblocks
+		.wp-block-heading {
+		font-size: 30px;
+	}
+	.jove-hero-search-block .jove-hero-search-block__innerblocks p {
+		font-size: 16px;
+		margin-top: 10px;
+	}
+	.jove-cta-block .wp-block-heading {
+		font-size: 26px;
+	}
+	.site-header > header {
+		padding-top: 20px !important;
+		padding-bottom: 20px !important;
+	}
+	.jove-hero-search-block .wp-block-search__inside-wrapper input {
+		height: 52px;
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-width: 479px) {
+	.site-header > header {
+		padding-top: 20px !important;
+		padding-bottom: 20px !important;
+		padding-right: 15px !important;
+		padding-left: 15px !important;
+	}
+	.site-header > header > .wp-block-group {
+		gap: 10px;
+	}
+	.jove-hero-search-block .jove-hero-search-block__innerblocks {
+		padding: 25px 15px 30px;
+		position: static;
+		-webkit-transform: translateY(0);
+		    -ms-transform: translateY(0);
+		        transform: translateY(0);
+		background: #747575;
+	}
+	.jove-hero-search-block
+		.jove-hero-search-block__innerblocks
+		.wp-block-heading {
+		font-size: 26px;
+		line-height: 1.2;
+	}
+	.jove-hero-search-block .wp-block-search__button {
+		min-width: 75px;
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+	.jove-hero-search-block .wp-block-search__inside-wrapper input {
+		padding-right: 9px;
+		padding-left: 9px;
+	}
+	main {
+		padding-right: 15px !important;
+		padding-left: 15px !important;
+	}
+	.jove-cta-block > .jove-cta-block__innerblocks > .wp-block-columns {
+		gap: 35px;
+		padding-top: 8px !important;
+		padding-bottom: 13px !important;
+	}
+	.jove-cta-block .wp-block-heading {
+		font-size: 22px;
+		padding-bottom: 0;
+	}
+	.site-footer > footer {
+		padding-right: 15px;
+		padding-left: 15px;
+		padding-top: 35px !important;
+		padding-bottom: 35px !important;
+	}
+	main .wp-block-acf-hero {
+		margin-right: -15px !important;
+		margin-left: -15px !important;
+	}
+}
+

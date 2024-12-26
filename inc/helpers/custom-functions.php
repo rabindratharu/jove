@@ -332,11 +332,11 @@ function add_custom_social_links_styles() {
 		'core/social-links', // The block to apply the style to.
 		[
 			'name'  => 'outline-border', // A unique identifier for the style.
-			'label' => esc_html__( 'Outline', 'jove' ), // Display name in the editor.
+			'label' => esc_html__( 'Jove: Outline', 'jove' ), // Display name in the editor.
 		]
 	);
 }
-add_action( 'init', 'add_custom_social_links_styles' );
+//add_action( 'init', 'add_custom_social_links_styles' );
 
 
 

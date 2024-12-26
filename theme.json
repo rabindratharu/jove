@@ -797,7 +797,7 @@
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--primary)",
 			"fontSize": "var(--wp--preset--font-size--base)",
-			"fontWeight": "430",
+			"fontWeight": "400",
 			"lineHeight": "var(--wp--custom--line-height--body)"
 		}
 	},

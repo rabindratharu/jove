@@ -115,6 +115,12 @@ class Blocks {
 				'list-check'        => __( 'Check', 'jove' ),
 				'list-check-circle' => __( 'Check Circle', 'jove' ),
 				'list-boxed'        => __( 'Boxed', 'jove' ),
+				'list-none'        	=> __( 'Jove: None Style', 'jove' ),
+				'list-inline-sept' 	=> __( 'Jove: Inline Sept', 'jove' ),
+			),
+			// Core social link block styles
+			'core/social-links' => array(
+				'outline-border' => __( 'Jove: Outline', 'jove' ),
 			),
 			// Core code block styles
 			'core/code' => array(
