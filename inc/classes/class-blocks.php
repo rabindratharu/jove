@@ -59,6 +59,7 @@ class Blocks {
 	public function register_blocks() {
 		register_block_type( JOVE_BUILD_PATH . '/blocks/hero/block.json' );
 		register_block_type( JOVE_BUILD_PATH . '/blocks/cta/block.json' );
+		register_block_type( JOVE_BUILD_PATH . '/blocks/divider/block.json' );
 	}
 
 	/**
@@ -144,7 +145,6 @@ class Blocks {
 			'core/separator' => array(
 				'separator-dotted' => __( 'Dotted', 'jove' ),
 				'separator-thin'   => __( 'Thin', 'jove' ),
-				'separator-vertical' => __( 'Jove: Vertical', 'jove' ),
 			),
 			// Core image block styles
 			'core/image' => array(

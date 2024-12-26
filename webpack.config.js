@@ -57,6 +57,11 @@ module.exports = {
 				"resources/css",
 				"hero.css",
 			),
+			"css/divider": path.resolve(
+				process.cwd(),
+				"resources/css",
+				"divider.css",
+			),
 		},
 		optimization: {
 			...defaultConfig.optimization,
