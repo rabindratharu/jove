@@ -43,6 +43,8 @@ class Assets {
 
 		// Hook to register scripts
 		add_action( 'wp_enqueue_scripts', [ $this, 'register_scripts' ] );
+
+		add_action( 'init', [ $this, 'enqueue_block_styles' ] );
 	}
 
 	/**
@@ -84,6 +86,18 @@ class Assets {
 		// If search page.
 		if ( is_search() ) {
 			wp_enqueue_style( 'search-css' );
+		}
+
+		/*
+		* Load additional block styles.
+		*/
+		$styled_blocks = ['button','list'];
+		foreach ( $styled_blocks as $block_name ) {
+			$args = array(
+				'handle' => "jove-$block_name",
+				'src'    => get_theme_file_uri( "build/css/core/$block_name.css" ),
+			);
+			wp_enqueue_block_style( "core/$block_name", $args );
 		}
 	}
 
@@ -138,5 +152,57 @@ class Assets {
 				]
 			);
 		}
+	}
+
+	/**
+	 * Register styles.
+	 *
+	 * This method registers the theme's styles.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public function enqueue_block_styles() {
+
+		/*
+		* Load additional block styles.
+		*/
+		$styled_blocks = ['button','list'];
+		foreach ( $styled_blocks as $block_name ) {
+			$args = array(
+				'handle' => "jove-$block_name",
+				'src'    => get_theme_file_uri( "build/css/core/$block_name.css" ),
+			);
+			wp_enqueue_block_style( "core/$block_name", $args );
+		}
+	}
+
+	/**
+	 * Enqueues an individual block stylesheet based on a given block
+	 * namespace and slug.
+	 *
+	 * @since 1.0.0
+	 */
+	private function enqueueStyle(string $namespace, string $slug): void
+	{
+		// Build a relative path and URL string.
+		$relative = "public/css/{$namespace}/{$slug}";
+
+		// Bail if the asset file doesn't exist.
+		if (! file_exists(get_parent_theme_file_path("{$relative}.asset.php"))) {
+			return;
+		}
+
+		// Get the asset file.
+		$asset = include get_parent_theme_file_path("{$relative}.asset.php");
+
+		// Register the block style.
+		wp_enqueue_block_style("{$namespace}/{$slug}", [
+			'handle' => "jove-{$namespace}-{$slug}",
+			'src'    => get_parent_theme_file_uri("{$relative}.css"),
+			'path'   => get_parent_theme_file_path("{$relative}.css"),
+			'deps'   => $asset['dependencies'],
+			'ver'    => $asset['version']
+		]);
 	}
 }

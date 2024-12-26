@@ -1,0 +1,37 @@
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./resources/css/core/button.css ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/* Button - Outline Style
+--------------------------------------------- */
+
+.wp-block-button.is-style-outline .wp-block-button__link {
+	border: none;
+	background-color: transparent;
+	outline: 2px solid currentColor;
+	outline-offset: -2px;
+	padding: 0.5em 1em;
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link:hover {
+	color: var(--wp--preset--color--main) !important;
+	outline-color: var(--wp--preset--color--main);
+}
+
+/* Button - Secondary Style
+--------------------------------------------- */
+
+.is-style-secondary-button .wp-element-button,
+.wp-block.is-style-secondary-button .wp-element-button {
+	background: var(--wp--preset--color--tertiary);
+	color: var(--wp--preset--color--main);
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.is-style-secondary-button:hover .wp-element-button,
+.wp-block.is-style-secondary-button:hover .wp-element-button {
+	background: var(--wp--preset--color--tertiary);
+	color: var(--wp--preset--color--main);
+}
+
+
+/*# sourceMappingURL=button.css.map*/

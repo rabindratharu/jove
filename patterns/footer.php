@@ -11,7 +11,6 @@
  * Inserter: true
  */
 ?>
-
 <!-- wp:group {"tagName":"footer","align":"full","className":"jove-footer","style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}},"spacing":{"padding":{"top":"64px","bottom":"48px"},"blockGap":"48px"}},"backgroundColor":"secondary","textColor":"base","layout":{"inherit":true,"type":"constrained"}} -->
 <footer
     class="wp-block-group alignfull jove-footer has-base-color has-secondary-background-color has-text-color has-background has-link-color"
@@ -226,23 +225,23 @@
                             <!-- wp:list {"className":"is-style-list-none"} -->
                             <ul class="wp-block-list is-style-list-none">
                                 <!-- wp:list-item -->
-                                <li>JoVE Core</li>
+                                <li><a href="#">JoVE Core</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li>JoVE Business</li>
+                                <li><a href="#">JoVE Business</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li>JoVE Science Education</li>
+                                <li><a href="#">JoVE Science Education</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li>Faculty Resource Center</li>
+                                <li><a href="#">Faculty Resource Center</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li>Faculty Site</li>
+                                <li><a href="#">Faculty Site</a></li>
                                 <!-- /wp:list-item -->
                             </ul>
                             <!-- /wp:list -->
