@@ -7,52 +7,25 @@ import magnificPopup from "magnific-popup";
 		$(".jove-cta-video-btn a[href]").magnificPopup({
 			type: "iframe",
 			iframe: {
+				markup:
+					'<div class="mfp-iframe-scaler">' +
+					'<div class="mfp-close"></div>' +
+					'<iframe class="mfp-iframe" frameborder="0" allowfullscreen allow="autoplay *; fullscreen *"></iframe>' +
+					"</div>",
 				patterns: {
 					youtube: {
-						index: "youtu",
+						index: "youtube.com/",
 						id: function (url) {
-							const m = url.match(
-								/^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/,
-							);
+							var m = url.match(/[\\?\\&]v=([^\\?\\&]+)/);
 							if (!m || !m[1]) return null;
-
-							let start = 0;
-
-							if (url.indexOf("t=") != -1) {
-								const split = url.split("t=");
-								const hms = split[1]
-									.replace("h", ":")
-									.replace("m", ":")
-									.replace("s", "");
-								const a = hms.split(":");
-
-								if (a.length == 1) {
-									start = a[0];
-								} else if (a.length == 2) {
-									start = +a[0] * 60 + +a[1];
-								} else if (a.length == 3) {
-									start =
-										+a[0] * 60 * 60 + +a[1] * 60 + +a[2];
-								}
-							}
-
-							let suffix = "?autoplay=1";
-
-							if (start > 0) {
-								suffix = `?start=${start}&autoplay=1`;
-							}
-
-							console.log(
-								`Generated YouTube URL: https://www.youtube.com/embed/${m[1]}${suffix}`,
-							);
-							return m[1] + suffix;
+							return m[1];
 						},
-						src: "//www.youtube.com/embed/%id%",
+						src: "//www.youtube.com/embed/%id%?autoplay=1&iframe=true",
 					},
 					vimeo: {
 						index: "vimeo.com/",
 						id: function (url) {
-							const m = url.match(
+							var m = url.match(
 								/(https?:\/\/)?(www.)?(player.)?vimeo.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/,
 							);
 							if (!m || !m[5]) return null;

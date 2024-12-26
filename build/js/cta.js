@@ -19,33 +19,16 @@ __webpack_require__.r(__webpack_exports__);
     $(".jove-cta-video-btn a[href]").magnificPopup({
       type: "iframe",
       iframe: {
+        markup: '<div class="mfp-iframe-scaler">' + '<div class="mfp-close"></div>' + '<iframe class="mfp-iframe" frameborder="0" allowfullscreen allow="autoplay *; fullscreen *"></iframe>' + "</div>",
         patterns: {
           youtube: {
-            index: "youtu",
+            index: "youtube.com/",
             id: function id(url) {
-              var m = url.match(/^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/);
+              var m = url.match(/[\\?\\&]v=([^\\?\\&]+)/);
               if (!m || !m[1]) return null;
-              var start = 0;
-              if (url.indexOf("t=") != -1) {
-                var split = url.split("t=");
-                var hms = split[1].replace("h", ":").replace("m", ":").replace("s", "");
-                var a = hms.split(":");
-                if (a.length == 1) {
-                  start = a[0];
-                } else if (a.length == 2) {
-                  start = +a[0] * 60 + +a[1];
-                } else if (a.length == 3) {
-                  start = +a[0] * 60 * 60 + +a[1] * 60 + +a[2];
-                }
-              }
-              var suffix = "?autoplay=1";
-              if (start > 0) {
-                suffix = "?start=".concat(start, "&autoplay=1");
-              }
-              console.log("Generated YouTube URL: https://www.youtube.com/embed/".concat(m[1]).concat(suffix));
-              return m[1] + suffix;
+              return m[1];
             },
-            src: "//www.youtube.com/embed/%id%"
+            src: "//www.youtube.com/embed/%id%?autoplay=1&iframe=true"
           },
           vimeo: {
             index: "vimeo.com/",
