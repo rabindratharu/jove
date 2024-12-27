@@ -5,7 +5,7 @@
 	"description": "A custom inerative api notice block.",
 	"category": "formatting",
 	"icon": "format-gallery",
-	"keywords": ["toggle", "notice"],
+	"keywords": ["notice", "alert", "message"],
 	"acf": {
 		"mode": "preview",
 		"renderTemplate": "render.php"

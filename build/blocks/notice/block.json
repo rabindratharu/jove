@@ -6,8 +6,9 @@
   "category": "formatting",
   "icon": "format-gallery",
   "keywords": [
-    "toggle",
-    "notice"
+    "notice",
+    "alert",
+    "message"
   ],
   "acf": {
     "mode": "preview",

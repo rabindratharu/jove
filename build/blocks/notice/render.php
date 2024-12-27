@@ -23,16 +23,6 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= ' ' . $block['className'];
 }
 
-// Which blocks do we want to allow to be nested in InnerBlocks.
-$allowed_blocks = array(
-	'core/group',
-	'core/columns',
-	'core/column',
-	'core/heading',
-	'core/paragraph',
-	'core/cover',
-	'core/image'
-);
 /**
  * A template string of blocks.
  * Need help converting block HTML markup to an array?
@@ -42,46 +32,9 @@ $allowed_blocks = array(
  */
 $inner_blocks_template = [
 	[
-		'core/columns',
+		'core/paragraph',
 		[
-			"verticalAlignment" => "top",
-			"style" => [
-				"spacing" => [
-					"padding" => [
-					"top" => "var:preset|spacing|large",
-					"right" => "var:preset|spacing|0",
-					"bottom" => "var:preset|spacing|large",
-					"left" => "var:preset|spacing|0"
-					],
-					"blockGap" => [
-						"left" => "var:preset|spacing|large"
-					]
-				]
-			]
-		],
-		[
-			[
-				'core/column',
-				[
-					'verticalAlignment' => 'top',
-					'width'             => '',
-				],
-				[
-					[
-						'core/heading',
-						[
-							'level' => 2,
-							'content'  => 'What is JoVE Visualize?',
-						],
-					],
-					[
-						'core/paragraph',
-						[
-							'content'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.',
-						]
-					]
-				]
-			]
+			'content'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.',
 		]
 	]
 ];
@@ -103,7 +56,6 @@ $inner_blocks_template = [
      <div class="jove-notice-block">
          <div class="jove-notice-block__icon">Icon</div>
          <InnerBlocks class="jove-notice-block__innerblocks" orientation="horizontal"
-             allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>"
              template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
          <div class="jove-notice-block__close">Close</div>
 
