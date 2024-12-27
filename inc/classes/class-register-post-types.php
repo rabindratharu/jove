@@ -49,7 +49,7 @@ class Register_Post_Types {
      */
     public function register_post_types() {
 
-        if ( ! is_blog_installed() || post_type_exists( apply_filters('jove_author_slug', esc_html__('author', 'jove') ) ) ) {
+        if ( ! is_blog_installed() || post_type_exists( apply_filters('jove_slug', esc_html__('jove', 'jove') ) ) ) {
             return;
         }
 
@@ -127,18 +127,18 @@ class Register_Post_Types {
     public static function author_post_args() {
 
         return array(
-            'author'                    => array(
-                'menu_name'             => esc_html__('Authors', 'jove'),
-                'singular_name'         => esc_html__('Author', 'jove'),
-                'general_name'          => esc_html__('Authors', 'jove'),
-                'dashicon'              => 'dashicons-groups',
+            'jove'                    => array(
+                'menu_name'             => esc_html__('Joves', 'jove'),
+                'singular_name'         => esc_html__('Jove', 'jove'),
+                'general_name'          => esc_html__('Joves', 'jove'),
+                'dashicon'              => 'dashicons-video-alt',
                 'has_archive'           => false,
                 'exclude_from_search'   => true,
                 'show_in_nav_menus'     => true,
-                'show_in_menu'          => 'edit.php',
+                'show_in_menu'          => true,
                 'capability_type'       => 'post',
                 'supports'              => array('title', 'editor', 'excerpt', 'thumbnail', 'revisions'),
-                'rewrite'               => array('slug' => apply_filters('jove_author_slug', esc_html__('author', 'jove')),'with_front' => false),
+                'rewrite'               => array('slug' => apply_filters('jove_slug', esc_html__('jove', 'jove')),'with_front' => false),
             ),
         );
     }
@@ -239,13 +239,13 @@ class Register_Post_Types {
     public static function taxonomy_args() {
 
         return array(
-            // 'affiliation' => array(
-            //     'hierarchical'      => 'tag',
-            //     'slug'              => 'affiliation',
-            //     'singular_name'     => esc_html__('Affiliation', 'jove'),
-            //     'general_name'	    => esc_html__('Affiliations', 'jove'),
-            //     'post_type'         => array( 'author' ),
-			// ),
+            'author' => array(
+                'hierarchical'      => 'category',
+                'slug'              => 'author',
+                'singular_name'     => esc_html__('Author', 'jove'),
+                'general_name'	    => esc_html__('Authors', 'jove'),
+                'post_type'         => array( 'post' ),
+			),
 			'journal' => array(
                 'hierarchical'      => 'tag',
                 'slug'              => 'journal',
