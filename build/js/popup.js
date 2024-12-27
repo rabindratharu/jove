@@ -1,10 +1,10 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./resources/js/blocks/cta.js":
-/*!************************************!*\
-  !*** ./resources/js/blocks/cta.js ***!
-  \************************************/
+/***/ "./resources/js/blocks/popup.js":
+/*!**************************************!*\
+  !*** ./resources/js/blocks/popup.js ***!
+  \**************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16,7 +16,7 @@ __webpack_require__.r(__webpack_exports__);
 
 (function ($) {
   $(function () {
-    $(".jove-cta-video-btn a[href]").magnificPopup({
+    $(".jove-popup-video-btn a[href]").magnificPopup({
       type: "iframe",
       iframe: {
         markup: '<div class="mfp-iframe-scaler">' + '<div class="mfp-close"></div>' + '<iframe class="mfp-iframe" frameborder="0" allowfullscreen allow="autoplay *; fullscreen *"></iframe>' + "</div>",
@@ -2078,11 +2078,11 @@ var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 !function() {
 "use strict";
-/*!*****************************!*\
-  !*** ./resources/js/cta.js ***!
-  \*****************************/
+/*!*******************************!*\
+  !*** ./resources/js/popup.js ***!
+  \*******************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _blocks_cta__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/cta */ "./resources/js/blocks/cta.js");
+/* harmony import */ var _blocks_popup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/popup */ "./resources/js/blocks/popup.js");
 /**
  * Primary editor script. Imports all of the various features so that they can
  * be bundled into a final file during the build process.
@@ -2097,4 +2097,4 @@ __webpack_require__.r(__webpack_exports__);
 }();
 /******/ })()
 ;
-//# sourceMappingURL=cta.js.map
+//# sourceMappingURL=popup.js.map

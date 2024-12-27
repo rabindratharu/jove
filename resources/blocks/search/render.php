@@ -12,7 +12,7 @@
  */
 
 // acf data
-$file = get_field('video');
+$video = get_field('video');
 
 // Support custom id values.
 $block_id = wp_unique_prefixed_id( 'jove-block-id-' );
@@ -30,10 +30,8 @@ if ( ! empty( $block['className'] ) ) {
 $allowed_blocks = array(
 	'core/columns',
 	'core/column',
+	'core/search',
 	'core/heading',
-	'core/paragraph',
-	'core/cover',
-	'core/image'
 );
 
 /**
@@ -47,20 +45,20 @@ $inner_blocks_template = [
 	[
 		'core/columns',
 		[
-			"verticalAlignment" => "top",
-			"style" => [
-				"spacing" => [
-					"padding" => [
-					"top" => "var:preset|spacing|large",
-					"right" => "var:preset|spacing|0",
-					"bottom" => "var:preset|spacing|large",
-					"left" => "var:preset|spacing|0"
+			'verticalAlignment' => 'top',
+			'style' => [
+				'spacing' => [
+					'padding' => [
+						'top'    => 'var:preset|spacing|0',
+						'right'  => 'var:preset|spacing|large',
+						'bottom' => 'var:preset|spacing|0',
+						'left'   => 'var:preset|spacing|large',
 					],
-					"blockGap" => [
-						"left" => "var:preset|spacing|large"
-					]
-				]
-			]
+					'blockGap' => [
+						'left' => 'var:preset|spacing|large',
+					],
+				],
+			],
 		],
 		[
 			[
@@ -71,60 +69,25 @@ $inner_blocks_template = [
 				],
 				[
 					[
+						'core/search',
+						[
+							'placeholder' => '| Search from 37,123,123 articles in science research',
+							'buttonText'  => 'Search',
+						],
+					],
+					[
 						'core/heading',
 						[
-							'level' => 2,
-							'content'  => 'What is JoVE Visualize?',
+							'className'       => 'jove-popup-video-btn',
+							'content'         => '<a href="'.esc_url($video).'">What is JoVE Visualize?</a>',
 						],
 					],
-					[
-						'core/paragraph',
-						[
-							'content'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.',
-						]
-					]
-				]
-			],
-			[
-				'core/column',
-				[
-					'verticalAlignment' => 'top',
-					'width'             => '',
 				],
-				[
-					[
-						'core/cover',
-						[
-							'customOverlayColor' => '#b8d9ff',
-							'isUserOverlayColor' => true,
-							'isDark'			 => false,
-							'style' => [
-								"border" => [
-									"radius" => "8px"
-								]
-							],
-							"layout" => [
-								"type" => "constrained"
-							]
-						],
-						[
-							[
-								'core/image',
-								[
-									'align' => 'center',
-									'className' => 'jove-popup-video-btn',
-									'url' => JOVE_BUILD_URI . '/media/svg/play.svg',
-									'linkDestination' => 'custom',
-									'href' => esc_url( $file ), // Add your custom link here
-								]
-							]
-						]
-					],
-				]
-			]
-		]
-	]
+			],
+		],
+	],
 ];
+
 ?>
 
  <?php if ( ! $is_preview ) { ?>
@@ -140,8 +103,8 @@ $inner_blocks_template = [
 		?>>
      <?php } ?>
 
-     <div class="jove-cta-block">
-         <InnerBlocks class="jove-cta-block__innerblocks" orientation="horizontal"
+     <div class="jove-search-block">
+         <InnerBlocks class="jove-search-block__innerblocks" orientation="horizontal"
              allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>"
              template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
 

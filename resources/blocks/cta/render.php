@@ -112,7 +112,7 @@ $inner_blocks_template = [
 								'core/image',
 								[
 									'align' => 'center',
-									'className' => 'jove-cta-video-btn',
+									'className' => 'jove-popup-video-btn',
 									'url' => JOVE_BUILD_URI . '/media/svg/play.svg',
 									'linkDestination' => 'custom',
 									'href' => esc_url( $file ), // Add your custom link here

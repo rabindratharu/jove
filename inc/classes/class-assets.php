@@ -80,6 +80,17 @@ class Assets {
 			'all'
 		);
 
+		wp_register_style(
+			'popup-css',
+			JOVE_BUILD_URI . '/css/popup.css',
+			// Dependencies.
+			[],
+			// Version.
+			filemtime( JOVE_BUILD_PATH . '/css/popup.css' ),
+			// Media.
+			'all'
+		);
+
 		// Enqueue the stylesheet.
 		wp_enqueue_style( 'public-css' );
 
@@ -133,6 +144,19 @@ class Assets {
 			['public-js'],
 			// Version.
 			filemtime( JOVE_BUILD_PATH . '/js/search.js' ),
+			// Enqueue in footer.
+			true
+		);
+
+		wp_register_script(
+			// Handle.
+			'popup-js',
+			// Source.
+			JOVE_BUILD_URI . '/js/popup.js',
+			// Dependencies.
+			['jquery'],
+			// Version.
+			filemtime( JOVE_BUILD_PATH . '/js/popup.js' ),
 			// Enqueue in footer.
 			true
 		);

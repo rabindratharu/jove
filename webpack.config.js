@@ -66,7 +66,8 @@ module.exports = {
 				"resources/js",
 				"search.js",
 			),
-			"js/cta": path.resolve(process.cwd(), "resources/js", "cta.js"),
+
+			"js/popup": path.resolve(process.cwd(), "resources/js", "popup.js"),
 
 			"css/public": path.resolve(
 				process.cwd(),
@@ -78,7 +79,12 @@ module.exports = {
 				"resources/css",
 				"search.css",
 			),
-			"css/cta": path.resolve(process.cwd(), "resources/css", "cta.css"),
+			"css/popup": path.resolve(
+				process.cwd(),
+				"resources/css",
+				"popup.css",
+			),
+
 			"css/hero": path.resolve(
 				process.cwd(),
 				"resources/css",

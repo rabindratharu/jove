@@ -25,14 +25,9 @@ class Jove {
 		// Instantiate necessary classes.
 		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$assets = Assets::get_instance();
-		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$blocks = Blocks::get_instance();
-		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-		$post_types = Register_Taxonomies::get_instance();
-		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+		$post_types	= Register_Post_Types::get_instance();
 		$seach_api = Search_Api::get_instance();
-
-		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$api_data = Api_Data_Loader::get_instance();
 
 		// Set up WordPress hooks.

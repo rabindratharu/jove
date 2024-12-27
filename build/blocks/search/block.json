@@ -1,12 +1,12 @@
 {
-  "name": "acf/cta",
+  "name": "acf/search",
   "apiVersion": "2",
-  "title": "Jove: CTA Block",
-  "description": "A custom call to action block with popup video.",
+  "title": "Jove: Search Block",
+  "description": "A search block with popup video.",
   "category": "formatting",
   "icon": "format-gallery",
   "keywords": [
-    "cta",
+    "search",
     "popup",
     "video"
   ],

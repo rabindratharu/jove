@@ -4,7 +4,7 @@ import magnificPopup from "magnific-popup";
 
 (function ($) {
 	$(function () {
-		$(".jove-cta-video-btn a[href]").magnificPopup({
+		$(".jove-popup-video-btn a[href]").magnificPopup({
 			type: "iframe",
 			iframe: {
 				markup:

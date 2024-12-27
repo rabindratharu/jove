@@ -35,8 +35,8 @@
                 class="wp-block-cover__background has-background-dim-100 has-background-dim"
                 style="background-color:#b8d9ff"></span>
             <div class="wp-block-cover__inner-container">
-                <!-- wp:image {"lightbox":{"enabled":false},"linkDestination":"custom","align":"center","className":"jove-cta-video-btn"} -->
-                <figure class="wp-block-image aligncenter jove-cta-video-btn"><a
+                <!-- wp:image {"lightbox":{"enabled":false},"linkDestination":"custom","align":"center","className":"jove-popup-video-btn"} -->
+                <figure class="wp-block-image aligncenter jove-popup-video-btn"><a
                         href="https://www.youtube.com/watch?v=-g32OQG2Kdg"><img
                             src="<?php echo esc_url( JOVE_BUILD_URI ); ?>/media/svg/play.svg" alt="" /></a>
                 </figure>

@@ -60,6 +60,7 @@ class Blocks {
 		register_block_type( JOVE_BUILD_PATH . '/blocks/hero/block.json' );
 		register_block_type( JOVE_BUILD_PATH . '/blocks/cta/block.json' );
 		register_block_type( JOVE_BUILD_PATH . '/blocks/divider/block.json' );
+		register_block_type( JOVE_BUILD_PATH . '/blocks/search/block.json' );
 	}
 
 	/**
