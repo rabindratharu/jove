@@ -1,0 +1,29 @@
+{
+	"name": "acf/notice",
+	"apiVersion": "2",
+	"title": "Jove: Notice Block",
+	"description": "A custom inerative api notice block.",
+	"category": "formatting",
+	"icon": "format-gallery",
+	"keywords": ["toggle", "notice"],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "wide"
+		}
+	},
+	"supports": {
+		"align": ["full", "wide"],
+		"anchor": true,
+		"className": true,
+		"color": {
+			"background": true
+		},
+		"mode": false
+	},
+	"viewScript": ["file:./../../js/notice.js"]
+}
