@@ -79,12 +79,16 @@ module.exports = {
 				"resources/css",
 				"search.css",
 			),
+			"css/filter": path.resolve(
+				process.cwd(),
+				"resources/css",
+				"filter.css",
+			),
 			"css/popup": path.resolve(
 				process.cwd(),
 				"resources/css",
 				"popup.css",
 			),
-
 			"css/hero": path.resolve(
 				process.cwd(),
 				"resources/css",

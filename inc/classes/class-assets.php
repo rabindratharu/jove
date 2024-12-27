@@ -68,14 +68,14 @@ class Assets {
 			'all'
 		);
 
-		// Register the theme's search stylesheet.
+		// Register the theme's filter stylesheet.
 		wp_register_style(
-			'search-css',
-			JOVE_BUILD_URI . '/css/search.css',
+			'filter-css',
+			JOVE_BUILD_URI . '/css/filter.css',
 			// Dependencies.
 			[],
 			// Version.
-			filemtime( JOVE_BUILD_PATH . '/css/search.css' ),
+			filemtime( JOVE_BUILD_PATH . '/css/filter.css' ),
 			// Media.
 			'all'
 		);
@@ -96,7 +96,7 @@ class Assets {
 
 		// If search page.
 		if ( is_search() ) {
-			wp_enqueue_style( 'search-css' );
+			wp_enqueue_style( 'filter-css' );
 		}
 
 		/*

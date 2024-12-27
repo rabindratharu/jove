@@ -33,7 +33,8 @@
     "mode": false
   },
   "style": [
-    "popup-css"
+    "popup-css",
+    "file:./../../css/search.css"
   ],
   "viewScript": [
     "popup-js"

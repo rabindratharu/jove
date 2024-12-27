@@ -168,6 +168,12 @@ ol.is-style-list-inline-sept li:first-child::before,
 ul.is-style-list-inline-sept li:first-child::before {
 	display: none;
 }
+@media only screen and (max-width: 479px) {
+	ol.is-style-list-inline-sept li::before,
+	ul.is-style-list-inline-sept li::before {
+		top: 7px;
+	}
+}
 
 
 /*# sourceMappingURL=list.css.map*/

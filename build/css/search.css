@@ -1,205 +1,88 @@
 /*!**************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./resources/css/search.css ***!
   \**************************************************************************************************************************************************************************************************************/
-/**
- * Checkbox Accordion.
- */
-.checkbox-accordion {
-	display: block;
-	position: relative;
-	padding: 12px 10px 12px 0;
-	border-top: 1px solid lightgrey;
+.jove-search-block {
+	background: rgba(255, 255, 255, 1);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(rgba(255, 255, 255, 1)),
+		color-stop(43%, rgba(221, 237, 255, 1)),
+		to(rgba(233, 244, 255, 1))
+	);
+	background: linear-gradient(
+		to bottom,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(221, 237, 255, 1) 43%,
+		rgba(233, 244, 255, 1) 100%
+	);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e9f4ff', GradientType=0 );
+	padding: 32px 0 31px;
 }
-.checkbox-accordion:last-child {
-	border-bottom: 1px solid lightgrey;
+.jove-search-block .jove-search-block__innerblocks {
+	padding: 0 32px;
 }
-.checkbox-accordion__handle {
-	color: dodgerblue;
-	cursor: pointer;
-	font-weight: 500;
-	text-transform: uppercase;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	    -ms-flex-align: center;
-	        align-items: center;
-	-webkit-box-pack: justify;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
-	-webkit-transition-property: all;
-	transition-property: all;
-	-webkit-transition-duration: 0.6s;
-	        transition-duration: 0.6s;
-	-webkit-transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
-	        transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
-}
-@media (hover: hover) {
-	.checkbox-accordion__handle:hover {
-		color: dodgerblue;
-	}
-}
-.checkbox-accordion__handle-icon {
-	display: inline-block;
-	border-right: 3px solid cornflowerblue;
-	border-bottom: 3px solid cornflowerblue;
-	width: 10px;
-	height: 10px;
-	-webkit-transform: rotate(-315deg);
-	    -ms-transform: rotate(-315deg);
-	        transform: rotate(-315deg);
-	-webkit-transition-property: all;
-	transition-property: all;
-	-webkit-transition-duration: 0.6s;
-	        transition-duration: 0.6s;
-	-webkit-transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
-	        transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
-}
-@media (hover: hover) {
-	.checkbox-accordion__handle:hover .checkbox-accordion__handle-icon {
-		opacity: 1;
-	}
-}
-.checkbox-accordion[active] .checkbox-accordion__handle-icon {
-	-webkit-transform: rotate(-135deg);
-	    -ms-transform: rotate(-135deg);
-	        transform: rotate(-135deg);
-}
-.checkbox-accordion__handle-text {
-	padding-right: 10px;
-	line-height: 1.5;
-	font-weight: 350;
-}
-.checkbox-accordion__content {
-	height: 0;
-	overflow: hidden;
-	display: block;
-	-webkit-transition-property: all;
-	transition-property: all;
-	-webkit-transition-duration: 0.6s;
-	        transition-duration: 0.6s;
-	-webkit-transition-timing-function: var(--ease-in-out-quart);
-	        transition-timing-function: var(--ease-in-out-quart);
-}
-.checkbox-accordion__child {
-	display: block;
-}
-.checkbox-accordion__child > .checkbox-accordion__child-content {
-	padding: 0 0 0 19px;
-	height: 0;
-	overflow: hidden;
-	-webkit-transition-property: all;
-	transition-property: all;
-	-webkit-transition-duration: 0.6s;
-	        transition-duration: 0.6s;
-	-webkit-transition-timing-function: var(--ease-in-out-quart);
-	        transition-timing-function: var(--ease-in-out-quart);
-}
-.checkbox-accordion__child-handle-icon {
-	display: inline-block;
-	cursor: pointer;
-	border-right: 3px solid cornflowerblue;
-	border-bottom: 3px solid cornflowerblue;
-	width: 10px;
-	height: 10px;
-	-webkit-transform: rotate(-315deg);
-	    -ms-transform: rotate(-315deg);
-	        transform: rotate(-315deg);
-	-webkit-transition-property: all;
-	transition-property: all;
-	-webkit-transition-duration: 0.6s;
-	        transition-duration: 0.6s;
-	-webkit-transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
-	        transition-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
-}
-.checkbox-accordion__child[active]
-	> .checkbox-accordion__child-handle
-	.checkbox-accordion__child-handle-icon {
-	-webkit-transform: rotate(-135deg);
-	    -ms-transform: rotate(-135deg);
-	        transform: rotate(-135deg);
-}
-.checkbox-accordion__child .checkbox-accordion__child-handle {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
-	-webkit-box-align: center;
-	    -ms-flex-align: center;
-	        align-items: center;
-}
-.checkbox-accordion__child .checkbox-accordion__child-handle.form-field {
-	margin-top: 16px;
-	padding-right: 2px;
-}
-@media (hover: hover) {
-	.checkbox-accordion__child .checkbox-accordion__child-handle:hover {
-		color: dodgerblue;
-	}
-	.checkbox-accordion__child
-		.checkbox-accordion__child-handle:hover
-		.checkbox-accordion__child
-		.checkbox-accordion__child-handle-icon {
-		opacity: 1;
-	}
-}
-.checkbox-accordion__child.checkbox-accordion__child--has-content[active]
-	> .checkbox-accordion__child-handle-icon
-	svg {
-	-webkit-transform: rotate(-180deg);
-	    -ms-transform: rotate(-180deg);
-	        transform: rotate(-180deg);
-	opacity: 1;
-}
-.checkbox-accordion__child label.checkbox {
-	-webkit-box-pack: start;
-	    -ms-flex-pack: start;
-	        justify-content: flex-start;
-}
-.checkbox-accordion__child .checkbox-text {
-	font-size: 15px;
-	font-weight: 300;
-	letter-spacing: 0.3px;
-	line-height: 1.6;
-	margin-left: 6px;
-}
-
-.jove-search {
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
-}
-
-.jove-results-count {
-	display: block;
-	padding-bottom: 20px;
-}
-
-.jove-loading-more {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
-	padding: 20px 0;
-}
-
-.clear-all-filters {
-	margin-bottom: 10px;
-	display: block;
-}
-
-.load-more-wrap {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
+.jove-search-block .jove-search-block__innerblocks > .wp-block-columns {
+	max-width: 865px;
 	margin: 0 auto;
+}
+.jove-search-block .wp-block-search__label {
+	display: none;
+}
+.jove-search-block .wp-block-heading {
+	margin-top: 11px;
+	line-height: 1.3;
+	font-size: 14px;
+}
+.jove-search-block .wp-block-heading a {
+	color: #2183ed;
+	font-weight: 400;
+}
+.jove-search-block .wp-block-heading a:hover {
+	color: #080b4b;
+}
+.jove-search-block .wp-block-search__inside-wrapper input {
+	height: 56px;
+	border-radius: 4px 0 0 4px;
+	border: 1px solid #2183ed;
+}
+.jove-search-block .wp-block-search__button {
+	background: #2183ed;
+	margin: 0;
+	min-width: 130px;
+	border-radius: 0 4px 4px 0;
+	-webkit-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+}
+.jove-search-block .wp-block-search__button:hover {
+	background: #080b4b;
+	-webkit-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+}
+
+@media only screen and (max-width: 767px) {
+	.jove-search-block .jove-search-block__innerblocks {
+		padding: 0 23px;
+	}
+}
+
+@media only screen and (max-width: 567px) {
+	.jove-search-block .wp-block-search__inside-wrapper input {
+		height: 52px;
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-width: 479px) {
+	.jove-search-block .wp-block-search__button {
+		min-width: 75px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.jove-hero-search-block .wp-block-search__inside-wrapper input {
+		padding-left: 9px;
+		padding-right: 9px;
+	}
 }
 
 

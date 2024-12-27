@@ -25,6 +25,6 @@
 		},
 		"mode": false
 	},
-	"style": ["popup-css"],
+	"style": ["popup-css", "file:./../../css/search.css"],
 	"viewScript": ["popup-js"]
 }
