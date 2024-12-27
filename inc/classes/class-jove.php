@@ -27,6 +27,7 @@ class Jove {
 		$assets = Assets::get_instance();
 		$blocks = Blocks::get_instance();
 		$post_types	= Register_Post_Types::get_instance();
+		$meta_boxes	= Meta_Boxes::get_instance();
 		$seach_api = Search_Api::get_instance();
 		$api_data = Api_Data_Loader::get_instance();
 
