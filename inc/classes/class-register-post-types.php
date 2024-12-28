@@ -66,8 +66,8 @@ class Register_Post_Types {
                 'attributes'            => esc_html__($value['singular_name'] . ' Attributes', 'jove'),
                 'parent_item_colon'     => esc_html__('Parent ' . $value['singular_name'] . ':', 'jove'),
                 'all_items'             => esc_html__($value['general_name'], 'jove'),
-                'add_new_item'          => esc_html__('Add New ' . $value['singular_name'], 'jove'),
-                'add_new'               => esc_html__('Add New', 'jove'),
+                'add_new_item'          => esc_html__('Add ' . $value['singular_name'], 'jove'),
+                'add_new'               => esc_html__('Add', 'jove'),
                 'new_item'              => esc_html__('New ' . $value['singular_name'], 'jove'),
                 'edit_item'             => esc_html__('Edit ' . $value['singular_name'], 'jove'),
                 'update_item'           => esc_html__('Update ' . $value['singular_name'], 'jove'),
@@ -127,18 +127,31 @@ class Register_Post_Types {
     public static function author_post_args() {
 
         return array(
-            'jove'                    => array(
-                'menu_name'             => esc_html__('Joves', 'jove'),
-                'singular_name'         => esc_html__('Jove', 'jove'),
-                'general_name'          => esc_html__('Joves', 'jove'),
-                'dashicon'              => 'dashicons-video-alt',
+            'video'                    => array(
+                'menu_name'             => esc_html__('Videos', 'jove'),
+                'singular_name'         => esc_html__('Video', 'jove'),
+                'general_name'          => esc_html__('Videos', 'jove'),
+                'dashicon'              => 'dashicons-video-alt3',
+                'has_archive'           => true,
+                'exclude_from_search'   => false,
+                'show_in_nav_menus'     => false,
+                'show_in_menu'          => true,
+                'capability_type'       => 'post',
+                'supports'              => array('title','editor','thumbnail','revisions','author','page-attributes','excerpt','comments'),
+                'rewrite'               => array('slug' => apply_filters('jove_video_slug', esc_html__('video', 'jove')), 'with_front' => false),
+            ),
+			'author'                    => array(
+                'menu_name'             => esc_html__('Authors', 'jove'),
+                'singular_name'         => esc_html__('Author', 'jove'),
+                'general_name'          => esc_html__('Authors', 'jove'),
+                'dashicon'              => 'dashicons-admin-users',
                 'has_archive'           => false,
                 'exclude_from_search'   => true,
                 'show_in_nav_menus'     => true,
-                'show_in_menu'          => true,
+                'show_in_menu' 			=> 'edit.php?post_type=video', // Makes it a submenu under 'Video'
                 'capability_type'       => 'post',
                 'supports'              => array('title', 'editor', 'excerpt', 'thumbnail', 'revisions'),
-                'rewrite'               => array('slug' => apply_filters('jove_slug', esc_html__('jove', 'jove')),'with_front' => false),
+                'rewrite'               => array('slug' => apply_filters('jove_author_slug', esc_html__('author', 'jove')),'with_front' => false),
             ),
         );
     }
@@ -173,7 +186,7 @@ class Register_Post_Types {
                         'parent_item_colon' => esc_html__( 'Parent ' . $value['general_name'] .':', 'jove' ),
                         'edit_item'         => esc_html__( 'Edit ' . $value['general_name'] , 'jove' ),
                         'update_item'       => esc_html__( 'Update '  . $value['general_name'] , 'jove' ),
-                        'add_new_item'      => esc_html__( 'Add New ' . $value['general_name'], 'jove' ),
+                        'add_new_item'      => esc_html__( 'Add ' . $value['general_name'], 'jove' ),
                         'new_item_name'     => esc_html__( 'New ' . $value['general_name'] .' Name', 'jove' ),
                         'menu_name'         => esc_html__( $value['general_name'], 'jove' ),
                     );
@@ -204,7 +217,7 @@ class Register_Post_Types {
                         'parent_item_colon'          => null,
                         'edit_item'                  => esc_html__( 'Edit ' .$value['singular_name'], 'jove' ),
                         'update_item'                => esc_html__( 'Update '. $value['singular_name'], 'jove' ),
-                        'add_new_item'               => esc_html__( 'Add New ' .$value['singular_name'], 'jove' ),
+                        'add_new_item'               => esc_html__( 'Add ' .$value['singular_name'], 'jove' ),
                         'new_item_name'              => esc_html__( 'New ' . $value['singular_name'] . ' Name', 'jove' ),
                         'separate_items_with_commas' => esc_html__( 'Separate ' . strtolower($value['general_name'] ) . ' with commas', 'jove' ),
                         'add_or_remove_items'        => esc_html__( 'Add or remove ' . strtolower($value['general_name'] ), 'jove' ),
@@ -239,20 +252,34 @@ class Register_Post_Types {
     public static function taxonomy_args() {
 
         return array(
-            'author' => array(
-                'hierarchical'      => 'category',
-                'slug'              => 'author',
-                'singular_name'     => esc_html__('Author', 'jove'),
-                'general_name'	    => esc_html__('Authors', 'jove'),
-                'post_type'         => array( 'post' ),
-			),
 			'journal' => array(
                 'hierarchical'      => 'tag',
                 'slug'              => 'journal',
                 'singular_name'     => esc_html__('Journal', 'jove'),
                 'general_name'	    => esc_html__('Journals', 'jove'),
-                'post_type'         => array( 'post' ),
-            )
+                'post_type'         => array( 'video' ),
+            ),
+			'keyword' => array(
+                'hierarchical'      => 'tag',
+                'slug'              => 'keyword',
+                'singular_name'     => esc_html__('Keyword', 'jove'),
+                'general_name'	    => esc_html__('Keywords', 'jove'),
+                'post_type'         => array( 'video' ),
+            ),
+			'institution' => array(
+                'hierarchical'      => 'category',
+                'slug'              => 'institution',
+                'singular_name'     => esc_html__('Institution', 'jove'),
+                'general_name'	    => esc_html__('Institutions', 'jove'),
+                'post_type'         => array( 'author' ),
+            ),
+			'affiliation' => array(
+                'hierarchical'      => 'tag',
+                'slug'              => 'affiliation',
+                'singular_name'     => esc_html__('Affiliation', 'jove'),
+                'general_name'	    => esc_html__('Affiliations', 'jove'),
+                'post_type'         => array( 'author' ),
+            ),
         );
     }
 }
