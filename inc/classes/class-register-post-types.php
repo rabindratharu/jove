@@ -137,7 +137,7 @@ class Register_Post_Types {
                 'show_in_nav_menus'     => false,
                 'show_in_menu'          => true,
                 'capability_type'       => 'post',
-                'supports'              => array('title','editor','thumbnail','revisions','author','page-attributes','excerpt','comments'),
+                'supports'              => array('title', 'editor', 'excerpt', 'thumbnail', 'revisions'),
                 'rewrite'               => array('slug' => apply_filters('jove_video_slug', esc_html__('video', 'jove')), 'with_front' => false),
             ),
 			'author'                    => array(

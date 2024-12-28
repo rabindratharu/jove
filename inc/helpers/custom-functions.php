@@ -445,3 +445,52 @@ function register_custom_post_type_under_posts() {
     ]);
 }
 //add_action('init', 'register_custom_post_type_under_posts');
+
+
+function jove_get_authors_affiliations_posts( $args ) {
+	if ( is_string( $args ) ) {
+		$args = add_query_arg(
+			[
+				'suppress_filters' => false,
+			]
+		);
+	} elseif ( is_array( $args ) && ! isset( $args['suppress_filters'] ) ) {
+		$args['suppress_filters'] = false;
+	}
+
+	// WP_Query to fetch the post
+	$items 		= [];
+	$the_query 	= new WP_Query( $args );
+
+	if ($the_query->have_posts()) {
+		while ($the_query->have_posts()) { $the_query->the_post();
+			$post_id = get_the_ID();
+			$items[$post_id]['title'] = get_the_title();
+			$items[$post_id]['url']   = get_the_permalink();
+			// Get all taxonomies associated with this post type
+			$taxonomies = get_object_taxonomies('author', 'names');
+			foreach ($taxonomies as $taxonomy) {
+				$terms = get_the_terms(get_the_ID(), $taxonomy);
+				if ($terms && !is_wp_error($terms)) {
+					foreach ($terms as $key => $term) {
+						// echo '<pre>'; print_r($term); echo '</pre>';
+
+						$items[$post_id][$taxonomy][$term->term_id] = $term->name;
+
+						// if ( $taxonomy == 'affiliation' ) {
+						// 	$items[$post_id][$taxonomy][$term->term_id] = $term->name;
+						// }
+						// else {
+						// 	$items[$post_id][$taxonomy][$term->term_id]['name'] = $term->name;
+						// 	$items[$post_id][$taxonomy][$term->term_id]['url'] = get_term_link($term->slug, $taxonomy);
+						// }
+					}
+				}
+			}
+		}
+	}
+	// Reset post data
+	wp_reset_postdata();
+
+	return $items;
+}
