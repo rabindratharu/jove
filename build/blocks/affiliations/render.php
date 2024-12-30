@@ -54,48 +54,45 @@ $inner_blocks_template = [
      <?php } ?>
 
      <?php if ( is_single() && 'video' === get_post_type()) {
-		$post_id = get_the_ID(); // Get the current post ID
-        // Get block fields
-		$authors 	= get_field('authors', $post_id);
-        $video_url 	= get_field('video_url', $post_id);
-
-		$authors_data = jove_get_authors_affiliations_posts([
-			'post_type' => 'author',
-			'post__id' => $authors
-		]);
-
-		if ( ! empty( $authors_data ) ) {
-			foreach ( $authors_data as $key => $author ) {
-
-			}
-		}
-
+		$post_id 	= get_the_ID(); // Get the current post ID
+		$items 		= get_field('authors_affiliation', $post_id);
+		$video		= get_field('video_url', $post_id);
         ?>
-     <div class="jove-affiliations-block" style="background: red;">
+     <div class="jove-authors-affiliations-block" style="background: red;">
          <?php
-		 // Get all taxonomies associated with this post type
-		$authors = get_the_terms(get_the_ID(), 'author');
-		if ($authors && !is_wp_error($authors)) {
+		 $data = [];
+		 if ( ! empty( $items ) ) {
+			foreach ( $items as $key => $value ) { $key++;
+				if ( $value['affiliation'] ) {
+					$data[$key]['affiliation'] = $value['affiliation']->description ? $value['affiliation']->description : $value['affiliation']->name;
+				}
+				if ( $value['authors'] ) {
+					$data[$key]['authors']	= array_map(function ($term) {
+												return $term->name;
+											}, $value['authors']);
+				}
 
-			echo '<ul class="jove-affiliations-block__authors">';
-			foreach ($authors as $author) {
-				echo '<li><a href="' . esc_url( get_term_link($author->slug, 'author') ) . '" rel="author">';
-				echo esc_html($author->name );
-				echo '</a></li>';
 			}
-			echo '</ul>';
 		}
-		$institutions = get_the_terms(get_the_ID(), 'institution');
-		if ($institutions && !is_wp_error($institutions)) {
-			echo '<ul class="jove-affiliations-block__institutions">';
-			foreach ($institutions as $institution) {
-				$name = ( isset($institution->description) && $institution->description ) ? $institution->description : $institution->name;
-			//echo '<pre>'; print_r($institution); echo '</pre>';
-				echo '<li><a href="' . esc_url( get_term_link($institution->slug, 'institution') ) . '" rel="institution">';
-				echo esc_html( $name );
-				echo '</a></li>';
+
+		if ( ! empty( $data ) ) {
+
+			$authors = wp_list_pluck( $data, 'authors' );
+			if ( ! empty( $authors ) ) {
+				echo '<ul class="jove-authors-affiliations-block__author-list">';
+					foreach ( $authors as $key => $value ) {
+						echo '<li>' . implode('<sub>'.$key.'</sub>, ', $value) . '<sub>'.$key.'</sub></li>';
+					}
+				echo '</ul>';
 			}
-			echo '</ul>';
+			$affiliation = wp_list_pluck( $data, 'affiliation' );
+			if ( ! empty( $affiliation ) ) {
+				echo '<ul class="jove-authors-affiliations-block__affiliation-list">';
+					foreach ( $affiliation as $key => $value ) {
+						echo '<li><sub>'.$key.'</sub>' . $value . '</li>';
+					}
+				echo '</ul>';
+			}
 		}
 
 		?>

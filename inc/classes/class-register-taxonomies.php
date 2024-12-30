@@ -147,14 +147,14 @@ class Register_Taxonomies {
 
         return array(
 			'author' => array(
-                'hierarchical'      => 'category',
+                'hierarchical'      => 'tag',
                 'slug'              => 'author',
                 'singular_name'     => esc_html__('Author', 'jove'),
                 'general_name'	    => esc_html__('Authors', 'jove'),
                 'post_type'         => array( 'video' ),
             ),
 			'institution' => array(
-                'hierarchical'      => 'category',
+                'hierarchical'      => 'tag',
                 'slug'              => 'institution',
                 'singular_name'     => esc_html__('Institution', 'jove'),
                 'general_name'	    => esc_html__('Institutions', 'jove'),
