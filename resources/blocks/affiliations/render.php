@@ -96,10 +96,6 @@ $inner_blocks_template = [
 		}
 
 		?>
-
-
-         <InnerBlocks class="jove-affiliations-block__innerblocks" orientation="horizontal"
-             template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
      </div>
 
      <?php } ?>
