@@ -11,6 +11,7 @@
  * Inserter: true
  */
 ?>
+
 <!-- wp:group {"tagName":"footer","align":"full","className":"jove-footer","style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}},"spacing":{"padding":{"top":"64px","bottom":"48px"},"blockGap":"48px"}},"backgroundColor":"secondary","textColor":"base","layout":{"inherit":true,"type":"constrained"}} -->
 <footer
     class="wp-block-group alignfull jove-footer has-base-color has-secondary-background-color has-text-color has-background has-link-color"
@@ -69,19 +70,19 @@
                             <!-- wp:list {"className":"is-style-list-none"} -->
                             <ul class="wp-block-list is-style-list-none">
                                 <!-- wp:list-item -->
-                                <li><a href="#">Overview</a></li>
+                                <li><a href="https://www.jove.com/about">Overview</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Leadership</a></li>
+                                <li><a href="https://www.jove.com/about/leadership/">Leadership</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Blog</a></li>
+                                <li><a href="https://blog.jove.com/">Blog</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">JoVE Help Center</a></li>
+                                <li><a href="http://myjove.zendesk.com/">JoVE Help Center</a></li>
                                 <!-- /wp:list-item -->
                             </ul>
                             <!-- /wp:list -->
@@ -102,27 +103,28 @@
                             <!-- wp:list {"className":"is-style-list-none"} -->
                             <ul class="wp-block-list is-style-list-none">
                                 <!-- wp:list-item -->
-                                <li><a href="#">Publishing Process</a></li>
+                                <li><a href="https://www.jove.com/authors/publication">Publishing Process</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Editorial Board</a></li>
+                                <li><a href="https://www.jove.com/authors/editorial-board">Editorial Board</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Scope &amp; Policies</a></li>
+                                <li><a href="https://www.jove.com/authors/editorial-policies">Scope &amp; Policies</a>
+                                </li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Peer Review</a></li>
+                                <li><a href="https://www.jove.com/authors/peer-review">Peer Review</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">FAQ</a></li>
+                                <li><a href="https://www.jove.com/authors/faq">FAQ</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Submit</a></li>
+                                <li><a href="https://www.jove.com/authors/submit">Submit</a></li>
                                 <!-- /wp:list-item -->
                             </ul>
                             <!-- /wp:list -->
@@ -143,27 +145,28 @@
                             <!-- wp:list {"className":"is-style-list-none"} -->
                             <ul class="wp-block-list is-style-list-none">
                                 <!-- wp:list-item -->
-                                <li><a href="#">Testimonials</a></li>
+                                <li><a href="https://www.jove.com/librarians/testimonials">Testimonials</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Subscriptions</a></li>
+                                <li><a href="https://www.jove.com/librarians/subscriptions">Subscriptions</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Access</a></li>
+                                <li><a href="https://www.jove.com/access">Access</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Resources</a></li>
+                                <li><a href="https://www.jove.com/librarians/resources">Resources</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Library Advisory Board</a></li>
+                                <li><a href="https://www.jove.com/librarians/advisory-board">Library Advisory Board</a>
+                                </li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">FAQ</a></li>
+                                <li><a href="https://www.jove.com/librarians/faq">FAQ</a></li>
                                 <!-- /wp:list-item -->
                             </ul>
                             <!-- /wp:list -->
@@ -192,19 +195,25 @@
                             <!-- wp:list {"className":"is-style-list-none"} -->
                             <ul class="wp-block-list is-style-list-none">
                                 <!-- wp:list-item -->
-                                <li><a href="#">JoVE Journal</a></li>
+                                <li><a href="https://www.jove.com/journal">JoVE Journal</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Methods Collections</a></li>
+                                <li><a href="https://www.jove.com/methods-collections">Methods Collections</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">JoVE Encyclopedia of Experiments</a></li>
+                                <li><a href="https://www.jove.com/encyclopedia-of-experiments">JoVE Encyclopedia of
+                                        Experiments</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Archive</a></li>
+                                <li><a href="https://www.jove.com/encyclopedia-of-experiments">JoVE Encyclopedia of
+                                        Experiments</a></li>
+                                <!-- /wp:list-item -->
+
+                                <!-- wp:list-item -->
+                                <li><a href="https://www.jove.com/archive">Archive</a></li>
                                 <!-- /wp:list-item -->
                             </ul>
                             <!-- /wp:list -->
@@ -216,6 +225,7 @@
                     <!-- wp:column {"layout":{"type":"constrained"}} -->
                     <div class="wp-block-column">
                         <!-- wp:group {"style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"constrained"}} -->
+
                         <div class="wp-block-group">
                             <!-- wp:heading {"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}},"fontSize":"base"} -->
                             <h2 class="wp-block-heading has-base-font-size" style="font-style:normal;font-weight:700">
@@ -225,23 +235,28 @@
                             <!-- wp:list {"className":"is-style-list-none"} -->
                             <ul class="wp-block-list is-style-list-none">
                                 <!-- wp:list-item -->
-                                <li><a href="#">JoVE Core</a></li>
+                                <li><a href="https://www.jove.com/education/core">JoVE Core</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">JoVE Business</a></li>
+                                <li><a href="https://www.jove.com/business">JoVE Business</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">JoVE Science Education</a></li>
+                                <li><a href="https://www.jove.com/science-education-library">JoVE Science Education</a>
+                                </li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Faculty Resource Center</a></li>
+                                <li><a href="https://www.jove.com/education/lab-manual">JoVE Lab Manual</a></li>
                                 <!-- /wp:list-item -->
 
                                 <!-- wp:list-item -->
-                                <li><a href="#">Faculty Site</a></li>
+                                <li><a href="https://www.jove.com/facultyresources">Faculty Resource Center</a></li>
+                                <!-- /wp:list-item -->
+
+                                <!-- wp:list-item -->
+                                <li><a href="https://www.jove.com/course-solutions">Faculty Site</a></li>
                                 <!-- /wp:list-item -->
                             </ul>
                             <!-- /wp:list -->
@@ -263,19 +278,21 @@
         <!-- wp:list {"className":"is-style-list-inline-sept"} -->
         <ul class="wp-block-list is-style-list-inline-sept">
             <!-- wp:list-item -->
-            <li><a href="#">Terms &amp; Conditions of Use</a></li>
+            <li><a href="https://app.jove.com/about/policies#step-2">Terms &amp; Conditions of Use</a></li>
             <!-- /wp:list-item -->
 
             <!-- wp:list-item -->
-            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="https://app.jove.com/about/policies">Privacy Policy</a></li>
             <!-- /wp:list-item -->
 
             <!-- wp:list-item -->
-            <li><a href="#">Policies</a></li>
+            <li><a href="https://app.jove.com/about/policies">Policies</a></li>
             <!-- /wp:list-item -->
         </ul>
         <!-- /wp:list -->
     </div>
-    <!-- /wp:group -->
+    <!-- /wp:group
+ -->
 </footer>
+
 <!-- /wp:group -->

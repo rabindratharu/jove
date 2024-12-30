@@ -74,6 +74,7 @@ module.exports = {
 				"resources/js",
 				"notice.js",
 			),
+			"js/share": path.resolve(process.cwd(), "resources/js", "share.js"),
 
 			"css/public": path.resolve(
 				process.cwd(),
