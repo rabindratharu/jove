@@ -72,36 +72,34 @@ $inner_blocks_template = [
 
         ?>
      <div class="jove-affiliations-block" style="background: red;">
+         <?php
+		 // Get all taxonomies associated with this post type
+		$authors = get_the_terms(get_the_ID(), 'author');
+		if ($authors && !is_wp_error($authors)) {
 
-         <?php if ( ! empty( $authors_data ) ) {
-			$affiliations = '';
-			$index = 1;
 			echo '<ul class="jove-affiliations-block__authors">';
-			foreach ( $authors_data as $key => $author ) {
-
-				// Get the term link
-				$term_id 	= array_key_first($author['institution']);
-				$term_link 	= get_term_link((int) $term_id, 'institution');
-
-				echo '<li><a href="' . esc_url( $author['url'] ) . '" rel="author">';
-				echo esc_html($author['title']);
-				echo '<sup>'.absint($index).'</sup></a></li>';
-
-				if ( !empty( $author['affiliation'] ) ) {
-
-					$affiliations .= '<li><a href="' . esc_url( $term_link ) . '"><sup>'.absint($index).'</sup>' . esc_html(implode(',',$author['affiliation'])) . '</a></li>';
-				}
-
-				$index++;
+			foreach ($authors as $author) {
+				echo '<li><a href="' . esc_url( get_term_link($author->slug, 'author') ) . '" rel="author">';
+				echo esc_html($author->name );
+				echo '</a></li>';
 			}
 			echo '</ul>';
-
-			if ( $affiliations !== '') {
-				echo '<ul class="jove-affiliations-block__affiliations">';
-				echo $affiliations;
-				echo '</ul>';
+		}
+		$institutions = get_the_terms(get_the_ID(), 'institution');
+		if ($institutions && !is_wp_error($institutions)) {
+			echo '<ul class="jove-affiliations-block__institutions">';
+			foreach ($institutions as $institution) {
+				$name = ( isset($institution->description) && $institution->description ) ? $institution->description : $institution->name;
+			//echo '<pre>'; print_r($institution); echo '</pre>';
+				echo '<li><a href="' . esc_url( get_term_link($institution->slug, 'institution') ) . '" rel="institution">';
+				echo esc_html( $name );
+				echo '</a></li>';
 			}
-		} ?>
+			echo '</ul>';
+		}
+
+		?>
+
 
          <InnerBlocks class="jove-affiliations-block__innerblocks" orientation="horizontal"
              template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />

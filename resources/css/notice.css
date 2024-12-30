@@ -1,0 +1,8 @@
+.jove-notice-block {
+	display: flex;
+	align-items: start;
+	gap: 10px;
+}
+.jove-notice-block .jove-notice-block__innerblocks > * {
+	margin: 0;
+}

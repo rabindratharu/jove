@@ -385,7 +385,7 @@ function modify_existing_taxonomy_labels( $args, $taxonomy ) {
 
     return $args;
 }
-add_filter( 'register_taxonomy_args', 'modify_existing_taxonomy_labels', 10, 2 );
+//add_filter( 'register_taxonomy_args', 'modify_existing_taxonomy_labels', 10, 2 );
 
 /**
  * Helper function to import the ACF field group if it doesn't exist.
@@ -423,28 +423,6 @@ function wpe_register_acf_fields() {
 add_action( 'acf/include_fields', 'wpe_register_acf_fields' );
 
 
-function register_custom_post_type_under_posts() {
-    register_post_type('your_custom_post_type', [
-        'labels' => [
-            'name'          => 'Custom Posts',
-            'singular_name' => 'Custom Post',
-            'add_new'       => 'Add New',
-            'add_new_item'  => 'Add New Custom Post',
-            'edit_item'     => 'Edit Custom Post',
-            'new_item'      => 'New Custom Post',
-            'view_item'     => 'View Custom Post',
-            'search_items'  => 'Search Custom Posts',
-            'not_found'     => 'No custom posts found.',
-            'not_found_in_trash' => 'No custom posts found in Trash.',
-        ],
-        'public'       => true,
-        'has_archive'  => true,
-        'show_in_rest' => true, // Optional: Enables Gutenberg and REST API support
-        'supports'     => ['title', 'editor', 'thumbnail', 'custom-fields', 'excerpt'],
-        'show_in_menu' => 'edit.php', // Places it under the "Posts" menu
-    ]);
-}
-//add_action('init', 'register_custom_post_type_under_posts');
 
 
 function jove_get_authors_affiliations_posts( $args ) {

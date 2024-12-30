@@ -40,98 +40,140 @@ class Register_Taxonomies {
 	 */
 	protected function setup_hooks() {
 		/**
-		 * Register the institution taxonomy.
+		 * Register the taxonomy.
 		 *
-		 * This action registers the institution taxonomy using the `create_author_taxonomy`
+		 * This action registers the taxonomy using the `register_taxonomies`
 		 * method.
 		 *
 		 * @since 1.0.0
 		 */
-		add_action( 'init', [ $this, 'create_author_taxonomy' ] );
-		/**
-		 * Register the year taxonomy.
-		 *
-		 * This action registers the year taxonomy using the `create_journal_taxonomy`
-		 * method.
-		 *
-		 * @since 1.0.0
-		 */
-		add_action( 'init', [ $this, 'create_journal_taxonomy' ] );
+		add_action( 'init', [ $this, 'register_taxonomies' ], 0 );
 	}
 
 	/**
-	 * Register the institution taxonomy.
-	 *
-	 * The institution taxonomy is used for organizing videos by institution.
-	 *
-	 * @since 1.0.0
-	 */
-	public function create_author_taxonomy() {
-		$labels = [
-			'name'              => _x( 'Authors', 'taxonomy general name', 'jove' ),
-			'singular_name'     => _x( 'Author', 'taxonomy singular name', 'jove' ),
-			'search_items'      => __( 'Search Authors', 'jove' ),
-			'all_items'         => __( 'All Authors', 'jove' ),
-			'parent_item'       => __( 'Parent Author', 'jove' ),
-			'parent_item_colon' => __( 'Parent Author:', 'jove' ),
-			'edit_item'         => __( 'Edit Author', 'jove' ),
-			'update_item'       => __( 'Update Author', 'jove' ),
-			'add_new_item'      => __( 'Add New Author', 'jove' ),
-			'new_item_name'     => __( 'New Author Name', 'jove' ),
-			'menu_name'         => __( 'Authors', 'jove' ),
-		];
-		$args = [
-			'labels'             => $labels,
-			'description'        => __( 'Author', 'jove' ),
-			'hierarchical'       => true,
-			'public'             => true,
-			'publicly_queryable' => true,
-			'show_ui'            => true,
-			'show_in_menu'       => true,
-			'show_in_nav_menus'  => true,
-			'show_tagcloud'      => true,
-			'show_in_quick_edit' => true,
-			'show_admin_column'  => true,
-			'show_in_rest'       => true,
-		];
-		register_taxonomy( 'authors', [ 'post' ], $args );
-	}
+     * Register a taxonomy, post_types_categories for the post types.
+     *
+     * @link https://codex.wordpress.org/Function_Reference/register_taxonomy
+     */
+    public function register_taxonomies() {
+
+        if ( ! is_blog_installed() ) {
+            return;
+        }
+
+        // Add new taxonomy, make it hierarchical
+        $custom_taxonomy_types = self::taxonomy_args();
+
+        if ( $custom_taxonomy_types ) {
+
+            foreach ( $custom_taxonomy_types as $key =>  $value ) {
+
+                if ( 'category' == $value['hierarchical'] ) {
+
+                    // Add new taxonomy, make it hierarchical (like categories)
+                    $labels = array(
+                        'name'              => esc_html_x( $value['general_name'], 'taxonomy general name', 'jove' ),
+                        'singular_name'     => esc_html_x( $value['singular_name'], 'taxonomy singular name', 'jove' ),
+                        'search_items'      => esc_html__( 'Search ' . $value['general_name'], 'jove' ),
+                        'all_items'         => esc_html__( 'All ' . $value['general_name'], 'jove' ),
+                        'parent_item'       => esc_html__( 'Parent ' . $value['general_name'], 'jove' ),
+                        'parent_item_colon' => esc_html__( 'Parent ' . $value['general_name'] .':', 'jove' ),
+                        'edit_item'         => esc_html__( 'Edit ' . $value['general_name'] , 'jove' ),
+                        'update_item'       => esc_html__( 'Update '  . $value['general_name'] , 'jove' ),
+                        'add_new_item'      => esc_html__( 'Add ' . $value['general_name'], 'jove' ),
+                        'new_item_name'     => esc_html__( 'New ' . $value['general_name'] .' Name', 'jove' ),
+                        'menu_name'         => esc_html__( $value['general_name'], 'jove' ),
+                    );
+
+                    $args = array(
+                        'hierarchical'      => true,
+                        'labels'            => $labels,
+                        'show_ui'           => true,
+                        'show_in_menu'      => 'jove',
+                        'show_admin_column' => true,
+                        'show_in_nav_menus' => true,
+                        'show_in_rest'      => true,
+                        'rewrite'           => array( 'slug' => $value['slug'], 'hierarchical' => true, 'with_front' => false ),
+                    );
+                    register_taxonomy( $key, $value['post_type'], $args );
+
+                }
+
+                if ( 'tag' == $value['hierarchical'] ) {
+
+                    $labels = array(
+                        'name'                       => esc_html_x( $value['general_name'], 'taxonomy general name', 'jove' ),
+                        'singular_name'              => esc_html_x( $value['singular_name'], 'taxonomy singular name', 'jove' ),
+                        'search_items'               => esc_html__( 'Search ' . $value['general_name'], 'jove' ),
+                        'popular_items'              => esc_html__( 'Popular ' .$value['general_name'], 'jove' ),
+                        'all_items'                  => esc_html__( 'All ' . $value['general_name'], 'jove' ),
+                        'parent_item'                => null,
+                        'parent_item_colon'          => null,
+                        'edit_item'                  => esc_html__( 'Edit ' .$value['singular_name'], 'jove' ),
+                        'update_item'                => esc_html__( 'Update '. $value['singular_name'], 'jove' ),
+                        'add_new_item'               => esc_html__( 'Add ' .$value['singular_name'], 'jove' ),
+                        'new_item_name'              => esc_html__( 'New ' . $value['singular_name'] . ' Name', 'jove' ),
+                        'separate_items_with_commas' => esc_html__( 'Separate ' . strtolower($value['general_name'] ) . ' with commas', 'jove' ),
+                        'add_or_remove_items'        => esc_html__( 'Add or remove ' . strtolower($value['general_name'] ), 'jove' ),
+                        'choose_from_most_used'      => esc_html__( 'Choose from the most used '. strtolower($value['general_name'] ), 'jove' ),
+                        'not_found'                  => esc_html__( 'No ' . strtolower($value['general_name'] ) . ' found.', 'jove' ),
+                        'menu_name'                  => esc_html__( $value['general_name'], 'jove' ),
+                    );
+
+                    $args = array(
+                        'hierarchical'      => false,
+                        'labels'            => $labels,
+                        'show_ui'           => true,
+                        'show_admin_column' => true,
+                        'show_in_nav_menus' => true,
+                        'show_in_rest'      => true,
+                        'rewrite'           => array( 'slug' => $value['slug'], 'hierarchical' => true, 'with_front' => false ),
+                    );
+                    register_taxonomy( $key, $value['post_type'], $args );
+
+                }
+
+            }
+
+        }
+    }
 
 	/**
-	 * Register the year taxonomy.
-	 *
-	 * The year taxonomy is used for organizing videos by their release year.
-	 *
-	 * @since 1.0.0
-	 */
-	public function create_journal_taxonomy() {
-		$labels = [
-			'name'              => _x( 'Journals', 'taxonomy general name', 'jove' ),
-			'singular_name'     => _x( 'Journal', 'taxonomy singular name', 'jove' ),
-			'search_items'      => __( 'Search Journals', 'jove' ),
-			'all_items'         => __( 'All Journals', 'jove' ),
-			'parent_item'       => __( 'Parent Journal', 'jove' ),
-			'parent_item_colon' => __( 'Parent Journal:', 'jove' ),
-			'edit_item'         => __( 'Edit Journal', 'jove' ),
-			'update_item'       => __( 'Update Journal', 'jove' ),
-			'add_new_item'      => __( 'Add New Journal', 'jove' ),
-			'new_item_name'     => __( 'New Journal Name', 'jove' ),
-			'menu_name'         => __( 'Journals', 'jove' ),
-		];
-		$args = [
-			'labels'             => $labels,
-			'description'        => __( 'Journal', 'jove' ),
-			'hierarchical'       => false,
-			'public'             => true,
-			'publicly_queryable' => true,
-			'show_ui'            => true,
-			'show_in_menu'       => true,
-			'show_in_nav_menus'  => true,
-			'show_tagcloud'      => true,
-			'show_in_quick_edit' => true,
-			'show_admin_column'  => true,
-			'show_in_rest'       => true,
-		];
-		register_taxonomy( 'journals', [ 'post' ], $args );
-	}
+     * Get taxonomy types arguments
+     *
+     * @return array of default settings
+     */
+    public static function taxonomy_args() {
+
+        return array(
+			'author' => array(
+                'hierarchical'      => 'category',
+                'slug'              => 'author',
+                'singular_name'     => esc_html__('Author', 'jove'),
+                'general_name'	    => esc_html__('Authors', 'jove'),
+                'post_type'         => array( 'video' ),
+            ),
+			'institution' => array(
+                'hierarchical'      => 'category',
+                'slug'              => 'institution',
+                'singular_name'     => esc_html__('Institution', 'jove'),
+                'general_name'	    => esc_html__('Institutions', 'jove'),
+                'post_type'         => array( 'video' ),
+            ),
+			'journal' => array(
+                'hierarchical'      => 'tag',
+                'slug'              => 'journal',
+                'singular_name'     => esc_html__('Journal', 'jove'),
+                'general_name'	    => esc_html__('Journals', 'jove'),
+                'post_type'         => array( 'video' ),
+            ),
+			'keyword' => array(
+                'hierarchical'      => 'tag',
+                'slug'              => 'keyword',
+                'singular_name'     => esc_html__('Keyword', 'jove'),
+                'general_name'	    => esc_html__('Keywords', 'jove'),
+                'post_type'         => array( 'video' ),
+            ),
+        );
+    }
 }

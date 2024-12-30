@@ -105,6 +105,11 @@ module.exports = {
 				"resources/css",
 				"divider.css",
 			),
+			"css/notice": path.resolve(
+				process.cwd(),
+				"resources/css",
+				"notice.css",
+			),
 		},
 		optimization: {
 			...defaultConfig.optimization,
