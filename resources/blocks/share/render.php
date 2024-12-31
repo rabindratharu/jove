@@ -25,22 +25,6 @@ $class_name = '';
 if ( ! empty( $block['className'] ) ) {
 	$class_name .= ' ' . $block['className'];
 }
-
-/**
- * A template string of blocks.
- * Need help converting block HTML markup to an array?
- * 👉 https://happyprime.github.io/wphtml-converter/
- *
- * @link https://developer.wordpress.org/block-editor/reference-guides/block-api/block-templates/
- */
-$inner_blocks_template = [
-	[
-		'core/paragraph',
-		[
-			'content'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.',
-		]
-	]
-];
 ?>
 
  <?php if ( ! $is_preview ) { ?>
@@ -56,8 +40,7 @@ $inner_blocks_template = [
 		?>>
      <?php } ?>
 
-     <div class="jove-social-share-block" style="background:yellow;">
-         Social share
+     <div class="jove-social-share-block">
          <ul>
              <li><a href="#popup-info" class="open-popup"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
