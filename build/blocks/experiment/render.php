@@ -58,6 +58,12 @@ $inner_blocks_template = [
          <InnerBlocks class="jove-experiment-video-block__innerblocks" orientation="horizontal"
              template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
 
+         <?php
+// 			 $post_id = get_the_ID();
+// $video_details = Jove\Inc\Utils::get_video_details_by_url( 'https://www.youtube.com/watch?v=-g32OQG2Kdg', $post_id );
+// echo '<pre>'; print_r($video_details); echo '</pre>';
+			 ?>
+
      </div>
      <?php if ( ! $is_preview ) { ?>
  </div>

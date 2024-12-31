@@ -1136,5 +1136,85 @@ hr.is-style-separator-dotted,
 	gap: 3px;
 }
 
+.jove-video-left-col .wp-block-post-title {
+	font-size: 24px;
+	color: #4b4b4b;
+	font-weight: 500;
+}
+.wp-block-acf-affiliations {
+	margin-top: 18px;
+}
+.wp-block-acf-affiliations ul {
+	padding: 0;
+	margin: 12px 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	gap: 6px;
+}
+.wp-block-acf-affiliations ul li {
+	list-style: none;
+	font-size: 14px;
+	color: #565656;
+}
+.wp-block-acf-affiliations .jove-authors-affiliations-block__author-list li {
+	color: #2183ed;
+}
+.wp-block-acf-affiliations ul li sub {
+	font-size: 10px;
+	position: relative;
+	top: -7px;
+	left: 0;
+	color: #4b4b4b;
+}
+.taxonomy-journal.wp-block-post-terms {
+	margin-top: 12px;
+}
+.taxonomy-journal a {
+	font-size: 14px;
+	color: #565656;
+}
+.wp-block-acf-share {
+	margin-top: 25px;
+}
+.wp-block-acf-share ul {
+	padding: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	gap: 20px;
+}
+.wp-block-acf-share svg {
+	width: 20px;
+	height: 20px;
+	color: #6c6c6a;
+}
+
+.jove-experiment-video-block__innerblocks
+	> .wp-block-group
+	> .wp-block-heading {
+	font-size: 20px;
+	text-align: center;
+	font-weight: 500;
+	color: #4b4b4b;
+	background: #daecff;
+	padding: 15px;
+	text-transform: capitalize;
+}
+.jove-notice-block__innerblocks p {
+	font-size: 14px;
+	color: #323232;
+}
+.jove-notice-block__innerblocks p a {
+	font-weight: 700;
+}
+.wp-block-acf-notice {
+	padding: 12px 16px;
+	background: #e4ecfa;
+	margin-bottom: 12px !important;
+}
+
 
 /*# sourceMappingURL=public.css.map*/

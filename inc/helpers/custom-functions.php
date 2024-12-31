@@ -406,13 +406,6 @@ function get_post_view($post_id) {
     return format_number_short($count);
 }
 
-*----------------------------------------------------------------------
-# Utility function to format the button count,
-# appending "K" if one thousand or greater,
-# "M" if one million or greater,
-# and "B" if one billion or greater (unlikely).
-# $precision = how many decimal points to display (1.25K)
--------------------------------------------------------------------------*/
 function format_number_short( $number ) {
 	$precision 		= 2;
 	if ( $number >= 1000 && $number < 1000000 ) {
