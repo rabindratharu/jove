@@ -1215,6 +1215,35 @@ hr.is-style-separator-dotted,
 	background: #e4ecfa;
 	margin-bottom: 12px !important;
 }
+.wp-block-acf-share ul li {
+	list-style: none;
+}
+.wp-block-acf-notice {
+	margin-top: 12px;
+}
+.jove-video-publish-date p {
+	font-size: 14px;
+	color: #adadad;
+}
+.jove-video-publish-date {
+	margin-top: 12px;
+	gap: 10px;
+}
+.jove-video-publish-date time {
+	font-size: 14px;
+	top: -2px;
+	position: relative;
+}
+.jove-video-abstract-details > .wp-block-heading {
+	font-size: 20px;
+	color: #4b4b4b;
+}
+.jove-video-abstract-details {
+	padding-top: 10px;
+}
+.jove-video-abstract-details > .entry-content {
+	margin-top: 20px;
+}
 
 
 /*# sourceMappingURL=public.css.map*/
