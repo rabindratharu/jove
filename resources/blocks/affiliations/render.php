@@ -63,17 +63,35 @@ if ( ! empty( $block['className'] ) ) {
 
 			$authors = wp_list_pluck( $data, 'authors' );
 			if ( ! empty( $authors ) ) {
+				// Get the total number of items in the array
+				$total_items = count($authors);
+				// Initialize a counter
+				$current_index = 0;
 				echo '<ul class="jove-authors-affiliations-block__author-list">';
-					foreach ( $authors as $key => $value ) {
-						echo '<li>' . implode('<sub>'.$key.'</sub>, ', $value) . '<sub>'.$key.'</sub></li>';
+					foreach ( $authors as $key => $value ) { $current_index++;
+						echo '<li>' . implode('<sub>'.$key.'</sub>, ', $value) . '<sub>'.$key.'</sub>';
+						// Perform actions for all items except the last one
+						if ($current_index !== $total_items) {
+							echo '<span class="jove-separator">,</span>';
+						}
+						echo '</li>';
 					}
 				echo '</ul>';
 			}
 			$affiliation = wp_list_pluck( $data, 'affiliation' );
 			if ( ! empty( $affiliation ) ) {
+				// Get the total number of items in the array
+				$total_items = count($affiliation);
+				// Initialize a counter
+				$current_index = 0;
 				echo '<ul class="jove-authors-affiliations-block__affiliation-list">';
-					foreach ( $affiliation as $key => $value ) {
-						echo '<li><sub>'.$key.'</sub>' . $value . '</li>';
+					foreach ( $affiliation as $key => $value ) { $current_index++;
+						echo '<li><sub>'.$key.'</sub>' . $value;
+						// Perform actions for all items except the last one
+						if ($current_index !== $total_items) {
+							echo '<span class="jove-separator">,</span>';
+						}
+						echo '</li>';
 					}
 				echo '</ul>';
 			}
