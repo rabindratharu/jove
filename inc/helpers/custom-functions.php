@@ -406,15 +406,26 @@ function get_post_view($post_id) {
     return format_number_short($count);
 }
 
-// Helper function to format numbers
-function format_number_short($number) {
-    if ($number >= 1000000) {
-        return round($number / 1000000, 1) . 'M';
-    } elseif ($number >= 1000) {
-        return round($number / 1000, 1) . 'K';
-    }
-
-    return $number;
+*----------------------------------------------------------------------
+# Utility function to format the button count,
+# appending "K" if one thousand or greater,
+# "M" if one million or greater,
+# and "B" if one billion or greater (unlikely).
+# $precision = how many decimal points to display (1.25K)
+-------------------------------------------------------------------------*/
+function format_number_short( $number ) {
+	$precision 		= 2;
+	if ( $number >= 1000 && $number < 1000000 ) {
+		$formatted 	= number_format( $number/1000, $precision ).'K';
+	} else if ( $number >= 1000000 && $number < 1000000000 ) {
+		$formatted 	= number_format( $number/1000000, $precision ).'M';
+	} else if ( $number >= 1000000000 ) {
+		$formatted 	= number_format( $number/1000000000, $precision ).'B';
+	} else {
+		$formatted 	= $number; // Number is less than 1000
+	}
+	$formatted 		= str_replace( '.00', '', $formatted );
+	return $formatted;
 }
 
 // Hook into the single post to increment views
