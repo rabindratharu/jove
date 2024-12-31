@@ -72,7 +72,11 @@
 							Related Experiment Videos
 						</h2>
 						<!-- /wp:heading -->
+					</div>
+					<!-- /wp:group -->
 
+					<!-- wp:group {"className":"jove-experiment-video-container","layout":{"type":"constrained"}} -->
+					<div class="wp-block-group jove-experiment-video-container">
 						<!-- wp:acf/notice {"name":"acf/notice","data":{"text":"","_text":"field_676e8323a3358"},"mode":"preview"} -->
 						<!-- wp:paragraph -->
 						<p>
@@ -81,24 +85,26 @@
 						</p>
 						<!-- /wp:paragraph -->
 						<!-- /wp:acf/notice -->
-					</div>
-					<!-- /wp:group -->
 
-					<!-- wp:group {"layout":{"type":"constrained"}} -->
-					<div class="wp-block-group">
 						<!-- wp:query {"queryId":29,"query":{"perPage":3,"pages":0,"offset":0,"postType":"video","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]}} -->
 						<div class="wp-block-query">
-							<!-- wp:post-template -->
-							<!-- wp:columns -->
-							<div class="wp-block-columns">
-								<!-- wp:column -->
-								<div class="wp-block-column">
-									<!-- wp:post-featured-image /-->
+							<!-- wp:post-template {"layout":{"type":"default"}} -->
+							<!-- wp:columns {"className":"jove-experiment-video-cols"} -->
+							<div
+								class="wp-block-columns jove-experiment-video-cols"
+							>
+								<!-- wp:column {"className":"jove-experiment-video-left-col"} -->
+								<div
+									class="wp-block-column jove-experiment-video-left-col"
+								>
+									<!-- wp:acf/video {"name":"acf/video","data":{"heading":"","_heading":"field_6773c2d174c45"},"mode":"preview"} /-->
 								</div>
 								<!-- /wp:column -->
 
-								<!-- wp:column -->
-								<div class="wp-block-column">
+								<!-- wp:column {"className":"jove-experiment-video-right-col"} -->
+								<div
+									class="wp-block-column jove-experiment-video-right-col"
+								>
 									<!-- wp:post-title /-->
 
 									<!-- wp:acf/views {"name":"acf/views","data":{"heading":"","_heading":"field_67738e0ad37e4"},"mode":"preview"} /-->
@@ -119,11 +125,7 @@
 							<!-- /wp:post-template -->
 						</div>
 						<!-- /wp:query -->
-					</div>
-					<!-- /wp:group -->
 
-					<!-- wp:group {"layout":{"type":"constrained"}} -->
-					<div class="wp-block-group">
 						<!-- wp:buttons -->
 						<div class="wp-block-buttons">
 							<!-- wp:button {"width":100} -->
