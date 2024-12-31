@@ -75,9 +75,7 @@
 
 @media only screen and (max-width: 479px) {
 	.jove-search-block .wp-block-search__button {
-		min-width: 75px;
-		padding-right: 5px;
-		padding-left: 5px;
+		padding: 0 15px;
 	}
 	.jove-hero-search-block .wp-block-search__inside-wrapper input {
 		padding-right: 9px;

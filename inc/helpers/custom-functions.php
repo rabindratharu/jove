@@ -292,101 +292,6 @@ function get_filters_data(): array {
 	];
 }
 
-
-function jove_set_default_site_logo( $block_content, $block ) {
-    if ( $block['blockName'] === 'core/site-logo' && empty( $block['attrs']['url'] ) ) {
-        $default_logo_url = get_template_directory_uri() . '/assets/images/logo.png';
-        $block_content = sprintf(
-            '<div class="wp-block-site-logo"><img src="%s" alt="%s" /></div>',
-            esc_url( $default_logo_url ),
-            esc_attr__( 'Site Logo', 'jove' )
-        );
-    }
-    return $block_content;
-}
-//add_filter( 'render_block', 'jove_set_default_site_logo', 10, 2 );
-
-function register_social_icons_circle_style() {
-    if ( function_exists( 'register_block_style' ) ) {
-        register_block_style(
-            'core/social-icons', // The block to apply the style to.
-            [
-                'name'  => 'circle-border', // A unique identifier for the style.
-                'label' => __( 'Circle with Border', 'jove' ), // Display name in the editor.
-                'inline_style' => '
-                    .wp-block-social-icons.is-style-circle-border .wp-block-social-icon {
-                        border-radius: 50%;
-                        border: 1px solid white;
-                        padding: 5px;
-                    }
-                ',
-            ]
-        );
-    }
-}
-//add_action( 'init', 'register_social_icons_circle_style' );
-
-function add_custom_social_links_styles() {
-
-	register_block_style(
-		'core/social-links', // The block to apply the style to.
-		[
-			'name'  => 'outline-border', // A unique identifier for the style.
-			'label' => esc_html__( 'Jove: Outline', 'jove' ), // Display name in the editor.
-		]
-	);
-}
-//add_action( 'init', 'add_custom_social_links_styles' );
-
-
-
-function modify_existing_custom_post_labels( $labels ) {
-    $labels->name               = __( 'Videos', 'jove' );
-    $labels->singular_name      = __( 'Video', 'jove' );
-    $labels->menu_name          = __( 'Videos', 'jove' );
-    $labels->name_admin_bar     = __( 'Video', 'jove' );
-    $labels->add_new            = __( 'Add New', 'jove' );
-    $labels->add_new_item       = __( 'Add New Video', 'jove' );
-    $labels->edit_item          = __( 'Edit Video', 'jove' );
-    $labels->new_item           = __( 'New Video', 'jove' );
-    $labels->view_item          = __( 'View Video', 'jove' );
-    $labels->search_items       = __( 'Search Videos', 'jove' );
-    $labels->not_found          = __( 'No videos found', 'jove' );
-    $labels->not_found_in_trash = __( 'No videos found in Trash', 'jove' );
-
-    return $labels;
-}
-//add_filter( 'post_type_labels_post', 'modify_existing_custom_post_labels' );
-
-
-function modify_existing_taxonomy_labels( $args, $taxonomy ) {
-    if ( 'post_tag' === $taxonomy ) {
-        $args['labels']['name']              = __( 'Keywords', 'textdomain' );
-        $args['labels']['singular_name']     = __( 'Keyword', 'textdomain' );
-        $args['labels']['search_items']      = __( 'Search Keywords', 'textdomain' );
-        $args['labels']['all_items']         = __( 'All Keywords', 'textdomain' );
-        $args['labels']['edit_item']         = __( 'Edit Keyword', 'textdomain' );
-        $args['labels']['view_item']         = __( 'View Keyword', 'textdomain' );
-        $args['labels']['add_new_item']      = __( 'Add New Keyword', 'textdomain' );
-        $args['labels']['new_item_name']     = __( 'New Keyword Name', 'textdomain' );
-    }
-
-	if ( 'category' === $taxonomy ) {
-        $args['labels']['name']              = __( 'Institutions', 'textdomain' );
-        $args['labels']['singular_name']     = __( 'Institution', 'textdomain' );
-        $args['labels']['search_items']      = __( 'Search Institutions', 'textdomain' );
-        $args['labels']['all_items']         = __( 'All Institutions', 'textdomain' );
-        $args['labels']['edit_item']         = __( 'Edit Institution', 'textdomain' );
-        $args['labels']['view_item']         = __( 'View Institution', 'textdomain' );
-        $args['labels']['add_new_item']      = __( 'Add New Institution', 'textdomain' );
-        $args['labels']['new_item_name']     = __( 'New Institution Name', 'textdomain' );
-        $args['labels']['menu_name']         = __( 'Institutions', 'textdomain' );
-    }
-
-    return $args;
-}
-//add_filter( 'register_taxonomy_args', 'modify_existing_taxonomy_labels', 10, 2 );
-
 /**
  * Helper function to import the ACF field group if it doesn't exist.
  *
@@ -472,3 +377,53 @@ function jove_get_authors_affiliations_posts( $args ) {
 
 	return $items;
 }
+
+
+// Function to set post views
+function set_post_view($post_id) {
+    $count_key = 'jove_post_views';
+    $count = get_post_meta($post_id, $count_key, true);
+
+    if ($count == '') {
+        $count = 0;
+        delete_post_meta($post_id, $count_key);
+        add_post_meta($post_id, $count_key, 1);
+    } else {
+        $count++;
+        update_post_meta($post_id, $count_key, $count);
+    }
+}
+
+// Function to get post views
+function get_post_view($post_id) {
+    $count_key = 'jove_post_views';
+    $count = get_post_meta($post_id, $count_key, true);
+
+    if ($count == '') {
+        return '0';
+    }
+
+    return format_number_short($count);
+}
+
+// Helper function to format numbers
+function format_number_short($number) {
+    if ($number >= 1000000) {
+        return round($number / 1000000, 1) . 'M';
+    } elseif ($number >= 1000) {
+        return round($number / 1000, 1) . 'K';
+    }
+
+    return $number;
+}
+
+// Hook into the single post to increment views
+add_action('wp_head', function () {
+	//if (is_single() && !is_user_logged_in()) {
+    if (is_single()) {
+        global $post;
+        if (isset($post->ID)) {
+            set_post_view($post->ID);
+        }
+    }
+});

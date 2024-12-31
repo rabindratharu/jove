@@ -1110,3 +1110,29 @@ hr.is-style-separator-dotted,
 	color: #2183ed;
 }
 
+/* Breadcrumbs
+--------------------------------------------- */
+.breadcrumbs li a {
+	font-size: 14px;
+	color: #2183ed;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.breadcrumbs li a:hover {
+	color: #080b4b;
+}
+.breadcrumbs li span {
+	font-size: 14px;
+}
+.breadcrumbs li {
+	color: #4b4b4b;
+}
+.breadcrumbs[class*="has-sep-mask-"]
+	.breadcrumbs__crumb:where(:not(:first-child))::before {
+	height: 22px;
+	color: #565656;
+}
+.breadcrumbs .breadcrumbs__trail {
+	gap: 3px;
+}
+

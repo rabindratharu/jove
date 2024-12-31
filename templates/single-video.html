@@ -1,10 +1,10 @@
 <!-- wp:template-part {"slug":"header","theme":"jove","tagName":"header","className":"site-header"} /-->
 <!-- wp:pattern {"slug":"jove/search"} /-->
 
-<!-- wp:group {"tagName":"main","align":"wide","style":{"color":{"background":"#f5f5f5"},"spacing":{"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"default"}} -->
+<!-- wp:group {"tagName":"main","align":"wide","style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"base","layout":{"type":"default"}} -->
 <main
-	class="wp-block-group alignwide has-background"
-	style="background-color: #f5f5f5; margin-top: 0; margin-bottom: 0"
+	class="wp-block-group alignwide has-base-background-color has-background"
+	style="margin-top: 0; margin-bottom: 0"
 >
 	<!-- wp:group {"layout":{"type":"default"}} -->
 	<div class="wp-block-group">
@@ -12,17 +12,21 @@
 		<div class="wp-block-group"><!-- wp:x3p0/breadcrumbs /--></div>
 		<!-- /wp:group -->
 
-		<!-- wp:group {"layout":{"type":"constrained"}} -->
-		<div class="wp-block-group">
-			<!-- wp:columns -->
-			<div class="wp-block-columns">
-				<!-- wp:column {"width":"60%"} -->
-				<div class="wp-block-column" style="flex-basis: 60%">
+		<!-- wp:group {"className":"jove-video-container","layout":{"type":"constrained"}} -->
+		<div class="wp-block-group jove-video-container">
+			<!-- wp:columns {"className":"jove-video-content-wrap"} -->
+			<div class="wp-block-columns jove-video-content-wrap">
+				<!-- wp:column {"width":"60%","className":"jove-video-left-col"} -->
+				<div
+					class="wp-block-column jove-video-left-col"
+					style="flex-basis: 60%"
+				>
+					<!-- wp:acf/abstract {"name":"acf/abstract","data":{"heading":"","_heading":"field_6773730866d21"},"mode":"preview"} -->
 					<!-- wp:group {"layout":{"type":"constrained"}} -->
 					<div class="wp-block-group">
 						<!-- wp:post-title /-->
 
-						<!-- wp:acf/affiliations {"name":"acf/affiliations","data":{"field_676f6bed17c76":""},"mode":"preview"} /-->
+						<!-- wp:acf/affiliations {"name":"acf/affiliations","data":{"label":"","_label":"field_676f6bed17c76"},"mode":"preview"} /-->
 
 						<!-- wp:post-terms {"term":"journal"} /-->
 
@@ -36,7 +40,7 @@
 						</div>
 						<!-- /wp:group -->
 
-						<!-- wp:acf/share {"name":"acf/share","data":{"field_67725ab87bc94":"Share"},"mode":"preview"} /-->
+						<!-- wp:acf/share {"name":"acf/share","mode":"preview"} /-->
 					</div>
 					<!-- /wp:group -->
 
@@ -51,11 +55,16 @@
 						<!-- wp:post-terms {"term":"keyword","prefix":"Keywords:","className":"is-style-term-button"} /-->
 					</div>
 					<!-- /wp:group -->
+					<!-- /wp:acf/abstract -->
 				</div>
 				<!-- /wp:column -->
 
-				<!-- wp:column {"width":"40%"} -->
-				<div class="wp-block-column" style="flex-basis: 40%">
+				<!-- wp:column {"width":"40%","className":"jove-video-right-col"} -->
+				<div
+					class="wp-block-column jove-video-right-col"
+					style="flex-basis: 40%"
+				>
+					<!-- wp:acf/experiment {"name":"acf/experiment","data":{"heading":"","_heading":"field_67737146c3d79"},"mode":"preview"} -->
 					<!-- wp:group {"layout":{"type":"constrained"}} -->
 					<div class="wp-block-group">
 						<!-- wp:heading -->
@@ -64,7 +73,7 @@
 						</h2>
 						<!-- /wp:heading -->
 
-						<!-- wp:acf/notice {"name":"acf/notice","data":{"field_676e8323a3358":""},"mode":"preview"} -->
+						<!-- wp:acf/notice {"name":"acf/notice","data":{"text":"","_text":"field_676e8323a3358"},"mode":"preview"} -->
 						<!-- wp:paragraph -->
 						<p>
 							These videos have been matched automatically.
@@ -91,6 +100,8 @@
 								<!-- wp:column -->
 								<div class="wp-block-column">
 									<!-- wp:post-title /-->
+
+									<!-- wp:acf/views {"name":"acf/views","data":{"field_67738e0ad37e4":""},"mode":"preview"} /-->
 
 									<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 									<div class="wp-block-group">
@@ -129,6 +140,7 @@
 						<!-- /wp:buttons -->
 					</div>
 					<!-- /wp:group -->
+					<!-- /wp:acf/experiment -->
 				</div>
 				<!-- /wp:column -->
 			</div>
@@ -140,9 +152,9 @@
 </main>
 <!-- /wp:group -->
 
-<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
-	<!-- wp:acf/concept {"align":"","name":"acf/concept","data":{"heading":"","_heading":"field_6773719fa0765"},"mode":"preview"} -->
+<!-- wp:group {"className":"jove-video-related-container","layout":{"type":"constrained"}} -->
+<div class="wp-block-group jove-video-related-container">
+	<!-- wp:acf/concept {"name":"acf/concept","data":{"heading":"","_heading":"field_6773719fa0765"},"mode":"preview"} -->
 	<!-- wp:heading -->
 	<h2 class="wp-block-heading">Related Concept Videos</h2>
 	<!-- /wp:heading -->
