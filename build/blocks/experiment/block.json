@@ -33,9 +33,6 @@
     "mode": false
   },
   "style": [
-    "file:./../../css/notice.css"
-  ],
-  "viewScript": [
-    "file:./../../js/notice.js"
+    "file:./../../css/experiment.css"
   ]
 }

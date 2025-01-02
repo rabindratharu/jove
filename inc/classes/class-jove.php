@@ -89,6 +89,14 @@ class Jove {
 		// They are defined in the theme.json file.
 		add_theme_support( 'wp-block-styles' );
 
+		// Enqueue editor styles.
+		// add_theme_support( 'editor-styles' );
+		// add_editor_style(
+		// 	array(
+		// 		'./build/css/public.css',
+		// 	)
+		// );
+
 		// Remove core block patterns.
 		// The `core-block-patterns` feature adds support for block patterns.
 		// Block patterns are pre-designed blocks that can be used to create

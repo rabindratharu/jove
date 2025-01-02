@@ -111,6 +111,11 @@ module.exports = {
 				"resources/css",
 				"notice.css",
 			),
+			"css/experiment": path.resolve(
+				process.cwd(),
+				"resources/css",
+				"experiment.css",
+			),
 		},
 		optimization: {
 			...defaultConfig.optimization,

@@ -1100,17 +1100,6 @@ hr.is-style-separator-dotted,
 	color: #6c6c6a;
 }
 
-.jove-experiment-video-block__innerblocks
-	> .wp-block-group
-	> .wp-block-heading {
-	font-size: 20px;
-	text-align: center;
-	font-weight: 500;
-	color: #4b4b4b;
-	background: #daecff;
-	padding: 15px;
-	text-transform: capitalize;
-}
 .jove-notice-block__innerblocks p {
 	font-size: 14px;
 	color: #323232;
@@ -1151,4 +1140,72 @@ hr.is-style-separator-dotted,
 }
 .jove-video-abstract-details > .entry-content {
 	margin-top: 20px;
+}
+
+.jove-video-abstract-details > .entry-content p {
+	font-size: 16px;
+	color: #4b4b4b;
+}
+.taxonomy-keyword span {
+	font-size: 16px;
+	font-weight: 700;
+	color: #4b4b4b;
+}
+.taxonomy-keyword {
+	margin-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+.taxonomy-keyword .wp-block-post-terms__separator {
+	display: none;
+}
+.taxonomy-keyword a {
+	border: 1px solid #3074cf;
+	border-radius: 50px;
+	background: transparent;
+	font-size: 12px;
+	padding: 8px 16px;
+	transition: all 0.3s ease 0s;
+	pointer-events: none;
+}
+.taxonomy-keyword a:hover {
+	background: #3074cf;
+	color: #fff;
+	transition: all 0.3s ease 0s;
+}
+
+.jove-video-block .wp-block-post-featured-image__overlay {
+	position: absolute;
+	left: 7px;
+	bottom: 7px;
+	height: 18px;
+	width: 39px;
+	background: #2a2a2ab2;
+	font-size: 12px;
+	color: #fff;
+	text-align: center;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.jove-video-block .wp-block-post-featured-image {
+	margin-bottom: 0;
+	position: relative;
+}
+
+.jove-abstract-block {
+	background: #fff;
+	padding: 32px;
+	border-radius: 4px;
+}
+.jove-experiment-video-block {
+	background-color: #fff;
+	border-radius: 4px;
+	overflow: hidden;
+}
+.jove-experiment-video-block .jove-experiment-video-container {
+	padding: 24px;
 }
