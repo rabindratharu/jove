@@ -1,10 +1,10 @@
 <!-- wp:template-part {"slug":"header","theme":"jove","tagName":"header","className":"site-header"} /-->
 <!-- wp:pattern {"slug":"jove/search"} /-->
 
-<!-- wp:group {"tagName":"main","align":"wide","style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"base","layout":{"type":"default"}} -->
+<!-- wp:group {"tagName":"main","align":"wide","className":"is-style-default","style":{"spacing":{"margin":{"top":"0","bottom":"0"}},"color":{"background":"#f5f5f5"}},"layout":{"type":"default"}} -->
 <main
-	class="wp-block-group alignwide has-base-background-color has-background"
-	style="margin-top: 0; margin-bottom: 0"
+	class="wp-block-group alignwide is-style-default has-background"
+	style="background-color: #f5f5f5; margin-top: 0; margin-bottom: 0"
 >
 	<!-- wp:group {"layout":{"type":"default"}} -->
 	<div class="wp-block-group">
@@ -16,10 +16,10 @@
 		<div class="wp-block-group jove-video-container">
 			<!-- wp:columns {"className":"jove-video-content-wrap"} -->
 			<div class="wp-block-columns jove-video-content-wrap">
-				<!-- wp:column {"width":"60%","className":"jove-video-left-col"} -->
+				<!-- wp:column {"width":"62%","className":"jove-video-left-col"} -->
 				<div
 					class="wp-block-column jove-video-left-col"
-					style="flex-basis: 60%"
+					style="flex-basis: 62%"
 				>
 					<!-- wp:acf/abstract {"name":"acf/abstract","data":{"heading":"","_heading":"field_6773730866d21"},"mode":"preview"} -->
 					<!-- wp:group {"layout":{"type":"constrained"}} -->
@@ -59,10 +59,10 @@
 				</div>
 				<!-- /wp:column -->
 
-				<!-- wp:column {"width":"40%","className":"jove-video-right-col"} -->
+				<!-- wp:column {"width":"38%","className":"jove-video-right-col"} -->
 				<div
 					class="wp-block-column jove-video-right-col"
-					style="flex-basis: 40%"
+					style="flex-basis: 38%"
 				>
 					<!-- wp:acf/experiment {"name":"acf/experiment","data":{"heading":"","_heading":"field_67737146c3d79"},"mode":"preview"} -->
 					<!-- wp:group {"layout":{"type":"constrained"}} -->
@@ -81,7 +81,10 @@
 						<!-- wp:paragraph -->
 						<p>
 							These videos have been matched automatically.
-							<a href="#">Contact us</a> if they are not relevant.
+							<a href="https://www.jove.com/about/contact"
+								>Contact us</a
+							>
+							if they are not relevant.
 						</p>
 						<!-- /wp:paragraph -->
 						<!-- /wp:acf/notice -->
@@ -126,8 +129,11 @@
 						</div>
 						<!-- /wp:query -->
 
-						<!-- wp:buttons -->
-						<div class="wp-block-buttons">
+						<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
+						<div
+							class="wp-block-buttons"
+							style="margin-top: 0; margin-bottom: 0"
+						>
 							<!-- wp:button {"width":100} -->
 							<div
 								class="wp-block-button has-custom-width wp-block-button__width-100"
@@ -151,35 +157,43 @@
 		<!-- /wp:group -->
 	</div>
 	<!-- /wp:group -->
-</main>
-<!-- /wp:group -->
 
-<!-- wp:group {"className":"jove-video-related-container","layout":{"type":"constrained"}} -->
-<div class="wp-block-group jove-video-related-container">
-	<!-- wp:acf/concept {"align":"","name":"acf/concept","data":{"heading":"","_heading":"field_6773719fa0765"},"mode":"preview"} -->
-	<!-- wp:heading -->
-	<h2 class="wp-block-heading">Related Concept Videos</h2>
-	<!-- /wp:heading -->
+	<!-- wp:group {"className":"jove-video-related-container","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group jove-video-related-container">
+		<!-- wp:acf/concept {"name":"acf/concept","data":{"heading":"","_heading":"field_6773719fa0765"},"mode":"preview"} -->
+		<!-- wp:heading -->
+		<h2 class="wp-block-heading">Related Concept Videos</h2>
+		<!-- /wp:heading -->
 
-	<!-- wp:query {"queryId":38,"query":{"perPage":6,"pages":0,"offset":0,"postType":"video","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]}} -->
-	<div class="wp-block-query">
-		<!-- wp:post-template {"layout":{"type":"default"}} -->
-		<!-- wp:columns -->
-		<div class="wp-block-columns">
-			<!-- wp:column -->
-			<div class="wp-block-column"><!-- wp:post-featured-image /--></div>
-			<!-- /wp:column -->
+		<!-- wp:query {"queryId":38,"query":{"perPage":6,"pages":0,"offset":0,"postType":"video","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]}} -->
+		<div class="wp-block-query">
+			<!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+			<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"10px"}}}} -->
+			<div class="wp-block-columns">
+				<!-- wp:column -->
+				<div class="wp-block-column">
+					<!-- wp:acf/video {"name":"acf/video","data":{"heading":"","_heading":"field_6773c2d174c45"},"mode":"preview"} /-->
+				</div>
+				<!-- /wp:column -->
 
-			<!-- wp:column -->
-			<div class="wp-block-column"><!-- wp:post-title /--></div>
-			<!-- /wp:column -->
+				<!-- wp:column -->
+				<div class="wp-block-column">
+					<!-- wp:post-title /-->
+
+					<!-- wp:acf/views {"name":"acf/views","data":{"heading":"","_heading":"field_67738e0ad37e4"},"mode":"preview"} /-->
+
+					<!-- wp:post-excerpt {"excerptLength":10} /-->
+				</div>
+				<!-- /wp:column -->
+			</div>
+			<!-- /wp:columns -->
+			<!-- /wp:post-template -->
 		</div>
-		<!-- /wp:columns -->
-		<!-- /wp:post-template -->
+		<!-- /wp:query -->
+		<!-- /wp:acf/concept -->
 	</div>
-	<!-- /wp:query -->
-	<!-- /wp:acf/concept -->
-</div>
+	<!-- /wp:group -->
+</main>
 <!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer","tagName":"footer","className":"site-footer"} /-->

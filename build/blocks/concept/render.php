@@ -53,9 +53,9 @@ $inner_blocks_template = [
 		?>>
      <?php } ?>
 
-     <div class="jove-notice-block">
+     <div class="jove-concept-block">
 
-         <InnerBlocks class="jove-notice-block__innerblocks" orientation="horizontal"
+         <InnerBlocks class="jove-concept-block__innerblocks" orientation="horizontal"
              template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
 
 

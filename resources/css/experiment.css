@@ -20,20 +20,6 @@
 	> .wp-block-column:last-child {
 	min-width: 60%;
 }
-.jove-experiment-video-block__innerblocks
-	.wp-block-post-template
-	.wp-block-acf-views {
-	margin-top: 10px;
-}
-.jove-experiment-video-block__innerblocks
-	.wp-block-post-template
-	.jove-views-block {
-	font-size: 12px;
-	font-weight: 500;
-	display: flex;
-	align-items: center;
-	gap: 4px;
-}
 .jove-experiment-video-block__innerblocks .wp-block-post-template svg {
 	width: 14px;
 	height: 14px;

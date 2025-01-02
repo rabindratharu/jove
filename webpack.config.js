@@ -131,6 +131,16 @@ module.exports = {
 				"resources/css",
 				"affiliations.css",
 			),
+			"css/concept": path.resolve(
+				process.cwd(),
+				"resources/css",
+				"concept.css",
+			),
+			"css/views": path.resolve(
+				process.cwd(),
+				"resources/css",
+				"views.css",
+			),
 		},
 		optimization: {
 			...defaultConfig.optimization,
