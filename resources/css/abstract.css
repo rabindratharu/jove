@@ -1,0 +1,10 @@
+.jove-abstract-block {
+	background: #fff;
+	padding: 32px;
+	border-radius: 4px;
+}
+.jove-abstract-block .wp-block-post-title {
+	font-size: 24px;
+	color: #4b4b4b;
+	font-weight: 500;
+}

@@ -31,7 +31,7 @@
     },
     "mode": false
   },
-  "viewScript": [
-    "file:./../../js/notice.js"
+  "style": [
+    "file:./../../css/affiliations.css"
   ]
 }

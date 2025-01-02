@@ -1,0 +1,25 @@
+.wp-block-acf-affiliations {
+	margin-top: 18px;
+}
+.wp-block-acf-affiliations ul {
+	padding: 0;
+	margin: 12px 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+.wp-block-acf-affiliations ul li {
+	list-style: none;
+	font-size: 14px;
+	color: #565656;
+}
+.wp-block-acf-affiliations .jove-authors-affiliations-block__author-list li {
+	color: #2183ed;
+}
+.wp-block-acf-affiliations ul li sub {
+	font-size: 10px;
+	position: relative;
+	top: -7px;
+	left: 0;
+	color: #4b4b4b;
+}

@@ -121,6 +121,16 @@ module.exports = {
 				"resources/css",
 				"video.css",
 			),
+			"css/abstract": path.resolve(
+				process.cwd(),
+				"resources/css",
+				"abstract.css",
+			),
+			"css/affiliations": path.resolve(
+				process.cwd(),
+				"resources/css",
+				"affiliations.css",
+			),
 		},
 		optimization: {
 			...defaultConfig.optimization,

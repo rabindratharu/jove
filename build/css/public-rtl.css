@@ -1136,39 +1136,6 @@ hr.is-style-separator-dotted,
 	gap: 3px;
 }
 
-.jove-video-left-col .wp-block-post-title {
-	font-size: 24px;
-	color: #4b4b4b;
-	font-weight: 500;
-}
-.wp-block-acf-affiliations {
-	margin-top: 18px;
-}
-.wp-block-acf-affiliations ul {
-	padding: 0;
-	margin: 12px 0;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	    flex-wrap: wrap;
-	gap: 6px;
-}
-.wp-block-acf-affiliations ul li {
-	list-style: none;
-	font-size: 14px;
-	color: #565656;
-}
-.wp-block-acf-affiliations .jove-authors-affiliations-block__author-list li {
-	color: #2183ed;
-}
-.wp-block-acf-affiliations ul li sub {
-	font-size: 10px;
-	position: relative;
-	top: -7px;
-	right: 0;
-	color: #4b4b4b;
-}
 .taxonomy-journal.wp-block-post-terms {
 	margin-top: 12px;
 }
@@ -1275,11 +1242,6 @@ hr.is-style-separator-dotted,
 	transition: all 0.3s ease 0s;
 }
 
-.jove-abstract-block {
-	background: #fff;
-	padding: 32px;
-	border-radius: 4px;
-}
 .jove-experiment-video-block {
 	background-color: #fff;
 	border-radius: 4px;
