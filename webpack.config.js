@@ -116,6 +116,11 @@ module.exports = {
 				"resources/css",
 				"experiment.css",
 			),
+			"css/video": path.resolve(
+				process.cwd(),
+				"resources/css",
+				"video.css",
+			),
 		},
 		optimization: {
 			...defaultConfig.optimization,

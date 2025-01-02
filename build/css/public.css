@@ -1275,32 +1275,6 @@ hr.is-style-separator-dotted,
 	transition: all 0.3s ease 0s;
 }
 
-.jove-video-block .wp-block-post-featured-image__overlay {
-	position: absolute;
-	left: 7px;
-	bottom: 7px;
-	height: 18px;
-	width: 39px;
-	background: #2a2a2ab2;
-	font-size: 12px;
-	color: #fff;
-	text-align: center;
-	border-radius: 4px;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	    -ms-flex-align: center;
-	        align-items: center;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
-}
-.jove-video-block .wp-block-post-featured-image {
-	margin-bottom: 0;
-	position: relative;
-}
-
 .jove-abstract-block {
 	background: #fff;
 	padding: 32px;

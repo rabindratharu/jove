@@ -25,6 +25,5 @@
 		},
 		"mode": false
 	},
-	"style": ["file:./../../css/notice.css"],
-	"viewScript": ["file:./../../js/notice.js"]
+	"style": ["file:./../../css/video.css"]
 }
