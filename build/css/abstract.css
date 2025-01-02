@@ -12,5 +12,10 @@
 	font-weight: 500;
 }
 
+.jove-abstract-block .jove-video-abstract-details > .entry-content p a {
+	color: #2183ed;
+	text-decoration: none;
+}
+
 
 /*# sourceMappingURL=abstract.css.map*/

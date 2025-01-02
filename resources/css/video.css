@@ -3,11 +3,12 @@
 	position: relative;
 	border-radius: 4px;
 	overflow: hidden;
+	line-height: 0;
 }
 .jove-video-block .wp-block-post-featured-image__overlay {
 	position: absolute;
 	left: 7px;
-	bottom: 14px;
+	bottom: 8px;
 	height: 18px;
 	width: 39px;
 	background: #2a2a2ab2;
