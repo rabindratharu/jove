@@ -65,7 +65,7 @@ class Register_Post_Types {
                 'parent_item_colon'     => esc_html__('Parent ' . $value['singular_name'] . ':', 'jove'),
                 'all_items'             => esc_html__($value['general_name'], 'jove'),
                 'add_new_item'          => esc_html__('Add ' . $value['singular_name'], 'jove'),
-                'add_new'               => esc_html__('Add', 'jove'),
+				'add_new'          		=> esc_html__('Add ' . $value['singular_name'], 'jove'),
                 'new_item'              => esc_html__('New ' . $value['singular_name'], 'jove'),
                 'edit_item'             => esc_html__('Edit ' . $value['singular_name'], 'jove'),
                 'update_item'           => esc_html__('Update ' . $value['singular_name'], 'jove'),

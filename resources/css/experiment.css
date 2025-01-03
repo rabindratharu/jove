@@ -47,6 +47,14 @@
 	li:first-child {
 	margin-top: 0;
 }
+.jove-experiment-video-block__innerblocks
+	.wp-block-post-template
+	li:first-child
+	.jove-video-block
+	.wp-block-post-featured-image__overlay {
+	top: 8px;
+}
+
 .jove-experiment-video-block__innerblocks .wp-block-post-template li {
 	margin-top: 12px;
 }
