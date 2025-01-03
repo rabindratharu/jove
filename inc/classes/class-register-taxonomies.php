@@ -46,8 +46,32 @@ class Register_Taxonomies {
 		 * method.
 		 *
 		 * @since 1.0.0
+		 *
+		 * @internal
 		 */
 		add_action( 'init', [ $this, 'register_taxonomies' ], 0 );
+
+		/**
+		 * Allow HTML in taxonomy description when editing.
+		 *
+		 * This method allows HTML in the taxonomy description when editing
+		 * using the `allow_html_in_taxonomy_description` method.
+		 *
+		 * @since 1.0.0
+		 */
+		add_action( 'edited_term', [ $this, 'allow_html_in_taxonomy_description' ], 10, 2 );
+		add_action( 'create_term', [ $this, 'allow_html_in_taxonomy_description' ], 10, 2 );
+
+		/**
+		 * Allow HTML in taxonomy description when displayed.
+		 *
+		 * This method allows HTML in the taxonomy description when displayed
+		 * using the `allow_html_in_displayed_taxonomy_description` method.
+		 *
+		 * @since 1.0.0
+		 */
+		remove_filter( 'term_description', 'wp_kses_data' );
+		add_filter( 'term_description', [ $this, 'allow_html_in_displayed_taxonomy_description' ] );
 	}
 
 	/**
@@ -176,4 +200,60 @@ class Register_Taxonomies {
             ),
         );
     }
+
+	/**
+	 * Allow HTML in taxonomy description when editing.
+	 *
+	 * @param int    $term_id   The term ID.
+	 * @param string $taxonomy  The taxonomy.
+	 */
+	public function allow_html_in_taxonomy_description( $term_id, $taxonomy ) {
+		if ( isset( $_POST['description'] ) ) {
+			// Define allowed HTML tags.
+			$allowed_html = [
+				'a'      => [
+					'href'   => [],
+					'title'  => [],
+					'target' => [],
+				],
+				'b'      => [],
+				'strong' => [],
+				'em'     => [],
+				'i'      => [],
+				'p'      => [],
+				'br'     => [],
+				'ul'     => [],
+				'ol'     => [],
+				'li'     => [],
+				'span'   => [
+					'style' => [],
+				],
+			];
+
+			// Sanitize the description.
+			$safe_description = wp_kses( $_POST['description'], $allowed_html );
+
+			// Update the term description.
+			wp_update_term( $term_id, $taxonomy, [
+				'description' => $safe_description,
+			] );
+		}
+	}
+
+	/**
+	 * Allow HTML in taxonomy description when displayed.
+	 *
+	 * @param string $description  The description of the taxonomy.
+	 *
+	 * @return string  The description of the taxonomy without additional sanitization.
+	 */
+	public function allow_html_in_displayed_taxonomy_description( $description ) {
+		// Return the description without additional sanitization.
+		// This is needed because the description is sanitized twice otherwise.
+		// The first sanitization happens when the term is saved.
+		// The second sanitization happens when the term is displayed.
+		// By returning the description without additional sanitization, we ensure that the description is not sanitized twice.
+		// This allows the description to contain HTML tags.
+    	return $description;
+	}
 }

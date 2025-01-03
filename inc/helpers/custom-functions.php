@@ -431,3 +431,22 @@ add_action('wp_head', function () {
         }
     }
 });
+
+/**
+ * Encore a string to be safely included in the URL.
+ *
+ * @param string $str String to encode for URL.
+ */
+if (! function_exists('jove_encode_uri_component')) {
+	function jove_encode_uri_component( $str ) {
+		$revert = [
+			'%21' => '!',
+			'%2A' => '*',
+			'%27' => "'",
+			'%28' => '(',
+			'%29' => ')',
+		];
+
+		return strtr( rawurlencode( $str ), $revert );
+	}
+}
