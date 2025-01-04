@@ -23,8 +23,8 @@ class Api_Data_Loader {
 	 *
 	 * @var string
 	 */
-	private $url = 'https://demo.wpwheels.com/blockwheels/template/wp-json/wpwheels/v1/patterns';
-	//private $url = 'https://raw.githubusercontent.com/wpwheels/starter-templates/master/wpwheels/init.json';
+	//private $url = 'https://demo.wpwheels.com/blockwheels/template/wp-json/wpwheels/v1/patterns';
+	private $url = 'https://raw.githubusercontent.com/wpwheels/starter-templates/master/wpwheels/init.json';
 
 
 
@@ -70,7 +70,7 @@ class Api_Data_Loader {
 	 * @var string
 	 */
 	protected $data;
-	
+
 	/**
 	 * Cleanup routine frequency.
 	 */
@@ -198,7 +198,7 @@ class Api_Data_Loader {
 			? $this->get_local_template_data_contents()
 			: '';
 	}
-	
+
 	/**
 	 * Get remote file contents.
 	 *
@@ -241,7 +241,7 @@ class Api_Data_Loader {
 
 		return $contents;
 	}
-	
+
 	/**
 	 * Get the data path.
 	 *
@@ -294,7 +294,7 @@ class Api_Data_Loader {
 		if ( ! isset( $schedules[ self::CLEANUP_FREQUENCY ] ) ) {
 			$schedules[ self::CLEANUP_FREQUENCY ] = array(
 				'interval' => MONTH_IN_SECONDS,
-				'display' => __( 'Once Monthly', 'jove-blocks' ),
+				'display' => __( 'Once Monthly', 'jove' ),
 			);
 		}
 		return $schedules;
