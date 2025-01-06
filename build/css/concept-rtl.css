@@ -39,6 +39,11 @@
 /**
 * New Styles
 */
+.jove-concept-video-block .jove-concept-video-block__heading {
+	font-size: 24px;
+	font-weight: 500;
+	color: #4b4b4b;
+}
 .jove-concept-video-block__lists {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr); /* Three equal columns */

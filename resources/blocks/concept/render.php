@@ -42,7 +42,7 @@ $post_id 	= '95';
 		?>>
      <?php } ?>
 
-     <div class="jove-concept-block">
+     <div class="jove-concept-video-block">
          <h2 class="jove-concept-video-block__heading"><?php echo esc_html( $heading ); ?></h2>
          <div class="jove-concept-video-block__container">
              <?php
