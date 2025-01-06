@@ -1,5 +1,9 @@
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./resources/css/experiment.css ***!
+  \******************************************************************************************************************************************************************************************************************/
 .jove-experiment-video-block .wp-block-query {
-	margin-block-start: 0px;
+	-webkit-margin-before: 0px;
+	        margin-block-start: 0px;
 }
 .jove-experiment-video-block__innerblocks
 	.wp-block-post-template
@@ -69,7 +73,9 @@
 	li
 	> .wp-block-columns {
 	gap: 16px;
-	align-items: center !important;
+	-webkit-box-align: center !important;
+	    -ms-flex-align: center !important;
+	        align-items: center !important;
 }
 .jove-experiment-video-block__innerblocks
 	> .wp-block-group
@@ -100,14 +106,20 @@
 	padding: 24px;
 }
 .jove-experiment-video-block .jove-experiment-video-block__notice {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	align-items: start;
+	-webkit-box-align: start;
+	    -ms-flex-align: start;
+	        align-items: start;
 	gap: 10px;
 	margin-top: 12px;
 	padding: 12px 16px;
 	background: #e4ecfa;
 	margin-bottom: 12px;
-	justify-content: space-between;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
 }
 .jove-experiment-video-block
 	.jove-experiment-video-block__notice
@@ -121,9 +133,14 @@
 	width: 100%;
 }
 .jove-experiment-video-block__lists {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	gap: 12px;
-	flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 }
 .jove-experiment-video-block__list {
 	display: grid;
@@ -151,9 +168,15 @@
 	color: #fff;
 	text-align: center;
 	border-radius: 4px;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 }
 .jove-experiment-video-block__lists
 	.jove-experiment-video-block__list:first-child
@@ -161,8 +184,13 @@
 	top: 8px;
 }
 .jove-experiment-video-block__content {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 	gap: 10px;
 }
 .jove-experiment-video-block__content .jove-experiment-video-block__title {
@@ -180,11 +208,18 @@
 .jove-experiment-video-block__views {
 	font-size: 12px;
 	font-weight: 500;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	align-items: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 	gap: 4px;
 }
 .jove-experiment-video-block__views svg {
 	width: 14px;
 	height: 14px;
 }
+
+
+/*# sourceMappingURL=experiment.css.map*/

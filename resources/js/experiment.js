@@ -8,4 +8,4 @@
  */
 
 // Import all the cool editor features from the theme.
-import "./blocks/notice";
+import "./blocks/experiment";

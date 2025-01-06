@@ -1,0 +1,41 @@
+{
+  "name": "acf/cta",
+  "apiVersion": "2",
+  "title": "Jove: CTA Block",
+  "description": "A custom call to action block with popup video.",
+  "category": "formatting",
+  "icon": "format-gallery",
+  "keywords": [
+    "cta",
+    "popup",
+    "video"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide"
+    }
+  },
+  "supports": {
+    "align": [
+      "full",
+      "wide"
+    ],
+    "anchor": true,
+    "className": true,
+    "color": {
+      "background": true
+    },
+    "mode": false
+  },
+  "style": [
+    "popup-css"
+  ],
+  "viewScript": [
+    "popup-js"
+  ]
+}

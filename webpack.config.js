@@ -69,10 +69,10 @@ module.exports = {
 
 			"js/popup": path.resolve(process.cwd(), "resources/js", "popup.js"),
 
-			"js/notice": path.resolve(
+			"js/experiment": path.resolve(
 				process.cwd(),
 				"resources/js",
-				"notice.js",
+				"experiment.js",
 			),
 			"js/share": path.resolve(process.cwd(), "resources/js", "share.js"),
 

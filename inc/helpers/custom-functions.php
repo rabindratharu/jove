@@ -450,3 +450,57 @@ if (! function_exists('jove_encode_uri_component')) {
 		return strtr( rawurlencode( $str ), $revert );
 	}
 }
+
+function get_json_file_data() {
+    // Get the upload directory path
+    $upload_dir = wp_upload_dir();
+    $json_file_path = $upload_dir['basedir'] . '/jove/api-data.json'; // Adjust file name accordingly
+
+    // Check if the file exists
+    if (file_exists($json_file_path)) {
+        // Get the contents of the JSON file
+        $json_data = file_get_contents($json_file_path);
+
+        // Decode the JSON data into an array
+        $data = json_decode($json_data, true);
+
+        // Return the parsed data or handle errors
+        if ($data) {
+            return $data;
+        } else {
+            return 'Error parsing JSON file.';
+        }
+    } else {
+        return 'JSON file not found.';
+    }
+}
+
+/**
+ * Limit a string by character count without breaking words.
+ *
+ * @param string $string The input string to limit.
+ * @param int    $limit  The maximum number of characters.
+ * @param string $suffix The suffix to append if the string is trimmed (default: '...').
+ * @return string The trimmed string.
+ */
+function limit_string_by_characters($string, $limit, $suffix = '...') {
+    // Strip extra white spaces from the string.
+    $string = trim($string);
+
+    // If the string length is less than or equal to the limit, return the string as is.
+    if (mb_strlen($string) <= $limit) {
+        return $string;
+    }
+
+    // Trim the string to the limit without breaking words.
+    $trimmed = mb_substr($string, 0, $limit);
+    $last_space = mb_strrpos($trimmed, ' ');
+
+    // Ensure we don't cut in the middle of a word.
+    if ($last_space !== false) {
+        $trimmed = mb_substr($trimmed, 0, $last_space);
+    }
+
+    // Return the trimmed string with the suffix.
+    return $trimmed . $suffix;
+}

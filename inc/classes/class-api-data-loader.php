@@ -24,7 +24,7 @@ class Api_Data_Loader {
 	 * @var string
 	 */
 	//private $url = 'https://demo.wpwheels.com/blockwheels/template/wp-json/wpwheels/v1/patterns';
-	private $url = 'https://raw.githubusercontent.com/wpwheels/starter-templates/master/wpwheels/init.json';
+	private $url = 'https://raw.githubusercontent.com/rabindratharu/jove/refs/heads/main/assets/api-data.json';
 
 
 
@@ -250,7 +250,7 @@ class Api_Data_Loader {
 	 */
 	public function get_local_template_data_path() {
 		if ( ! $this->local_template_data_path ) {
-			$this->local_template_data_path = $this->get_block_library_folder() . '/' . $this->get_local_template_data_filename() . '.json';
+			$this->local_template_data_path = $this->get_block_library_folder() . '/api-data.json';
 		}
 		return $this->local_template_data_path;
 	}

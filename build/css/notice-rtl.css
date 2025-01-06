@@ -1,0 +1,20 @@
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./resources/css/notice.css ***!
+  \**************************************************************************************************************************************************************************************************************/
+.jove-notice-block {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: start;
+	    -ms-flex-align: start;
+	        align-items: start;
+	gap: 10px;
+	margin-top: 12px;
+	padding: 12px 16px;
+	background: #e4ecfa;
+	margin-bottom: 12px !important;
+}
+.jove-notice-block .jove-notice-block__innerblocks > * {
+	margin: 0;
+}
+
