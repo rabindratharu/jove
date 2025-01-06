@@ -30,6 +30,7 @@ $button 	= get_field('button_text');
 $json_data 	= get_json_file_data();
 $post_id 	= '95';
 
+$btn_url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component(get_the_title());
 
 ?>
 
@@ -72,6 +73,7 @@ $post_id 	= '95';
 				?>
              <div class="jove-experiment-video-block__lists">
                  <?php foreach ($json_data[$post_id]['experiment'] as $key => $value) {
+					$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
 					?>
                  <div class="jove-experiment-video-block__list">
                      <figure class="jove-experiment-video-block__image">
@@ -81,7 +83,10 @@ $post_id 	= '95';
                      </figure>
                      <div class="jove-experiment-video-block__content">
                          <h3 class="jove-experiment-video-block__title">
-                             <?php echo esc_html( limit_string_by_characters( $value['title'], 60 ) ); ?></h3>
+                             <a href="<?php echo esc_url( $url ); ?>" rel="bookmark">
+                                 <?php echo esc_html( limit_string_by_characters( $value['title'], 60 ) ); ?>
+                             </a>
+                         </h3>
                          <p class="jove-experiment-video-block__date">Published on:
                              <?php echo esc_html( $value['date'] ); ?></p>
                          <div class="jove-experiment-video-block__views">
@@ -103,7 +108,8 @@ $post_id 	= '95';
 			 ?>
 
              <div class="jove-experiment-video-block__button">
-                 <a href="#" class="wp-block-button__link wp-element-button"><?php echo esc_html( $button ); ?></a>
+                 <a href="<?php echo esc_url( $btn_url ); ?>"
+                     class="wp-block-button__link wp-element-button"><?php echo esc_html( $button ); ?></a>
              </div>
          </div>
 

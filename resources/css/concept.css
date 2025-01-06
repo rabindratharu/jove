@@ -85,6 +85,9 @@
 	color: #1c1d1d;
 	margin: 0;
 }
+.jove-concept-video-block__content .jove-concept-video-block__title a {
+	text-decoration: none;
+}
 .jove-concept-video-block__date {
 	font-size: 12px;
 	color: #565656;

@@ -50,6 +50,7 @@ $post_id 	= '95';
 				?>
              <div class="jove-concept-video-block__lists">
                  <?php foreach ($json_data[$post_id]['concept'] as $key => $value) {
+					$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
 					?>
                  <div class="jove-concept-video-block__list">
                      <figure class="jove-concept-video-block__image">
@@ -58,7 +59,10 @@ $post_id 	= '95';
                      </figure>
                      <div class="jove-concept-video-block__content">
                          <h3 class="jove-concept-video-block__title">
-                             <?php echo esc_html( $value['title'], 60 ); ?></h3>
+                             <a href="<?php echo esc_url( $url ); ?>" rel="bookmark">
+                                 <?php echo esc_html( limit_string_by_characters( $value['title'], 50 ) ); ?>
+                             </a>
+                         </h3>
                          <div class="jove-concept-video-block__views">
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
