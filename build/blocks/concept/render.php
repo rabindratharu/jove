@@ -23,21 +23,10 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= ' ' . $block['className'];
 }
 
-/**
- * A template string of blocks.
- * Need help converting block HTML markup to an array?
- * 👉 https://happyprime.github.io/wphtml-converter/
- *
- * @link https://developer.wordpress.org/block-editor/reference-guides/block-api/block-templates/
- */
-$inner_blocks_template = [
-	[
-		'core/paragraph',
-		[
-			'content'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.',
-		]
-	]
-];
+// acf data
+$heading 	= get_field('heading');
+$json_data 	= get_json_file_data();
+$post_id 	= '95';
 ?>
 
  <?php if ( ! $is_preview ) { ?>
@@ -54,11 +43,42 @@ $inner_blocks_template = [
      <?php } ?>
 
      <div class="jove-concept-block">
-
-         <InnerBlocks class="jove-concept-block__innerblocks" orientation="horizontal"
-             template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>" />
-
-
+         <h2 class="jove-concept-video-block__heading"><?php echo esc_html( $heading ); ?></h2>
+         <div class="jove-concept-video-block__container">
+             <?php
+			if ( is_array( $json_data ) && array_key_exists($post_id, $json_data) ) {
+				?>
+             <div class="jove-concept-video-block__lists">
+                 <?php foreach ($json_data[$post_id]['concept'] as $key => $value) {
+					?>
+                 <div class="jove-concept-video-block__list">
+                     <figure class="jove-concept-video-block__image">
+                         <img src="<?php echo esc_url( $value['image'] ); ?>">
+                         <span class="jove-concept-video-block__image__overlay"><?php echo $value['length']; ?></span>
+                     </figure>
+                     <div class="jove-concept-video-block__content">
+                         <h3 class="jove-concept-video-block__title">
+                             <?php echo esc_html( $value['title'], 60 ); ?></h3>
+                         <div class="jove-concept-video-block__views">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-eye">
+                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                 <circle cx="12" cy="12" r="3"></circle>
+                             </svg>
+                             <?php echo esc_html( $value['views'] ); ?>
+                         </div>
+                         <p class="jove-concept-video-block__date">
+                             <?php echo esc_html( limit_string_by_characters( $value['description'], 60 ) ); ?></p>
+                     </div>
+                 </div>
+                 <?php
+				}?>
+             </div>
+             <?php
+			}
+			 ?>
+         </div>
      </div>
      <?php if ( ! $is_preview ) { ?>
  </div>

@@ -30,3 +30,69 @@
 	gap: 5px;
 	margin-top: 10px;
 }
+
+/**
+* New Styles
+*/
+.jove-concept-video-block__lists {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+	gap: 16px; /* Space between grid items */
+}
+.jove-concept-video-block__list {
+	display: grid;
+	grid-template-columns: 40% 60%; /* Set column widths */
+	gap: 16px; /* Adjust gap between items if needed */
+	background: #f5f9ff;
+	padding: 12px;
+	border-radius: 4px;
+}
+.jove-concept-video-block__image {
+	margin-bottom: 0;
+	position: relative;
+	border-radius: 4px;
+	overflow: hidden;
+	line-height: 0;
+}
+.jove-concept-video-block__image__overlay {
+	position: absolute;
+	left: 7px;
+	bottom: 8px;
+	height: 18px;
+	width: 39px;
+	background: #2a2a2ab2;
+	font-size: 12px;
+	color: #fff;
+	text-align: center;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.jove-concept-video-block__content {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.jove-concept-video-block__content .jove-concept-video-block__title {
+	font-size: 14px;
+	font-weight: 500;
+	color: #1c1d1d;
+	margin: 0;
+}
+.jove-concept-video-block__date {
+	font-size: 12px;
+	color: #565656;
+	margin: 0;
+}
+.jove-concept-video-block__views {
+	font-size: 12px;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+.jove-concept-video-block__views svg {
+	width: 14px;
+	height: 14px;
+}
