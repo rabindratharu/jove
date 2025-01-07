@@ -124,4 +124,12 @@
 	width: 14px;
 	height: 14px;
 }
+.jove-concept-video-block__image img {
+	height: 100%;
+	-o-object-fit: cover;
+	   object-fit: cover;
+	-o-object-position: center;
+	   object-position: center;
+	width: 100%;
+}
 

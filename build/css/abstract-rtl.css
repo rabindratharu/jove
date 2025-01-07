@@ -1,19 +1,232 @@
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./resources/css/abstract.css ***!
   \****************************************************************************************************************************************************************************************************************/
+.jove-abstract-block__journal a {
+	font-size: 14px;
+	color: #565656;
+	text-decoration: none;
+	pointer-events: none;
+}
+.jove-abstract-block__date {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	gap: 10px;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+}
+.jove-abstract-block__date p {
+	margin: 0;
+	font-size: 14px;
+	color: #adadad;
+}
+.jove-abstract-block__date_line {
+	font-size: 14px;
+}
+
+.jove-abstract-block__authors-affiliations .jove-abstract-block__authors li {
+	color: var(--wp--preset--color--primary);
+}
+.jove-abstract-block__authors-affiliations ul li sub {
+	font-size: 10px;
+	position: relative;
+	top: -7px;
+	right: 0;
+	color: #4b4b4b;
+}
+
+.jove-abstract-block__social-share ul {
+	margin: 0;
+	padding: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	gap: 20px;
+}
+.jove-abstract-block__social-share ul li {
+	list-style: none;
+}
+.jove-abstract-block__social-share ul li svg {
+	width: 20px;
+	height: 20px;
+	color: #6c6c6a;
+}
+
+.jove-abstract-block__description {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	gap: 20px;
+}
+
+/**
+* New Style
+*/
 .jove-abstract-block {
 	background: #fff;
 	padding: 32px;
 	border-radius: 4px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	gap: 24px;
 }
-.jove-abstract-block .wp-block-post-title {
+.jove-abstract-block__entry-header {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	gap: 12px;
+}
+.jove-abstract-block__entry-header .jove-abstract-block__heading {
 	font-size: 24px;
 	color: #4b4b4b;
 	font-weight: 500;
+	margin: 0;
+}
+.jove-abstract-block__authors-affiliations ul {
+	padding: 0;
+	margin: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 }
 
-.jove-abstract-block .jove-video-abstract-details > .entry-content p a {
-	color: #2183ed;
+.jove-abstract-block__authors-affiliations ul li {
+	list-style: none;
+	font-size: 14px;
+	color: #565656;
+}
+.jove-abstract-block__entry-content {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	gap: 24px;
+}
+.jove-abstract-block__entry-content .jove-abstract-block__description__heading {
+	font-size: 20px;
+	color: #4b4b4b;
+	margin: 0;
+}
+.jove-abstract-block__entry-content .jove-abstract-block__description__text p {
+	font-size: 16px;
+	color: #4b4b4b;
+	margin: 0;
+}
+.jove-abstract-block__entry-content
+	.jove-abstract-block__description__text
+	p
+	a {
+	color: var(--wp--preset--color--primary);
 	text-decoration: none;
+}
+.jove-abstract-block__entry-content .jove-abstract-block__keywords {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	gap: 8px;
+}
+.jove-abstract-block__entry-content
+	.jove-abstract-block__keywords
+	.jove-abstract-block__keywords__label {
+	font-size: 16px;
+	font-weight: 700;
+	color: #4b4b4b;
+}
+.jove-abstract-block__entry-content .jove-abstract-block__keywords a {
+	border: 1px solid var(--wp--preset--color--primary);
+	border-radius: 50px;
+	font-size: 12px;
+	padding: 8px 16px;
+	text-decoration: none;
+	color: var(--wp--preset--color--primary);
+	line-height: 1.4;
+}
+
+.single-video #popup-info {
+	width: 450px !important;
+	border-radius: 12px;
+}
+.single-video #popup-info .popup-content {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	gap: 12px;
+}
+.single-video #popup-info .popup-content > * {
+	width: 100%;
+}
+.single-video #popup-info .jove-social-share-header {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	gap: 15px;
+}
+.single-video #popup-info .jove-social-share-header h3 {
+	margin: 0;
+	color: #4b4b4b;
+	font-size: 20px;
+	font-weight: 500;
+}
+.single-video #popup-info .jove-social-share-header .mfp-close-custom {
+	height: 24px;
+	width: 24px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+}
+.single-video #popup-info .jove-social-share-list {
+	margin: 0;
+	padding: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	gap: 12px;
+}
+.single-video #popup-info .jove-social-share-list li {
+	list-style: none;
+}
+
+.jove-abstract-block__share__link-url {
+	margin-top: 12px;
+	-webkit-padding-start: 0.5rem;
+	        padding-inline-start: 0.5rem;
+	-webkit-padding-end: 0.5rem;
+	        padding-inline-end: 0.5rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	border-radius: 12px;
+	background: rgb(249, 249, 249);
 }
 

@@ -34,5 +34,8 @@
   },
   "style": [
     "file:./../../css/abstract.css"
+  ],
+  "viewScript": [
+    "file:./../../js/abstract.js"
   ]
 }

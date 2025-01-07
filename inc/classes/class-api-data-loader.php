@@ -23,7 +23,6 @@ class Api_Data_Loader {
 	 *
 	 * @var string
 	 */
-	//private $url = 'https://demo.wpwheels.com/blockwheels/template/wp-json/wpwheels/v1/patterns';
 	private $url = 'https://raw.githubusercontent.com/rabindratharu/jove/refs/heads/main/assets/api-data.json';
 
 

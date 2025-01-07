@@ -6,192 +6,85 @@
 	class="wp-block-group alignwide is-style-default has-background"
 	style="background-color: #f5f5f5; margin-top: 0; margin-bottom: 0"
 >
-	<!-- wp:group {"layout":{"type":"default"}} -->
-	<div class="wp-block-group">
-		<!-- wp:group {"layout":{"type":"constrained"}} -->
-		<div class="wp-block-group"><!-- wp:x3p0/breadcrumbs /--></div>
-		<!-- /wp:group -->
+	<!-- wp:group {"tagName":"main","align":"wide","className":"is-style-default","style":{"spacing":{"margin":{"top":"0","bottom":"0"}},"color":{"background":"#f5f5f5"}},"layout":{"type":"default"}} -->
+	<main
+		class="wp-block-group alignwide is-style-default has-background"
+		style="background-color: #f5f5f5; margin-top: 0; margin-bottom: 0"
+	>
+		<!-- wp:group {"layout":{"type":"default"}} -->
+		<div class="wp-block-group">
+			<!-- wp:group {"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group"><!-- wp:x3p0/breadcrumbs /--></div>
+			<!-- /wp:group -->
 
-		<!-- wp:group {"className":"jove-video-container","layout":{"type":"constrained"}} -->
-		<div class="wp-block-group jove-video-container">
-			<!-- wp:columns {"className":"jove-video-content-wrap"} -->
-			<div class="wp-block-columns jove-video-content-wrap">
-				<!-- wp:column {"width":"62%","className":"jove-video-left-col"} -->
-				<div
-					class="wp-block-column jove-video-left-col"
-					style="flex-basis: 62%"
-				>
-					<!-- wp:acf/abstract {"name":"acf/abstract","data":{"heading":"","_heading":"field_6773730866d21"},"mode":"preview"} -->
-					<!-- wp:group {"layout":{"type":"constrained"}} -->
-					<div class="wp-block-group">
-						<!-- wp:post-title /-->
+			<!-- wp:group {"className":"jove-video-container","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group jove-video-container">
+				<!-- wp:columns {"className":"jove-video-content-wrap"} -->
+				<div class="wp-block-columns jove-video-content-wrap">
+					<!-- wp:column {"width":"62%","className":"jove-video-left-col"} -->
+					<div
+						class="wp-block-column jove-video-left-col"
+						style="flex-basis: 62%"
+					>
+						<!-- wp:acf/abstract {"name":"acf/abstract","data":{"heading":"","_heading":"field_6773730866d21"},"mode":"preview"} -->
+						<!-- wp:group {"layout":{"type":"constrained"}} -->
+						<div class="wp-block-group">
+							<!-- wp:post-title /-->
 
-						<!-- wp:acf/affiliations {"name":"acf/affiliations","data":{"label":"","_label":"field_676f6bed17c76"},"mode":"preview"} /-->
+							<!-- wp:acf/affiliations {"name":"acf/affiliations","data":{"label":"","_label":"field_676f6bed17c76"},"mode":"preview"} /-->
 
-						<!-- wp:post-terms {"term":"journal"} /-->
+							<!-- wp:post-terms {"term":"journal"} /-->
 
-						<!-- wp:group {"className":"jove-video-publish-date","layout":{"type":"flex","flexWrap":"nowrap"}} -->
-						<div class="wp-block-group jove-video-publish-date">
-							<!-- wp:paragraph -->
-							<p>Published on:</p>
-							<!-- /wp:paragraph -->
+							<!-- wp:group {"className":"jove-video-publish-date","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+							<div class="wp-block-group jove-video-publish-date">
+								<!-- wp:paragraph -->
+								<p>Published on:</p>
+								<!-- /wp:paragraph -->
 
-							<!-- wp:post-date /-->
+								<!-- wp:post-date /-->
+							</div>
+							<!-- /wp:group -->
+
+							<!-- wp:acf/share {"name":"acf/share","mode":"preview"} /-->
 						</div>
 						<!-- /wp:group -->
 
-						<!-- wp:acf/share {"name":"acf/share","mode":"preview"} /-->
-					</div>
-					<!-- /wp:group -->
+						<!-- wp:group {"className":"jove-video-abstract-details","layout":{"type":"constrained"}} -->
+						<div class="wp-block-group jove-video-abstract-details">
+							<!-- wp:heading -->
+							<h2 class="wp-block-heading">Abstract</h2>
+							<!-- /wp:heading -->
 
-					<!-- wp:group {"className":"jove-video-abstract-details","layout":{"type":"constrained"}} -->
-					<div class="wp-block-group jove-video-abstract-details">
-						<!-- wp:heading -->
-						<h2 class="wp-block-heading">Abstract</h2>
-						<!-- /wp:heading -->
+							<!-- wp:post-content /-->
 
-						<!-- wp:post-content /-->
-
-						<!-- wp:post-terms {"term":"keyword","prefix":"Keywords:","className":"is-style-term-button"} /-->
-					</div>
-					<!-- /wp:group -->
-					<!-- /wp:acf/abstract -->
-				</div>
-				<!-- /wp:column -->
-
-				<!-- wp:column {"width":"38%","className":"jove-video-right-col"} -->
-				<div
-					class="wp-block-column jove-video-right-col"
-					style="flex-basis: 38%"
-				>
-					<!-- wp:acf/experiment {"name":"acf/experiment","data":{"heading":"","_heading":"field_67737146c3d79"},"mode":"preview"} -->
-					<!-- wp:group {"layout":{"type":"constrained"}} -->
-					<div class="wp-block-group">
-						<!-- wp:heading -->
-						<h2 class="wp-block-heading">
-							Related Experiment Videos
-						</h2>
-						<!-- /wp:heading -->
-					</div>
-					<!-- /wp:group -->
-
-					<!-- wp:group {"className":"jove-experiment-video-container","layout":{"type":"constrained"}} -->
-					<div class="wp-block-group jove-experiment-video-container">
-						<!-- wp:acf/notice {"name":"acf/notice","data":{"text":"","_text":"field_676e8323a3358"},"mode":"preview"} -->
-						<!-- wp:paragraph -->
-						<p>
-							These videos have been matched automatically.
-							<a href="https://www.jove.com/about/contact"
-								>Contact us</a
-							>
-							if they are not relevant.
-						</p>
-						<!-- /wp:paragraph -->
-						<!-- /wp:acf/notice -->
-
-						<!-- wp:query {"queryId":29,"query":{"perPage":3,"pages":0,"offset":0,"postType":"video","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]}} -->
-						<div class="wp-block-query">
-							<!-- wp:post-template {"layout":{"type":"default"}} -->
-							<!-- wp:columns {"className":"jove-experiment-video-cols"} -->
-							<div
-								class="wp-block-columns jove-experiment-video-cols"
-							>
-								<!-- wp:column {"className":"jove-experiment-video-left-col"} -->
-								<div
-									class="wp-block-column jove-experiment-video-left-col"
-								>
-									<!-- wp:acf/video {"name":"acf/video","data":{"heading":"","_heading":"field_6773c2d174c45"},"mode":"preview"} /-->
-								</div>
-								<!-- /wp:column -->
-
-								<!-- wp:column {"className":"jove-experiment-video-right-col"} -->
-								<div
-									class="wp-block-column jove-experiment-video-right-col"
-								>
-									<!-- wp:post-title /-->
-
-									<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-									<div class="wp-block-group">
-										<!-- wp:paragraph -->
-										<p>Published on:</p>
-										<!-- /wp:paragraph -->
-
-										<!-- wp:post-date /-->
-									</div>
-									<!-- /wp:group -->
-
-									<!-- wp:acf/views {"name":"acf/views","data":{"heading":"","_heading":"field_67738e0ad37e4"},"mode":"preview"} /-->
-								</div>
-								<!-- /wp:column -->
-							</div>
-							<!-- /wp:columns -->
-							<!-- /wp:post-template -->
+							<!-- wp:post-terms {"term":"keyword","prefix":"Keywords:","className":"is-style-term-button"} /-->
 						</div>
-						<!-- /wp:query -->
-
-						<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
-						<div
-							class="wp-block-buttons"
-							style="margin-top: 0; margin-bottom: 0"
-						>
-							<!-- wp:button {"width":100} -->
-							<div
-								class="wp-block-button has-custom-width wp-block-button__width-100"
-							>
-								<a
-									class="wp-block-button__link wp-element-button"
-									>See all related videos</a
-								>
-							</div>
-							<!-- /wp:button -->
-						</div>
-						<!-- /wp:buttons -->
+						<!-- /wp:group -->
+						<!-- /wp:acf/abstract -->
 					</div>
-					<!-- /wp:group -->
-					<!-- /wp:acf/experiment -->
+					<!-- /wp:column -->
+
+					<!-- wp:column {"width":"38%","className":"jove-video-right-col"} -->
+					<div
+						class="wp-block-column jove-video-right-col"
+						style="flex-basis: 38%"
+					>
+						<!-- wp:acf/experiment {"name":"acf/experiment","data":{"heading":"Related Experiment Videos","_heading":"field_67737146c3d79","notice":"These videos have been matched automatically. \u003ca href=\u0022https://www.jove.com/about/contact\u0022\u003eContact us\u003c/a\u003e if they are not relevant.","_notice":"field_677890763338c","button_text":"See all related videos","_button_text":"field_67789826d46e0"},"mode":"preview"} /-->
+					</div>
+					<!-- /wp:column -->
 				</div>
-				<!-- /wp:column -->
+				<!-- /wp:columns -->
 			</div>
-			<!-- /wp:columns -->
+			<!-- /wp:group -->
 		</div>
 		<!-- /wp:group -->
-	</div>
-	<!-- /wp:group -->
 
-	<!-- wp:group {"className":"jove-video-related-container","layout":{"type":"constrained"}} -->
-	<div class="wp-block-group jove-video-related-container">
-		<!-- wp:acf/concept {"name":"acf/concept","data":{"heading":"","_heading":"field_6773719fa0765"},"mode":"preview"} -->
-		<!-- wp:heading -->
-		<h2 class="wp-block-heading">Related Concept Videos</h2>
-		<!-- /wp:heading -->
-
-		<!-- wp:query {"queryId":38,"query":{"perPage":6,"pages":0,"offset":0,"postType":"video","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]}} -->
-		<div class="wp-block-query">
-			<!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
-			<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"10px"}}}} -->
-			<div class="wp-block-columns">
-				<!-- wp:column -->
-				<div class="wp-block-column">
-					<!-- wp:acf/video {"name":"acf/video","data":{"heading":"","_heading":"field_6773c2d174c45"},"mode":"preview"} /-->
-				</div>
-				<!-- /wp:column -->
-
-				<!-- wp:column -->
-				<div class="wp-block-column">
-					<!-- wp:post-title /-->
-
-					<!-- wp:acf/views {"name":"acf/views","data":{"heading":"","_heading":"field_67738e0ad37e4"},"mode":"preview"} /-->
-
-					<!-- wp:post-excerpt {"excerptLength":10} /-->
-				</div>
-				<!-- /wp:column -->
-			</div>
-			<!-- /wp:columns -->
-			<!-- /wp:post-template -->
+		<!-- wp:group {"className":"jove-video-related-container","layout":{"type":"constrained"}} -->
+		<div class="wp-block-group jove-video-related-container">
+			<!-- wp:acf/concept {"name":"acf/concept","data":{"heading":"Related Concept Videos","_heading":"field_6773719fa0765"},"mode":"preview"} /-->
 		</div>
-		<!-- /wp:query -->
-		<!-- /wp:acf/concept -->
-	</div>
+		<!-- /wp:group -->
+	</main>
 	<!-- /wp:group -->
 </main>
 <!-- /wp:group -->

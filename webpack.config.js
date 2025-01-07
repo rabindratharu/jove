@@ -75,6 +75,11 @@ module.exports = {
 				"experiment.js",
 			),
 			"js/share": path.resolve(process.cwd(), "resources/js", "share.js"),
+			"js/abstract": path.resolve(
+				process.cwd(),
+				"resources/js",
+				"abstract.js",
+			),
 
 			"css/public": path.resolve(
 				process.cwd(),
@@ -106,21 +111,13 @@ module.exports = {
 				"resources/css",
 				"divider.css",
 			),
-			"css/notice": path.resolve(
-				process.cwd(),
-				"resources/css",
-				"notice.css",
-			),
+
 			"css/experiment": path.resolve(
 				process.cwd(),
 				"resources/css",
 				"experiment.css",
 			),
-			"css/video": path.resolve(
-				process.cwd(),
-				"resources/css",
-				"video.css",
-			),
+
 			"css/abstract": path.resolve(
 				process.cwd(),
 				"resources/css",
@@ -135,11 +132,6 @@ module.exports = {
 				process.cwd(),
 				"resources/css",
 				"concept.css",
-			),
-			"css/views": path.resolve(
-				process.cwd(),
-				"resources/css",
-				"views.css",
 			),
 		},
 		optimization: {
