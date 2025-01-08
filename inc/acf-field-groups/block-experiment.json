@@ -17,7 +17,47 @@
 					"class": "",
 					"id": ""
 				},
-				"default_value": "",
+				"default_value": "Related Experiment Videos",
+				"maxlength": "",
+				"placeholder": "",
+				"prepend": "",
+				"append": ""
+			},
+			{
+				"key": "field_677890763338c",
+				"label": "Notice",
+				"name": "notice",
+				"aria-label": "",
+				"type": "wysiwyg",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "These videos have been matched automatically. <a href=\"https://www.jove.com/about/contact\">Contact us</a> if they are not relevant.",
+				"tabs": "all",
+				"toolbar": "full",
+				"media_upload": 1,
+				"delay": 0
+			},
+			{
+				"key": "field_67789826d46e0",
+				"label": "Button Text",
+				"name": "button_text",
+				"aria-label": "",
+				"type": "text",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "See all related videos",
 				"maxlength": "",
 				"placeholder": "",
 				"prepend": "",

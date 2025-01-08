@@ -33,6 +33,7 @@
     "mode": false
   },
   "style": [
+    "popup-css",
     "file:./../../css/abstract.css"
   ],
   "viewScript": [

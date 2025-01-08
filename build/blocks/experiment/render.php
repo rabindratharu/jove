@@ -25,8 +25,8 @@ if ( ! empty( $block['className'] ) ) {
 
 // acf data
 $heading 	= get_field('heading');
-$notice 	= get_field('notice');
-$button 	= get_field('button_text');
+$notice 	= get_field('notice') ? get_field('notice') : '<p>These videos have been matched automatically. <a href="https://www.jove.com/about/contact">Contact us</a> if they are not relevant.</p>';
+$button 	= get_field('button_text') ? get_field('button_text') : 'See all related videos';
 $json_data 	= get_json_file_data();
 $post_id 	= '95';
 
@@ -73,7 +73,8 @@ $btn_url = 'https://app.jove.com/search?content_type=journal_content&page=1&quer
 				?>
              <div class="jove-experiment-video-block__lists">
                  <?php foreach ($json_data[$post_id]['experiment'] as $key => $value) {
-					$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
+					//$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
+					$url = isset($value['url']) ? $value['url'] : '#';
 					?>
                  <div class="jove-experiment-video-block__list">
                      <figure class="jove-experiment-video-block__image">

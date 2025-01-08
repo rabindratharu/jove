@@ -50,7 +50,8 @@ $post_id 	= '95';
 				?>
              <div class="jove-concept-video-block__lists">
                  <?php foreach ($json_data[$post_id]['concept'] as $key => $value) {
-					$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
+					//$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
+					$url = isset($value['url']) ? $value['url'] : '#';
 					?>
                  <div class="jove-concept-video-block__list">
                      <figure class="jove-concept-video-block__image">

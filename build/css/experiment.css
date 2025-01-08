@@ -61,8 +61,9 @@
 	        flex-direction: column;
 }
 .jove-experiment-video-block__list {
-	display: grid;
-	grid-template-columns: 40% 60%; /* Set column widths */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
 	gap: 16px; /* Adjust gap between items if needed */
 	background: #f5f9ff;
 	padding: 12px;
@@ -74,6 +75,7 @@
 	border-radius: 4px;
 	overflow: hidden;
 	line-height: 0;
+	width: 40%;
 }
 .jove-experiment-video-block__image__overlay {
 	position: absolute;
@@ -110,6 +112,7 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 	gap: 10px;
+	width: 60%;
 }
 .jove-experiment-video-block__content .jove-experiment-video-block__title {
 	font-size: 14px;
@@ -147,6 +150,22 @@
 	-o-object-position: center;
 	   object-position: center;
 	width: 100%;
+}
+.jove-notice-block {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: start;
+	    -ms-flex-align: start;
+	        align-items: start;
+	gap: 10px;
+	margin-top: 12px;
+	padding: 12px 16px;
+	background: #e4ecfa;
+	margin-bottom: 12px !important;
+}
+.jove-notice-block .jove-notice-block__innerblocks > * {
+	margin: 0;
 }
 
 

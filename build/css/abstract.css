@@ -78,6 +78,9 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 	gap: 24px;
+	height: 676px;
+	overflow-y: scroll;
+	scrollbar-width: thin;
 }
 .jove-abstract-block__entry-header {
 	display: -webkit-box;
@@ -214,8 +217,38 @@
 	display: flex;
 	gap: 12px;
 }
+
 .single-video #popup-info .jove-social-share-list li {
 	list-style: none;
+	min-width: 60px;
+	text-align: center;
+	position: relative;
+}
+.single-video #popup-info .jove-social-share-list li a {
+	height: 40px;
+	width: 40px;
+	border: 1px solid rgba(75, 75, 75, 0.4);
+	border-radius: 4px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	margin: 0 auto;
+}
+.single-video #popup-info .jove-social-share-list li a::before {
+	display: block;
+	content: attr(title);
+	position: absolute;
+	top: 109%;
+	left: 0;
+	font-size: 12px;
+	right: 0;
+	text-align: center;
 }
 
 .jove-abstract-block__share__link-url {
@@ -228,6 +261,68 @@
 	padding-bottom: 1rem;
 	border-radius: 12px;
 	background: rgb(249, 249, 249);
+}
+
+.jove-main-content {
+	width: 1316px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+.jove-abstract-block__share__link-url {
+	padding: 16px 12px;
+	font-size: 16px;
+	text-align: left;
+}
+.jove-abstract-block__share__link {
+	text-align: right;
+}
+.jove-abstract-block__share__link-copy {
+	color: rgb(33, 131, 237);
+	text-decoration: none;
+	margin-left: auto;
+	padding: 10px 15px;
+	font-size: 1rem;
+	font-weight: 500;
+}
+@media only screen and (max-width: 1199px) {
+	.single-video main {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}
+
+@media only screen and (max-width: 1023px) {
+	.jove-abstract-block {
+		padding: 24px;
+		height: 676px;
+	}
+	.jove-abstract-block__entry-header .jove-abstract-block__heading {
+		font-size: 22px;
+	}
+}
+
+@media only screen and (max-width: 991px) {
+	.jove-main-content > .wp-block-columns {
+		display: block;
+	}
+	.single-video main {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+	.jove-abstract-block {
+		-webkit-margin-after: var(--wp--preset--spacing--medium);
+		        margin-block-end: var(--wp--preset--spacing--medium);
+		height: 100%;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+}
+
+@media only screen and (max-width: 567px) {
+}
+
+@media only screen and (max-width: 479px) {
 }
 
 
