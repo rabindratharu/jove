@@ -135,12 +135,13 @@ ol.is-style-list-inline-sept {
 }
 ul.is-style-list-inline-sept li,
 ol.is-style-list-inline-sept li {
-	margin-left: 14px;
+	margin-right: 14px;
 	line-height: 1;
 }
 ul.is-style-list-inline-sept li:first-child,
 ol.is-style-list-inline-sept li:first-child {
 	list-style: none;
+	margin-right: 0;
 }
 ul.is-style-list-inline-sept li a:hover,
 ol.is-style-list-inline-sept li a:hover {

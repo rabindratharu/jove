@@ -65,39 +65,28 @@ $post_id = get_the_ID(); // Replace with a specific post ID if needed.
 				}
 
 				if ( ! empty( $data ) ) {
-
-					$authors = wp_list_pluck( $data, 'authors' );
+					$authors 		= wp_list_pluck( $data, 'authors' );
+					$authorsData 	= [];
 					if ( ! empty( $authors ) ) {
 						// Get the total number of items in the array
 						$total_items = count($authors);
 						// Initialize a counter
 						$current_index = 0;
 						echo '<ul class="jove-abstract-block__authors">';
-							foreach ( $authors as $key => $value ) { $current_index++;
-								echo '<li>' . implode('<sub>'.$key.'</sub>, ', $value) . '<sub>'.$key.'</sub>';
-								// Perform actions for all items except the last one
-								if ($current_index !== $total_items) {
-									echo '<span class="jove-separator">,</span>';
-								}
-								echo '</li>';
+							foreach ( $authors as $key => $value ) {
+								$authorsData[] = implode('<sub>'.$key.'</sub>, ', $value) . '<sub>'.$key.'</sub>';
 							}
+							echo '<li>'.implode(' , ', $authorsData).'</li>';
 						echo '</ul>';
 					}
-					$affiliation = wp_list_pluck( $data, 'affiliation' );
+					$affiliation 	 = wp_list_pluck( $data, 'affiliation' );
+					$affiliationData = [];
 					if ( ! empty( $affiliation ) ) {
-						// Get the total number of items in the array
-						$total_items = count($affiliation);
-						// Initialize a counter
-						$current_index = 0;
 						echo '<ul class="jove-abstract-block__affiliations">';
-							foreach ( $affiliation as $key => $value ) { $current_index++;
-								echo '<li><sub>'.$key.'</sub>' . $value;
-								// Perform actions for all items except the last one
-								if ($current_index !== $total_items) {
-									echo '<span class="jove-separator">,</span>';
-								}
-								echo '</li>';
+							foreach ( $affiliation as $key => $value ) {
+								$affiliationData[] = '<sub>'.$key.'</sub>'.$value;
 							}
+							echo '<li>'.implode(' , ', $affiliationData).'</li>';
 						echo '</ul>';
 					}
 				}
