@@ -25,8 +25,6 @@ class Api_Data_Loader {
 	 */
 	private $url = 'https://raw.githubusercontent.com/rabindratharu/jove/refs/heads/main/assets/api-data.json';
 
-
-
 	/**
 	 * Base URL.
 	 *
@@ -90,7 +88,7 @@ class Api_Data_Loader {
 		$this->get_template_data();
 		$this->schedule_cleanup();
 		add_filter( 'cron_schedules', [ $this, 'add_monthly_to_cron_schedule' ] );
-		add_action( 'delete_block_library_folder', [ $this, 'delete_block_library_folder' ] );
+		add_action( 'delete_jove_library_folder', [ $this, 'delete_jove_library_folder' ] );
 	}
 
 	/**
@@ -277,8 +275,8 @@ class Api_Data_Loader {
 	 */
 	public function schedule_cleanup() {
 		if ( ! is_multisite() || ( is_multisite() && is_main_site() ) ) {
-			if ( ! wp_next_scheduled( 'delete_block_library_folder' ) && ! wp_installing() ) {
-				wp_schedule_event( time(), self::CLEANUP_FREQUENCY, 'delete_block_library_folder' );
+			if ( ! wp_next_scheduled( 'delete_jove_library_folder' ) && ! wp_installing() ) {
+				wp_schedule_event( time(), self::CLEANUP_FREQUENCY, 'delete_jove_library_folder' );
 			}
 		}
 	}
@@ -306,7 +304,7 @@ class Api_Data_Loader {
 	 * @access public
 	 * @return bool
 	 */
-	public function delete_block_library_folder() {
+	public function delete_jove_library_folder() {
 		if ( file_exists( $this->get_old_block_library_folder() ) ) {
 			$this->get_filesystem()->delete( $this->get_old_block_library_folder(), true );
 		}
