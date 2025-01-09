@@ -74,7 +74,7 @@ module.exports = {
 				"resources/js",
 				"experiment.js",
 			),
-			"js/share": path.resolve(process.cwd(), "resources/js", "share.js"),
+
 			"js/abstract": path.resolve(
 				process.cwd(),
 				"resources/js",
@@ -123,11 +123,7 @@ module.exports = {
 				"resources/css",
 				"abstract.css",
 			),
-			"css/affiliations": path.resolve(
-				process.cwd(),
-				"resources/css",
-				"affiliations.css",
-			),
+
 			"css/concept": path.resolve(
 				process.cwd(),
 				"resources/css",

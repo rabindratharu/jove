@@ -61,8 +61,6 @@ class Blocks {
 		register_block_type( JOVE_BUILD_PATH . '/blocks/cta/block.json' );
 		register_block_type( JOVE_BUILD_PATH . '/blocks/divider/block.json' );
 		register_block_type( JOVE_BUILD_PATH . '/blocks/search/block.json' );
-		register_block_type( JOVE_BUILD_PATH . '/blocks/affiliations/block.json' );
-		register_block_type( JOVE_BUILD_PATH . '/blocks/share/block.json' );
 		register_block_type( JOVE_BUILD_PATH . '/blocks/abstract/block.json' );
 		register_block_type( JOVE_BUILD_PATH . '/blocks/experiment/block.json' );
 		register_block_type( JOVE_BUILD_PATH . '/blocks/concept/block.json' );

@@ -109,22 +109,22 @@ class Jove {
 		remove_theme_support( 'core-block-patterns' );
 
 		// Insert Video Data
-		$data = get_json_file_data();
-		if ( $data ) {
-			foreach ($data as $key => $post) {
-				// Insert into wp_posts
-				$wpdb->insert($wpdb->posts, [
-					'ID'            => 1124, // Custom ID
-					'post_author'   => $post['post_author'],
-					'post_date'     => isset($post['post_date']) ? $post['post_date'] : current_time('mysql'),
-					'post_date_gmt' => isset($post['post_date_gmt']) ? $post['post_date_gmt'] : current_time('mysql', 1),
-					'post_content'  => $post['post_content'],
-					'post_title'    => $post['post_title'],
-					'post_status'   => $post['post_status'],
-					'post_type'     => $post['post_type']
-				]);
-			}
-		}
+		// $data = get_json_file_data();
+		// if ( $data ) {
+		// 	foreach ($data as $key => $post) {
+		// 		// Insert into wp_posts
+		// 		$wpdb->insert($wpdb->posts, [
+		// 			'ID'            => 1124, // Custom ID
+		// 			'post_author'   => $post['post_author'],
+		// 			'post_date'     => isset($post['post_date']) ? $post['post_date'] : current_time('mysql'),
+		// 			'post_date_gmt' => isset($post['post_date_gmt']) ? $post['post_date_gmt'] : current_time('mysql', 1),
+		// 			'post_content'  => $post['post_content'],
+		// 			'post_title'    => $post['post_title'],
+		// 			'post_status'   => $post['post_status'],
+		// 			'post_type'     => $post['post_type']
+		// 		]);
+		// 	}
+		// }
 	}
 
 	/**
