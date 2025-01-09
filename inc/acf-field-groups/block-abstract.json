@@ -1,7 +1,7 @@
 [
 	{
 		"key": "group_67737307a3f8e",
-		"title": "Jove: Abstract Video Block",
+		"title": "Jove: Abstract Block",
 		"fields": [
 			{
 				"key": "field_6773730866d21",
@@ -17,7 +17,7 @@
 					"class": "",
 					"id": ""
 				},
-				"default_value": "",
+				"default_value": "Abstract",
 				"maxlength": "",
 				"placeholder": "",
 				"prepend": "",

@@ -1,7 +1,7 @@
 [
 	{
 		"key": "group_6773719ec14a8",
-		"title": "Jove: Concept Video Block",
+		"title": "Jove: Concept Block",
 		"fields": [
 			{
 				"key": "field_6773719fa0765",
@@ -17,7 +17,7 @@
 					"class": "",
 					"id": ""
 				},
-				"default_value": "",
+				"default_value": "Related Concept Videos",
 				"maxlength": "",
 				"placeholder": "",
 				"prepend": "",

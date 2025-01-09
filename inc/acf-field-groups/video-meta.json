@@ -78,23 +78,6 @@
 						"parent_repeater": "field_67723926d3d78"
 					}
 				]
-			},
-			{
-				"key": "field_676f803a2153f",
-				"label": "Video URL",
-				"name": "video_url",
-				"aria-label": "",
-				"type": "url",
-				"instructions": "",
-				"required": 0,
-				"conditional_logic": 0,
-				"wrapper": {
-					"width": "50",
-					"class": "",
-					"id": ""
-				},
-				"default_value": "",
-				"placeholder": ""
 			}
 		],
 		"location": [
