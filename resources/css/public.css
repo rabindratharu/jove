@@ -1168,3 +1168,16 @@ hr.is-style-separator-dotted,
 /**
 * New Style
 */
+.breadcrumbs li {
+	color: #4b4b4b;
+	position: relative;
+	padding-left: 20px !important;
+}
+.breadcrumbs li::before {
+	position: absolute;
+	left: 0;
+	top: 0px;
+}
+.breadcrumbs li:first-child {
+	padding-left: 0 !important;
+}

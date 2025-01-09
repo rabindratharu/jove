@@ -141,6 +141,7 @@
 .single-video #popup-info {
 	width: 450px !important;
 	border-radius: 12px;
+	max-width: 100%;
 }
 .single-video #popup-info .popup-content {
 	display: flex;
@@ -212,6 +213,7 @@
 	padding-bottom: 1rem;
 	border-radius: 12px;
 	background: rgb(249, 249, 249);
+	word-wrap: break-word;
 }
 
 .jove-main-content {
@@ -267,10 +269,40 @@
 }
 
 @media only screen and (max-width: 767px) {
+	.jove-abstract-block {
+		padding: 20px;
+	}
 }
-
 @media only screen and (max-width: 567px) {
+	.jove-abstract-block__entry-header .jove-abstract-block__heading {
+		font-size: 20px;
+	}
+	.jove-abstract-block__entry-content
+		.jove-abstract-block__description__heading {
+		font-size: 18px;
+	}
+	.jove-abstract-block__entry-content {
+		gap: 20px;
+	}
+	.jove-abstract-block__share__link-url {
+		font-size: 14px;
+	}
+	.jove-abstract-block__share__link-copy {
+		font-size: 14px;
+	}
 }
 
 @media only screen and (max-width: 479px) {
+	.jove-abstract-block {
+		padding: 15px;
+	}
+	.jove-abstract-block__entry-header .jove-abstract-block__heading,
+	.jove-abstract-block__entry-content
+		.jove-abstract-block__description__text
+		p {
+		font-size: 14px;
+	}
+	.jove-abstract-block__entry-content .jove-abstract-block__keywords a {
+		padding: 7px 11px;
+	}
 }

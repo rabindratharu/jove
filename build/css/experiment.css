@@ -168,5 +168,37 @@
 	margin: 0;
 }
 
+@media only screen and (max-width: 567px) {
+	.jove-experiment-video-block .jove-experiment-video-block__container {
+		padding: 20px;
+		gap: 15px;
+	}
+	.jove-experiment-video-block .jove-experiment-video-block__heading {
+		font-size: 18px;
+	}
+}
+
+@media only screen and (max-width: 479px) {
+	.jove-experiment-video-block .jove-experiment-video-block__container {
+		padding: 15px;
+	}
+	.jove-experiment-video-block__list {
+		display: block;
+	}
+	.jove-experiment-video-block__image {
+		width: 60%;
+		margin: 0 auto 8px;
+	}
+	.jove-experiment-video-block__content {
+		width: 100%;
+		text-align: center;
+	}
+	.jove-experiment-video-block__views {
+		-webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+	}
+}
+
 
 /*# sourceMappingURL=experiment.css.map*/
