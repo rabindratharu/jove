@@ -75,6 +75,24 @@ class Search_Api {
 						'description'       => esc_html__( 'Comma-separated tag IDs', 'jove' ),
 						'sanitize_callback' => 'sanitize_text_field',
 					],
+					'author' => [
+						'required'          => false,
+						'type'              => 'string',
+						'description'       => esc_html__( 'Comma-separated author IDs', 'jove' ),
+						'sanitize_callback' => 'sanitize_text_field',
+					],
+					'institution' => [
+						'required'          => false,
+						'type'              => 'string',
+						'description'       => esc_html__( 'Comma-separated institution IDs', 'jove' ),
+						'sanitize_callback' => 'sanitize_text_field',
+					],
+					'journal' => [
+						'required'          => false,
+						'type'              => 'string',
+						'description'       => esc_html__( 'Comma-separated journal IDs', 'jove' ),
+						'sanitize_callback' => 'sanitize_text_field',
+					],
 					'page_no' => [
 						'required'          => false,
 						'type'              => 'integer',
@@ -85,7 +103,7 @@ class Search_Api {
 						'required'          => false,
 						'type'              => 'integer',
 						'description'       => esc_html__( 'Number of posts per page', 'jove' ),
-						'default'           => 9,
+						'default'           => 10,
 					],
 				],
 			]
@@ -99,16 +117,21 @@ class Search_Api {
 	 * @return WP_REST_Response The response object.
 	 */
 	public function get_items( WP_REST_Request $request ): WP_REST_Response {
-		$search_term    = $request->get_param( 's' );
-		$category_ids   = $request->get_param( 'categories' );
-		$tag_ids        = $request->get_param( 'tags' );
-		$page_no        = (int) $request->get_param( 'page_no' );
-		$posts_per_page = (int) $request->get_param( 'posts_per_page' );
+		$search_term     = $request->get_param( 's' );
+		$category_ids    = $request->get_param( 'categories' );
+		$tag_ids         = $request->get_param( 'tags' );
+		$author_ids      = $request->get_param( 'author' );
+		$institution_ids = $request->get_param( 'institution' );
+		$journal_ids     = $request->get_param( 'journal' );
+		$post_type       = $request->get_param( 'post_type' ) ?: [ 'video' ]; // Default to 'post' and 'video'.
+		$page_no         = (int) $request->get_param( 'page_no' );
+		$posts_per_page  = (int) $request->get_param( 'posts_per_page' );
 
 		$query_args = [
 			'post_status'            => 'publish',
 			'posts_per_page'         => $posts_per_page,
 			'paged'                  => $page_no,
+			'post_type'              => $post_type, // Include custom post type.
 			'update_post_meta_cache' => false,
 			'update_post_term_cache' => false,
 		];
@@ -118,8 +141,8 @@ class Search_Api {
 			$query_args['s'] = $search_term;
 		}
 
-		// Add taxonomy query if categories or tags are provided.
-		if ( ! empty( $category_ids ) || ! empty( $tag_ids ) ) {
+		// Add taxonomy query if categories, tags, authors, institutions, or journals are provided.
+		if ( ! empty( $category_ids ) || ! empty( $tag_ids ) || ! empty( $author_ids ) || ! empty( $institution_ids ) || ! empty( $journal_ids ) ) {
 			$query_args['tax_query'] = [];
 		}
 
@@ -139,6 +162,36 @@ class Search_Api {
 				'taxonomy' => 'post_tag',
 				'field'    => 'id',
 				'terms'    => array_map( 'intval', explode( ',', $tag_ids ) ),
+				'operator' => 'IN',
+			];
+		}
+
+		// Add author filter.
+		if ( ! empty( $author_ids ) ) {
+			$query_args['tax_query'][] = [
+				'taxonomy' => 'author',
+				'field'    => 'id',
+				'terms'    => array_map( 'intval', explode( ',', $author_ids ) ),
+				'operator' => 'IN',
+			];
+		}
+
+		// Add institution filter.
+		if ( ! empty( $institution_ids ) ) {
+			$query_args['tax_query'][] = [
+				'taxonomy' => 'institution',
+				'field'    => 'id',
+				'terms'    => array_map( 'intval', explode( ',', $institution_ids ) ),
+				'operator' => 'IN',
+			];
+		}
+
+		// Add journal filter.
+		if ( ! empty( $journal_ids ) ) {
+			$query_args['tax_query'][] = [
+				'taxonomy' => 'journal',
+				'field'    => 'id',
+				'terms'    => array_map( 'intval', explode( ',', $journal_ids ) ),
 				'operator' => 'IN',
 			];
 		}
