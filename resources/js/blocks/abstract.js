@@ -32,20 +32,40 @@ import magnificPopup from "magnific-popup";
 })(jQuery);
 
 document.addEventListener("DOMContentLoaded", () => {
-	const containers = document.querySelectorAll(
-		".jove-abstract-block__share__link-copy",
-	);
-	if (!containers.length) {
+	const textarea = document.querySelector("#copytext");
+	const button = document.querySelector("#copytextbtn");
+
+	if (!textarea || !button) {
+		console.error("Textarea or button element not found!");
 		return;
 	}
-	containers.forEach((element) => {
-		element.addEventListener("click", () => {
-			const cloneLink = element
-				.closest(".jove-abstract-block__share__link")
-				.querySelector(
-					".jove-abstract-block__share__link-url",
-				).innerText; // Correctly selects the child
-			console.log(cloneLink);
-		});
+
+	button.addEventListener("click", async () => {
+		try {
+			const textToCopy = textarea.value;
+
+			if (!textToCopy) {
+				//alert("No text to copy!");
+				return;
+			}
+
+			if (navigator.clipboard && navigator.clipboard.writeText) {
+				// Modern Clipboard API
+				await navigator.clipboard.writeText(textToCopy);
+				//alert("Text copied to clipboard!");
+			} else {
+				// Fallback for older browsers
+				textarea.select();
+				document.execCommand("copy");
+				//alert("Text copied to clipboard (fallback)!");
+			}
+		} catch (err) {
+			console.error(
+				"Error copying text to clipboard:",
+				err.name,
+				err.message,
+			);
+			//alert("Failed to copy text. Please try again.");
+		}
 	});
 });

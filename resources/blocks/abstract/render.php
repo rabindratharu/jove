@@ -210,8 +210,10 @@ $post_id = get_the_ID(); // Replace with a specific post ID if needed.
 							?>
                          </ul>
                          <div class="jove-abstract-block__share__link">
-                             <p class="jove-abstract-block__share__link-url"><?php the_permalink(); ?></p>
-                             <a href="javascript:void(0);" class="jove-abstract-block__share__link-copy">Copy link</a>
+                             <textarea id="copytext"
+                                 class="jove-abstract-block__share__link-url"><?php the_permalink(); ?></textarea>
+                             <button id="copytextbtn" type="button" class="jove-abstract-block__share__link-copy">Copy
+                                 link</button>
                          </div>
                      </div>
                  </div>
@@ -242,4 +244,5 @@ $post_id = get_the_ID(); // Replace with a specific post ID if needed.
      </div>
      <?php if ( ! $is_preview ) { ?>
  </div>
+
  <?php } ?>
