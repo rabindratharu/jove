@@ -11,6 +11,8 @@
  * @param array $context The context provided to the block by the post or it's parent block.
  */
 
+use Jove\Inc\Utils;
+
 // Support custom id values.
 $block_id = wp_unique_prefixed_id( 'jove-block-id-' );
 if ( ! empty( $block['anchor'] ) ) {
@@ -69,6 +71,16 @@ $btn_url = 'https://app.jove.com/search?content_type=journal_content&page=1&quer
                      </svg></div>
              </div>
              <?php
+			// // Example usage
+			// $data = Utils::fetch_api_data('https://api.jove.com/api/free/search/search_ai', [
+			// 	'query' 			=> 'Cancer Research',
+			// 	'page' 				=> 1,
+			// 	'per_page' 			=> 3,
+			// 	'category_filter' 	=> ["journal","jove_core"]
+			// ]);
+			// echo '<pre>';
+			// print_r($data);
+			// echo '</pre>';
 			if ( is_array( $json_data ) && array_key_exists($post_id, $json_data) ) {
 				?>
              <div class="jove-experiment-video-block__lists">

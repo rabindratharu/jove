@@ -126,4 +126,53 @@ class Utils {
 
         return false;
     }
+
+	/**
+	 * Fetches data from an API.
+	 *
+	 * @param string $url The API URL.
+	 * @param array  $params The parameters to be appended to the URL as a query string.
+	 *
+	 * @return array The API response as an associative array.
+	 */
+	public static function fetch_api_data($url, $params) {
+		// Initialize the cURL handle
+		$ch = curl_init();
+
+		// Set the URL
+		curl_setopt($ch, CURLOPT_URL, $url);
+
+		// Set method to POST
+		curl_setopt($ch, CURLOPT_POST, true);
+
+		// Set POST fields
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+
+		// Set options to return the response as a string
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		// Set headers if needed (example: JSON content type)
+		curl_setopt($ch, CURLOPT_HTTPHEADER, [
+			// Content type should be specified if the API is expecting it
+			// 'Content-Type: application/json'
+			'Content-Type: application/x-www-form-urlencoded'
+		]);
+
+		// Execute the request and fetch the response
+		$response = curl_exec($ch);
+
+		// Check for errors
+		if ($response === false) {
+			$error_msg = curl_error($ch);
+			curl_close($ch);
+			return "cURL error: " . $error_msg;
+		}
+
+		// Close the cURL handle
+		curl_close($ch);
+
+		// Decode and return the response
+		// Assuming the API returns JSON data
+		return json_decode($response, true);
+	}
 }

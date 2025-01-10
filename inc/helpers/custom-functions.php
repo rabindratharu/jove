@@ -504,3 +504,67 @@ function limit_string_by_characters($string, $limit, $suffix = '...') {
     // Return the trimmed string with the suffix.
     return $trimmed . $suffix;
 }
+
+
+function fetchApiData($url, $params) {
+    // Append parameters to the URL
+    $query = http_build_query($params);
+    $fullUrl = $url . '?' . $query;
+
+    $response = file_get_contents($fullUrl);
+    if ($response === FALSE) {
+        return "Error fetching data.";
+    }
+    return json_decode($response, true); // Assuming the API returns JSON data
+}
+
+function fetchApiDataWithPost($url, $params) {
+    $ch = curl_init();
+
+    // Set the URL
+    curl_setopt($ch, CURLOPT_URL, $url);
+
+    // Set method to POST
+    curl_setopt($ch, CURLOPT_POST, true);
+
+    // Set POST fields
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+
+    // Set options to return the response as a string
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Execute the request and fetch the response
+    $response = curl_exec($ch);
+
+    // Check for errors
+    if (curl_errno($ch)) {
+        $error_msg = curl_error($ch);
+        curl_close($ch);
+        return "cURL error: " . $error_msg;
+    }
+
+    curl_close($ch);
+    return json_decode($response, true); // Assuming the API returns JSON data
+}
+
+// Example usage
+// $url = "https://api.jove.com/api/free/search/search_ai";
+// $params = [
+//     'query' => 'Cancer Research',
+//     'page' => 1,
+//     'per_page' => 3,
+//     'category_filter' => ['journal', 'jove_core']
+// ];
+// $data = fetchApiDataWithPost($url, $params);
+// print_r($data);
+
+
+// Example usage
+// $url = "https://api.example.com/data";
+// $params = [
+//     'api_key' => 'your_api_key',
+//     'param1' => 'value1',
+//     'param2' => 'value2'
+// ];
+// $data = fetchApiData($url, $params);
+// print_r($data);
