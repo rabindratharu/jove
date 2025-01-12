@@ -31,6 +31,7 @@ class Jove {
 		$meta_boxes	= Meta_Boxes::get_instance();
 		$seach_api = Search_Api::get_instance();
 		$api_data = Api_Data_Loader::get_instance();
+		$insert_post = Wp_Insert_Post::get_instance();
 		$utils = Utils::get_instance();
 
 		// Set up WordPress hooks.

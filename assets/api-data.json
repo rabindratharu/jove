@@ -1,87 +1,20 @@
-{
-	"95": {
-		"post_author": "1",
-		"post_date": "2024-12-30 11:13:21",
-		"post_date_gmt": "2024-12-30 11:13:21",
-		"post_content": "<!-- wp:paragraph --><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p><!-- /wp:paragraph -->",
-		"post_title": "Rabindra Data Insert",
-		"post_status": "publish",
-		"post_type": "video",
-		"experiment": [
-			{
-				"title": "Polysome Fractionation and Analysis of Mammalian Translatomes on a Genome-wide Scale",
-				"url": "https://app.jove.com/v/51455/polysome-fractionation-analysis-mammalian-translatomes-on-genome-wide",
-				"date": "January 3, 2025",
-				"views": "1.5k",
-				"length": 10.06,
-				"image": "https://cloudfront.jove.com/CDNSource/teasers/54100.jpg"
-			},
-			{
-				"title": "Capturing the Cardiac Injury Response of Targeted Cell Populations via Cleared Heart Three-Dimensional Imaging",
-				"url": "https://app.jove.com/v/51455/polysome-fractionation-analysis-mammalian-translatomes-on-genome-wide",
-				"date": "January 5, 2023",
-				"views": "5.8k",
-				"length": 10.06,
-				"image": "https://cloudfront.jove.com/CDNSource/teasers/60482.jpg"
-			},
-			{
-				"title": "Modified Technique for the Use of Neonatal Murine Hearts in the Langendorff Preparation",
-				"url": "https://app.jove.com/v/51455/polysome-fractionation-analysis-mammalian-translatomes-on-genome-wide",
-				"date": "Feb 3, 2024",
-				"views": "1.5k",
-				"length": 10.06,
-				"image": "https://cloudfront.jove.com/CDNSource/teasers/54100.jpg"
-			}
-		],
-		"concept": [
-			{
-				"title": "What is Cell Division?",
-				"url": "https://app.jove.com/science-education/v/13406/what-is-the-cell-cycle",
-				"description": "Polysome Fractionation and Analysis of Mammalian Translatomes on a Genome-wide Scale. Capturing the Cardiac Injury Response of Targeted Cell Populations via Cleared Heart Three-Dimensional Imaging.",
-				"views": "1.5k",
-				"length": 10.06,
-				"image": "https://cloudfront.jove.com/CDNSource/teasers/54100.jpg"
-			},
-			{
-				"title": "What is Cell Division?",
-				"url": "https://app.jove.com/science-education/v/13406/what-is-the-cell-cycle",
-				"description": "Polysome Fractionation and Analysis of Mammalian Translatomes on a Genome-wide Scale. Capturing the Cardiac Injury Response of Targeted Cell Populations via Cleared Heart Three-Dimensional Imaging.",
-				"views": "1.5k",
-				"length": 10.06,
-				"image": "https://cloudfront.jove.com/CDNSource/teasers/60482.jpg"
-			},
-			{
-				"title": "What is Cell Division?",
-				"url": "https://app.jove.com/science-education/v/13406/what-is-the-cell-cycle",
-				"description": "Polysome Fractionation and Analysis of Mammalian Translatomes on a Genome-wide Scale. Capturing the Cardiac Injury Response of Targeted Cell Populations via Cleared Heart Three-Dimensional Imaging.",
-				"views": "1.5k",
-				"length": 10.06,
-				"image": "https://cloudfront.jove.com/CDNSource/teasers/54100.jpg"
-			},
-			{
-				"title": "What is Cell Division?",
-				"url": "https://app.jove.com/science-education/v/13406/what-is-the-cell-cycle",
-				"description": "Polysome Fractionation and Analysis of Mammalian Translatomes on a Genome-wide Scale. Capturing the Cardiac Injury Response of Targeted Cell Populations via Cleared Heart Three-Dimensional Imaging.",
-				"views": "1.5k",
-				"length": 10.06,
-				"image": "https://cloudfront.jove.com/CDNSource/teasers/62108.jpg"
-			},
-			{
-				"title": "What is Cell Division?",
-				"url": "https://app.jove.com/science-education/v/13406/what-is-the-cell-cycle",
-				"description": "Polysome Fractionation and Analysis of Mammalian Translatomes on a Genome-wide Scale. Capturing the Cardiac Injury Response of Targeted Cell Populations via Cleared Heart Three-Dimensional Imaging.",
-				"views": "1.5k",
-				"length": 10.06,
-				"image": "https://cloudfront.jove.com/CDNSource/teasers/63042.jpg"
-			},
-			{
-				"title": "What is Cell Division?",
-				"url": "https://app.jove.com/science-education/v/13406/what-is-the-cell-cycle",
-				"description": "Polysome Fractionation and Analysis of Mammalian Translatomes on a Genome-wide Scale. Capturing the Cardiac Injury Response of Targeted Cell Populations via Cleared Heart Three-Dimensional Imaging.",
-				"views": "1.5k",
-				"length": 10.06,
-				"image": "https://cloudfront.jove.com/CDNSource/teasers/59958.jpg"
-			}
-		]
+[
+	{
+		"id": 52295,
+		"title": "Assessment of Selective mRNA Translation in Mammalian Cells by Polysome Profiling",
+		"published_at": "2014-10-28 15:00:00",
+		"content": "The ability of cells to adapt to stress is crucial for their survival. Regulation of mRNA translation is one such adaptation strategy, providing for rapid regulation of the proteome. Here, we provide a standardized polysome profiling protocol to identify specific mRNAs that are selectively translated under stress conditions."
+	},
+	{
+		"id": 57600,
+		"title": "Polysome Profiling in <em>Leishmania</em>, Human Cells and Mouse Testis",
+		"published_at": "2018-04-08 15:00:00",
+		"content": "The overall goal of polysome profiling technique is analysis of translational activity of individual mRNAs or transcriptome mRNAs during protein synthesis. The method is important for studies of protein synthesis regulation, translation activation and repression in health and multiple human..."
+	},
+	{
+		"id": 51455,
+		"title": "Polysome Fractionation and Analysis of Mammalian Translatomes on a Genome-wide Scale",
+		"published_at": "2014-05-17 14:00:00",
+		"content": "Ribosomes play a central role in protein synthesis. Polyribosome (polysome) fractionation by sucrose density gradient centrifugation allows direct determination of translation efficiencies of individual mRNAs on a genome-wide scale. In addition, this method can be used for biochemical analysis of ribosome- and polysome-associated factors such as chaperones and signaling..."
 	}
-}
+]
