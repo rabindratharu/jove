@@ -64,7 +64,7 @@ class Blocks {
 		register_block_type( JOVE_BUILD_PATH . '/blocks/abstract/block.json' );
 		register_block_type( JOVE_BUILD_PATH . '/blocks/experiment/block.json' );
 		register_block_type( JOVE_BUILD_PATH . '/blocks/concept/block.json' );
-
+		register_block_type( JOVE_BUILD_PATH . '/blocks/search-filter/block.json' );
 	}
 
 	/**

@@ -22,6 +22,23 @@
 				"placeholder": "",
 				"prepend": "",
 				"append": ""
+			},
+			{
+				"key": "field_67834b0278a90",
+				"label": "Rest API",
+				"name": "rest_api",
+				"aria-label": "",
+				"type": "url",
+				"instructions": "",
+				"required": 0,
+				"conditional_logic": 0,
+				"wrapper": {
+					"width": "",
+					"class": "",
+					"id": ""
+				},
+				"default_value": "https://api.jove.com/api/free/search/search_ai",
+				"placeholder": ""
 			}
 		],
 		"location": [

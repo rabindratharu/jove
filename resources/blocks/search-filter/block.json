@@ -1,0 +1,28 @@
+{
+	"name": "acf/search-filter",
+	"apiVersion": "2",
+	"title": "Jove: Search Filter Block",
+	"description": "A search fiter block for the video listing.",
+	"category": "formatting",
+	"icon": "format-gallery",
+	"keywords": ["search", "filter", "video"],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "wide"
+		}
+	},
+	"supports": {
+		"align": ["full", "wide"],
+		"anchor": true,
+		"className": true,
+		"color": {
+			"background": true
+		},
+		"mode": false
+	}
+}

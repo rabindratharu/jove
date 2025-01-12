@@ -29,9 +29,7 @@ if ( ! empty( $block['className'] ) ) {
 $heading 	= get_field('heading');
 $notice 	= get_field('notice') ? get_field('notice') : '<p>These videos have been matched automatically. <a href="https://www.jove.com/about/contact">Contact us</a> if they are not relevant.</p>';
 $button 	= get_field('button_text') ? get_field('button_text') : 'See all related videos';
-$json_data 	= get_json_file_data();
-$post_id 	= '95';
-
+$rest_api 	= get_field('rest_api') ? get_field('rest_api') : 'https://api.jove.com/api/free/search/search_ai';
 $btn_url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component(get_the_title());
 
 ?>
@@ -71,37 +69,35 @@ $btn_url = 'https://app.jove.com/search?content_type=journal_content&page=1&quer
                      </svg></div>
              </div>
              <?php
-			// // Example usage
-			// $data = Utils::fetch_api_data('https://api.jove.com/api/free/search/search_ai', [
-			// 	'query' 			=> 'Cancer Research',
-			// 	'page' 				=> 1,
-			// 	'per_page' 			=> 3,
-			// 	'category_filter' 	=> ["journal","jove_core"]
-			// ]);
-			// echo '<pre>';
-			// print_r($data);
-			// echo '</pre>';
-			if ( is_array( $json_data ) && array_key_exists($post_id, $json_data) ) {
+			$data = Utils::fetch_api_data($rest_api, [
+				'query' 			=> esc_html( get_the_title() ),
+				'page' 				=> 1,
+				'per_page' 			=> 3,
+				'category_filter' 	=> ["journal","jove_core"]
+			]);
+
+			if ( is_array( $data ) && array_key_exists('content', $data) && array_key_exists('result', $data['content']) ) {
 				?>
              <div class="jove-experiment-video-block__lists">
-                 <?php foreach ($json_data[$post_id]['experiment'] as $key => $value) {
-					//$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
-					$url = isset($value['url']) ? $value['url'] : '#';
+                 <?php foreach ($data['content']['result'] as $key => $value) {
+					$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
 					?>
                  <div class="jove-experiment-video-block__list">
                      <figure class="jove-experiment-video-block__image">
-                         <img src="<?php echo esc_url( $value['image'] ); ?>">
+                         <img src="<?php echo esc_url( $value['header_image'] ); ?>">
                          <span
-                             class="jove-experiment-video-block__image__overlay"><?php echo $value['length']; ?></span>
+                             class="jove-experiment-video-block__image__overlay"><?php echo esc_html($value['lengthMinutes']); ?></span>
                      </figure>
                      <div class="jove-experiment-video-block__content">
                          <h3 class="jove-experiment-video-block__title">
                              <a href="<?php echo esc_url( $url ); ?>" rel="bookmark">
-                                 <?php echo esc_html( limit_string_by_characters( $value['title'], 60 ) ); ?>
+                                 <?php echo wp_kses_post( limit_string_by_characters( $value['title'], 60 ) ); ?>
                              </a>
                          </h3>
-                         <p class="jove-experiment-video-block__date">Published on:
-                             <?php echo esc_html( $value['date'] ); ?></p>
+                         <p class="jove-experiment-video-block__date">
+                             <?php esc_html_e( 'Published on: ', 'jove' );?>
+                             <?php echo esc_html( date('d-M-Y', strtotime($value['published_at']))); ?>
+                         </p>
                          <div class="jove-experiment-video-block__views">
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -109,7 +105,7 @@ $btn_url = 'https://app.jove.com/search?content_type=journal_content&page=1&quer
                                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                  <circle cx="12" cy="12" r="3"></circle>
                              </svg>
-                             <?php echo esc_html( $value['views'] ); ?>
+                             <?php echo esc_html( $value['total_count_views'] ); ?>
                          </div>
                      </div>
                  </div>
@@ -127,6 +123,7 @@ $btn_url = 'https://app.jove.com/search?content_type=journal_content&page=1&quer
          </div>
 
      </div>
-     <?php if ( ! $is_preview ) { ?>
+     <?php
+if ( ! $is_preview ) { ?>
  </div>
  <?php } ?>
