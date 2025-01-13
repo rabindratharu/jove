@@ -45,7 +45,7 @@ class Wp_Insert_Post {
 	 */
 	protected function setup_hooks() {
 
-		add_action( 'init', [ $this, 'fetch_and_insert_posts' ] );
+		add_action( 'wp_loaded', [ $this, 'fetch_and_insert_posts' ] );
 	}
 
 	public function fetch_and_insert_posts() {
@@ -56,7 +56,7 @@ class Wp_Insert_Post {
 
 		// Loop through the data and insert posts.
         foreach ($this->data as $item) {
-            $this->insert_post($item);
+        	$this->insert_post($item);
         }
 	}
 
@@ -95,12 +95,20 @@ class Wp_Insert_Post {
 		// Get the CSS from our response.
 		$contents = wp_remote_retrieve_body( $response );
 
-		// Early exit if there was an error.
-		if ( is_wp_error( $contents ) ) {
-			return;
+		if (is_wp_error($contents)) {
+			error_log('Error retrieving remote content.');
+			return [];
 		}
 
-		return $contents;
+		$data = json_decode($contents, true);
+
+		if (json_last_error() !== JSON_ERROR_NONE) {
+			error_log('JSON decoding error: ' . json_last_error_msg());
+			return [];
+		}
+
+		return $data;
+
 	}
 
 	/**
@@ -109,6 +117,11 @@ class Wp_Insert_Post {
 	 * @param array $item Single API item data.
 	 */
 	private function insert_post($item) {
+
+		// Include necessary WordPress files if not already included.
+		if (!function_exists('wp_insert_post')) {
+			require_once ABSPATH . 'wp-admin/includes/post.php';
+		}
 
 		if ( ! function_exists( 'post_exists' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/post.php';
@@ -132,12 +145,13 @@ class Wp_Insert_Post {
 
 		// Prepare post arguments.
 		$post_data = [
-			'ID'           => absint($item['id']),
 			'post_title'   => sanitize_text_field($item['title']),
 			'post_content' => wp_kses_post($item['content']),
 			'post_status'  => 'publish',
 			'post_type'    => 'video', // Change to custom post type if needed.
 		];
+
+
 
 		// Insert the post.
 		$post_id = wp_insert_post($post_data);
