@@ -55,8 +55,8 @@ class Wp_Insert_Post {
 		}
 
 		// Loop through the data and insert posts.
-        foreach ($this->data as $item) {
-        	$this->insert_post($item);
+        foreach ($this->data as $key => $item) {
+        	$this->insert_post($key, $item);
         }
 	}
 
@@ -112,55 +112,57 @@ class Wp_Insert_Post {
 	}
 
 	/**
-	 * Insert a WordPress post from API data.
+	 * Insert or update a post with a specific post ID.
 	 *
-	 * @param array $item Single API item data.
+	 * @param int   $post_id Custom post ID.
+	 * @param array $data    Post data array.
 	 */
-	private function insert_post($item) {
+	private function insert_post($post_id, $data) {
 
-		// Include necessary WordPress files if not already included.
-		if (!function_exists('wp_insert_post')) {
+		// Ensure required WordPress functions are loaded.
+		if ( ! function_exists( 'wp_insert_post' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/post.php';
 		}
 
-		if ( ! function_exists( 'post_exists' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/post.php';
-		}
-		// Check required fields.
-		if (empty($item['id']) || empty($item['title'])) {
-			error_log('Missing ID or Title in item.');
+		// Validate required fields.
+		if ( empty( $data['title'] ) ) {
+			error_log( 'Missing Title in item.' );
 			return;
 		}
 
 		// Check if the post already exists.
+		if ( ! function_exists( 'post_exists' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/post.php';
+		}
+
 		$existing_post_id = post_exists(
-			sanitize_text_field($item['title']),
-			wp_kses_post($item['content'])
+			sanitize_text_field( $data['title'] ),
+			wp_kses_post( $data['content'] )
 		);
 
-		if ($existing_post_id) {
-			error_log('Post already exists with ID: ' . $existing_post_id);
+		if ( $existing_post_id ) {
+			error_log( 'Post already exists with ID: ' . $existing_post_id );
 			return;
 		}
 
-		// Prepare post arguments.
-		$post_data = [
-			'post_title'   => sanitize_text_field($item['title']),
-			'post_content' => wp_kses_post($item['content']),
+		// Prepare the post data.
+		$post_data = array_merge([
+			'import_id'    => $post_id, // Custom post ID.
+			'post_title'   => isset($data['title']) ? sanitize_text_field($data['title']) : '',
+			'post_content' => isset($data['content']) ? wp_kses_post($data['content']) : '',
 			'post_status'  => 'publish',
-			'post_type'    => 'video', // Change to custom post type if needed.
-		];
+			'post_type'    => 'video',
+		], $data);
 
+		// Insert or update the post.
+		$result = wp_insert_post($post_data);
 
-
-		// Insert the post.
-		$post_id = wp_insert_post($post_data);
-
-		if (is_wp_error($post_id)) {
-			error_log('Error inserting post: ' . $post_id->get_error_message());
+		if (is_wp_error($result)) {
+			error_log('Error inserting/updating post: ' . $result->get_error_message());
 		} else {
-			error_log('Post inserted successfully with ID: ' . $post_id);
+			error_log('Post successfully inserted/updated with ID: ' . $result);
 		}
-	}
 
+		return $result;
+	}
 }
