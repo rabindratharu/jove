@@ -7,49 +7,33 @@
 			{
 				"id": 14344,
 				"name": "Mame Daro Faye",
-				"email": "mamedaro13@gmail.com",
-				"lastName": "Faye",
-				"firstName": "Mame Daro",
-				"collective": "",
 				"institutionIndexes": ["1"]
 			},
 			{
 				"id": 14345,
 				"name": "Tyson E Graber",
-				"email": "tyson.graber@mcgill.ca",
-				"lastName": "Graber",
-				"firstName": "Tyson E",
-				"collective": "",
 				"institutionIndexes": ["2"]
 			},
 			{
 				"id": 14346,
 				"name": "Martin Holcik",
-				"email": "martin@arc.cheo.ca",
-				"lastName": "Holcik",
-				"firstName": "Martin",
-				"collective": "",
 				"institutionIndexes": ["3"]
 			}
 		],
 		"institutions": [
 			{
 				"id": 10312,
-				"url": "/institutions/NA-North-America/CA-Canada/17530-University-of-Ottawa",
-				"departmentTitle": "Apoptosis Research Centre, Children's Hospital of Eastern Ontario Research Institute and Department of Biochemistry, Microbiology and Immunology",
-				"institutionTitle": "University of Ottawa"
+				"name": "University of Ottawa",
+				"description": "Apoptosis Research Centre, Children's Hospital of Eastern Ontario Research Institute and Department of Biochemistry, Microbiology and Immunology"
 			},
 			{
 				"id": 75736,
-				"url": "/institutions/NA-North-America/CA-Canada/25642-Montreal-Neurological-Institute",
-				"departmentTitle": "",
-				"institutionTitle": "Montreal Neurological Institute"
+				"name": "Montreal Neurological Institute"
 			},
 			{
 				"id": 10312,
-				"url": "/institutions/NA-North-America/CA-Canada/17530-University-of-Ottawa",
-				"departmentTitle": "Apoptosis Research Centre, Children's Hospital of Eastern Ontario Research Institute and Department of Pediatrics",
-				"institutionTitle": "University of Ottawa"
+				"description": "Apoptosis Research Centre, Children's Hospital of Eastern Ontario Research Institute and Department of Pediatrics",
+				"name": "University of Ottawa"
 			}
 		]
 	},
@@ -61,112 +45,70 @@
 			{
 				"id": 31530,
 				"name": "Zemfira N. Karamysheva",
-				"email": "zemfira.karamysheva@ttu.edu",
-				"lastName": "Karamysheva",
-				"firstName": "Zemfira N.",
-				"collective": "",
 				"institutionIndexes": ["2"]
 			},
 			{
 				"id": 31531,
 				"name": "Elena B. Tikhonova",
-				"email": "elena.tikhonova@ttuhsc.edu",
-				"lastName": "Tikhonova",
-				"firstName": "Elena B.",
-				"collective": "",
 				"institutionIndexes": ["1"]
 			},
 			{
 				"id": 14191,
 				"name": "Petar N. Grozdanov",
-				"email": "petar.grozdanov@ttuhsc.edu",
-				"lastName": "Grozdanov",
-				"firstName": "Petar N.",
-				"collective": "",
 				"institutionIndexes": ["1"]
 			},
 			{
 				"id": 31532,
 				"name": "James C. Huffman",
-				"email": "james.huffman@ttu.edu",
-				"lastName": "Huffman",
-				"firstName": "James C.",
-				"collective": "",
 				"institutionIndexes": ["2", "3"]
 			},
 			{
 				"id": 31533,
 				"name": "Kristen R. Baca",
-				"email": "kristen.baca@ttu.edu",
-				"lastName": "Baca",
-				"firstName": "Kristen R.",
-				"collective": "",
 				"institutionIndexes": ["1", "3"]
 			},
 			{
 				"id": 31534,
 				"name": "Alexander Karamyshev",
-				"email": "alexander.karamyshev@gmail.com",
-				"lastName": "Karamyshev",
-				"firstName": "Alexander",
-				"collective": "",
 				"institutionIndexes": ["1"]
 			},
 			{
 				"id": 31535,
 				"name": "R. Brian Denison",
-				"email": "brian.denison@ttuhsc.edu",
-				"lastName": "Denison",
-				"firstName": "R. Brian",
-				"collective": "",
 				"institutionIndexes": ["1"]
 			},
 			{
 				"id": 14192,
 				"name": "Clinton C. MacDonald",
-				"email": "Clint.Macdonald@ttuhsc.edu",
-				"lastName": "MacDonald",
-				"firstName": "Clinton C.",
-				"collective": "",
 				"institutionIndexes": ["1"]
 			},
 			{
 				"id": 25688,
 				"name": "Kai Zhang",
 				"email": "kai.zhang@ttu.edu",
-				"lastName": "Zhang",
-				"firstName": "Kai",
-				"collective": "",
 				"institutionIndexes": ["2"]
 			},
 			{
 				"id": 31536,
 				"name": "Andrey L. Karamyshev",
-				"email": "andrey.karamyshev@ttuhsc.edu",
-				"lastName": "Karamyshev",
-				"firstName": "Andrey L.",
-				"collective": "",
 				"institutionIndexes": ["1"]
 			}
 		],
 		"institutions": [
 			{
 				"id": 16830,
-				"url": "/institutions/NA-North-America/US-United-States/TX-Texas/26929-Texas-Tech-University-Health-Sciences-Center",
-				"departmentTitle": "Department of Cell Biology and Biochemistry",
-				"institutionTitle": "Texas Tech University Health Sciences Center"
+				"description": "Department of Cell Biology and Biochemistry",
+				"name": "Texas Tech University Health Sciences Center"
 			},
 			{
 				"id": 4966,
-				"url": "/institutions/NA-North-America/US-United-States/TX-Texas/25562-Texas-Tech-University",
-				"departmentTitle": "Department of Biological Sciences",
-				"institutionTitle": "Texas Tech University"
+				"description": "Department of Biological Sciences",
+				"name": "Texas Tech University"
 			},
 			{
 				"id": 4966,
-				"url": "/institutions/NA-North-America/US-United-States/TX-Texas/25562-Texas-Tech-University",
-				"departmentTitle": "CISER (Center for the Integration of STEM Education & Research)",
-				"institutionTitle": "Texas Tech University"
+				"description": "CISER (Center for the Integration of STEM Education & Research)",
+				"name": "Texas Tech University"
 			}
 		]
 	},
@@ -178,85 +120,54 @@
 			{
 				"id": 11889,
 				"name": "Valentina Gandin",
-				"email": "valentina.gandin@mail.mcgill.ca",
-				"lastName": "Gandin",
-				"firstName": "Valentina",
-				"collective": "",
 				"institutionIndexes": ["1"]
 			},
 			{
 				"id": 11890,
 				"name": "Kristina Sikström",
-				"email": "kristina.sikstrom@ki.se",
-				"lastName": "Sikström",
-				"firstName": "Kristina",
-				"collective": "",
 				"institutionIndexes": ["2"]
 			},
 			{
 				"id": 11891,
 				"name": "Tommy Alain",
-				"email": "tommy.alain@mail.mcgill.ca",
-				"lastName": "Alain",
-				"firstName": "Tommy",
-				"collective": "",
 				"institutionIndexes": ["3"]
 			},
 			{
 				"id": 11892,
 				"name": "Masahiro Morita",
-				"email": "masahiro.morita@mail.mcgill.ca",
-				"lastName": "Morita",
-				"firstName": "Masahiro",
-				"collective": "",
 				"institutionIndexes": ["3"]
 			},
 			{
 				"id": 11893,
 				"name": "Shannon McLaughlan",
-				"email": "shannon.mclaughlan@mail.mcgill.ca",
-				"lastName": "McLaughlan",
-				"firstName": "Shannon",
-				"collective": "",
 				"institutionIndexes": ["1"]
 			},
 			{
 				"id": 11894,
 				"name": "Ola Larsson",
-				"email": "ola.larsson@ki.se",
-				"lastName": "Larsson",
-				"firstName": "Ola",
-				"collective": "",
 				"institutionIndexes": ["2"]
 			},
 			{
 				"id": 11895,
 				"name": "Ivan Topisirovic",
-				"email": "ivan.topisirovic@mcgill.ca",
-				"lastName": "Topisirovic",
-				"firstName": "Ivan",
-				"collective": "",
 				"institutionIndexes": ["1"]
 			}
 		],
 		"institutions": [
 			{
 				"id": 489,
-				"url": "/institutions/NA-North-America/CA-Canada/15939-McGill-University",
-				"departmentTitle": "Lady Davis Institute and Department of Oncology",
-				"institutionTitle": "McGill University"
+				"description": "Lady Davis Institute and Department of Oncology",
+				"name": "McGill University"
 			},
 			{
 				"id": 75943,
-				"url": "/institutions/EU-Europe/SE-Sweden/977-Karolinska-Institutet",
-				"departmentTitle": "Department of Oncology-Pathology",
-				"institutionTitle": "Karolinska Institutet"
+				"description": "Department of Oncology-Pathology",
+				"name": "Karolinska Institutet"
 			},
 			{
 				"id": 489,
-				"url": "/institutions/NA-North-America/CA-Canada/15939-McGill-University",
-				"departmentTitle": "Goodman Cancer Centre and Department of Biochemistry",
-				"institutionTitle": "McGill University"
+				"description": "Goodman Cancer Centre and Department of Biochemistry",
+				"name": "McGill University"
 			}
 		]
 	}

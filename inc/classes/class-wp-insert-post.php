@@ -163,6 +163,48 @@ class Wp_Insert_Post {
 			error_log('Post successfully inserted/updated with ID: ' . $result);
 		}
 
+		// Assign author if provided.
+		if ( ! empty( $data['authors'] ) ) {
+			$aurhors = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['authors'], 'name' ) );
+			wp_set_post_terms( $post_id, $aurhors, 'author' );
+		}
+
+		if ( ! empty( $data['institutions'] ) ) {
+			$institutions = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['institutions'], 'name' ) );
+			wp_set_post_terms( $post_id, $aurhors, 'institution' );
+
+			//$this->set_terms_with_descriptions( $post_id, $data['institutions'], 'institution' );
+		}
+
 		return $result;
+	}
+
+	/**
+	 * Assign terms to a post and set descriptions if provided.
+	 *
+	 * @param int    $post_id     Post ID.
+	 * @param array  $terms       Terms with optional descriptions.
+	 * @param string $taxonomy    Taxonomy name.
+	 */
+	private function set_terms_with_descriptions($post_id, $terms, $taxonomy) {
+		// foreach ( $terms as $key => $value ) {
+
+		// 	$term_name 		= sanitize_text_field( $value['institutionTitle'] );
+		// 	$description 	= isset( $value['departmentTitle'] ) ? wp_kses_post( $value['departmentTitle'] ) : '';
+		// 	// Create the term with description if it doesn't exist.
+		// 	$term = wp_insert_term(
+		// 		$term_name,
+		// 		$taxonomy,
+		// 		[ 'description' => wp_kses_post( $description ) ]
+		// 	);
+
+		// 	if ( is_wp_error( $term ) ) {
+		// 		error_log( 'Error creating term: ' . $term->get_error_message() );
+		// 		continue;
+		// 	}
+
+		// 	// Associate the term with the post.
+		// 	wp_set_post_terms( $post_id, $term['term_id'], $taxonomy, true );
+		// }
 	}
 }
