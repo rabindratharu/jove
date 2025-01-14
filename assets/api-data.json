@@ -1,7 +1,7 @@
 {
 	"52295": {
 		"title": "Assessment of Selective mRNA Translation in Mammalian Cells by Polysome Profiling",
-		"published_at": "2014-10-28 15:00:00",
+		"post_date": "2014-10-28 15:00:00",
 		"content": "The ability of cells to adapt to stress is crucial for their survival. Regulation of mRNA translation is one such adaptation strategy, providing for rapid regulation of the proteome. Here, we provide a standardized polysome profiling protocol to identify specific mRNAs that are selectively translated under stress conditions.",
 		"authors": [
 			{
@@ -39,7 +39,7 @@
 	},
 	"57600": {
 		"title": "Polysome Profiling in <em>Leishmania</em>, Human Cells and Mouse Testis",
-		"published_at": "2018-04-08 15:00:00",
+		"post_date": "2018-04-08 15:00:00",
 		"content": "The overall goal of polysome profiling technique is analysis of translational activity of individual mRNAs or transcriptome mRNAs during protein synthesis. The method is important for studies of protein synthesis regulation, translation activation and repression in health and multiple human...",
 		"authors": [
 			{
@@ -114,7 +114,7 @@
 	},
 	"51455": {
 		"title": "Polysome Fractionation and Analysis of Mammalian Translatomes on a Genome-wide Scale",
-		"published_at": "2014-05-17 14:00:00",
+		"post_date": "2014-05-17 14:00:00",
 		"content": "Ribosomes play a central role in protein synthesis. Polyribosome (polysome) fractionation by sucrose density gradient centrifugation allows direct determination of translation efficiencies of individual mRNAs on a genome-wide scale. In addition, this method can be used for biochemical analysis of ribosome- and polysome-associated factors such as chaperones and signaling...",
 		"authors": [
 			{

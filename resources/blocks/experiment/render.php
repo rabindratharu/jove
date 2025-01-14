@@ -80,9 +80,10 @@ $btn_url = 'https://app.jove.com/search?content_type=journal_content&page=1&quer
 				?>
              <div class="jove-experiment-video-block__lists">
                  <?php foreach ($data['content']['result'] as $key => $value) {
-					$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
+					$url = 'https://app.jove.com/v/' . absint( $value['id'] ) . '/' . sanitize_title($value['title']);
+					//$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
 					?>
-                 <div class="jove-experiment-video-block__list">
+                 <a class="jove-experiment-video-block__list" href="<?php echo esc_url( $url ); ?>" rel="bookmark">
                      <figure class="jove-experiment-video-block__image">
                          <img src="<?php echo esc_url( $value['header_image'] ); ?>">
                          <span
@@ -90,9 +91,7 @@ $btn_url = 'https://app.jove.com/search?content_type=journal_content&page=1&quer
                      </figure>
                      <div class="jove-experiment-video-block__content">
                          <h3 class="jove-experiment-video-block__title">
-                             <a href="<?php echo esc_url( $url ); ?>" rel="bookmark">
-                                 <?php echo wp_kses_post( limit_string_by_characters( $value['title'], 60 ) ); ?>
-                             </a>
+                             <?php echo wp_kses_post( limit_string_by_characters( $value['title'], 60 ) ); ?>
                          </h3>
                          <p class="jove-experiment-video-block__date">
                              <?php esc_html_e( 'Published on: ', 'jove' );?>
@@ -108,7 +107,7 @@ $btn_url = 'https://app.jove.com/search?content_type=journal_content&page=1&quer
                              <?php echo esc_html( $value['total_count_views'] ); ?>
                          </div>
                      </div>
-                 </div>
+                 </a>
                  <?php
 				}?>
              </div>

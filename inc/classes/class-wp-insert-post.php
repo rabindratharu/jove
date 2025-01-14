@@ -145,6 +145,12 @@ class Wp_Insert_Post {
 			return;
 		}
 
+		// Prepare post date.
+		$post_date = ! empty( $data['post_date'] )
+			? date( 'Y-m-d H:i:s', strtotime( sanitize_text_field( $data['post_date'] ) ) )
+			: current_time( 'mysql' ); // Default to current time in WordPress timezone.
+
+
 		// Prepare the post data.
 		$post_data = array_merge([
 			'import_id'    => $post_id, // Custom post ID.
@@ -152,6 +158,7 @@ class Wp_Insert_Post {
 			'post_content' => isset($data['content']) ? wp_kses_post($data['content']) : '',
 			'post_status'  => 'publish',
 			'post_type'    => 'video',
+			'post_date'    => $post_date, // Add post date here.
 		], $data);
 
 		// Insert or update the post.
@@ -171,7 +178,7 @@ class Wp_Insert_Post {
 
 		if ( ! empty( $data['institutions'] ) ) {
 			$institutions = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['institutions'], 'name' ) );
-			wp_set_post_terms( $post_id, $aurhors, 'institution' );
+			wp_set_post_terms( $post_id, $institutions, 'institution' );
 
 			//$this->set_terms_with_descriptions( $post_id, $data['institutions'], 'institution' );
 		}

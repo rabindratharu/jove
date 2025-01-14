@@ -57,9 +57,10 @@ $rest_api 	= get_field('rest_api') ? get_field('rest_api') : 'https://api.jove.c
 				?>
              <div class="jove-concept-video-block__lists">
                  <?php foreach ($data['content']['result'] as $key => $value) {
-					$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
+					$url = 'https://app.jove.com/v/' . absint( $value['id'] ) . '/' . sanitize_title($value['title']);
+					//$url = 'https://app.jove.com/search?content_type=journal_content&page=1&query=' . jove_encode_uri_component($value['title']);
 					?>
-                 <div class="jove-concept-video-block__list">
+                 <a class="jove-concept-video-block__list" href="<?php echo esc_url( $url ); ?>" rel="bookmark">
                      <figure class="jove-concept-video-block__image">
                          <img src="<?php echo esc_url( $value['header_image'] ); ?>">
                          <span
@@ -67,9 +68,7 @@ $rest_api 	= get_field('rest_api') ? get_field('rest_api') : 'https://api.jove.c
                      </figure>
                      <div class="jove-concept-video-block__content">
                          <h3 class="jove-concept-video-block__title">
-                             <a href="<?php echo esc_url( $url ); ?>" rel="bookmark">
-                                 <?php echo wp_kses_post( limit_string_by_characters( $value['title'], 50 ) ); ?>
-                             </a>
+                             <?php echo wp_kses_post( limit_string_by_characters( $value['title'], 50 ) ); ?>
                          </h3>
                          <div class="jove-concept-video-block__views">
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -83,7 +82,7 @@ $rest_api 	= get_field('rest_api') ? get_field('rest_api') : 'https://api.jove.c
                          <p class="jove-concept-video-block__date">
                              <?php echo wp_kses_post( limit_string_by_characters( $value['excerpt'], 60 ) ); ?></p>
                      </div>
-                 </div>
+                 </a>
                  <?php
 				}?>
              </div>
