@@ -41,7 +41,7 @@ $post_id = get_the_ID(); // Replace with a specific post ID if needed.
 
      <div class="jove-abstract-block">
          <div class="jove-abstract-block__entry-header">
-             <h2 class="jove-abstract-block__heading"><?php the_title(); ?></h2>
+             <h1 class="jove-abstract-block__heading"><?php the_title(); ?></h1>
 
              <?php
 				$items 		= get_field('authors_affiliation', $post_id);
