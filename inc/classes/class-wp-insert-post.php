@@ -213,17 +213,35 @@ class Wp_Insert_Post {
 	}
 
 	/**
-	 * Assign terms to a post.
+	 * Assign terms to a post with descriptions.
 	 *
-	 * @param int    $post_id Post ID.
-	 * @param array  $data    Data array.
-	 * @param string $key     Data key for terms.
+	 * @param int    $post_id  Post ID.
+	 * @param array  $data     Data array.
+	 * @param string $key      Data key for terms.
 	 * @param string $taxonomy Taxonomy name.
 	 */
 	private function assign_terms( $post_id, $data, $key, $taxonomy ) {
 		if ( ! empty( $data[ $key ] ) ) {
 			$terms = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data[ $key ], 'name' ) );
+
+			foreach ( $data[ $key ] as $term_data ) {
+				$term_name = sanitize_text_field( $term_data['name'] );
+				$term_description = isset( $term_data['description'] ) ? wp_kses_post( $term_data['description'] ) : '';
+
+				// Check if the term already exists.
+				$term = get_term_by( 'name', $term_name, $taxonomy );
+
+				if ( ! $term ) {
+					// Create the term with description if it doesn't exist.
+					$term = wp_insert_term( $term_name, $taxonomy, [
+						'description' => $term_description,
+					] );
+				}
+			}
+
+			// Assign the terms to the post.
 			wp_set_post_terms( $post_id, $terms, $taxonomy );
 		}
 	}
+
 }
