@@ -5,35 +5,60 @@
 		"content": "The ability of cells to adapt to stress is crucial for their survival. Regulation of mRNA translation is one such adaptation strategy, providing for rapid regulation of the proteome. Here, we provide a standardized polysome profiling protocol to identify specific mRNAs that are selectively translated under stress conditions.",
 		"authors": [
 			{
-				"id": 14344,
 				"name": "Mame Daro Faye",
 				"institutionIndexes": ["1"]
 			},
 			{
-				"id": 14345,
 				"name": "Tyson E Graber",
 				"institutionIndexes": ["2"]
 			},
 			{
-				"id": 14346,
 				"name": "Martin Holcik",
 				"institutionIndexes": ["3"]
 			}
 		],
 		"institutions": [
 			{
-				"id": 10312,
 				"name": "University of Ottawa",
 				"description": "Apoptosis Research Centre, Children's Hospital of Eastern Ontario Research Institute and Department of Biochemistry, Microbiology and Immunology"
 			},
 			{
-				"id": 75736,
 				"name": "Montreal Neurological Institute"
 			},
 			{
-				"id": 10312,
 				"description": "Apoptosis Research Centre, Children's Hospital of Eastern Ontario Research Institute and Department of Pediatrics",
 				"name": "University of Ottawa"
+			}
+		],
+		"journals": [
+			{
+				"name": "Integration (Tokyo, Japan)"
+			}
+		],
+		"Keywords": [
+			{
+				"name": "Developing Countries"
+			},
+			{
+				"name": "Development Policy"
+			},
+			{
+				"name": "Economic Development"
+			},
+			{
+				"name": "Economic Factors"
+			},
+			{
+				"name": "International Cooperation"
+			},
+			{
+				"name": "Policy"
+			},
+			{
+				"name": "Population Policy"
+			},
+			{
+				"name": "Social Policy"
 			}
 		]
 	},
@@ -110,6 +135,37 @@
 				"description": "CISER (Center for the Integration of STEM Education & Research)",
 				"name": "Texas Tech University"
 			}
+		],
+		"journals": [
+			{
+				"name": "J Cardiothorac Vasc Anesth. 2015 Oct;29(5):1333-40"
+			}
+		],
+		"Keywords": [
+			{
+				"name": "Developing Countries"
+			},
+			{
+				"name": "Development Policy"
+			},
+			{
+				"name": "Economic Development"
+			},
+			{
+				"name": "Economic Factors"
+			},
+			{
+				"name": "International Cooperation"
+			},
+			{
+				"name": "Policy"
+			},
+			{
+				"name": "Population Policy"
+			},
+			{
+				"name": "Social Policy"
+			}
 		]
 	},
 	"51455": {
@@ -168,6 +224,37 @@
 				"id": 489,
 				"description": "Goodman Cancer Centre and Department of Biochemistry",
 				"name": "McGill University"
+			}
+		],
+		"journals": [
+			{
+				"name": "J Cardiothorac Vasc Anesth. 2015 Oct;29(5):1333-40"
+			}
+		],
+		"Keywords": [
+			{
+				"name": "Developing Countries"
+			},
+			{
+				"name": "Development Policy"
+			},
+			{
+				"name": "Economic Development"
+			},
+			{
+				"name": "Economic Factors"
+			},
+			{
+				"name": "International Cooperation"
+			},
+			{
+				"name": "Policy"
+			},
+			{
+				"name": "Population Policy"
+			},
+			{
+				"name": "Social Policy"
 			}
 		]
 	}

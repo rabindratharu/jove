@@ -175,12 +175,21 @@ class Wp_Insert_Post {
 			$aurhors = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['authors'], 'name' ) );
 			wp_set_post_terms( $post_id, $aurhors, 'author' );
 		}
-
 		if ( ! empty( $data['institutions'] ) ) {
 			$institutions = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['institutions'], 'name' ) );
 			wp_set_post_terms( $post_id, $institutions, 'institution' );
-
-			//$this->set_terms_with_descriptions( $post_id, $data['institutions'], 'institution' );
+		}
+		if ( ! empty( $data['institutions'] ) ) {
+			$institutions = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['institutions'], 'name' ) );
+			wp_set_post_terms( $post_id, $institutions, 'institution' );
+		}
+		if ( ! empty( $data['journals'] ) ) {
+			$journals = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['journals'], 'name' ) );
+			wp_set_post_terms( $post_id, $journals, 'journal' );
+		}
+		if ( ! empty( $data['Keywords'] ) ) {
+			$Keywords = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['Keywords'], 'name' ) );
+			wp_set_post_terms( $post_id, $Keywords, 'keyword' );
 		}
 
 		return $result;

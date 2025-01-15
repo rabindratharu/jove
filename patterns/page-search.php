@@ -11,7 +11,7 @@
  * Inserter: true
  */
 
-$filters_data = get_filters_data();
+$filters_data = jove_get_filters_data();
 ?>
 <div class="container mx-auto">
     <jove-search class="jove-search">

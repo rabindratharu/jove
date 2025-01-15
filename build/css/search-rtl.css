@@ -84,3 +84,23 @@
 	}
 }
 
+/**
+ * Search Result Page
+ */
+.jove-search__filter-wrapper {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	gap: 20px;
+}
+.jove-search__filter-wrapper .jove-search__filter-left-col {
+	/* flex: 1 1 0%; */
+}
+.jove-search__filter-wrapper .jove-search__filter-right-col {
+	/* flex: 1 1 0%; */
+}
+

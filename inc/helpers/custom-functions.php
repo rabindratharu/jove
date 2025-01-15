@@ -19,7 +19,7 @@ function get_hierarchical_term_items( string $taxonomy = '', int $parent_id = 0 
 
 	// Build query args.
 	$query_args = [
-		'post_type'              => 'post',
+		'post_type'              => 'video',
 		'post_status'            => 'publish',
 		'fields'                 => 'ids',
 		'posts_per_page'         => 1,
@@ -274,23 +274,30 @@ function get_filter_ids( array $filters_data = [] ): array {
  *
  * @return array[]
  */
-function get_filters_data(): array {
-	$category_terms = get_hierarchical_term_items( 'category' );
-	$tag_terms = get_hierarchical_term_items( 'post_tag' );
+function jove_get_filters_data(): array {
+	$author_terms 		= get_hierarchical_term_items( 'author' );
+	$institution_terms 	= get_hierarchical_term_items( 'institution' );
+	$journal_terms 		= get_hierarchical_term_items( 'journal' );
 
 	return [
 		[
-			'label'    => 'Categories',
-			'slug'     => 'categories',
-			'children' => $category_terms,
+			'label'    => 'Author',
+			'slug'     => 'author',
+			'children' => $author_terms,
 		],
 		[
-			'label'    => 'Tags',
-			'slug'     => 'tags',
-			'children' => $tag_terms,
+			'label'    => 'Institution',
+			'slug'     => 'institution',
+			'children' => $institution_terms,
+		],
+		[
+			'label'    => 'Journal',
+			'slug'     => 'journal',
+			'children' => $journal_terms,
 		],
 	];
 }
+
 
 /**
  * Helper function to import the ACF field group if it doesn't exist.

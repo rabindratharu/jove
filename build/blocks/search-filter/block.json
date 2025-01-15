@@ -31,5 +31,8 @@
       "background": true
     },
     "mode": false
-  }
+  },
+  "style": [
+    "file:./../../css/search.css"
+  ]
 }

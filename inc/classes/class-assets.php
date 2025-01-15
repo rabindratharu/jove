@@ -166,7 +166,7 @@ class Assets {
 
 		// If search page.
 		if ( is_search() ) {
-			$filters_data = get_filters_data();
+			$filters_data = jove_get_filters_data();
 			wp_enqueue_script( 'search-js' );
 			wp_localize_script( 'search-js', 'search_settings',
 				[
