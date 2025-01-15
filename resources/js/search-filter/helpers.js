@@ -87,18 +87,25 @@ export const getResultMarkup = (posts = []) => {
 		console.log("🚀 ~ file: helpers.js:87 ~ posts.forEach ~ post:", post);
 
 		markup += `
-		<article id="video-${post?.id ?? 0}" class="jove-video">
-			<h2 class="jove-video-title">
+		<article id="video-${post?.id ?? 0}" class="jove-search-video">
+			<h2 class="jove-search-video-title">
 				<a href="${post?.permalink ?? ""}" title="${post?.title ?? ""}">
 					${post?.title ?? ""}
 				</a>
 			</h2>
-			<div class="jove-video-authors-affiliations">
-
+			<div class="jove-search-video-authors-affiliations">
+				<div class="jove-search-video-authors">
+					Alexander Karamyshev<sub>1</sub>, Andrey L. Karamyshev<sub>1</sub> , Ivan Topisirovic<sub>2</sub>, Kristina Sikström<sub>2</sub>, Tyson E Graber<sub>2</sub>
+				</div>
+				<div class="jove-search-video-affiliations">
+					<sub>1</sub>Texas Tech University , <sub>2</sub>Texas Tech University Health Sciences Center
+				</div>
 			</div>
-			<div class="jove-video-meta">
-				<div class="jove-video-date"><span>Published on:</span>${post?.date ?? ""}</div>
-				<div class="jove-video-journal"><span>Journal:</span>${
+			<div class="jove-search-video-meta">
+				<div class="jove-search-video-date"><span>Published on:</span>${
+					post?.date ?? ""
+				}</div>
+				<div class="jove-search-video-journal"><span>Journal:</span>${
 					post?.journal ?? ""
 				}</div>
 			</div>

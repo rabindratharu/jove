@@ -68,10 +68,7 @@ $post_id = get_the_ID(); // Replace with a specific post ID if needed.
 					$authors 		= wp_list_pluck( $data, 'authors' );
 					$authorsData 	= [];
 					if ( ! empty( $authors ) ) {
-						// Get the total number of items in the array
-						$total_items = count($authors);
 						// Initialize a counter
-						$current_index = 0;
 						echo '<ul class="jove-abstract-block__authors">';
 							foreach ( $authors as $key => $value ) {
 								$authorsData[] = implode('<sub>'.$key.'</sub>, ', $value) . '<sub>'.$key.'</sub>';
