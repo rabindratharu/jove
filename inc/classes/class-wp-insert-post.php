@@ -26,12 +26,11 @@ class Wp_Insert_Post {
 	private $url = 'https://raw.githubusercontent.com/rabindratharu/jove/refs/heads/main/assets/api-data.json';
 
 	/**
-	 * The final data.
+	 * Option name for storing file size.
 	 *
-	 * @access protected
 	 * @var string
 	 */
-	protected $data;
+	private $file_size_option = 'jove_api_file_size';
 
 	/**
 	 * Constructor.
@@ -50,14 +49,48 @@ class Wp_Insert_Post {
 
 	public function fetch_and_insert_posts() {
 
-		if ( !$this->data ) {
-			$this->data = $this->get_remote_url_contents();
+		// Get the current file size from the remote source.
+		$current_file_size = $this->get_remote_file_size();
+
+		if ( $current_file_size === false ) {
+			error_log( 'Failed to retrieve remote file size. Skipping fetch.' );
+			return;
 		}
 
-		// Loop through the data and insert posts.
-        foreach ($this->data as $key => $item) {
-        	$this->insert_post($key, $item);
-        }
+		// Retrieve the previously stored file size from the database.
+		$stored_file_size = get_option( $this->file_size_option, 0 );
+
+		// If the file size has not changed, skip fetching and inserting posts.
+		if ( $current_file_size == $stored_file_size ) {
+			error_log( 'File size unchanged. Skipping data fetch and insertion.' );
+			return;
+		}
+
+		// Fetch and insert posts if the file size has changed.
+		$this->data = $this->get_remote_url_contents();
+
+		if ( ! empty( $this->data ) ) {
+			foreach ( $this->data as $post_id => $data ) {
+				$this->insert_post( $post_id, $data );
+			}
+
+			// Update the stored file size after processing.
+			update_option( $this->file_size_option, $current_file_size );
+		}
+	}
+
+	/**
+	 * Get the size of the remote file.
+	 *
+	 * @return int|false File size in bytes, or false on failure.
+	 */
+	protected function get_remote_file_size() {
+		$response = wp_remote_head( $this->url );
+		if ( is_wp_error( $response ) ) {
+			error_log( 'Failed to get remote file size: ' . $response->get_error_message() );
+			return false;
+		}
+		return isset( $response['headers']['content-length'] ) ? (int) $response['headers']['content-length'] : false;
 	}
 
 	/**
@@ -117,10 +150,14 @@ class Wp_Insert_Post {
 	 * @param int   $post_id Custom post ID.
 	 * @param array $data    Post data array.
 	 */
-	private function insert_post($post_id, $data) {
-
+	private function insert_post( $post_id, $data ) {
 		// Ensure required WordPress functions are loaded.
 		if ( ! function_exists( 'wp_insert_post' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/post.php';
+		}
+
+		// Check if the post already exists.
+		if ( ! function_exists( 'post_exists' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/post.php';
 		}
 
@@ -130,97 +167,63 @@ class Wp_Insert_Post {
 			return;
 		}
 
-		// Check if the post already exists.
-		if ( ! function_exists( 'post_exists' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/post.php';
-		}
-
+		// Check if the post already exists by title and content.
 		$existing_post_id = post_exists(
 			sanitize_text_field( $data['title'] ),
 			wp_kses_post( $data['content'] )
 		);
 
-		if ( $existing_post_id ) {
+		// Use the existing post ID if editing from the dashboard or already present.
+		if ( $existing_post_id && $existing_post_id != $post_id ) {
 			error_log( 'Post already exists with ID: ' . $existing_post_id );
-			return;
+			$post_id = $existing_post_id;
 		}
 
 		// Prepare post date.
 		$post_date = ! empty( $data['post_date'] )
 			? date( 'Y-m-d H:i:s', strtotime( sanitize_text_field( $data['post_date'] ) ) )
-			: current_time( 'mysql' ); // Default to current time in WordPress timezone.
-
+			: current_time( 'mysql' );
 
 		// Prepare the post data.
-		$post_data = array_merge([
-			'import_id'    => $post_id, // Custom post ID.
-			'post_title'   => isset($data['title']) ? sanitize_text_field($data['title']) : '',
-			'post_content' => isset($data['content']) ? wp_kses_post($data['content']) : '',
+		$post_data = [
+			'import_id'    => intval($post_id), // Update if post ID exists.
+			'post_title'   => sanitize_text_field( $data['title'] ),
+			'post_content' => wp_kses_post( $data['content'] ),
 			'post_status'  => 'publish',
 			'post_type'    => 'video',
-			'post_date'    => $post_date, // Add post date here.
-		], $data);
+			'post_date'    => $post_date,
+		];
 
 		// Insert or update the post.
-		$result = wp_insert_post($post_data);
+		$result = wp_insert_post( $post_data );
 
-		if (is_wp_error($result)) {
-			error_log('Error inserting/updating post: ' . $result->get_error_message());
+		if ( is_wp_error( $result ) ) {
+			error_log( 'Error inserting/updating post: ' . $result->get_error_message() );
 		} else {
-			error_log('Post successfully inserted/updated with ID: ' . $result);
+			error_log( 'Post successfully inserted/updated with ID: ' . $result );
 		}
 
-		// Assign author if provided.
-		if ( ! empty( $data['authors'] ) ) {
-			$aurhors = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['authors'], 'name' ) );
-			wp_set_post_terms( $post_id, $aurhors, 'author' );
-		}
-		if ( ! empty( $data['institutions'] ) ) {
-			$institutions = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['institutions'], 'name' ) );
-			wp_set_post_terms( $post_id, $institutions, 'institution' );
-		}
-		if ( ! empty( $data['institutions'] ) ) {
-			$institutions = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['institutions'], 'name' ) );
-			wp_set_post_terms( $post_id, $institutions, 'institution' );
-		}
-		if ( ! empty( $data['journals'] ) ) {
-			$journals = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['journals'], 'name' ) );
-			wp_set_post_terms( $post_id, $journals, 'journal' );
-		}
-		if ( ! empty( $data['Keywords'] ) ) {
-			$Keywords = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data['Keywords'], 'name' ) );
-			wp_set_post_terms( $post_id, $Keywords, 'keyword' );
-		}
+		// Assign terms if provided.
+		$this->assign_terms( $result, $data, 'authors', 'author' );
+		$this->assign_terms( $result, $data, 'institutions', 'institution' );
+		$this->assign_terms( $result, $data, 'journals', 'journal' );
+		$this->assign_terms( $result, $data, 'Keywords', 'keyword' );
 
 		return $result;
 	}
 
 	/**
-	 * Assign terms to a post and set descriptions if provided.
+	 * Assign terms to a post.
 	 *
-	 * @param int    $post_id     Post ID.
-	 * @param array  $terms       Terms with optional descriptions.
-	 * @param string $taxonomy    Taxonomy name.
+	 * @param int    $post_id Post ID.
+	 * @param array  $data    Data array.
+	 * @param string $key     Data key for terms.
+	 * @param string $taxonomy Taxonomy name.
 	 */
-	private function set_terms_with_descriptions($post_id, $terms, $taxonomy) {
-		// foreach ( $terms as $key => $value ) {
-
-		// 	$term_name 		= sanitize_text_field( $value['institutionTitle'] );
-		// 	$description 	= isset( $value['departmentTitle'] ) ? wp_kses_post( $value['departmentTitle'] ) : '';
-		// 	// Create the term with description if it doesn't exist.
-		// 	$term = wp_insert_term(
-		// 		$term_name,
-		// 		$taxonomy,
-		// 		[ 'description' => wp_kses_post( $description ) ]
-		// 	);
-
-		// 	if ( is_wp_error( $term ) ) {
-		// 		error_log( 'Error creating term: ' . $term->get_error_message() );
-		// 		continue;
-		// 	}
-
-		// 	// Associate the term with the post.
-		// 	wp_set_post_terms( $post_id, $term['term_id'], $taxonomy, true );
-		// }
+	private function assign_terms( $post_id, $data, $key, $taxonomy ) {
+		if ( ! empty( $data[ $key ] ) ) {
+			$terms = array_map( 'sanitize_text_field', (array) wp_list_pluck( $data[ $key ], 'name' ) );
+			wp_set_post_terms( $post_id, $terms, $taxonomy );
+		}
 	}
 }
