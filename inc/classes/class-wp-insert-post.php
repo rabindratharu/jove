@@ -209,6 +209,11 @@ class Wp_Insert_Post {
 		$this->assign_terms( $result, $data, 'journals', 'journal' );
 		$this->assign_terms( $result, $data, 'Keywords', 'keyword' );
 
+		// Insert ACF Repeater fields if provided.
+		if ( ! empty( $data['meta_fields'] ) ) {
+			$this->insert_repeater_fields( $result, $data['meta_fields'] );
+		}
+
 		return $result;
 	}
 
@@ -244,4 +249,36 @@ class Wp_Insert_Post {
 		}
 	}
 
+	/**
+	 * Insert ACF repeater fields.
+	 *
+	 * @param int   $post_id Post ID.
+	 * @param array $repeater_data Repeater data array.
+	 */
+	private function insert_repeater_fields( $post_id, $repeater_data ) {
+		// Define the repeater field name in ACF.
+		$repeater_field_name = 'authors_affiliation';
+
+		// Delete existing repeater field data.
+		delete_post_meta( $post_id, $repeater_field_name );
+
+		// Update repeater field row count.
+		update_post_meta( $post_id, $repeater_field_name, count( $repeater_data ) );
+
+		foreach ( $repeater_data as $index => $row ) {
+			// Add authors subfields.
+			if ( ! empty( $row['authors'] ) ) {
+				foreach ( $row['authors'] as $author_index => $author ) {
+					update_post_meta( $post_id, "{$repeater_field_name}_{$index}_authors_{$author_index}_name", $author->name );
+					update_post_meta( $post_id, "{$repeater_field_name}_{$index}_authors_{$author_index}_slug", $author->slug );
+				}
+			}
+
+			// Add affiliation subfield.
+			if ( ! empty( $row['affiliation'] ) ) {
+				update_post_meta( $post_id, "{$repeater_field_name}_{$index}_affiliation_{$author_index}_name", $author->name );
+				update_post_meta( $post_id, "{$repeater_field_name}_{$index}_affiliation_{$author_index}_slug", $author->slug );
+			}
+		}
+	}
 }

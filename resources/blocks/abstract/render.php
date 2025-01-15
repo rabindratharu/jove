@@ -45,6 +45,7 @@ $post_id = get_the_ID(); // Replace with a specific post ID if needed.
 
              <?php
 				$items 		= get_field('authors_affiliation', $post_id);
+				echo '<pre>'; print_r($items); echo '</pre>';
 				$video		= get_field('video_url', $post_id);
 				?>
              <div class="jove-abstract-block__authors-affiliations">

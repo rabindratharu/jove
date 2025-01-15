@@ -60,6 +60,30 @@
 			{
 				"name": "Social Policy"
 			}
+		],
+		"meta_fields": [
+			{
+				"authors": [
+					{
+						"name": "Ivan Topisirovic",
+						"slug": "ivan-topisirovic"
+					},
+					{
+						"name": "Elena B. Tikhonova",
+						"slug": "ielena-b-tikhonova"
+					},
+					{
+						"name": "Andrey L. Karamyshev",
+						"slug": "andrey-l-karamyshev"
+					}
+				],
+				"affiliation": [
+					{
+						"name": "University of Ottawa",
+						"slug": "university-of-ottawa"
+					}
+				]
+			}
 		]
 	},
 	"57600": {
@@ -166,6 +190,30 @@
 			{
 				"name": "Social Policy"
 			}
+		],
+		"meta_fields": [
+			{
+				"authors": [
+					{
+						"name": "Ivan Topisirovic",
+						"slug": "ivan-topisirovic"
+					},
+					{
+						"name": "Elena B. Tikhonova",
+						"slug": "ielena-b-tikhonova"
+					},
+					{
+						"name": "Andrey L. Karamyshev",
+						"slug": "andrey-l-karamyshev"
+					}
+				],
+				"affiliation": [
+					{
+						"name": "University of Ottawa",
+						"slug": "university-of-ottawa"
+					}
+				]
+			}
 		]
 	},
 	"51455": {
@@ -255,6 +303,30 @@
 			},
 			{
 				"name": "Social Policy"
+			}
+		],
+		"meta_fields": [
+			{
+				"authors": [
+					{
+						"name": "Ivan Topisirovic",
+						"slug": "ivan-topisirovic"
+					},
+					{
+						"name": "Elena B. Tikhonova",
+						"slug": "ielena-b-tikhonova"
+					},
+					{
+						"name": "Andrey L. Karamyshev",
+						"slug": "andrey-l-karamyshev"
+					}
+				],
+				"affiliation": [
+					{
+						"name": "University of Ottawa",
+						"slug": "university-of-ottawa"
+					}
+				]
 			}
 		]
 	}
